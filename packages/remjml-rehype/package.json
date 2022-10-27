@@ -1,0 +1,24 @@
+{
+  "name": "remjml-rehype",
+  "type": "module",
+  "exports": {
+    "./gen/*": "./dist/gen/*.js",
+    "./client/*": "./dist/client/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "gen/*": [
+        "dist/gen/*"
+      ],
+      "client/*": [
+        "dist/client/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@types/hast": "^2.3.4",
+    "hast": "^1.0.0",
+    "unified": "^10.1.2",
+    "remjml": "*"
+  }
+}

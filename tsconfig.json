@@ -1,0 +1,21 @@
+{
+  "files": [],
+  "typeRoots": [ "./types", "./node_modules/@types"],
+  "references": [
+    {
+      "path": "./packages/remjml-parse/tsconfig.ref.json"
+    },
+    {
+      "path": "./packages/remjml-rehype/tsconfig.ref.json"
+    },
+    {
+      "path": "./packages/mjml-json-to-remjml/tsconfig.ref.json"
+    },
+    {
+      "path": "./packages/remjml/tsconfig.ref.json"
+    },
+  ],
+  "compilerOptions": {
+    "strict": true
+  }
+}

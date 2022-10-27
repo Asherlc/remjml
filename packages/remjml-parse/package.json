@@ -1,0 +1,20 @@
+{
+  "name": "remjml-parse",
+  "type": "module",
+  "exports": {
+    "./gen/*": "./dist/gen/*.js",
+    "./client/*": "./dist/client/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "gen/*": [
+        "dist/gen/*"
+      ],
+      "client/*": [
+        "dist/client/*"
+      ]
+    }
+  },
+  "dependencies": {
+  }
+}

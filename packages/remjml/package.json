@@ -1,0 +1,22 @@
+{
+  "name": "remjml",
+  "type": "module",
+  "exports": {
+    "./gen/*": "./dist/gen/*.js",
+    "./client/*": "./dist/client/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "gen/*": [
+        "dist/gen/*"
+      ],
+      "client/*": [
+        "dist/client/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "mjml": "^4.13.0",
+    "unified": "^10.1.2"
+  }
+}

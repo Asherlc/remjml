@@ -1,11 +1,11 @@
-import { Content } from "hast";
-import { MjmlAstNode } from "mjmlast";
+import { Content as HContent, Parent as HParent } from "hast";
+import { MjmlNode } from "mjmlast";
 import { u } from "unist-builder";
 import { H, Handler } from ".";
 
 const own = {}.hasOwnProperty;
 
-function unknown(h: H, node: MjmlAstNode) {
+function unknown(h: H, node: MjmlNode) {
   const data = node.data || {};
 
   if (
@@ -22,7 +22,7 @@ function unknown(h: H, node: MjmlAstNode) {
   return h(node, "div", all(h, node));
 }
 
-export function one(h: H, node: MjmlAstNode, parent: Parent | null) {
+export function one(h: H, node: MjmlNode, parent: HParent | null) {
   const type = node && node.type;
   let fn: Handler;
 
@@ -42,12 +42,12 @@ export function one(h: H, node: MjmlAstNode, parent: Parent | null) {
   return (typeof fn === "function" ? fn : unknown)(h, node, parent);
 }
 
-function returnNode(h: H, node: MjmlAstNode) {
+function returnNode(h: H, node: MjmlNode) {
   return "children" in node ? { ...node, children: all(h, node) } : node;
 }
 
-export function all(h: H, parent: MjmlAstNode) {
-  const values: Content[] = [];
+export function all(h: H, parent: MjmlNode) {
+  const values: HContent[] = [];
 
   if ("children" in parent) {
     const nodes = parent.children;

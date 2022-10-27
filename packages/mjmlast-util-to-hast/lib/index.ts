@@ -1,39 +1,48 @@
-import type { Element, Properties, Content } from "hast";
+import type {
+  Root as HRoot,
+  Parent as HParent,
+  Element as HElement,
+  Properties as HProperties,
+  ElementContent as HContent,
+} from "hast";
 import { pointStart, pointEnd, PositionLike } from "unist-util-position";
 import { generated } from "unist-util-generated";
 import { one } from "./traverse";
 import { handlers } from "./handlers";
-import type { MjmlAstNode } from "mjmlast";
+import type { MjmlNode, Parent } from "mjmlast";
+
+type HastNode = HRoot | HParent | HParent["children"][number];
 
 const own = {}.hasOwnProperty;
 
 type Data = Record<string, unknown> & EmbeddedHastFields;
 
-type NodeWithData = MjmlAstNode & { data?: Data };
+type NodeWithData = MjmlNode & { data?: Data };
 
 type HFunctionProps = (
-  node: MjmlAstNode | PositionLike | null | undefined,
+  node: MjmlNode | PositionLike | null | undefined,
   tagName: string,
-  props: Properties,
-  children?: [Content]
-) => Element;
+  props: HProperties,
+  children?: [HContent]
+) => HElement;
 
 type HFunctionNoProps = (
-  node: MjmlAstNode | PositionLike | null | undefined,
+  node: MjmlNode | PositionLike | null | undefined,
   tagName: string,
-  children?: [Content]
-) => Element;
+  children?: [HContent]
+) => HElement;
 
 type Handlers = Record<string, Handler>;
 
 type HFields = {
   dangerous: boolean;
-  definition: (identifier: string) => Definition | null;
   handlers: Handlers;
   augment: (
     left: NodeWithData | PositionLike | null | undefined,
-    right: Content
-  ) => Content;
+    right: HContent
+  ) => HContent;
+  passThrough: string[];
+  unknownHandler: Handler;
 };
 
 export type H = HFunctionProps & HFunctionNoProps & HFields;
@@ -42,7 +51,7 @@ export type Handler = (
   h: H,
   node: any,
   parent: Parent | null
-) => Content | Array<Content> | null | undefined;
+) => HContent | Array<HContent> | null | undefined;
 
 type Options = {
   allowDangerousHtml?: boolean;
@@ -53,16 +62,15 @@ type Options = {
 
 type EmbeddedHastFields = {
   hName: string;
-  hProperties: Properties;
-  hChildren: [Content];
+  hProperties: HProperties;
+  hChildren: [HContent];
 };
 
-function factory(tree: MjmlAstNode, options: Options) {
+function factory(tree: MjmlNode, options: Options) {
   const settings = options || {};
   const dangerous = settings.allowDangerousHtml || false;
 
   h.dangerous = dangerous;
-  h.definition = definitions(tree);
   h.augment = augment;
   h.handlers = { ...handlers, ...settings.handlers };
   h.unknownHandler = settings.unknownHandler;
@@ -70,14 +78,10 @@ function factory(tree: MjmlAstNode, options: Options) {
 
   return h;
 
-  /**
-   * Finalise the created `right`, a hast node, from `left`, an mdast node.
-   *
-   * @param {(NodeWithData|PositionLike)?} left
-   * @param {Content} right
-   * @returns {Content}
-   */
-  function augment(left, right) {
+  function augment(
+    left: NodeWithData | PositionLike | undefined,
+    right: HContent
+  ): HContent {
     // Handle `data.hName`, `data.hProperties, `data.hChildren`.
     if (left && "data" in left && left.data) {
       /** @type {Data} */
@@ -143,7 +147,10 @@ function factory(tree: MjmlAstNode, options: Options) {
  * @param {Options} [options] Configuration
  * @returns {HastNode|null|undefined} hast node
  */
-export function toHast(tree, options) {
+export function toHast(
+  tree: MjmlNode,
+  options: Options
+): HastNode | null | undefined {
   const h = factory(tree, options);
   const node = one(h, tree, null);
 

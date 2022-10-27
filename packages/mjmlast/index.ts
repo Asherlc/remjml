@@ -104,7 +104,7 @@ export interface MjStyle extends Parent {
 
 export interface MjHead extends Parent {
   type: "mj-head";
-  children: [Node];
+  children: [Text];
 }
 
 export interface MjTitle extends Parent {
@@ -305,7 +305,7 @@ export interface MjFont extends Node {
 
 export interface MjAttributes extends Parent {
   type: "mj-attributes";
-  children: [Node];
+  children: [MjmlNode];
 }
 
 export interface MjBreakpoint extends Node {
@@ -605,3 +605,40 @@ export interface MjColumn extends Parent {
     | MjNavbar
   >;
 }
+
+export type MjmlNode =
+  | MjColumn
+  | MjWrapper
+  | MjSection
+  | MjText
+  | MjButton
+  | MjAccordion
+  | MjAccordionElement
+  | MjAccordionTitle
+  | MjAccordionText
+  | MjBody
+  | MjButton
+  | MjCarousel
+  | MjCarouselImage
+  | MjColumn
+  | MjDivider
+  | MjGroup
+  | MjHero
+  | MjImage
+  | MjNavbar
+  | MjNavbarLink
+  | MjRaw
+  | MjSection
+  | MjSocial
+  | MjSocialElement
+  | MjSpacer
+  | MjTable
+  | MjText
+  | MjWrapper
+  | MjHead
+  | MjHtmlAttributes
+  | MjPreview
+  | MjStyle
+  | MjTitle
+  | Text
+  | MjSelector;

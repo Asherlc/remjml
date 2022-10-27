@@ -1,6 +1,8 @@
 import type { ElementContent } from "hast";
-import type { MjmlAstNode } from "mjmlast";
+import type { Parent, End } from "mjmlast";
 import type { Processor, Plugin } from "unified";
+
+type MjmlAstNode = Parent | End
 
 type Options = {};
 

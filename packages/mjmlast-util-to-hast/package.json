@@ -1,0 +1,27 @@
+{
+  "name": "mjmlast-util-to-hast",
+  "type": "module",
+  "exports": {
+    "./gen/*": "./dist/gen/*.js",
+    "./client/*": "./dist/client/*.js"
+  },
+  "typesVersions": {
+    "*": {
+      "gen/*": [
+        "dist/gen/*"
+      ],
+      "client/*": [
+        "dist/client/*"
+      ]
+    }
+  },
+  "dependencies": {
+    "@types/unist": "^2.0.6",
+    "hast": "^1.0.0",
+    "mjmlast": "*",
+    "unist-builder": "^3.0.0",
+    "unist-util-generated": "^2.0.0",
+    "unist-util-position": "^4.0.3",
+    "unist-util-visit": "^4.1.1"
+  }
+}

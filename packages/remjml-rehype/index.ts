@@ -1,10 +1,10 @@
 import type { ElementContent } from "hast";
-import { ReMJMLComponent } from "remjml";
+import type { MjmlAstNode } from "mjmlast";
 import type { Processor, Plugin } from "unified";
 
 type Options = {};
 
-function toHast(node: ReMJMLComponent): ElementContent {
+function toHast(node: MjmlAstNode, options: Options): ElementContent {
   return {
     tagName: 
   }

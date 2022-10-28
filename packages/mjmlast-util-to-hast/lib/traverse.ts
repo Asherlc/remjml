@@ -1,30 +1,27 @@
-import { Content as HContent, Parent as HParent } from "hast";
-import { MjmlNode } from "mjmlast";
+import { ElementContent as HContent, Parent as HParent } from "hast";
+import { MjmlNode, Parent as MjmlParent } from "mjmlast";
 import { u } from "unist-builder";
-import { H, Handler } from ".";
+import { addPosition, H, Handler } from ".";
 
 const own = {}.hasOwnProperty;
 
 function unknown(h: H, node: MjmlNode) {
-  const data = node.data || {};
+  if ("value" in node && typeof node.value === "string") {
+    const value = node.value;
 
-  if (
-    "value" in node &&
-    !(
-      own.call(data, "hName") ||
-      own.call(data, "hProperties") ||
-      own.call(data, "hChildren")
-    )
-  ) {
-    return h.augment(node, u("text", node.value));
+    return addPosition(node, u("text", value));
   }
 
-  return h(node, "div", all(h, node));
+  const nodes = all(h, node);
+  return h(node, "div", nodes);
 }
 
-export function one(h: H, node: MjmlNode, parent: HParent | null) {
+export function one(
+  h: H,
+  node: MjmlNode,
+  parent: MjmlParent | HParent | null
+): HContent {
   const type = node && node.type;
-  let fn: Handler;
 
   // Fail on non-nodes.
   if (!type) {
@@ -32,21 +29,15 @@ export function one(h: H, node: MjmlNode, parent: HParent | null) {
   }
 
   if (own.call(h.handlers, type)) {
-    fn = h.handlers[type];
-  } else if (h.passThrough && h.passThrough.includes(type)) {
-    fn = returnNode;
-  } else {
-    fn = h.unknownHandler;
+    h.handlers[type](h, node, parent);
+  } else if (h.unknownHandler) {
+    h.unknownHandler(h, node, parent);
   }
 
-  return (typeof fn === "function" ? fn : unknown)(h, node, parent);
+  return unknown(h, node);
 }
 
-function returnNode(h: H, node: MjmlNode) {
-  return "children" in node ? { ...node, children: all(h, node) } : node;
-}
-
-export function all(h: H, parent: MjmlNode) {
+export function all(h: H, parent: MjmlNode): HContent[] {
   const values: HContent[] = [];
 
   if ("children" in parent) {
@@ -56,26 +47,14 @@ export function all(h: H, parent: MjmlNode) {
     while (++index < nodes.length) {
       const result = one(h, nodes[index], parent);
 
-      if (result) {
-        if (index && nodes[index - 1].type === "break") {
-          if (!Array.isArray(result) && result.type === "text") {
-            result.value = result.value.replace(/^\s+/, "");
-          }
+      if (!result) {
+        continue;
+      }
 
-          if (!Array.isArray(result) && result.type === "element") {
-            const head = result.children[0];
-
-            if (head && head.type === "text") {
-              head.value = head.value.replace(/^\s+/, "");
-            }
-          }
-        }
-
-        if (Array.isArray(result)) {
-          values.push(...result);
-        } else {
-          values.push(result);
-        }
+      if (Array.isArray(result)) {
+        values.push(...result);
+      } else {
+        values.push(result);
       }
     }
   }

@@ -1,6 +1,8 @@
 import type { Parent, End } from "mjmlast";
-import type { Processor } from "unified";
+import type { Processor, RunCallback } from "unified";
 import { toHast } from "mjmlast-util-to-hast";
+import { Compatible, Data } from "vfile";
+import type { Node } from "unist";
 
 type MjmlAstNode = Parent | End;
 
@@ -21,7 +23,11 @@ export default function remjmlRehype(
  *
  */
 function bridge(destination: Processor, options?: Options) {
-  return (node, file, next) => {
+  return (
+    node: MjmlAstNode,
+    file: Compatible,
+    next: RunCallback<Node<Data>>
+  ) => {
     const hast = toHast(node, options);
 
     destination.run(hast, file, (error) => {
@@ -36,5 +42,7 @@ function bridge(destination: Processor, options?: Options) {
  *
  */
 function mutate(options: Options) {
-  return (node) => toHast(node, options);
+  return (node: MjmlAstNode) => {
+    return toHast(node, options);
+  };
 }

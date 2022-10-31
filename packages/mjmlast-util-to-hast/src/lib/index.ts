@@ -15,14 +15,18 @@ type HastNode = HRoot | HParent | HParent["children"][number];
 
 export type Context = {
   hHead: HElement;
+  mediaQueries: {
+    [className: string]: string;
+  };
 };
 
 export type Handlers = Record<string, Handler>;
 
 export type Handler = (
-  node: any,
-  parent?: Parent | null,
-  options?: Options
+  node: MjmlNode,
+  parent: Parent | null,
+  options: Options,
+  context: Context
 ) => HContent | Array<HContent> | null;
 
 export type Options = {
@@ -55,7 +59,8 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const handlers = { ...defaultHandlers, ...(options.handlers || {}) };
   const hHead = head(tree);
 
-  const context: Context = { hHead };
+  const context: Context = { hHead, mediaQueries: {} };
+  console.log(handlers);
 
   const node = one(tree, null, { ...options, handlers }, context);
 

@@ -7,7 +7,7 @@ export default function mjmlJsonToRemjml(mjmlJson: MJMLJsonObject): MjmlNode {
   );
 
   const node: MjmlNode = {
-    tagName: mjmlJson.tagName,
+    type: mjmlJson.tagName,
     attributes: mjmlJson.attributes,
     children: childNodes,
     content: mjmlJson.content,

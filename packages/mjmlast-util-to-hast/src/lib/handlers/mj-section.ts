@@ -446,6 +446,7 @@ function fullWidth(node: MjSection, parent: SectionParent): HElement {
 
 export function mjSection(
   node: MjSection,
+  parent: SectionParent,
   options: Options,
   context: Context
 ): HElement {
@@ -463,7 +464,4 @@ export function mjSection(
   );
 
   return addPosition(node, hBody);
-}
-function flow(arg0: any, arg1: any) {
-  throw new Error("Function not implemented.");
 }

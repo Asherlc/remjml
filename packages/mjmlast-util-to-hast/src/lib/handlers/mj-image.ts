@@ -1,4 +1,6 @@
-import type { MjImage } from "mjmlast";
+import { getBoxWidths } from "../helpers/get-box-widths";
+import { min } from "lodash-es";
+import type { MjImage, MjHero, MjColumn } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
@@ -16,8 +18,24 @@ const DEFAULT_ATTRIBUTES: Pick<
   "font-size": "13px",
 };
 
+type ImageParent = MjHero | MjColumn;
+
+function getContentWidth(
+  attributes: MjImage["attributes"],
+  parent: ImageParent
+) {
+  const width = attributes["width"]
+    ? parseInt(attributes["width"], 10)
+    : Infinity;
+
+  const { box } = getBoxWidths(attributes, parent);
+
+  return min([box, width]);
+}
+
 export function mjImage(
   node: MjImage,
+  parent: ImageParent,
   options: Options,
   context: Context
 ): HElement {
@@ -52,7 +70,7 @@ export function mjImage(
       fontSize: attributes["font-size"],
     }),
     title: attributes.title,
-    width: this.getContentWidth(),
+    width: getContentWidth(attributes, parent),
     usemap: attributes.usemap,
   });
 

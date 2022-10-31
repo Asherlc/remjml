@@ -10,6 +10,7 @@ const DEFAULT_ATTRIBUTES: Pick<MjBody["attributes"], "width"> = {
 
 export function mjBody(
   node: MjBody,
+  parent: null,
   options: Options,
   context: Context
 ): HElement {
@@ -25,6 +26,8 @@ export function mjBody(
     },
     children
   );
+
+  console.log("hbody", hBody);
 
   return addPosition(node, hBody);
 }

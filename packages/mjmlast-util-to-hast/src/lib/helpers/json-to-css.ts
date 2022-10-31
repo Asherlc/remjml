@@ -9,6 +9,9 @@ function jsonPropertyNameToCssPropertyName(jsonPropertyName: string): string {
 
 export function jsonToCss(properties: Properties): string {
   const styleString = Object.entries(properties)
+    .filter(([_key, value]) => {
+      return Boolean(value);
+    })
     .map(
       ([property, value]) =>
         `${jsonPropertyNameToCssPropertyName(property)}:${value}`

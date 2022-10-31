@@ -1,10 +1,10 @@
+import { generateMediaQuery } from "../helpers/generate-media-query";
 import widthParser from "../helpers/width-parser";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { MjColumn, MjGroup, MjSection } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
-import { all } from "../traverse";
 import classNames from "classnames";
 
 const DEFAULT_ATTRIBUTES: Pick<
@@ -22,14 +22,16 @@ function attributesWithDefaults(node: MjColumn) {
 type ColumnParent = MjGroup | MjSection;
 
 function getMobileWidth(node: MjColumn, parent: ColumnParent): string {
-  const { containerWidth } = parent?.attributes["width"];
+  const attributes = attributesWithDefaults(node);
+  const containerWidth = parent?.attributes["width"];
   const siblingsLength = parent.children.length;
-  const width = this.getAttribute("width");
-  const mobileWidth = this.getAttribute("mobileWidth");
+  const width = attributes["width"];
+  const mobileWidth = attributes["mobileWidth"];
 
   if (mobileWidth !== "mobileWidth") {
     return "100%";
   }
+
   if (width === undefined) {
     return `${Math.round(100 / siblingsLength)}%`;
   }
@@ -51,21 +53,25 @@ function column(node: MjColumn): HElement {
   const children = node.children.map((child) => {
     const childAttributes = child.attributes;
     return h("tr", [
-      h("td", {
-        align: childAttributes["align"],
-        "vertical-align": childAttributes["vertical-align"],
-        class: childAttributes["css-class"],
-        style: jsonToCss({
-          background: childAttributes["container-background-color"],
-          fontSize: "0px",
-          padding: childAttributes["padding"],
-          paddingTop: childAttributes["padding-top"],
-          paddingRight: childAttributes["padding-right"],
-          paddingBottom: childAttributes["padding-bottom"],
-          paddingLeft: childAttributes["padding-left"],
-          wordBreak: "break-word",
-        }),
-      }),
+      h(
+        "td",
+        {
+          align: childAttributes["align"],
+          "vertical-align": childAttributes["vertical-align"],
+          class: childAttributes["css-class"],
+          style: jsonToCss({
+            background: childAttributes["container-background-color"],
+            fontSize: "0px",
+            padding: childAttributes["padding"],
+            paddingTop: childAttributes["padding-top"],
+            paddingRight: childAttributes["padding-right"],
+            paddingBottom: childAttributes["padding-bottom"],
+            paddingLeft: childAttributes["padding-left"],
+            wordBreak: "break-word",
+          }),
+        },
+        child
+      ),
     ]);
   });
 
@@ -125,6 +131,49 @@ function gutter(node: MjColumn, hColumn: HElement): HElement {
   );
 }
 
+function getParsedWidth(
+  attributes,
+  parent: ColumnParent
+): { unit: string; parsedWidth: number } {
+  const width = attributes["width"] || `${100 / parent.children.length}%`;
+
+  const { unit, parsedWidth } = widthParser(width, {
+    parseFloatToInt: false,
+  });
+
+  return {
+    unit,
+    parsedWidth,
+  };
+}
+
+function getColumnClass(
+  attributes: MjColumn["attributes"],
+  parent: ColumnParent,
+  context: Context
+): string {
+  let className = "";
+
+  const { parsedWidth, unit } = getParsedWidth(attributes, parent);
+  const formattedClassNb = parsedWidth.toString().replace(".", "-");
+
+  switch (unit) {
+    case "%":
+      className = `mj-column-per-${formattedClassNb}`;
+      break;
+
+    case "px":
+    default:
+      className = `mj-column-px-${formattedClassNb}`;
+      break;
+  }
+
+  // Add className to media queries
+  context.mediaQueries[className] = generateMediaQuery(parsedWidth, unit);
+
+  return className;
+}
+
 export function mjColumn(
   node: MjColumn,
   parent: ColumnParent,
@@ -133,7 +182,7 @@ export function mjColumn(
 ): HElement {
   const attributes = attributesWithDefaults(node);
   const classesName = classNames(
-    this.getColumnClass(),
+    getColumnClass(attributes, parent, context),
     "mj-outlook-group-fix",
     {
       [attributes["css-class"]]: Boolean(attributes["css-class"]),
@@ -156,7 +205,7 @@ export function mjColumn(
         width: getMobileWidth(node, parent),
       }),
     },
-    [hColumn]
+    columnWithGutter
   );
 
   return addPosition(node, wrapper);

@@ -17,7 +17,7 @@ function unknown(node: MjmlNode, options: Options, context: Context) {
 
 export function one(
   node: MjmlNode,
-  parent: MjmlParent | HParent | null,
+  parent: MjmlParent | null,
   options: Options,
   context: Context
 ): HContent {
@@ -30,13 +30,15 @@ export function one(
 
   const handler = options.handlers?.[type];
 
+  console.log(type, handler);
+
   if (handler) {
-    handler(node, parent, options);
+    return handler(node, parent, options, context);
   } else if (options.unknownHandler) {
-    options.unknownHandler(node, parent, options);
+    return options.unknownHandler(node, parent, options, context);
   }
 
-  return unknown(node, options);
+  return unknown(node, options, context);
 }
 
 export function all(

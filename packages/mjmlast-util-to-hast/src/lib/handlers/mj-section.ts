@@ -35,8 +35,8 @@ function attributesWithDefaults(node: MjSection) {
   return { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 }
 
-function hasBackground(node: MjSection): boolean {
-  return attributesWithDefaults(node)["background-url"] != null;
+function hasBackground(attributes: MjSection["attributes"]): boolean {
+  return attributes["background-url"] != null;
 }
 
 type YPosition = "top" | "bottom" | "center";
@@ -99,11 +99,10 @@ function parseBackgroundPosition(backgroundPosition: string): {
   return { x: "center", y: "top" };
 }
 
-function getBackgroundPosition(node: MjSection): {
+function getBackgroundPosition(attributes: MjSection["attributes"]): {
   posX: XPosition;
   posY: YPosition;
 } {
-  const attributes = attributesWithDefaults(node);
   const { x, y } = parseBackgroundPosition(attributes["background-position"]);
 
   return {
@@ -116,19 +115,18 @@ function getBackgroundPosition(node: MjSection): {
   };
 }
 
-function isPercentage(str) {
+function isPercentage(str: string) {
   return /^\d+(\.\d+)?%$/.test(str);
 }
 
 function withBackground(
   node: MjSection,
   parent: SectionParent,
+  context: Context,
   children: Node[]
 ) {
   const attributes = attributesWithDefaults(node);
   const fullWidth = isFullWidth(node);
-
-  const containerWidth: string | undefined = parent?.attributes["width"];
 
   let bgPosX: string;
   let bgPosY: string;
@@ -204,7 +202,7 @@ function withBackground(
     }
 
     return [origin, pos];
-  }, this);
+  });
 
   // If background size is either cover or contain, we tell VML to keep the aspect
   // and fill the entire element.
@@ -253,7 +251,7 @@ function withBackground(
         properties: {
           style: fullWidth
             ? `'mso-width-percent': '1000';`
-            : jsonToCss({ width: containerWidth }),
+            : jsonToCss({ width: context.containerWidth }),
           "xmlns:v": "urn:schemas-microsoft-com:vml",
           fill: "true",
           stroke: "false",
@@ -295,9 +293,10 @@ function withBackground(
 function wrapper(
   node: MjSection,
   parent: SectionParent,
+  context: Context,
   children: HElement[]
 ): Node[] {
-  const containerWidth: string | undefined = parent?.attributes["width"];
+  const { containerWidth } = context;
   const attributes = attributesWithDefaults(node);
   const bgcolorAttr = attributes["background-color"]
     ? { bgcolor: attributes["background-color"] }
@@ -317,7 +316,7 @@ function wrapper(
         cellspacing: "0",
         class: suffixCssClasses(attributes["css-class"], "outlook"),
         role: "presentation",
-        style: { width: `${containerWidth}` },
+        style: jsonToCss({ width: containerWidth }),
         width: containerWidth ? parseInt(containerWidth, 10) : undefined,
         ...bgcolorAttr,
       },
@@ -346,19 +345,18 @@ function wrapper(
   ];
 }
 
-function getBackgroundString(node: MjSection): string {
-  const { posX, posY } = getBackgroundPosition(node);
+function getBackgroundString(attributes: MjSection["attributes"]): string {
+  const { posX, posY } = getBackgroundPosition(attributes);
   return `${posX} ${posY}`;
 }
 
-function getBackground(node: MjSection): string {
-  const attributes = attributesWithDefaults(node);
+function getBackground(attributes: MjSection["attributes"]): string {
   return [
     attributes["background-color"],
-    ...(hasBackground(node)
+    ...(hasBackground(attributes)
       ? [
           `url('${attributes["background-url"]}')`,
-          getBackgroundString(node),
+          getBackgroundString(attributes),
           `/ ${attributes["background-size"]}`,
           attributes["background-repeat"],
         ]
@@ -369,15 +367,19 @@ function getBackground(node: MjSection): string {
 
 type SectionParent = MjBody | MjWrapper;
 
-function section(node: MjSection, parent: SectionParent): HElement {
+function section(
+  node: MjSection,
+  parent: SectionParent,
+  context: Context
+): HElement {
   const attributes = attributesWithDefaults(node);
   const fullWidth = isFullWidth(node);
-  const containerWidth: string | undefined = parent?.attributes["width"];
+  const { containerWidth } = context;
   const background = attributes["background-url"]
     ? {
-        background: getBackground(node),
+        background: getBackground(attributes),
         // background size, repeat and position has to be seperate since yahoo does not support shorthand background css property
-        "background-position": getBackgroundString(node),
+        "background-position": getBackgroundString(attributes),
         "background-repeat": attributes["background-repeat"],
         "background-size": attributes["background-size"],
       }
@@ -398,7 +400,7 @@ function section(node: MjSection, parent: SectionParent): HElement {
       }),
     },
     [
-      hasBackground(node)
+      hasBackground(attributes)
         ? h("div", {
             style: jsonToCss({
               lineHeight: "0",
@@ -413,20 +415,43 @@ function section(node: MjSection, parent: SectionParent): HElement {
         cellpadding: "0",
         cellspacing: "0",
         role: "presentation",
-        style: "table",
+        style: jsonToCss({
+          ...(fullWidth ? {} : background),
+          width: "100%",
+          borderRadius: attributes["border-radius"],
+        }),
       }),
     ]
   );
 }
 
-function fullWidth(node: MjSection, parent: SectionParent): HElement {
+function fullWidth(
+  node: MjSection,
+  parent: SectionParent,
+  context: Context
+): HElement {
   const attributes = attributesWithDefaults(node);
-  const hSection = section(node, parent);
-  const withWrapper = wrapper(node, parent, [hSection]);
+  const hSection = section(node, parent, context);
+  const withWrapper = wrapper(node, parent, context, [hSection]);
+  const fullWidth = isFullWidth(node);
+  const background = attributes["background-url"]
+    ? {
+        background: getBackground(attributes),
+        // background size, repeat and position has to be seperate since yahoo does not support shorthand background css property
+        "background-position": getBackgroundString(attributes),
+        "background-repeat": attributes["background-repeat"],
+        "background-size": attributes["background-size"],
+      }
+    : {
+        background: attributes["background-color"],
+        "background-color": attributes["background-color"],
+      };
 
-  const content = hasBackground(node)
-    ? withBackground(node, parent, withWrapper)
+  const content: HElement = hasBackground(attributes)
+    ? withBackground(node, parent, context, withWrapper)
     : hSection;
+
+  const tr = h("td", content);
 
   return h(
     "table",
@@ -438,9 +463,13 @@ function fullWidth(node: MjSection, parent: SectionParent): HElement {
       cellpadding: "0",
       cellspacing: "0",
       role: "presentation",
-      style: "tableFullwidth",
+      style: jsonToCss({
+        ...(fullWidth ? background : undefined),
+        width: "100%",
+        borderRadius: attributes["border-radius"],
+      }),
     },
-    [h("tbody", [h("tr", [h("td", content)])])]
+    [h("tbody", [h("tr", [tr])])]
   );
 }
 
@@ -458,7 +487,7 @@ export function mjSection(
     "div",
     {
       class: attributes["css-class"],
-      style: `background-color: ${attributes["background-color"]}`,
+      style: jsonToCss({ backgroundColor: attributes["background-color"] }),
     },
     children
   );

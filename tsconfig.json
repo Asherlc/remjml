@@ -2,9 +2,6 @@
   "files": [],
   "references": [
     {
-      "path": "./packages/remjml-parse/tsconfig.ref.json"
-    },
-    {
       "path": "./packages/remjml-rehype/tsconfig.ref.json"
     },
     {

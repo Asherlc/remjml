@@ -1,11 +1,11 @@
 import { generateMediaQuery } from "../helpers/generate-media-query";
 import widthParser from "../helpers/width-parser";
 import { jsonToCss } from "../helpers/json-to-css";
-import type { MjColumn, MjGroup, MjSection } from "mjmlast";
+import type { MjColumn, MjColumnChild, MjGroup, MjSection } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
-import classNames from "classnames";
+import * as classNames from "classnames";
 import { all, one } from "../traverse";
 
 const DEFAULT_ATTRIBUTES: Pick<
@@ -16,18 +16,20 @@ const DEFAULT_ATTRIBUTES: Pick<
   "vertical-align": "top",
 };
 
-function attributesWithDefaults(node: MjColumn) {
-  return { ...DEFAULT_ATTRIBUTES, ...node.attributes };
+function attributesWithDefaults(attributes: MjColumn["attributes"]) {
+  return { ...DEFAULT_ATTRIBUTES, ...attributes };
 }
 
 type ColumnParent = MjGroup | MjSection;
 
-function getMobileWidth(node: MjColumn, parent: ColumnParent): string {
-  const attributes = attributesWithDefaults(node);
-  const containerWidth = parent?.attributes["width"];
+function getMobileWidth(
+  attributes: MjColumn["attributes"],
+  parent: ColumnParent,
+  context: Context
+): string {
   const siblingsLength = parent.children.length;
-  const width = attributes["width"];
-  const mobileWidth = attributes["mobileWidth"];
+  const { width } = attributes;
+  const mobileWidth = context.mobileWidth;
 
   if (mobileWidth !== "mobileWidth") {
     return "100%";
@@ -45,16 +47,20 @@ function getMobileWidth(node: MjColumn, parent: ColumnParent): string {
     case "%":
       return width;
     case "px":
-    default:
-      return `${parsedWidth / parseInt(containerWidth, 10)}%`;
   }
+
+  if (!context.containerWidth) {
+    throw new Error(`No containerWidth`);
+  }
+
+  return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
 }
 
 function column(node: MjColumn, options: Options, context: Context): HElement {
-  const children = node.children.map((child) => {
+  const attributes = attributesWithDefaults(node.attributes);
+  const children = node.children.map((child: MjColumnChild) => {
     const childAttributes = child.attributes;
     const hChild = one(child, node, options, context);
-    console.log("hChild", hChild);
 
     return h("tr", [
       h(
@@ -86,32 +92,27 @@ function column(node: MjColumn, options: Options, context: Context): HElement {
       cellpadding: "0",
       cellspacing: "0",
       role: "presentation",
-      style: "table",
+      style: jsonToCss(tableStyles(attributes)),
       width: "100%",
     },
     [h("tbody", children)]
   );
 }
 
-function hasGutter(node: MjColumn): boolean {
-  const attributes = attributesWithDefaults(node);
-  return [
+function hasGutter(attributes: MjColumn["attributes"]): boolean {
+  const gutterAttributes = new Set<keyof MjColumn["attributes"]>([
     "padding",
     "padding-bottom",
     "padding-left",
     "padding-right",
     "padding-top",
-  ].some((attr) => attributes[attr] != null);
+  ]);
+
+  return Array.from(gutterAttributes).some((attr) => attributes[attr] != null);
 }
 
-function gutter(node: MjColumn, hColumn: HElement): HElement {
-  const attributes = attributesWithDefaults(node);
-  const style = jsonToCss({
-    padding: attributes["padding"],
-    paddingTop: attributes["padding-top"],
-    paddingRight: attributes["padding-right"],
-    paddingBottom: attributes["padding-bottom"],
-    paddingLeft: attributes["padding-left"],
+function tableStyles(attributes: MjColumn["attributes"]) {
+  return {
     backgroundColor: attributes["background-color"],
     border: attributes["border"],
     borderBottom: attributes["border-bottom"],
@@ -120,6 +121,20 @@ function gutter(node: MjColumn, hColumn: HElement): HElement {
     borderRight: attributes["border-right"],
     borderTop: attributes["border-top"],
     verticalAlign: attributes["vertical-align"],
+  };
+}
+
+function gutter(
+  attributes: MjColumn["attributes"],
+  hColumn: HElement
+): HElement {
+  const style = jsonToCss({
+    padding: attributes["padding"],
+    paddingTop: attributes["padding-top"],
+    paddingRight: attributes["padding-right"],
+    paddingBottom: attributes["padding-bottom"],
+    paddingLeft: attributes["padding-left"],
+    ...tableStyles(attributes),
   });
 
   return h(
@@ -136,10 +151,10 @@ function gutter(node: MjColumn, hColumn: HElement): HElement {
 }
 
 function getParsedWidth(
-  attributes,
+  attributes: MjColumn["attributes"],
   parent: ColumnParent
 ): { unit: string; parsedWidth: number } {
-  const width = attributes["width"] || `${100 / parent.children.length}%`;
+  const width = attributes.width || `${100 / parent.children.length}%`;
 
   const { unit, parsedWidth } = widthParser(width, {
     parseFloatToInt: false,
@@ -184,7 +199,7 @@ export function mjColumn(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = attributesWithDefaults(node);
+  const attributes = attributesWithDefaults(node.attributes);
   const classesName = classNames(
     getColumnClass(attributes, parent, context),
     "mj-outlook-group-fix",
@@ -194,7 +209,9 @@ export function mjColumn(
   );
 
   const hColumn = column(node, options, context);
-  const columnWithGutter = hasGutter(node) ? gutter(node, hColumn) : hColumn;
+  const columnWithGutter = hasGutter(attributes)
+    ? gutter(attributes, hColumn)
+    : hColumn;
 
   const wrapper = h(
     "div",
@@ -206,7 +223,7 @@ export function mjColumn(
         direction: attributes["direction"],
         display: "inline-block",
         verticalAlign: attributes["vertical-align"],
-        width: getMobileWidth(node, parent),
+        width: getMobileWidth(attributes, parent, context),
       }),
     },
     columnWithGutter

@@ -5,6 +5,24 @@ type UniversalAttributes = {
   "mj-class": string;
 };
 
+// Attributes that MJ Column extracts from a child
+type MjColumnChildAttributes = Partial<{
+  "container-background-color": string;
+  align: "left" | "right" | "center" | "justify";
+  "vertical-align": "top" | "middle" | "bottom";
+  "css-class": string;
+  background: string;
+  padding: string;
+  "padding-top": string;
+  "padding-right": string;
+  "padding-bottom": string;
+  "padding-left": string;
+}>;
+
+export interface MjColumnChild extends Node {
+  attributes: MjColumnChildAttributes;
+}
+
 export interface Component extends Node {
   attributes: UniversalAttributes;
 }
@@ -75,7 +93,7 @@ export interface MjImage extends Node {
     sizes: string;
     title: string;
     rel: string;
-    align: string;
+    align: "left" | "right" | "center" | "justify";
     border: string;
     "border-bottom": string;
     "border-left": string;
@@ -144,7 +162,7 @@ export interface MjNavbarLink extends Parent {
 export interface MjSocialElement extends Parent {
   type: "mj-social-element";
   attributes: UniversalAttributes & {
-    align: string;
+    align: "left" | "right" | "center" | "justify";
     "background-color": string;
     color: string;
     "border-radius": string;
@@ -198,7 +216,7 @@ export interface MjSpacer extends Node {
 export interface MjTable extends Parent {
   type: "mj-table";
   attributes: UniversalAttributes & {
-    align: "left" | "right" | "center";
+    align: "left" | "right" | "center" | "justify";
     border: string;
     cellpadding: "integer";
     cellspacing: "integer";
@@ -224,7 +242,7 @@ export interface MjTable extends Parent {
 export interface MjSocial extends Parent {
   type: "mj-social";
   attributes: UniversalAttributes & {
-    align: "left" | "right" | "center";
+    align: "left" | "right" | "center" | "justify";
     "border-radius": string;
     "container-background-color": string;
     color: string;
@@ -254,7 +272,7 @@ export interface MjSocial extends Parent {
 export interface MjNavbar extends Parent {
   type: "mj-navbar";
   attributes: UniversalAttributes & {
-    align: string;
+    align: "left" | "right" | "center" | "justify";
     "base-url": string;
     hamburger: string;
     "ico-align": string;
@@ -343,7 +361,7 @@ interface MjDivider extends Node {
     "padding-right": string;
     "padding-top": string;
     width: string;
-    align: string;
+    align: "left" | "right" | "center" | "justify";
   };
 }
 
@@ -366,7 +384,7 @@ export interface MjCarouselImage extends Node {
 export interface MjCarousel extends Parent {
   type: "mj-carousel";
   attributes: UniversalAttributes & {
-    align: string;
+    align: "left" | "right" | "center" | "justify";
     "border-radius": string;
     "container-background-color": string;
     "icon-width": string;
@@ -473,7 +491,7 @@ export interface MjAccordion extends Parent {
 export interface MjButton extends Parent {
   type: "mj-button";
   attributes: UniversalAttributes & {
-    align: string;
+    align: "left" | "right" | "center" | "justify";
     "background-color": string;
     "border-bottom": string;
     "border-left": string;
@@ -514,7 +532,7 @@ export interface MjText extends Parent {
   type: "mj-text";
   children: Text[];
   attributes: UniversalAttributes & {
-    align: "left" | "right" | "center" | "justify";
+    align: "left" | "right" | "center" | "justify" | "justify";
     "background-color": string;
     color: string;
     "container-background-color": string;

@@ -4,6 +4,7 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "main": "./src/index.ts",
   "dependencies": {
     "@types/hast": "^2.3.4",
     "hast": "^1.0.0",

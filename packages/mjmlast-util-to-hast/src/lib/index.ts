@@ -14,6 +14,8 @@ import type { MjmlNode, Parent } from "mjmlast";
 type HastNode = HRoot | HParent | HParent["children"][number];
 
 export type Context = {
+  containerWidth?: string;
+  mobileWidth?: string;
   hHead: HElement;
   mediaQueries: {
     [className: string]: string;
@@ -59,8 +61,10 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const handlers = { ...defaultHandlers, ...(options.handlers || {}) };
   const hHead = head(tree);
 
-  const context: Context = { hHead, mediaQueries: {} };
-  console.log(handlers);
+  const context: Context = {
+    hHead,
+    mediaQueries: {},
+  };
 
   const node = one(tree, null, { ...options, handlers }, context);
 

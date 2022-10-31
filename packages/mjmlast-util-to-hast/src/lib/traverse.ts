@@ -30,8 +30,6 @@ export function one(
 
   const handler = options.handlers?.[type];
 
-  console.log(type, handler);
-
   if (handler) {
     return handler(node, parent, options, context);
   } else if (options.unknownHandler) {

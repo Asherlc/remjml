@@ -1,8 +1,13 @@
 import { get } from "lodash-es";
 
-export function shorthandParser(cssValue: string, direction: string): number {
+type Direction = "top" | "bottom" | "left" | "right";
+
+export function shorthandParser(
+  cssValue: string,
+  direction: Direction
+): number {
   const splittedCssValue = cssValue.split(" ");
-  let directions = {};
+  let directions: Record<Direction, number>;
 
   switch (splittedCssValue.length) {
     case 2:
@@ -28,5 +33,8 @@ export function shorthandParser(cssValue: string, direction: string): number {
 }
 
 export function borderParser(border: string): number {
-  return parseInt(get(border.match(/(?:(?:^| )(\d+))/), 1), 10) || 0;
+  const matches = border.match(/(?:(?:^| )(\d+))/);
+  // Not sure what this is... copied from original mjml
+  const firstMatch = matches?.[1];
+  return firstMatch ? parseInt(firstMatch, 10) : 0;
 }

@@ -23,7 +23,6 @@
     "mjmlast": "*",
     "mjmlast-util-to-hast": "*",
     "rehype-stringify": "^9.0.3",
-    "remjml-parse": "*",
     "remjml-rehype": "*",
     "unified": "^10.1.2"
   }

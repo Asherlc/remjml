@@ -1,7 +1,6 @@
-import type { MjmlParent } from "mjmlast";
 import { borderParser, shorthandParser } from "../helpers/shorthand-parser";
 
-function getShorthandAttrValue<Attributes extends object>(
+function getShorthandAttrValue<Attributes extends Record<string, any>>(
   attribute: string,
   direction: string,
   attributes: Attributes
@@ -20,7 +19,7 @@ function getShorthandAttrValue<Attributes extends object>(
   return shorthandParser(mjAttribute, direction);
 }
 
-function getShorthandBorderValue<Attributes extends object>(
+function getShorthandBorderValue<Attributes extends Record<string, any>>(
   direction: string,
   attributes: Attributes
 ) {

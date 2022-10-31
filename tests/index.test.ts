@@ -76,7 +76,6 @@ it("transforms mjml json to html", async () => {
   "type": "mjml",
 }
 `);
-  console.log(mjmlAst);
 
   const html = await unified()
     .use(remjmlRehype as any)
@@ -170,7 +169,7 @@ it("transforms mjml json to html", async () => {
                     "cellPadding": "0",
                     "cellSpacing": "0",
                     "role": "presentation",
-                    "style": "table",
+                    "style": "vertical-align:top",
                     "width": "100%",
                   },
                   "tagName": "table",
@@ -189,14 +188,14 @@ it("transforms mjml json to html", async () => {
             },
           ],
           "properties": {
-            "style": "background-color: undefined",
+            "style": "",
           },
           "tagName": "div",
           "type": "element",
         },
       ],
       "properties": {
-        "style": "background-color: undefined",
+        "style": "",
       },
       "tagName": "div",
       "type": "element",

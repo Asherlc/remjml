@@ -3,6 +3,7 @@ import { h as hastH } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { all } from "../traverse";
+import { jsonToCss } from "../helpers/json-to-css";
 
 const DEFAULT_ATTRIBUTES: Pick<MjBody["attributes"], "width"> = {
   width: "600px",
@@ -22,12 +23,10 @@ export function mjBody(
     "div",
     {
       class: node.attributes["css-class"],
-      style: `background-color: ${attributes["background-color"]}`,
+      style: jsonToCss({ backgroundColor: attributes["background-color"] }),
     },
     children
   );
-
-  console.log("hbody", hBody);
 
   return addPosition(node, hBody);
 }

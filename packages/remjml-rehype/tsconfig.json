@@ -1,5 +1,5 @@
 {
-  "include": ["../../types"],
+  "include": ["../../types", "../mjmlast"],
   "files": ["src/index.ts"],
   "compilerOptions": {
     "rootDir": "src",
@@ -12,5 +12,5 @@
     "moduleResolution": "Node",
     "strict": true,
     "noImplicitOverride": true,
-  }
+  },
 }

@@ -1,9 +1,11 @@
+import { find } from "unist-util-find";
 import type {
   Root as HRoot,
   Parent as HParent,
-  Properties as HProperties,
   ElementContent as HContent,
+  Element as HElement,
 } from "hast";
+import { h as hastH } from "hastscript";
 import { pointStart, pointEnd, PositionLike } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
@@ -11,37 +13,19 @@ import type { MjmlNode, Parent } from "mjmlast";
 
 type HastNode = HRoot | HParent | HParent["children"][number];
 
-type HFunction = {
-  (
-    node: MjmlNode | PositionLike | null | undefined,
-    tagName: string,
-    props: HProperties,
-    children?: HContent[]
-  ): HContent;
-  (
-    node: MjmlNode | PositionLike | null | undefined,
-    tagName: string,
-    children?: HContent[]
-  ): HContent;
+export type Context = {
+  hHead: HElement;
 };
 
 export type Handlers = Record<string, Handler>;
 
-type HFields = {
-  dangerous: boolean;
-  handlers: Handlers;
-  unknownHandler?: Handler;
-};
-
-export type H = HFunction & HFields;
-
 export type Handler = (
-  h: H,
   node: any,
-  parent?: Parent | null
+  parent?: Parent | null,
+  options?: Options
 ) => HContent | Array<HContent> | null;
 
-type Options = {
+export type Options = {
   allowDangerousHtml?: boolean;
   unknownHandler?: Handler;
   handlers?: Record<string, Handler>;
@@ -61,45 +45,19 @@ export function addPosition<Right extends HContent>(
   return right;
 }
 
-function factory({
-  allowDangerousHtml = false,
-  handlers,
-  unknownHandler,
-}: Options = {}): H {
-  const h: H = (
-    node: MjmlNode | PositionLike | null | undefined,
-    tagName: string,
-    props?: HProperties | HContent[],
-    children?: HContent[]
-  ): HContent => {
-    if (Array.isArray(props)) {
-      children = props as HContent[];
-      props = {};
-    }
+function head(tree: MjmlNode): HElement {
+  const mjHead = find(tree, "mj-head");
 
-    const withPosition: HContent = addPosition(node, {
-      type: "element",
-      tagName,
-      properties: props || {},
-      children: children || [],
-    });
-
-    return withPosition;
-  };
-
-  h.dangerous = allowDangerousHtml;
-  h.handlers = { ...defaultHandlers, ...handlers };
-  h.unknownHandler = unknownHandler;
-
-  return h;
+  return mjHead || hastH("head");
 }
 
-export function toHast(
-  tree: MjmlNode,
-  options: Options
-): HastNode | null | undefined {
-  const h = factory(options);
-  const node = one(h, tree, null);
+export function toHast(tree: MjmlNode, options: Options): HastNode {
+  const handlers = { ...defaultHandlers, ...(options.handlers || {}) };
+  const hHead = head(tree);
+
+  const context: Context = { hHead };
+
+  const node = one(tree, null, { ...options, handlers }, context);
 
   return Array.isArray(node) ? { type: "root", children: node } : node;
 }

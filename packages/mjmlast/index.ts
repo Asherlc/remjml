@@ -1,8 +1,12 @@
 import type { Node, Parent as UnistParent, Literal } from "unist";
 
+type UniversalAttributes = {
+  "css-class": string;
+  "mj-class": string;
+};
+
 export interface Component extends Node {
-  attributes: {};
-  children: never[];
+  attributes: UniversalAttributes;
 }
 
 export interface Parent extends UnistParent {}
@@ -22,28 +26,28 @@ export interface MjPreview extends Parent {
 
 export interface MjHero extends Parent {
   type: "mj-hero";
-  attributes: {
-    mode: "string";
-    height: "unit(px,%)";
-    "background-url": "string";
-    "background-width": "unit(px,%)";
-    "background-height": "unit(px,%)";
-    "background-position": "string";
-    "border-radius": "string";
-    "container-background-color": "color";
-    "inner-background-color": "color";
-    "inner-padding": "unit(px,%){1,4}";
-    "inner-padding-top": "unit(px,%)";
-    "inner-padding-left": "unit(px,%)";
-    "inner-padding-right": "unit(px,%)";
-    "inner-padding-bottom": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    "background-color": "color";
-    "vertical-align": "enum(top,bottom,middle)";
+  attributes: UniversalAttributes & {
+    mode: string;
+    height: string;
+    "background-url": string;
+    "background-width": string;
+    "background-height": string;
+    "background-position": string;
+    "border-radius": string;
+    "container-background-color": string;
+    "inner-background-color": string;
+    "inner-padding": string;
+    "inner-padding-top": string;
+    "inner-padding-left": string;
+    "inner-padding-right": string;
+    "inner-padding-bottom": string;
+    padding: string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    "background-color": string;
+    "vertical-align": "top" | "middle" | "bottom";
   };
   children: Array<
     | MjButton
@@ -62,41 +66,41 @@ export interface MjHero extends Parent {
 
 export interface MjImage extends Node {
   type: "mj-image";
-  attributes: {
-    alt: "string";
-    href: "string";
-    name: "string";
-    src: "string";
-    srcset: "string";
-    sizes: "string";
-    title: "string";
-    rel: "string";
-    align: "enum(left,center,right)";
-    border: "string";
-    "border-bottom": "string";
-    "border-left": "string";
-    "border-right": "string";
-    "border-top": "string";
-    "border-radius": "unit(px,%){1,4}";
-    "container-background-color": "color";
+  attributes: UniversalAttributes & {
+    alt: string;
+    href: string;
+    name: string;
+    src: string;
+    srcset: string;
+    sizes: string;
+    title: string;
+    rel: string;
+    align: string;
+    border: string;
+    "border-bottom": string;
+    "border-left": string;
+    "border-right": string;
+    "border-top": string;
+    "border-radius": string;
+    "container-background-color": string;
     "fluid-on-mobile": "boolean";
-    padding: "unit(px,%){1,4}";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    target: "string";
-    width: "unit(px)";
-    height: "unit(px,auto)";
-    "max-height": "unit(px,%)";
-    "font-size": "unit(px)";
-    usemap: "string";
+    padding: string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    target: string;
+    width: string;
+    height: string;
+    "max-height": string;
+    "font-size": string;
+    usemap: string;
   };
 }
 
 export interface MjStyle extends Parent {
   type: "mj-parent";
-  attributes: {
+  attributes: UniversalAttributes & {
     inline: string;
   };
   children: [Text];
@@ -114,178 +118,178 @@ export interface MjTitle extends Parent {
 
 export interface MjNavbarLink extends Parent {
   type: "mj-navbar-link";
-  attributes: {
-    color: "color";
-    "font-family": "string";
-    "font-size": "unit(px)";
-    "font-style": "string";
-    "font-weight": "string";
-    href: "string";
-    name: "string";
-    target: "string";
-    rel: "string";
-    "letter-spacing": "unitWithNegative(px,em)";
-    "line-height": "unit(px,%,)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
-    "text-decoration": "string";
-    "text-transform": "string";
+  attributes: UniversalAttributes & {
+    color: string;
+    "font-family": string;
+    "font-size": string;
+    "font-style": string;
+    "font-weight": string;
+    href: string;
+    name: string;
+    target: string;
+    rel: string;
+    "letter-spacing": string;
+    "line-height": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
+    "text-decoration": string;
+    "text-transform": string;
   };
   children: [Text];
 }
 
 export interface MjSocialElement extends Parent {
   type: "mj-social-element";
-  attributes: {
-    align: "enum(left,center,right)";
-    "background-color": "color";
-    color: "color";
-    "border-radius": "unit(px)";
-    "font-family": "string";
-    "font-size": "unit(px)";
-    "font-style": "string";
-    "font-weight": "string";
-    href: "string";
-    "icon-size": "unit(px,%)";
-    "icon-height": "unit(px,%)";
-    "icon-padding": "unit(px,%){1,4}";
-    "line-height": "unit(px,%,)";
-    name: "string";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
-    "text-padding": "unit(px,%){1,4}";
-    rel: "string";
-    src: "string";
-    srcset: "string";
-    sizes: "string";
-    alt: "string";
-    title: "string";
-    target: "string";
-    "text-decoration": "string";
-    "vertical-align": "enum(top,middle,bottom)";
+  attributes: UniversalAttributes & {
+    align: string;
+    "background-color": string;
+    color: string;
+    "border-radius": string;
+    "font-family": string;
+    "font-size": string;
+    "font-style": string;
+    "font-weight": string;
+    href: string;
+    "icon-size": string;
+    "icon-height": string;
+    "icon-padding": string;
+    "line-height": string;
+    name: string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
+    "text-padding": string;
+    rel: string;
+    src: string;
+    srcset: string;
+    sizes: string;
+    alt: string;
+    title: string;
+    target: string;
+    "text-decoration": string;
+    "vertical-align": "top" | "middle" | "bottom";
   };
   children: [Text];
 }
 
 export interface MjSpacer extends Node {
   type: "mj-spacer";
-  attributes: {
-    border: "string";
-    "border-bottom": "string";
-    "border-left": "string";
-    "border-right": "string";
-    "border-top": "string";
-    "container-background-color": "color";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
-    height: "unit(px,%)";
+  attributes: UniversalAttributes & {
+    border: string;
+    "border-bottom": string;
+    "border-left": string;
+    "border-right": string;
+    "border-top": string;
+    "container-background-color": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
+    height: string;
   };
 }
 
 export interface MjTable extends Parent {
   type: "mj-table";
-  attributes: {
-    align: "enum(left,right,center)";
-    border: "string";
+  attributes: UniversalAttributes & {
+    align: "left" | "right" | "center";
+    border: string;
     cellpadding: "integer";
     cellspacing: "integer";
-    "container-background-color": "color";
-    color: "color";
-    "font-family": "string";
-    "font-size": "unit(px)";
-    "font-weight": "string";
-    "line-height": "unit(px,%,)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
+    "container-background-color": string;
+    color: string;
+    "font-family": string;
+    "font-size": string;
+    "font-weight": string;
+    "line-height": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
     role: "enum(none,presentation)";
     "table-layout": "enum(auto,fixed,initial,inherit)";
-    "vertical-align": "enum(top,bottom,middle)";
-    width: "unit(px,%)";
+    "vertical-align": "top" | "middle" | "bottom";
+    width: string;
   };
   children: [Text];
 }
 
 export interface MjSocial extends Parent {
   type: "mj-social";
-  attributes: {
-    align: "enum(left,right,center)";
-    "border-radius": "unit(px,%)";
-    "container-background-color": "color";
-    color: "color";
-    "font-family": "string";
-    "font-size": "unit(px)";
-    "font-style": "string";
-    "font-weight": "string";
-    "icon-size": "unit(px,%)";
-    "icon-height": "unit(px,%)";
-    "icon-padding": "unit(px,%){1,4}";
-    "inner-padding": "unit(px,%){1,4}";
-    "line-height": "unit(px,%,)";
+  attributes: UniversalAttributes & {
+    align: "left" | "right" | "center";
+    "border-radius": string;
+    "container-background-color": string;
+    color: string;
+    "font-family": string;
+    "font-size": string;
+    "font-style": string;
+    "font-weight": string;
+    "icon-size": string;
+    "icon-height": string;
+    "icon-padding": string;
+    "inner-padding": string;
+    "line-height": string;
     mode: "enum(horizontal,vertical)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
     "table-layout": "enum(auto,fixed)";
-    "text-padding": "unit(px,%){1,4}";
-    "text-decoration": "string";
-    "vertical-align": "enum(top,bottom,middle)";
+    "text-padding": string;
+    "text-decoration": string;
+    "vertical-align": "top" | "middle" | "bottom";
   };
   children: Array<MjSocialElement | MjRaw>;
 }
 
 export interface MjNavbar extends Parent {
   type: "mj-navbar";
-  attributes: {
-    align: "enum(left,center,right)";
-    "base-url": "string";
-    hamburger: "string";
-    "ico-align": "enum(left,center,right)";
-    "ico-open": "string";
-    "ico-close": "string";
-    "ico-color": "color";
-    "ico-font-size": "unit(px,%)";
-    "ico-font-family": "string";
-    "ico-text-transform": "string";
-    "ico-padding": "unit(px,%){1,4}";
-    "ico-padding-left": "unit(px,%)";
-    "ico-padding-top": "unit(px,%)";
-    "ico-padding-right": "unit(px,%)";
-    "ico-padding-bottom": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
-    "padding-left": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-bottom": "unit(px,%)";
-    "ico-text-decoration": "string";
-    "ico-line-height": "unit(px,%,)";
+  attributes: UniversalAttributes & {
+    align: string;
+    "base-url": string;
+    hamburger: string;
+    "ico-align": string;
+    "ico-open": string;
+    "ico-close": string;
+    "ico-color": string;
+    "ico-font-size": string;
+    "ico-font-family": string;
+    "ico-text-transform": string;
+    "ico-padding": string;
+    "ico-padding-left": string;
+    "ico-padding-top": string;
+    "ico-padding-right": string;
+    "ico-padding-bottom": string;
+    padding: string;
+    "padding-left": string;
+    "padding-top": string;
+    "padding-right": string;
+    "padding-bottom": string;
+    "ico-text-decoration": string;
+    "ico-line-height": string;
   };
   children: Array<MjNavbarLink | MjRaw>;
 }
 
 export interface MjRaw extends End {
   type: "mj-raw";
-  attributes: {
+  attributes: UniversalAttributes & {
     position: "enum(file-start)";
   };
 }
 
 export interface MjSelector extends Node {
   type: "mj-preview";
-  attributes: {
+  attributes: UniversalAttributes & {
     path: string;
   };
 }
@@ -297,9 +301,9 @@ export interface MjHtmlAttributes extends Parent {
 
 export interface MjFont extends Node {
   type: "mj-font";
-  attributes: {
-    name: "string";
-    href: "string";
+  attributes: UniversalAttributes & {
+    name: string;
+    href: string;
   };
 }
 
@@ -310,198 +314,198 @@ export interface MjAttributes extends Parent {
 
 export interface MjBreakpoint extends Node {
   type: "mj-breakpoint";
-  attributes: {
-    width: "unit(px)";
+  attributes: UniversalAttributes & {
+    width: string;
   };
 }
 
 export interface MjGroup extends Parent {
   type: "mj-group";
-  attributes: {
-    "background-color": "color";
-    direction: "enum(ltr,rtl)";
-    "vertical-align": "enum(top,bottom,middle)";
-    width: "unit(px,%)";
+  attributes: UniversalAttributes & {
+    "background-color": string;
+    direction: "ltr" | "rtl";
+    "vertical-align": "top" | "middle" | "bottom";
+    width: string;
   };
   children: Array<MjColumn | MjRaw>;
 }
 
 interface MjDivider extends Node {
   type: "mj-divider";
-  attributes: {
-    "border-color": "color";
-    "border-style": "string";
-    "border-width": "unit(px)";
-    "container-background-color": "color";
-    padding: "unit(px,%){1,4}";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    width: "unit(px,%)";
-    align: "enum(left,center,right)";
+  attributes: UniversalAttributes & {
+    "border-color": string;
+    "border-style": string;
+    "border-width": string;
+    "container-background-color": string;
+    padding: string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    width: string;
+    align: string;
   };
 }
 
 export interface MjCarouselImage extends Node {
   type: "mj-carousel-image";
-  attributes: {
-    alt: "string";
-    href: "string";
-    rel: "string";
-    target: "string";
-    title: "string";
-    src: "string";
-    "thumbnails-src": "string";
-    "border-radius": "unit(px,%){1,4}";
-    "tb-border": "string";
-    "tb-border-radius": "unit(px,%){1,4}";
+  attributes: UniversalAttributes & {
+    alt: string;
+    href: string;
+    rel: string;
+    target: string;
+    title: string;
+    src: string;
+    "thumbnails-src": string;
+    "border-radius": string;
+    "tb-border": string;
+    "tb-border-radius": string;
   };
 }
 
 export interface MjCarousel extends Parent {
   type: "mj-carousel";
-  attributes: {
-    align: "enum(left,center,right)";
-    "border-radius": "unit(px,%){1,4}";
-    "container-background-color": "color";
-    "icon-width": "unit(px,%)";
-    "left-icon": "string";
-    padding: "unit(px,%){1,4}";
-    "padding-top": "unit(px,%)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "right-icon": "string";
+  attributes: UniversalAttributes & {
+    align: string;
+    "border-radius": string;
+    "container-background-color": string;
+    "icon-width": string;
+    "left-icon": string;
+    padding: string;
+    "padding-top": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "right-icon": string;
     thumbnails: "enum(visible,hidden)";
-    "tb-border": "string";
-    "tb-border-radius": "unit(px,%)";
-    "tb-hover-border-color": "color";
-    "tb-selected-border-color": "color";
-    "tb-width": "unit(px,%)";
+    "tb-border": string;
+    "tb-border-radius": string;
+    "tb-hover-border-color": string;
+    "tb-selected-border-color": string;
+    "tb-width": string;
   };
   children: [MjCarouselImage];
 }
 
 export interface MjBody extends Parent {
   type: "mj-body";
-  attributes: {
-    width: "unit(px)";
-    "background-color": "color";
+  attributes: UniversalAttributes & {
+    width: string;
+    "background-color": string;
   };
   children: Array<MjRaw | MjSection | MjWrapper | MjHero>;
 }
 
 export interface MjAccordionText extends End {
   type: "mj-accordion-text";
-  attributes: {
-    "background-color": "color";
-    "font-size": "unit(px)";
-    "font-family": "string";
-    "font-weight": "string";
-    "letter-spacing": "unitWithNegative(px,em)";
-    "line-height": "unit(px,%,)";
-    color: "color";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
+  attributes: UniversalAttributes & {
+    "background-color": string;
+    "font-size": string;
+    "font-family": string;
+    "font-weight": string;
+    "letter-spacing": string;
+    "line-height": string;
+    color: string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
   };
 }
 
 export interface MjAccordionTitle extends End {
   type: "mj-accordion-title";
-  attributes: {
-    "background-color": "color";
-    color: "color";
-    "font-size": "unit(px)";
-    "font-family": "string";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
+  attributes: UniversalAttributes & {
+    "background-color": string;
+    color: string;
+    "font-size": string;
+    "font-family": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
   };
 }
 
 export interface MjAccordionElement extends Parent {
   type: "mj-accordion-element";
-  attributes: {
-    "background-color": "color";
-    border: "string";
-    "font-family": "string";
-    "icon-align": "enum(top,middle,bottom)";
-    "icon-width": "unit(px,%)";
-    "icon-height": "unit(px,%)";
-    "icon-wrapped-url": "string";
-    "icon-wrapped-alt": "string";
-    "icon-unwrapped-url": "string";
-    "icon-unwrapped-alt": "string";
-    "icon-position": "enum(left,right)";
+  attributes: UniversalAttributes & {
+    "background-color": string;
+    border: string;
+    "font-family": string;
+    "icon-align": "top" | "middle" | "bottom";
+    "icon-width": string;
+    "icon-height": string;
+    "icon-wrapped-url": string;
+    "icon-wrapped-alt": string;
+    "icon-unwrapped-url": string;
+    "icon-unwrapped-alt": string;
+    "icon-position": "left" | "right";
   };
   children: Array<MjAccordionTitle | MjAccordionText | MjRaw>;
 }
 
 export interface MjAccordion extends Parent {
   type: "mj-accordion";
-  attributes: {
-    "container-background-color": "color";
-    border: "string";
-    "font-family": "string";
-    "icon-align": "enum(top,middle,bottom)";
-    "icon-width": "unit(px,%)";
-    "icon-height": "unit(px,%)";
-    "icon-wrapped-url": "string";
-    "icon-wrapped-alt": "string";
-    "icon-unwrapped-url": "string";
-    "icon-unwrapped-alt": "string";
-    "icon-position": "enum(left,right)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
+  attributes: UniversalAttributes & {
+    "container-background-color": string;
+    border: string;
+    "font-family": string;
+    "icon-align": "top" | "middle" | "bottom";
+    "icon-width": string;
+    "icon-height": string;
+    "icon-wrapped-url": string;
+    "icon-wrapped-alt": string;
+    "icon-unwrapped-url": string;
+    "icon-unwrapped-alt": string;
+    "icon-position": "left" | "right";
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
   };
   children: [MjAccordionElement, MjRaw];
 }
 
 export interface MjButton extends Parent {
   type: "mj-button";
-  attributes: {
-    align: "enum(left,center,right)";
-    "background-color": "color";
-    "border-bottom": "string";
-    "border-left": "string";
-    "border-radius": "string";
-    "border-right": "string";
-    "border-top": "string";
-    border: "string";
-    color: "color";
-    "container-background-color": "color";
-    "font-family": "string";
-    "font-size": "unit(px)";
-    "font-style": "string";
-    "font-weight": "string";
-    height: "unit(px,%)";
-    href: "string";
-    name: "string";
-    title: "string";
-    "inner-padding": "unit(px,%){1,4}";
-    "letter-spacing": "unitWithNegative(px,em)";
-    "line-height": "unit(px,%,)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    padding: "unit(px,%){1,4}";
-    rel: "string";
-    target: "string";
-    "text-decoration": "string";
-    "text-transform": "string";
-    "vertical-align": "enum(top,bottom,middle)";
-    "text-align": "enum(left,right,center)";
-    width: "unit(px,%)";
+  attributes: UniversalAttributes & {
+    align: string;
+    "background-color": string;
+    "border-bottom": string;
+    "border-left": string;
+    "border-radius": string;
+    "border-right": string;
+    "border-top": string;
+    border: string;
+    color: string;
+    "container-background-color": string;
+    "font-family": string;
+    "font-size": string;
+    "font-style": string;
+    "font-weight": string;
+    height: string;
+    href: string;
+    name: string;
+    title: string;
+    "inner-padding": string;
+    "letter-spacing": string;
+    "line-height": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    padding: string;
+    rel: string;
+    target: string;
+    "text-decoration": string;
+    "text-transform": string;
+    "vertical-align": "top" | "middle" | "bottom";
+    "text-align": "left" | "right" | "center";
+    width: string;
   };
   children: [Text];
 }
@@ -509,7 +513,7 @@ export interface MjButton extends Parent {
 export interface MjText extends Parent {
   type: "mj-text";
   children: Text[];
-  attributes: {
+  attributes: UniversalAttributes & {
     align: "left" | "right" | "center" | "justify";
     "background-color": string;
     color: string;
@@ -534,29 +538,29 @@ export interface MjText extends Parent {
 
 export interface MjSection extends Parent {
   type: "mj-section";
-  attributes: {
-    "background-color": "color";
-    "background-url": "string";
-    "background-repeat": "enum(repeat,no-repeat)";
-    "background-size": "string";
-    "background-position": "string";
-    "background-position-x": "string";
-    "background-position-y": "string";
-    border: "string";
-    "border-bottom": "string";
-    "border-left": "string";
-    "border-radius": "string";
-    "border-right": "string";
-    "border-top": "string";
-    direction: "enum(ltr,rtl)";
-    "full-width": "enum(full-width,false,)";
-    padding: "unit(px,%){1,4}";
-    "padding-top": "unit(px,%)";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "text-align": "enum(left,center,right)";
-    "text-padding": "unit(px,%){1,4}";
+  attributes: UniversalAttributes & {
+    "background-color": string;
+    "background-url": string;
+    "background-repeat": "repeat" | "no-repeat";
+    "background-size": string;
+    "background-position": string;
+    "background-position-x": string;
+    "background-position-y": string;
+    border: string;
+    "border-bottom": string;
+    "border-left": string;
+    "border-radius": string;
+    "border-right": string;
+    "border-top": string;
+    direction: "ltr" | "rtl";
+    "full-width": "full-width" | "false";
+    padding: string;
+    "padding-top": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "text-align": string;
+    "text-padding": string;
   };
   children: Array<MjColumn | MjGroup | MjRaw>;
 }
@@ -567,29 +571,29 @@ export interface MjWrapper extends Omit<MjSection, "type"> {
 
 export interface MjColumn extends Parent {
   type: "mj-column";
-  attributes: {
-    "background-color": "color";
-    border: "string";
-    "border-bottom": "string";
-    "border-left": "string";
-    "border-radius": "unit(px,%){1,4}";
-    "border-right": "string";
-    "border-top": "string";
-    direction: "enum(ltr,rtl)";
-    "inner-background-color": "color";
-    "padding-bottom": "unit(px,%)";
-    "padding-left": "unit(px,%)";
-    "padding-right": "unit(px,%)";
-    "padding-top": "unit(px,%)";
-    "inner-border": "string";
-    "inner-border-bottom": "string";
-    "inner-border-left": "string";
-    "inner-border-radius": "unit(px,%){1,4}";
-    "inner-border-right": "string";
-    "inner-border-top": "string";
-    padding: "unit(px,%){1,4}";
-    "vertical-align": "enum(top,bottom,middle)";
-    width: "unit(px,%)";
+  attributes: UniversalAttributes & {
+    "background-color": string;
+    border: string;
+    "border-bottom": string;
+    "border-left": string;
+    "border-radius": string;
+    "border-right": string;
+    "border-top": string;
+    direction: "ltr" | "rtl";
+    "inner-background-color": string;
+    "padding-bottom": string;
+    "padding-left": string;
+    "padding-right": string;
+    "padding-top": string;
+    "inner-border": string;
+    "inner-border-bottom": string;
+    "inner-border-left": string;
+    "inner-border-radius": string;
+    "inner-border-right": string;
+    "inner-border-top": string;
+    padding: string;
+    "vertical-align": "top" | "middle" | "bottom";
+    width: string;
   };
   children: Array<
     | MjAccordion

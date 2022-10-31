@@ -1,25 +1,25 @@
 import { ElementContent as HContent, Parent as HParent } from "hast";
 import { MjmlNode, Parent as MjmlParent } from "mjmlast";
 import { u } from "unist-builder";
-import { addPosition, H, Handler } from ".";
+import { addPosition, Context, Options } from ".";
+import { h as hastH } from "hastscript";
 
-const own = {}.hasOwnProperty;
-
-function unknown(h: H, node: MjmlNode) {
+function unknown(node: MjmlNode, options: Options, context: Context) {
   if ("value" in node && typeof node.value === "string") {
     const value = node.value;
 
     return addPosition(node, u("text", value));
   }
 
-  const nodes = all(h, node);
-  return h(node, "div", nodes);
+  const nodes = all(node, options, context);
+  return hastH("div", nodes);
 }
 
 export function one(
-  h: H,
   node: MjmlNode,
-  parent: MjmlParent | HParent | null
+  parent: MjmlParent | HParent | null,
+  options: Options,
+  context: Context
 ): HContent {
   const type = node && node.type;
 
@@ -28,16 +28,22 @@ export function one(
     throw new Error("Expected node, got `" + node + "`");
   }
 
-  if (own.call(h.handlers, type)) {
-    h.handlers[type](h, node, parent);
-  } else if (h.unknownHandler) {
-    h.unknownHandler(h, node, parent);
+  const handler = options.handlers?.[type];
+
+  if (handler) {
+    handler(node, parent, options);
+  } else if (options.unknownHandler) {
+    options.unknownHandler(node, parent, options);
   }
 
-  return unknown(h, node);
+  return unknown(node, options);
 }
 
-export function all(h: H, parent: MjmlNode): HContent[] {
+export function all(
+  parent: MjmlNode,
+  options: Options,
+  context: Context
+): HContent[] {
   const values: HContent[] = [];
 
   if ("children" in parent) {
@@ -45,7 +51,7 @@ export function all(h: H, parent: MjmlNode): HContent[] {
     let index = -1;
 
     while (++index < nodes.length) {
-      const result = one(h, nodes[index], parent);
+      const result = one(nodes[index], parent, options, context);
 
       if (!result) {
         continue;

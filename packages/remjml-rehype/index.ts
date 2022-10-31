@@ -1,16 +1,10 @@
-import type { ElementContent } from "hast";
 import type { Parent, End } from "mjmlast";
-import type { Processor, Plugin } from "unified";
+import type { Processor } from "unified";
+import { toHast } from "mjmlast-util-to-hast";
 
-type MjmlAstNode = Parent | End
+type MjmlAstNode = Parent | End;
 
 type Options = {};
-
-function toHast(node: MjmlAstNode, options: Options): ElementContent {
-  return {
-    tagName: 
-  }
-}
 
 export default function remjmlRehype(destination: Processor, options: Options) {
   return destination && "run" in destination
@@ -25,7 +19,9 @@ export default function remjmlRehype(destination: Processor, options: Options) {
  */
 function bridge(destination: Processor, options: Options) {
   return (node, file, next) => {
-    destination.run(toHast(node, options), file, (error) => {
+    const hast = toHast(node, options);
+
+    destination.run(hast, file, (error) => {
       next(error);
     });
   };

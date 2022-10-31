@@ -1,4 +1,4 @@
-import mjmlJsonToRemjml from "mjml-json-to-remjml";
+import mjmlJsonToRemjml from "mjml-json-to-remjml/src";
 import { unified } from "unified";
 import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";

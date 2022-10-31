@@ -2,17 +2,7 @@
   "name": "mjml-json-to-remjml",
   "type": "module",
   "exports": {
-    ".": "./index.ts"
-  },
-  "typesVersions": {
-    "*": {
-      "gen/*": [
-        "dist/gen/*"
-      ],
-      "client/*": [
-        "dist/client/*"
-      ]
-    }
+    ".": "./src/index.ts"
   },
   "dependencies": {
     "@types/unist": "^2.0.6",
@@ -20,5 +10,10 @@
     "unified": "^10.1.2",
     "remjml": "*",
     "mjmlast": "*"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
   }
 }

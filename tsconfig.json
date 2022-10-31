@@ -1,6 +1,5 @@
 {
   "files": [],
-  "typeRoots": [ "./types", "./node_modules/@types"],
   "references": [
     {
       "path": "./packages/remjml-parse/tsconfig.ref.json"
@@ -16,9 +15,8 @@
     },
   ],
   "compilerOptions": {
-    "module": "Node16", 
+    "module": "ESNext", 
     "target": "ESNext",
-    "moduleResolution": "Node16", 
-    "esModuleInterop": true
+    "esModuleInterop": false,
   },
 }

@@ -16,5 +16,10 @@
   },
   "dependencies": {
     "@types/unist": "^2.0.6"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
   }
 }

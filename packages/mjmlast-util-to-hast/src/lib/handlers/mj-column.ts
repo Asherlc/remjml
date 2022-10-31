@@ -1,7 +1,13 @@
 import { generateMediaQuery } from "../helpers/generate-media-query";
 import widthParser from "../helpers/width-parser";
 import { jsonToCss } from "../helpers/json-to-css";
-import type { MjColumn, MjColumnChild, MjGroup, MjSection } from "mjmlast";
+import type {
+  MjColumn,
+  MjColumnChild,
+  MjGroup,
+  MjmlNode,
+  MjSection,
+} from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
@@ -60,7 +66,7 @@ function column(node: MjColumn, options: Options, context: Context): HElement {
   const attributes = attributesWithDefaults(node.attributes);
   const children = node.children.map((child: MjColumnChild) => {
     const childAttributes = child.attributes;
-    const hChild = one(child, node, options, context);
+    const hChild = one(child as MjmlNode, node, options, context);
 
     return h("tr", [
       h(

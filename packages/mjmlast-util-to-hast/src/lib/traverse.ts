@@ -25,7 +25,7 @@ export function one(
   parent: MjmlParent | null,
   options: Options,
   context: Context
-): HContent | Array<HContent> | null {
+): HContent | Array<HContent> {
   const type = node && node.type;
 
   // Fail on non-nodes.

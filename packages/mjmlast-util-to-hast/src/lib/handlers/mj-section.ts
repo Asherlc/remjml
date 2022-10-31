@@ -133,7 +133,7 @@ function withBackground(
 
   let vSizeAttributes = {};
 
-  ({ posX: bgPosX, posY: bgPosY } = getBackgroundPosition(node));
+  ({ posX: bgPosX, posY: bgPosY } = getBackgroundPosition(attributes));
 
   switch (bgPosX) {
     case "left":
@@ -240,7 +240,7 @@ function withBackground(
     ]; // also ensure that images are still cropped the same way
   }
 
-  return [
+  return u("root", [
     u("conditional-comment", {
       value: "mso | IE",
       commentType: "downlevel-hidden",
@@ -287,7 +287,7 @@ function withBackground(
     u("conditional-end-comment", {
       commentType: "downlevel-hidden",
     }),
-  ];
+  ]);
 }
 
 function wrapper(
@@ -333,7 +333,7 @@ function wrapper(
               u("conditional-comment", {
                 value: "mso | IE",
                 commentType: "downlevel-hidden",
-              }),
+              }) as any as HElement,
             ]
           ),
         ]),
@@ -447,11 +447,11 @@ function fullWidth(
         "background-color": attributes["background-color"],
       };
 
-  const content: HElement = hasBackground(attributes)
+  const content = hasBackground(attributes)
     ? withBackground(node, parent, context, withWrapper)
     : hSection;
 
-  const tr = h("td", content);
+  const tr = h("td", content as any as HElement);
 
   return h(
     "table",

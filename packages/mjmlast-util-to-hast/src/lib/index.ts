@@ -10,6 +10,7 @@ import { pointStart, pointEnd, PositionLike } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
 import type { MjmlNode, Parent } from "mjmlast";
+import { u } from "unist-builder";
 
 type HastNode = HRoot | HParent | HParent["children"][number];
 
@@ -29,12 +30,12 @@ export type Handler = (
   parent: Parent | null,
   options: Options,
   context: Context
-) => HContent | Array<HContent> | null;
+) => HContent | Array<HContent>;
 
 export type Options = {
   allowDangerousHtml?: boolean;
   unknownHandler?: Handler;
-  handlers?: Record<string, Handler>;
+  handlers?: Handlers;
 };
 
 export function addPosition<Right extends HContent>(
@@ -58,7 +59,10 @@ function head(tree: MjmlNode): HElement {
 }
 
 export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
-  const handlers = { ...defaultHandlers, ...(options.handlers || {}) };
+  const handlers: Handlers = {
+    ...defaultHandlers,
+    ...(options.handlers || {}),
+  };
   const hHead = head(tree);
 
   const context: Context = {
@@ -68,7 +72,11 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
 
   const node = one(tree, null, { ...options, handlers }, context);
 
-  return Array.isArray(node) ? { type: "root", children: node } : node;
+  if (Array.isArray(node)) {
+    return u("root", node);
+  }
+
+  return node;
 }
 
 export { handlers as defaultHandlers } from "./handlers";

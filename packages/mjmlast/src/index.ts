@@ -21,6 +21,7 @@ type MjColumnChildAttributes = Partial<{
 
 export interface MjColumnChild extends Node {
   attributes: MjColumnChildAttributes;
+  type: MjColumn["children"][number]["type"];
 }
 
 export interface Component extends Node {

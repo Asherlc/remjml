@@ -1,5 +1,14 @@
-import type { MJMLJsonObject } from "mjml";
 import type { MjmlNode } from "mjmlast";
+
+export interface MJMLJsonObject<
+  A extends object = {},
+  Children extends MJMLJsonObject[] = []
+> {
+  readonly tagName: string;
+  readonly attributes: A;
+  readonly children?: Children;
+  readonly content?: string;
+}
 
 export default function mjmlJsonToRemjml(mjmlJson: MJMLJsonObject): MjmlNode {
   const childNodes: MjmlNode[] = (mjmlJson.children || []).map(

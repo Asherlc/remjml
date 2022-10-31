@@ -1,5 +1,4 @@
 {
-  "include": ["../../types"],
   "files": ["src/index.ts"],
   "compilerOptions": {
     "rootDir": "src",

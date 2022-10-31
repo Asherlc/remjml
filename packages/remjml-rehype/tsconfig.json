@@ -1,5 +1,4 @@
 {
-  "include": ["../../types", "../mjmlast"],
   "files": ["src/index.ts"],
   "compilerOptions": {
     "rootDir": "src",

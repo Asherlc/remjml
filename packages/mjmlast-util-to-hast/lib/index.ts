@@ -51,7 +51,7 @@ function head(tree: MjmlNode): HElement {
   return mjHead || hastH("head");
 }
 
-export function toHast(tree: MjmlNode, options: Options): HastNode {
+export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const handlers = { ...defaultHandlers, ...(options.handlers || {}) };
   const hHead = head(tree);
 

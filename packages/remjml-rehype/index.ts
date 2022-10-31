@@ -6,7 +6,10 @@ type MjmlAstNode = Parent | End;
 
 type Options = {};
 
-export default function remjmlRehype(destination: Processor, options: Options) {
+export default function remjmlRehype(
+  destination: Processor,
+  options?: Options
+) {
   return destination && "run" in destination
     ? bridge(destination, options)
     : mutate(destination || options);
@@ -17,7 +20,7 @@ export default function remjmlRehype(destination: Processor, options: Options) {
  * Runs the destination with the new hast tree.
  *
  */
-function bridge(destination: Processor, options: Options) {
+function bridge(destination: Processor, options?: Options) {
   return (node, file, next) => {
     const hast = toHast(node, options);
 

@@ -1,20 +1,17 @@
 import type { MJMLJsonObject } from "mjml";
-import { ReMJMLComponent } from "remjml";
+import type { MjmlNode } from "mjmlast";
 
-export default function mjmlJsonToRemjml(
-  mjmlJson: MJMLJsonObject
-): ReMJMLComponent {
-  const childNodes: ReMJMLComponent[] = (mjmlJson.children || []).map(
+export default function mjmlJsonToRemjml(mjmlJson: MJMLJsonObject): MjmlNode {
+  const childNodes: MjmlNode[] = (mjmlJson.children || []).map(
     mjmlJsonToRemjml
   );
 
-  const node: ReMJMLComponent = {
-    type: "component",
+  const node: MjmlNode = {
     tagName: mjmlJson.tagName,
     attributes: mjmlJson.attributes,
     children: childNodes,
     content: mjmlJson.content,
-  };
+  } as any as MjmlNode;
 
   return node;
 }

@@ -37,11 +37,50 @@ const mjmlJson = {
 
 it("transforms mjml json to html", async () => {
   const mjmlAst = mjmlJsonToRemjml(mjmlJson);
+  expect(mjmlAst).toMatchInlineSnapshot(`
+{
+  "attributes": {},
+  "children": [
+    {
+      "attributes": {},
+      "children": [
+        {
+          "attributes": {},
+          "children": [
+            {
+              "attributes": {},
+              "children": [
+                {
+                  "attributes": {
+                    "src": "/assets/img/logo-small.png",
+                    "width": "100px",
+                  },
+                  "children": [],
+                  "content": undefined,
+                  "type": "mj-image",
+                },
+              ],
+              "content": undefined,
+              "type": "mj-column",
+            },
+          ],
+          "content": undefined,
+          "type": "mj-section",
+        },
+      ],
+      "content": undefined,
+      "type": "mj-body",
+    },
+  ],
+  "content": undefined,
+  "type": "mjml",
+}
+`);
   console.log(mjmlAst);
 
   const html = await unified()
     .use(remjmlRehype as any)
-    .use(rehypeStringify as any)
+    .use(rehypeStringify)
     .run(mjmlAst);
 
   expect(html).toMatchInlineSnapshot(`

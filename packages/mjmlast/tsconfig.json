@@ -1,7 +1,16 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["ts/**/*"],
+  "include": ["../../types"],
+  "files": ["src/index.ts"],
   "compilerOptions": {
-    "composite": true
-  },
+    "rootDir": "src",
+    "outDir": "build",
+    "target": "es2021",
+    "lib": [
+      "es2021", "DOM"
+    ],
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "strict": true,
+    "noImplicitOverride": true,
+  }
 }

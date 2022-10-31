@@ -2,18 +2,9 @@
   "name": "mjmlast",
   "type": "module",
   "exports": {
-    ".": "./index.ts"
+    ".": "./src/index.ts"
   },
-  "typesVersions": {
-    "*": {
-      "gen/*": [
-        "dist/gen/*"
-      ],
-      "client/*": [
-        "dist/client/*"
-      ]
-    }
-  },
+
   "dependencies": {
     "@types/unist": "^2.0.6"
   },

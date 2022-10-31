@@ -8,7 +8,7 @@ declare module "mjml" {
     readonly validationLevel?: MJMLValidationLevel;
     readonly filePath?: string;
     readonly minifyOptions?: MJMLMinifyOptions;
-    readonly skeleton?: (any) => string;
+    readonly skeleton?: (data: any) => string;
   }
 
   export interface MJMLParseError {

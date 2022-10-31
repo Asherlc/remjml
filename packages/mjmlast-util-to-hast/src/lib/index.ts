@@ -1,4 +1,4 @@
-import { find } from "unist-util-find";
+import find from "unist-util-find";
 import type {
   Root as HRoot,
   Parent as HParent,

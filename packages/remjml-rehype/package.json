@@ -2,17 +2,7 @@
   "name": "remjml-rehype",
   "type": "module",
   "exports": {
-    ".": "./index.ts"
-  },
-  "typesVersions": {
-    "*": {
-      "gen/*": [
-        "dist/gen/*"
-      ],
-      "client/*": [
-        "dist/client/*"
-      ]
-    }
+    ".": "./src/index.ts"
   },
   "dependencies": {
     "@types/hast": "^2.3.4",

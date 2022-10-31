@@ -5,6 +5,7 @@ import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
+import widthParser from "../helpers/width-parser";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjImage["attributes"],
@@ -28,7 +29,7 @@ function getContentWidth(
     ? parseInt(attributes["width"], 10)
     : Infinity;
 
-  const { box } = getBoxWidths(attributes, parent);
+  const { box } = getBoxWidths(attributes, parent.attributes["width"] || "0");
 
   return min([box, width]);
 }
@@ -44,7 +45,8 @@ export function mjImage(
   const fullWidth = attributes["full-width"];
   const width = attributes["full-width"];
   const height = attributes["height"];
-  const { parsedWidth, unit } = widthParser(width);
+  const contentWidth = getContentWidth(attributes, parent);
+  const { parsedWidth, unit } = widthParser(contentWidth);
 
   const hImage = h("image", {
     alt: attributes.alt,
@@ -70,7 +72,7 @@ export function mjImage(
       fontSize: attributes["font-size"],
     }),
     title: attributes.title,
-    width: getContentWidth(attributes, parent),
+    width: contentWidth,
     usemap: attributes.usemap,
   });
 
@@ -125,7 +127,4 @@ export function mjImage(
   );
 
   return addPosition(node, hNode);
-}
-function widthParser(width: any): { parsedWidth: any; unit: any } {
-  throw new Error("Function not implemented.");
 }

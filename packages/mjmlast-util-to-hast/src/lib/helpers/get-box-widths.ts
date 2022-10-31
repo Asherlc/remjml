@@ -32,14 +32,13 @@ function getShorthandBorderValue<Attributes extends object>(
 
 export function getBoxWidths<Attributes extends {}>(
   attributes: Attributes,
-  parent: MjmlParent
+  containerWidth: string
 ): {
   totalWidth: number;
   borders: number;
   paddings: number;
   box: number;
 } {
-  const { containerWidth } = parent.attributes["width"];
   const parsedWidth = parseInt(containerWidth, 10);
 
   const paddings =

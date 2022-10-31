@@ -6,6 +6,7 @@ import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import classNames from "classnames";
+import { all, one } from "../traverse";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumn["attributes"],
@@ -49,9 +50,12 @@ function getMobileWidth(node: MjColumn, parent: ColumnParent): string {
   }
 }
 
-function column(node: MjColumn): HElement {
+function column(node: MjColumn, options: Options, context: Context): HElement {
   const children = node.children.map((child) => {
     const childAttributes = child.attributes;
+    const hChild = one(child, node, options, context);
+    console.log("hChild", hChild);
+
     return h("tr", [
       h(
         "td",
@@ -70,7 +74,7 @@ function column(node: MjColumn): HElement {
             wordBreak: "break-word",
           }),
         },
-        child
+        hChild
       ),
     ]);
   });
@@ -189,7 +193,7 @@ export function mjColumn(
     }
   );
 
-  const hColumn = column(node);
+  const hColumn = column(node, options, context);
   const columnWithGutter = hasGutter(node) ? gutter(node, hColumn) : hColumn;
 
   const wrapper = h(

@@ -6,7 +6,7 @@ const unitRegex = /[\d.,]*(\D*)$/;
 
 export default function widthParser(
   width: string | number,
-  { parseFloatToInt = true }: Options
+  { parseFloatToInt }: Options = { parseFloatToInt: true }
 ): { parsedWidth: number; unit: string } {
   const widthString = width.toString();
   const widthUnit = unitRegex.exec(widthString)?.[1];

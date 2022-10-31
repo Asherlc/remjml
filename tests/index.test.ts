@@ -62,13 +62,51 @@ it("transforms mjml json to html", async () => {
                             {
                               "children": [
                                 {
-                                  "attributes": {
-                                    "src": "/assets/img/logo-small.png",
-                                    "width": "100px",
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "children": [],
+                                                  "properties": {
+                                                    "height": "auto",
+                                                    "src": "/assets/img/logo-small.png",
+                                                    "style": "border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px",
+                                                    "width": -50,
+                                                  },
+                                                  "tagName": "image",
+                                                  "type": "element",
+                                                },
+                                              ],
+                                              "properties": {
+                                                "style": "width:-50px",
+                                              },
+                                              "tagName": "td",
+                                              "type": "element",
+                                            },
+                                          ],
+                                          "properties": {},
+                                          "tagName": "tr",
+                                          "type": "element",
+                                        },
+                                      ],
+                                      "properties": {},
+                                      "tagName": "tbody",
+                                      "type": "element",
+                                    },
+                                  ],
+                                  "properties": {
+                                    "border": 0,
+                                    "cellPadding": "0",
+                                    "cellSpacing": "0",
+                                    "role": "presentation",
+                                    "style": "border-collapse:collapse;border-spacing:0px",
                                   },
-                                  "children": [],
-                                  "content": undefined,
-                                  "type": "mj-image",
+                                  "tagName": "table",
+                                  "type": "element",
                                 },
                               ],
                               "properties": {

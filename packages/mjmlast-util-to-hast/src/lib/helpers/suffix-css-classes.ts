@@ -1,4 +1,4 @@
-export default (classes, suffix) =>
+export default (classes: string, suffix: string) =>
   classes
     ? classes
         .split(" ")

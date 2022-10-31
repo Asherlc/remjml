@@ -5,7 +5,6 @@ import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import widthParser from "../helpers/width-parser";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjImage["attributes"],
@@ -21,15 +20,12 @@ const DEFAULT_ATTRIBUTES: Pick<
 
 type ImageParent = MjHero | MjColumn;
 
-function getContentWidth(
-  attributes: MjImage["attributes"],
-  parent: ImageParent
-) {
+function getContentWidth(attributes: MjImage["attributes"], context: Context) {
   const width = attributes["width"]
     ? parseInt(attributes["width"], 10)
     : Infinity;
 
-  const { box } = getBoxWidths(attributes, parent.attributes["width"] || "0");
+  const { box } = getBoxWidths(attributes, context.containerWidth || "0");
 
   return min([box, width]);
 }
@@ -42,11 +38,14 @@ export function mjImage(
 ): HElement {
   const attributes = { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 
-  const fullWidth = attributes["full-width"];
-  const width = attributes["full-width"];
   const height = attributes["height"];
-  const contentWidth = getContentWidth(attributes, parent);
-  const { parsedWidth, unit } = widthParser(contentWidth);
+  const contentWidth = getContentWidth(attributes, context);
+
+  if (!context.containerWidth) {
+    throw new Error(`No containerWidth on context`);
+  }
+
+  const width = context.containerWidth;
 
   const hImage = h("image", {
     alt: attributes.alt,
@@ -66,9 +65,7 @@ export function mjImage(
       textDecoration: "none",
       height: attributes["height"],
       maxHeight: attributes["max-height"],
-      minWidth: fullWidth ? "100%" : undefined,
       width: "100%",
-      maxWidth: fullWidth ? "100%" : undefined,
       fontSize: attributes["font-size"],
     }),
     title: attributes.title,
@@ -101,7 +98,6 @@ export function mjImage(
       style: jsonToCss({
         minWidth: width ? "100%" : undefined,
         maxWidth: width ? "100%" : undefined,
-        width: fullWidth ? `${parsedWidth}${unit}` : undefined,
         borderCollapse: "collapse",
         borderSpacing: "0px",
       }),
@@ -115,9 +111,6 @@ export function mjImage(
               class: attributes["fluid-on-mobile"]
                 ? "mj-full-width-mobile"
                 : undefined,
-              style: jsonToCss({
-                width: fullWidth ? undefined : `${parsedWidth}${unit}`,
-              }),
             },
             [wrappedHImage]
           ),

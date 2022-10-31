@@ -1,8 +1,12 @@
-import { borderParser, shorthandParser } from "../helpers/shorthand-parser";
+import {
+  borderParser,
+  Direction,
+  shorthandParser,
+} from "../helpers/shorthand-parser";
 
 function getShorthandAttrValue<Attributes extends Record<string, any>>(
   attribute: string,
-  direction: string,
+  direction: Direction,
   attributes: Attributes
 ) {
   const mjAttributeDirection = attributes[`${attribute}-${direction}`];

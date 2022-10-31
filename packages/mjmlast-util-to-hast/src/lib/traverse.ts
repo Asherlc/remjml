@@ -1,10 +1,15 @@
 import { ElementContent as HContent, Parent as HParent } from "hast";
 import { MjmlNode, Parent as MjmlParent } from "mjmlast";
 import { u } from "unist-builder";
-import { addPosition, Context, Options } from ".";
+import { addPosition, Context, Handler, Options } from ".";
 import { h as hastH } from "hastscript";
 
-function unknown(node: MjmlNode, options: Options, context: Context) {
+function unknown(
+  node: MjmlNode,
+  parent: MjmlParent | null,
+  options: Options,
+  context: Context
+) {
   if ("value" in node && typeof node.value === "string") {
     const value = node.value;
 
@@ -20,7 +25,7 @@ export function one(
   parent: MjmlParent | null,
   options: Options,
   context: Context
-): HContent {
+): HContent | Array<HContent> | null {
   const type = node && node.type;
 
   // Fail on non-nodes.
@@ -28,15 +33,10 @@ export function one(
     throw new Error("Expected node, got `" + node + "`");
   }
 
-  const handler = options.handlers?.[type];
+  const handler: Handler =
+    options.handlers?.[type] || options.unknownHandler || unknown;
 
-  if (handler) {
-    return handler(node, parent, options, context);
-  } else if (options.unknownHandler) {
-    return options.unknownHandler(node, parent, options, context);
-  }
-
-  return unknown(node, options, context);
+  return handler(node, parent, options, context);
 }
 
 export function all(

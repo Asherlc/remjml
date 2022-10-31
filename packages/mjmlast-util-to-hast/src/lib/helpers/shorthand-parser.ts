@@ -1,6 +1,6 @@
 import { get } from "lodash-es";
 
-type Direction = "top" | "bottom" | "left" | "right";
+export type Direction = "top" | "bottom" | "left" | "right";
 
 export function shorthandParser(
   cssValue: string,

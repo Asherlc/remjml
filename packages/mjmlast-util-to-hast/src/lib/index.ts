@@ -1,15 +1,14 @@
+/// <reference path="../../../../types/unist-util-find.d.ts" />
 import find from "unist-util-find";
 import type {
   Root as HRoot,
   Parent as HParent,
   ElementContent as HContent,
-  Element as HElement,
 } from "hast";
-import { h as hastH } from "hastscript";
 import { pointStart, pointEnd, PositionLike } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
-import type { MjmlNode, Parent } from "mjmlast";
+import type { MjHead, MjmlNode, Parent } from "mjmlast";
 import { u } from "unist-builder";
 
 type HastNode = HRoot | HParent | HParent["children"][number];
@@ -17,7 +16,7 @@ type HastNode = HRoot | HParent | HParent["children"][number];
 export type Context = {
   containerWidth?: string;
   mobileWidth?: string;
-  hHead: HElement;
+  mjHead: MjHead;
   mediaQueries: {
     [className: string]: string;
   };
@@ -52,10 +51,10 @@ export function addPosition<Right extends HContent>(
   return right;
 }
 
-function head(tree: MjmlNode): HElement {
-  const mjHead = find(tree, "mj-head");
+function head(tree: MjmlNode): MjHead {
+  const mjHead = find<MjHead>(tree, "mj-head");
 
-  return mjHead || hastH("head");
+  return mjHead || u("mj-head", { children: [] });
 }
 
 export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
@@ -63,10 +62,10 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
     ...defaultHandlers,
     ...(options.handlers || {}),
   };
-  const hHead = head(tree);
+  const mjHead = head(tree);
 
   const context: Context = {
-    hHead,
+    mjHead,
     mediaQueries: {},
   };
 

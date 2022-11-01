@@ -40,7 +40,7 @@ export interface End extends Parent {
 
 export interface MjPreview extends Parent {
   type: "mj-preview";
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjHero extends Parent {
@@ -122,17 +122,17 @@ export interface MjStyle extends Parent {
   attributes: UniversalAttributes & {
     inline: string;
   };
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjHead extends Parent {
   type: "mj-head";
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjTitle extends Parent {
   type: "mj-title";
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjNavbarLink extends Parent {
@@ -157,7 +157,7 @@ export interface MjNavbarLink extends Parent {
     "text-decoration": string;
     "text-transform": string;
   };
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjSocialElement extends Parent {
@@ -193,7 +193,7 @@ export interface MjSocialElement extends Parent {
     "text-decoration": string;
     "vertical-align": "top" | "middle" | "bottom";
   };
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjSpacer extends Node {
@@ -237,7 +237,7 @@ export interface MjTable extends Parent {
     "vertical-align": "top" | "middle" | "bottom";
     width: string;
   };
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjSocial extends Parent {
@@ -526,7 +526,7 @@ export interface MjButton extends Parent {
     "text-align": "left" | "right" | "center";
     width: string;
   };
-  children: [Text];
+  children: Text[];
 }
 
 export interface MjText extends Parent {

@@ -18,6 +18,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "esModuleInterop": false,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "outDir": "./dist"
   }
 }

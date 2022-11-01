@@ -28,12 +28,12 @@ function getShorthandBorderValue<Attributes extends Record<string, any>>(
   attributes: Attributes
 ) {
   const borderDirection = direction && attributes[`border-${direction}`];
-  const border = attributes["border"];
+  const border = attributes.border;
 
   return borderParser(borderDirection || border || "0");
 }
 
-export function getBoxWidths<Attributes extends {}>(
+export function getBoxWidths<Attributes extends Record<string, any>>(
   attributes: Attributes,
   containerWidth: string
 ): {

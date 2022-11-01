@@ -1,6 +1,10 @@
 {
+  "include": ["**/*"],
   "files": [],
   "references": [
+    {
+      "path": "./packages/mjmlast/tsconfig.ref.json"
+    },
     {
       "path": "./packages/remjml-rehype/tsconfig.ref.json"
     },
@@ -9,11 +13,12 @@
     },
     {
       "path": "./packages/remjml/tsconfig.ref.json"
-    },
+    }
   ],
   "compilerOptions": {
-    "module": "ESNext", 
+    "module": "ESNext",
     "target": "ESNext",
     "esModuleInterop": false,
-  },
+    "moduleResolution": "node"
+  }
 }

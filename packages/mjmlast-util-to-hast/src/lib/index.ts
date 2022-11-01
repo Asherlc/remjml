@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../types/unist-util-find.d.ts" />
 import find from "unist-util-find";
 import type {
@@ -22,20 +23,22 @@ export type Context = {
   };
 };
 
-export type Handlers = Record<string, Handler>;
+export type Options = {
+  allowDangerousHtml?: boolean;
+  // eslint-disable-next-line no-use-before-define
+  unknownHandler?: Handler;
+  // eslint-disable-next-line no-use-before-define
+  handlers?: Handlers;
+};
 
 export type Handler = (
   node: MjmlNode,
-  parent: Parent | null,
+  parent: Parent<any, any> | null,
   options: Options,
   context: Context
 ) => HContent | Array<HContent>;
 
-export type Options = {
-  allowDangerousHtml?: boolean;
-  unknownHandler?: Handler;
-  handlers?: Handlers;
-};
+export type Handlers = Record<string, Handler>;
 
 export function addPosition<Right extends HContent>(
   left: MjmlNode | PositionLike | undefined | null,

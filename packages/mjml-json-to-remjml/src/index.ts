@@ -1,8 +1,8 @@
 import type { MjmlNode } from "mjmlast";
 
 export interface MJMLJsonObject<
-  A extends object = {},
-  Children extends MJMLJsonObject[] = []
+  A extends object = Record<string, any>,
+  Children extends MJMLJsonObject[] = any[]
 > {
   readonly tagName: string;
   readonly attributes: A;
@@ -20,7 +20,7 @@ export default function mjmlJsonToRemjml(mjmlJson: MJMLJsonObject): MjmlNode {
     attributes: mjmlJson.attributes,
     children: childNodes,
     content: mjmlJson.content,
-  } as any as MjmlNode;
+  } as unknown as MjmlNode;
 
   return node;
 }

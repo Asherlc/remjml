@@ -1,9 +1,9 @@
-import mjmlJsonToRemjml from "mjml-json-to-remjml/src";
+import mjmlJsonToRemjml, { MJMLJsonObject } from "mjml-json-to-remjml/src";
 import { unified } from "unified";
 import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
 
-const mjmlJson = {
+const mjmlJson: MJMLJsonObject = {
   tagName: "mjml",
   attributes: {},
   children: [

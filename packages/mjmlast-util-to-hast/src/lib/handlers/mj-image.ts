@@ -21,8 +21,8 @@ const DEFAULT_ATTRIBUTES: Pick<
 type ImageParent = MjHero | MjColumn;
 
 function getContentWidth(attributes: MjImage["attributes"], context: Context) {
-  const width = attributes["width"]
-    ? parseInt(attributes["width"], 10)
+  const width = attributes.width
+    ? parseInt(attributes.width, 10)
     : Infinity;
 
   const { box } = getBoxWidths(attributes, context.containerWidth || "0");
@@ -38,7 +38,7 @@ export function mjImage(
 ): HElement {
   const attributes = { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 
-  const height = attributes["height"];
+  const height = attributes.height;
   const contentWidth = getContentWidth(attributes, context);
 
   if (!context.containerWidth) {
@@ -54,7 +54,7 @@ export function mjImage(
     srcset: attributes.srcset,
     sizes: attributes.sizes,
     style: jsonToCss({
-      border: attributes["border"],
+      border: attributes.border,
       borderLeft: attributes["border-left"],
       borderRight: attributes["border-right"],
       borderTop: attributes["border-top"],
@@ -63,7 +63,7 @@ export function mjImage(
       display: "block",
       outline: "none",
       textDecoration: "none",
-      height: attributes["height"],
+      height: attributes.height,
       maxHeight: attributes["max-height"],
       width: "100%",
       fontSize: attributes["font-size"],
@@ -77,11 +77,11 @@ export function mjImage(
     ? h(
         "a",
         {
-          href: attributes["href"],
-          target: attributes["target"],
-          rel: attributes["rel"],
-          name: attributes["name"],
-          title: attributes["title"],
+          href: attributes.href,
+          target: attributes.target,
+          rel: attributes.rel,
+          name: attributes.name,
+          title: attributes.title,
         },
         [hImage]
       )

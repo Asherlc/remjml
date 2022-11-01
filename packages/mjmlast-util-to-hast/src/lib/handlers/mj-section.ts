@@ -1,15 +1,25 @@
 import type { Node } from "unist";
 import suffixCssClasses from "../helpers/suffix-css-classes";
-import type { MjBody, MjSection, MjWrapper } from "mjmlast";
+import type {
+  MjBody,
+  MjSection,
+  MjSectionAttributes,
+  MjWrapper,
+  UniversalAttributes,
+} from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
-import { Element as HElement } from "hast";
+import { Element as HElement, ElementContent } from "hast";
 import { all } from "../traverse";
 import { u } from "unist-builder";
 import { jsonToCss } from "../helpers/json-to-css";
+import { Property } from "csstype";
+import { castArray } from "lodash-es";
+
+type SectionParent = MjBody | MjWrapper;
 
 const DEFAULT_ATTRIBUTES: Pick<
-  MjSection["attributes"],
+  MjSectionAttributes,
   | "background-repeat"
   | "background-size"
   | "background-position"
@@ -27,15 +37,17 @@ const DEFAULT_ATTRIBUTES: Pick<
   "text-padding": "4px 4px 4px 0",
 };
 
-function isFullWidth(node: MjSection): boolean {
-  return attributesWithDefaults(node)["full-width"] === "full-width";
+function isFullWidth(attributes: MjSectionAttributes): boolean {
+  return attributes["full-width"] === "full-width";
 }
 
-function attributesWithDefaults(node: MjSection) {
-  return { ...DEFAULT_ATTRIBUTES, ...node.attributes };
+function attributesWithDefaults(
+  attributes: MjSectionAttributes & UniversalAttributes
+): MjSectionAttributes & UniversalAttributes {
+  return { ...DEFAULT_ATTRIBUTES, ...attributes };
 }
 
-function hasBackground(attributes: MjSection["attributes"]): boolean {
+function hasBackground(attributes: MjSectionAttributes): boolean {
   return attributes["background-url"] != null;
 }
 
@@ -99,20 +111,30 @@ function parseBackgroundPosition(backgroundPosition: string): {
   return { x: "center", y: "top" };
 }
 
-function getBackgroundPosition(attributes: MjSection["attributes"]): {
+function getBackgroundPosition(attributes: MjSectionAttributes): {
   posX: XPosition;
   posY: YPosition;
 } {
-  const { x, y } = parseBackgroundPosition(attributes["background-position"]);
+  const backgroundPosition = attributes["background-position"];
+  const backgroundPositionX = attributes["background-position-x"];
+  const backgroundPositionY = attributes["background-position-y"];
 
-  return {
-    posX: isXPosition(attributes["background-position-x"])
-      ? attributes["background-position-x"]
-      : x,
-    posY: isYPosition(attributes["background-position-y"])
-      ? attributes["background-position-y"]
-      : y,
-  };
+  if (
+    backgroundPositionX &&
+    backgroundPositionY &&
+    isXPosition(backgroundPositionX) &&
+    isYPosition(backgroundPositionY)
+  ) {
+    return { posX: backgroundPositionX, posY: backgroundPositionY };
+  }
+
+  if (backgroundPosition) {
+    const { x, y } = parseBackgroundPosition(backgroundPosition);
+
+    return { posX: x, posY: y };
+  }
+
+  throw new Error(`No background position`);
 }
 
 function isPercentage(str: string) {
@@ -123,10 +145,10 @@ function withBackground(
   node: MjSection,
   parent: SectionParent,
   context: Context,
-  children: Node[]
+  children: HElement | HElement[]
 ) {
-  const attributes = attributesWithDefaults(node);
-  const fullWidth = isFullWidth(node);
+  const attributes = attributesWithDefaults(node.attributes || {});
+  const fullWidth = isFullWidth(attributes);
 
   let bgPosX: string;
   let bgPosY: string;
@@ -215,17 +237,19 @@ function withBackground(
       aspect: attributes["background-size"] === "cover" ? "atleast" : "atmost",
     };
   } else if (attributes["background-size"] !== "auto") {
-    const bgSplit = attributes["background-size"].split(" ");
+    const bgSplit = attributes["background-size"]?.split(" ");
 
-    if (bgSplit.length === 1) {
+    if (bgSplit && bgSplit.length === 1) {
       vSizeAttributes = {
         size: attributes["background-size"],
         aspect: "atmost", // reproduces height auto
       };
-    } else {
+    } else if (bgSplit) {
       vSizeAttributes = {
         size: bgSplit.join(","),
       };
+    } else {
+      throw new Error(`No background-size`);
     }
   }
 
@@ -262,8 +286,8 @@ function withBackground(
           properties: {
             origin: `${vOriginX}, ${vOriginY}`,
             position: `${vPosX}, ${vPosY}`,
-            src: attributes["background-url"],
-            color: attributes["background-color"],
+            src: attributes["background-url"] || "",
+            color: attributes["background-color"] || "",
             type: vmlType,
             ...vSizeAttributes,
           },
@@ -277,7 +301,7 @@ function withBackground(
         u("conditional-end-comment", {
           commentType: "downlevel-hidden",
         }),
-        ...children,
+        ...castArray(children),
         u("conditional-comment", {
           value: "mso | IE",
           commentType: "downlevel-hidden",
@@ -294,14 +318,32 @@ function wrapper(
   node: MjSection,
   parent: SectionParent,
   context: Context,
-  children: HElement[]
+  children: Node[] | Node
 ): Node[] {
   const { containerWidth } = context;
-  const attributes = attributesWithDefaults(node);
+  const attributes = attributesWithDefaults(node.attributes || {});
   const bgcolorAttr = attributes["background-color"]
     ? { bgcolor: attributes["background-color"] }
     : {};
 
+  const td = u(
+    "element",
+    {
+      tagName: "td",
+      properties: {
+        style: "line-height:0px;font-size:0px;mso-line-height-rule:exactly",
+      },
+    },
+    [
+      ...castArray(children),
+      u("conditional-comment", {
+        value: "mso | IE",
+        commentType: "downlevel-hidden",
+      }),
+    ]
+  ) as unknown as HElement;
+
+  const cssClass = attributes["css-class"];
   return [
     u("conditional-comment", {
       value: "mso | IE",
@@ -314,30 +356,13 @@ function wrapper(
         border: "0",
         cellpadding: "0",
         cellspacing: "0",
-        class: suffixCssClasses(attributes["css-class"], "outlook"),
+        class: cssClass ? suffixCssClasses(cssClass, "outlook") : undefined,
         role: "presentation",
         style: jsonToCss({ width: containerWidth }),
         width: containerWidth ? parseInt(containerWidth, 10) : undefined,
         ...bgcolorAttr,
       },
-      [
-        h("tr", [
-          h(
-            "td",
-            {
-              style:
-                "line-height:0px;font-size:0px;mso-line-height-rule:exactly",
-            },
-            [
-              ...children,
-              u("conditional-comment", {
-                value: "mso | IE",
-                commentType: "downlevel-hidden",
-              }) as any as HElement,
-            ]
-          ),
-        ]),
-      ]
+      [h("tr", td)]
     ),
     u("conditional-end-comment", {
       commentType: "downlevel-hidden",
@@ -365,15 +390,14 @@ function getBackground(attributes: MjSection["attributes"]): string {
   ].join(" ");
 }
 
-type SectionParent = MjBody | MjWrapper;
-
 function section(
   node: MjSection,
   parent: SectionParent,
-  context: Context
+  context: Context,
+  children: ElementContent[]
 ): HElement {
-  const attributes = attributesWithDefaults(node);
-  const fullWidth = isFullWidth(node);
+  const attributes = attributesWithDefaults(node.attributes || {});
+  const fullWidth = isFullWidth(attributes);
   const { containerWidth } = context;
   const background = attributes["background-url"]
     ? {
@@ -400,6 +424,75 @@ function section(
       }),
     },
     [
+      h(
+        "table",
+        {
+          align: "center",
+          background: isFullWidth(attributes)
+            ? null
+            : attributes["background-url"],
+          border: "0",
+          cellpadding: "0",
+          cellspacing: "0",
+          role: "presentation",
+          style: jsonToCss({
+            ...(fullWidth ? {} : background),
+            width: "100%",
+            borderRadius: attributes["border-radius"],
+          }),
+        },
+        h(
+          "tbody",
+          h(
+            "tr",
+            h(
+              "td",
+              {
+                style: jsonToCss({
+                  border: attributes.border,
+                  borderBottom: attributes["border-bottom"],
+                  borderLeft: attributes["border-left"],
+                  borderRight: attributes["border-right"],
+                  borderTop: attributes["border-top"],
+                  direction: attributes.direction,
+                  fontSize: "0px",
+                  padding: attributes.padding,
+                  paddingBottom: attributes["padding-bottom"],
+                  paddingLeft: attributes["padding-left"],
+                  paddingRight: attributes["padding-right"],
+                  paddingTop: attributes["padding-top"],
+                  textAlign: attributes["text-align"] as Property.TextAlign,
+                }),
+              },
+              [
+                u("conditional-comment", {
+                  value: "mso | IE",
+                  commentType: "downlevel-hidden",
+                }) as any,
+                h(
+                  "table",
+                  {
+                    role: "presentation",
+                    border: 0,
+                    cellpadding: 0,
+                    cellspacing: 0,
+                  },
+                  [
+                    u("conditional-end-comment", {
+                      commentType: "downlevel-hidden",
+                    }) as any,
+                    ...children,
+                    u("conditional-comment", {
+                      value: "mso | IE",
+                      commentType: "downlevel-hidden",
+                    }) as any,
+                  ]
+                ),
+              ]
+            )
+          )
+        )
+      ),
       hasBackground(attributes)
         ? h("div", {
             style: jsonToCss({
@@ -408,19 +501,6 @@ function section(
             }),
           })
         : undefined,
-      h("table", {
-        align: "center",
-        background: isFullWidth(node) ? null : attributes["background-url"],
-        border: "0",
-        cellpadding: "0",
-        cellspacing: "0",
-        role: "presentation",
-        style: jsonToCss({
-          ...(fullWidth ? {} : background),
-          width: "100%",
-          borderRadius: attributes["border-radius"],
-        }),
-      }),
     ]
   );
 }
@@ -428,12 +508,11 @@ function section(
 function fullWidth(
   node: MjSection,
   parent: SectionParent,
-  context: Context
+  context: Context,
+  children: HElement[]
 ): HElement {
-  const attributes = attributesWithDefaults(node);
-  const hSection = section(node, parent, context);
-  const withWrapper = wrapper(node, parent, context, [hSection]);
-  const fullWidth = isFullWidth(node);
+  const attributes = attributesWithDefaults(node.attributes || {});
+  const fullWidth = isFullWidth(attributes);
   const background = attributes["background-url"]
     ? {
         background: getBackground(attributes),
@@ -447,11 +526,7 @@ function fullWidth(
         "background-color": attributes["background-color"],
       };
 
-  const content = hasBackground(attributes)
-    ? withBackground(node, parent, context, withWrapper)
-    : hSection;
-
-  const tr = h("td", content as any as HElement);
+  const tr = h("td", children);
 
   return h(
     "table",
@@ -479,18 +554,21 @@ export function mjSection(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = attributesWithDefaults(node);
+  const attributes = attributesWithDefaults(node.attributes || {});
 
   const children = all(node, options, context);
 
-  const hBody = h(
-    "div",
-    {
-      class: attributes["css-class"],
-      style: jsonToCss({ backgroundColor: attributes["background-color"] }),
-    },
-    children
-  );
+  const main = section(node, parent, context, children);
 
-  return addPosition(node, hBody);
+  const content: Node = hasBackground(attributes)
+    ? withBackground(node, parent, context, main)
+    : main;
+
+  const wrapped = wrapper(node, parent, context, content);
+
+  const full: HElement = isFullWidth(attributes)
+    ? (fullWidth(node, parent, context, wrapped as any) as any)
+    : wrapped;
+
+  return addPosition(node, full);
 }

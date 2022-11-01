@@ -1,5 +1,5 @@
-import sharedConfig from '../../jest.config.base.js'
+import sharedConfig from "../../jest.config.base.js";
 
 export default {
-   ...sharedConfig,
+  ...sharedConfig,
 };

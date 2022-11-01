@@ -3,16 +3,15 @@ import type { Processor, RunCallback } from "unified";
 import { toHast } from "mjmlast-util-to-hast";
 import { Compatible, Data } from "vfile";
 import type { Node } from "unist";
-
-type Options = {};
+import { Options } from "mjmlast-util-to-hast/src/lib";
 
 export default function remjmlRehype(
   destination: Processor,
-  options?: Options
+  options: Options = {}
 ) {
   return destination && "run" in destination
     ? bridge(destination, options)
-    : mutate(destination || options);
+    : mutate(options);
 }
 
 /**

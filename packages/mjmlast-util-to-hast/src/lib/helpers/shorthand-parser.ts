@@ -1,5 +1,3 @@
-import { get } from "lodash-es";
-
 export type Direction = "top" | "bottom" | "left" | "right";
 
 export function shorthandParser(

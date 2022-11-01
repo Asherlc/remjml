@@ -9,7 +9,7 @@ function jsonPropertyNameToCssPropertyName(jsonPropertyName: string): string {
 
 export function jsonToCss(properties: Properties): string {
   const styleString = Object.entries(properties)
-    .filter(([_key, value]) => {
+    .filter(([, value]) => {
       return Boolean(value);
     })
     .map(

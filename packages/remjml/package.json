@@ -1,10 +1,7 @@
 {
   "name": "remjml",
   "type": "module",
-  "exports": {
-  },
-  "devDependencies": {
-  },
-  "dependencies": {
-  }
+  "exports": {},
+  "devDependencies": {},
+  "dependencies": {}
 }

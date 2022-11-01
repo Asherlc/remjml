@@ -1,4 +1,4 @@
-import { ElementContent as HContent, Parent as HParent } from "hast";
+import { ElementContent as HContent } from "hast";
 import { MjmlNode, Parent as MjmlParent } from "mjmlast";
 import { u } from "unist-builder";
 import { addPosition, Context, Handler, Options } from ".";
@@ -6,7 +6,7 @@ import { h as hastH } from "hastscript";
 
 function unknown(
   node: MjmlNode,
-  parent: MjmlParent | null,
+  parent: MjmlParent<any, any> | null,
   options: Options,
   context: Context
 ) {
@@ -22,7 +22,7 @@ function unknown(
 
 export function one(
   node: MjmlNode,
-  parent: MjmlParent | null,
+  parent: MjmlParent<any, any> | null,
   options: Options,
   context: Context
 ): HContent | Array<HContent> {
@@ -51,7 +51,8 @@ export function all(
     let index = -1;
 
     while (++index < nodes.length) {
-      const result = one(nodes[index], parent, options, context);
+      const node = nodes[index];
+      const result = one(node as any, parent, options, context);
 
       if (!result) {
         continue;

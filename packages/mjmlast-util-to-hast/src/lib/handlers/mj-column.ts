@@ -3,33 +3,38 @@ import widthParser from "../helpers/width-parser";
 import { jsonToCss } from "../helpers/json-to-css";
 import type {
   MjColumn,
+  MjColumnAttributes,
   MjColumnChild,
+  MjColumnChildAttributes,
   MjGroup,
   MjmlNode,
   MjSection,
+  UniversalAttributes,
 } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import * as classNames from "classnames";
-import { all, one } from "../traverse";
+import { one } from "../traverse";
 
 const DEFAULT_ATTRIBUTES: Pick<
-  MjColumn["attributes"],
+  MjColumnAttributes,
   "direction" | "vertical-align"
 > = {
   direction: "ltr",
   "vertical-align": "top",
 };
 
-function attributesWithDefaults(attributes: MjColumn["attributes"]) {
+function attributesWithDefaults(
+  attributes: MjColumnAttributes & UniversalAttributes
+): MjColumnAttributes & UniversalAttributes {
   return { ...DEFAULT_ATTRIBUTES, ...attributes };
 }
 
 type ColumnParent = MjGroup | MjSection;
 
 function getMobileWidth(
-  attributes: MjColumn["attributes"],
+  attributes: MjColumnAttributes,
   parent: ColumnParent,
   context: Context
 ): string {
@@ -63,22 +68,22 @@ function getMobileWidth(
 }
 
 function column(node: MjColumn, options: Options, context: Context): HElement {
-  const attributes = attributesWithDefaults(node.attributes);
+  const attributes = attributesWithDefaults(node.attributes || {});
   const children = node.children.map((child: MjColumnChild) => {
-    const childAttributes = child.attributes;
+    const childAttributes = child.attributes as MjColumnChildAttributes;
     const hChild = one(child as MjmlNode, node, options, context);
 
     return h("tr", [
       h(
         "td",
         {
-          align: childAttributes["align"],
+          align: childAttributes.align,
           "vertical-align": childAttributes["vertical-align"],
           class: childAttributes["css-class"],
           style: jsonToCss({
             background: childAttributes["container-background-color"],
             fontSize: "0px",
-            padding: childAttributes["padding"],
+            padding: childAttributes.padding,
             paddingTop: childAttributes["padding-top"],
             paddingRight: childAttributes["padding-right"],
             paddingBottom: childAttributes["padding-bottom"],
@@ -105,8 +110,8 @@ function column(node: MjColumn, options: Options, context: Context): HElement {
   );
 }
 
-function hasGutter(attributes: MjColumn["attributes"]): boolean {
-  const gutterAttributes = new Set<keyof MjColumn["attributes"]>([
+function hasGutter(attributes: MjColumnAttributes): boolean {
+  const gutterAttributes = new Set<keyof MjColumnAttributes>([
     "padding",
     "padding-bottom",
     "padding-left",
@@ -117,10 +122,10 @@ function hasGutter(attributes: MjColumn["attributes"]): boolean {
   return Array.from(gutterAttributes).some((attr) => attributes[attr] != null);
 }
 
-function tableStyles(attributes: MjColumn["attributes"]) {
+function tableStyles(attributes: MjColumnAttributes) {
   return {
     backgroundColor: attributes["background-color"],
-    border: attributes["border"],
+    border: attributes.border,
     borderBottom: attributes["border-bottom"],
     borderLeft: attributes["border-left"],
     borderRadius: attributes["border-radius"],
@@ -130,12 +135,9 @@ function tableStyles(attributes: MjColumn["attributes"]) {
   };
 }
 
-function gutter(
-  attributes: MjColumn["attributes"],
-  hColumn: HElement
-): HElement {
+function gutter(attributes: MjColumnAttributes, hColumn: HElement): HElement {
   const style = jsonToCss({
-    padding: attributes["padding"],
+    padding: attributes.padding,
     paddingTop: attributes["padding-top"],
     paddingRight: attributes["padding-right"],
     paddingBottom: attributes["padding-bottom"],
@@ -157,7 +159,7 @@ function gutter(
 }
 
 function getParsedWidth(
-  attributes: MjColumn["attributes"],
+  attributes: MjColumnAttributes,
   parent: ColumnParent
 ): { unit: string; parsedWidth: number } {
   const width = attributes.width || `${100 / parent.children.length}%`;
@@ -173,7 +175,7 @@ function getParsedWidth(
 }
 
 function getColumnClass(
-  attributes: MjColumn["attributes"],
+  attributes: MjColumnAttributes,
   parent: ColumnParent,
   context: Context
 ): string {
@@ -205,13 +207,16 @@ export function mjColumn(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = attributesWithDefaults(node.attributes);
+  const attributes = attributesWithDefaults(node.attributes || {});
+  const cssClass = attributes["css-class"];
   const classesName = classNames(
     getColumnClass(attributes, parent, context),
     "mj-outlook-group-fix",
-    {
-      [attributes["css-class"]]: Boolean(attributes["css-class"]),
-    }
+    cssClass
+      ? {
+          [cssClass]: Boolean(attributes["css-class"]),
+        }
+      : {}
   );
 
   const hColumn = column(node, options, context);
@@ -226,7 +231,7 @@ export function mjColumn(
       style: jsonToCss({
         fontSize: "0px",
         textAlign: "left",
-        direction: attributes["direction"],
+        direction: attributes.direction,
         display: "inline-block",
         verticalAlign: attributes["vertical-align"],
         width: getMobileWidth(attributes, parent, context),

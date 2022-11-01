@@ -1,8 +1,8 @@
 {
-  "files": ["src/index.ts"],
+  "files": ["./src/index.ts"],
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "build",
+    "outDir": "dist",
     "target": "es2021",
     "lib": ["es2021", "DOM"],
     "module": "ES2020",

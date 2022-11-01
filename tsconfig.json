@@ -1,6 +1,5 @@
 {
   "include": ["**/*"],
-  "files": [],
   "references": [
     {
       "path": "./packages/mjmlast/tsconfig.ref.json"

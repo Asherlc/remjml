@@ -14,8 +14,9 @@ import type {
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { one } from "../traverse";
+import { getBoxWidths, getShorthandAttrValue } from "../helpers/get-box-widths";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumnAttributes,
@@ -67,11 +68,56 @@ function getMobileWidth(
   return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
 }
 
-function column(node: MjColumn, options: Options, context: Context): HElement {
+function getContainerWidth(
+  attributes: MjColumnAttributes,
+  parent: ColumnParent,
+  context: Context
+) {
+  const { containerWidth: parentWidth } = context;
+
+  if (!parentWidth) {
+    throw new Error(`No containerWidth on context`);
+  }
+
+  const { borders, paddings } = getBoxWidths(attributes, parentWidth);
+  const innerBorders =
+    getShorthandAttrValue("inner-border", "left", attributes) +
+    getShorthandAttrValue("inner-border", "right", attributes);
+
+  const allPaddings = paddings + borders + innerBorders;
+
+  let containerWidth =
+    attributes.width || `${parseFloat(parentWidth) / parent.children.length}px`;
+
+  const { unit, parsedWidth } = widthParser(containerWidth, {
+    parseFloatToInt: false,
+  });
+
+  if (unit === "%") {
+    containerWidth = `${
+      (parseFloat(parentWidth) * parsedWidth) / 100 - allPaddings
+    }px`;
+  } else {
+    containerWidth = `${parsedWidth - allPaddings}px`;
+  }
+
+  return containerWidth;
+}
+
+function column(
+  node: MjColumn,
+  parent: ColumnParent,
+  options: Options,
+  context: Context
+): HElement {
   const attributes = attributesWithDefaults(node.attributes || {});
+  const containerWidth = getContainerWidth(attributes, parent, context);
   const children = node.children.map((child: MjColumnChild) => {
     const childAttributes = child.attributes as MjColumnChildAttributes;
-    const hChild = one(child as MjmlNode, node, options, context);
+    const hChild = one(child as MjmlNode, node, options, {
+      ...context,
+      containerWidth,
+    });
 
     return h("tr", [
       h(
@@ -219,7 +265,7 @@ export function mjColumn(
       : {}
   );
 
-  const hColumn = column(node, options, context);
+  const hColumn = column(node, parent, options, context);
   const columnWithGutter = hasGutter(attributes)
     ? gutter(attributes, hColumn)
     : hColumn;

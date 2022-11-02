@@ -38,9 +38,6 @@ const mjmlJson: MJMLJsonObject = {
 it("transforms mjml json to html", async () => {
   const mjmlAst = mjmlJsonToRemjml(mjmlJson);
   expect(mjmlAst).toMatchInlineSnapshot(`
-{
-  "attributes": {},
-  "children": [
     {
       "attributes": {},
       "children": [
@@ -51,31 +48,34 @@ it("transforms mjml json to html", async () => {
               "attributes": {},
               "children": [
                 {
-                  "attributes": {
-                    "src": "/assets/img/logo-small.png",
-                    "width": "100px",
-                  },
-                  "children": [],
+                  "attributes": {},
+                  "children": [
+                    {
+                      "attributes": {
+                        "src": "/assets/img/logo-small.png",
+                        "width": "100px",
+                      },
+                      "children": [],
+                      "content": undefined,
+                      "type": "mj-image",
+                    },
+                  ],
                   "content": undefined,
-                  "type": "mj-image",
+                  "type": "mj-column",
                 },
               ],
               "content": undefined,
-              "type": "mj-column",
+              "type": "mj-section",
             },
           ],
           "content": undefined,
-          "type": "mj-section",
+          "type": "mj-body",
         },
       ],
       "content": undefined,
-      "type": "mj-body",
-    },
-  ],
-  "content": undefined,
-  "type": "mjml",
-}
-`);
+      "type": "mjml",
+    }
+  `);
 
   const html = await unified()
     .use(remjmlRehype as any)
@@ -83,12 +83,15 @@ it("transforms mjml json to html", async () => {
     .run(mjmlAst);
 
   expect(html).toMatchInlineSnapshot(`
-{
-  "children": [
     {
       "children": [
         {
           "children": [
+            {
+              "commentType": "downlevel-hidden",
+              "type": "conditional-comment",
+              "value": "mso | IE",
+            },
             {
               "children": [
                 {
@@ -106,85 +109,195 @@ it("transforms mjml json to html", async () => {
                                         {
                                           "children": [
                                             {
+                                              "commentType": "downlevel-hidden",
+                                              "type": "conditional-comment",
+                                              "value": "mso | IE",
+                                            },
+                                            {
                                               "children": [
                                                 {
-                                                  "children": [],
+                                                  "commentType": "downlevel-hidden",
+                                                  "type": "conditional-end-comment",
+                                                },
+                                                {
+                                                  "children": [
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "children": [
+                                                                    {
+                                                                      "children": [
+                                                                        {
+                                                                          "children": [
+                                                                            {
+                                                                              "children": [
+                                                                                {
+                                                                                  "children": [
+                                                                                    {
+                                                                                      "children": [],
+                                                                                      "properties": {
+                                                                                        "height": "auto",
+                                                                                        "src": "/assets/img/logo-small.png",
+                                                                                        "style": "border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px",
+                                                                                        "width": 100,
+                                                                                      },
+                                                                                      "tagName": "image",
+                                                                                      "type": "element",
+                                                                                    },
+                                                                                  ],
+                                                                                  "properties": {},
+                                                                                  "tagName": "td",
+                                                                                  "type": "element",
+                                                                                },
+                                                                              ],
+                                                                              "properties": {},
+                                                                              "tagName": "tr",
+                                                                              "type": "element",
+                                                                            },
+                                                                          ],
+                                                                          "properties": {},
+                                                                          "tagName": "tbody",
+                                                                          "type": "element",
+                                                                        },
+                                                                      ],
+                                                                      "properties": {
+                                                                        "border": 0,
+                                                                        "cellPadding": "0",
+                                                                        "cellSpacing": "0",
+                                                                        "role": "presentation",
+                                                                        "style": "min-width:100%;max-width:100%;border-collapse:collapse;border-spacing:0px",
+                                                                      },
+                                                                      "tagName": "table",
+                                                                      "type": "element",
+                                                                    },
+                                                                  ],
+                                                                  "properties": {
+                                                                    "style": "font-size:0px;word-break:break-word",
+                                                                  },
+                                                                  "tagName": "td",
+                                                                  "type": "element",
+                                                                },
+                                                              ],
+                                                              "properties": {},
+                                                              "tagName": "tr",
+                                                              "type": "element",
+                                                            },
+                                                          ],
+                                                          "properties": {},
+                                                          "tagName": "tbody",
+                                                          "type": "element",
+                                                        },
+                                                      ],
+                                                      "properties": {
+                                                        "border": 0,
+                                                        "cellPadding": "0",
+                                                        "cellSpacing": "0",
+                                                        "role": "presentation",
+                                                        "style": "vertical-align:top",
+                                                        "width": "100%",
+                                                      },
+                                                      "tagName": "table",
+                                                      "type": "element",
+                                                    },
+                                                  ],
                                                   "properties": {
-                                                    "height": "auto",
-                                                    "src": "/assets/img/logo-small.png",
-                                                    "style": "border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px",
-                                                    "width": -50,
+                                                    "className": [
+                                                      "mj-column-per-100",
+                                                      "mj-outlook-group-fix",
+                                                    ],
+                                                    "style": "font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%",
                                                   },
-                                                  "tagName": "image",
+                                                  "tagName": "div",
                                                   "type": "element",
+                                                },
+                                                {
+                                                  "commentType": "downlevel-hidden",
+                                                  "type": "conditional-comment",
+                                                  "value": "mso | IE",
                                                 },
                                               ],
                                               "properties": {
-                                                "style": "width:-50px",
+                                                "border": 0,
+                                                "cellPadding": 0,
+                                                "cellSpacing": 0,
+                                                "role": "presentation",
                                               },
-                                              "tagName": "td",
+                                              "tagName": "table",
                                               "type": "element",
                                             },
                                           ],
-                                          "properties": {},
-                                          "tagName": "tr",
+                                          "properties": {
+                                            "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
+                                          },
+                                          "tagName": "td",
                                           "type": "element",
                                         },
                                       ],
                                       "properties": {},
-                                      "tagName": "tbody",
+                                      "tagName": "tr",
                                       "type": "element",
                                     },
                                   ],
-                                  "properties": {
-                                    "border": 0,
-                                    "cellPadding": "0",
-                                    "cellSpacing": "0",
-                                    "role": "presentation",
-                                    "style": "border-collapse:collapse;border-spacing:0px",
-                                  },
-                                  "tagName": "table",
+                                  "properties": {},
+                                  "tagName": "tbody",
                                   "type": "element",
                                 },
                               ],
                               "properties": {
-                                "style": "font-size:0px;word-break:break-word",
+                                "align": "center",
+                                "border": 0,
+                                "cellPadding": "0",
+                                "cellSpacing": "0",
+                                "role": "presentation",
+                                "style": "width:100%",
                               },
-                              "tagName": "td",
+                              "tagName": "table",
                               "type": "element",
                             },
                           ],
-                          "properties": {},
-                          "tagName": "tr",
+                          "properties": {
+                            "style": "margin:0px auto;max-width:600px",
+                          },
+                          "tagName": "div",
                           "type": "element",
                         },
+                        {
+                          "commentType": "downlevel-hidden",
+                          "type": "conditional-comment",
+                          "value": "mso | IE",
+                        },
                       ],
-                      "properties": {},
-                      "tagName": "tbody",
+                      "properties": {
+                        "style": "line-height:0px;font-size:0px;mso-line-height-rule:exactly",
+                      },
+                      "tagName": "td",
                       "type": "element",
                     },
                   ],
-                  "properties": {
-                    "border": 0,
-                    "cellPadding": "0",
-                    "cellSpacing": "0",
-                    "role": "presentation",
-                    "style": "vertical-align:top",
-                    "width": "100%",
-                  },
-                  "tagName": "table",
+                  "properties": {},
+                  "tagName": "tr",
                   "type": "element",
                 },
               ],
               "properties": {
-                "className": [
-                  "mj-column-per-100",
-                  "mj-outlook-group-fix",
-                ],
-                "style": "font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%",
+                "align": "center",
+                "border": 0,
+                "cellPadding": "0",
+                "cellSpacing": "0",
+                "role": "presentation",
+                "style": "width:600px",
+                "width": 600,
               },
-              "tagName": "div",
+              "tagName": "table",
               "type": "element",
+            },
+            {
+              "commentType": "downlevel-hidden",
+              "type": "conditional-end-comment",
             },
           ],
           "properties": {
@@ -194,16 +307,9 @@ it("transforms mjml json to html", async () => {
           "type": "element",
         },
       ],
-      "properties": {
-        "style": "",
-      },
+      "properties": {},
       "tagName": "div",
       "type": "element",
-    },
-  ],
-  "properties": {},
-  "tagName": "div",
-  "type": "element",
-}
-`);
+    }
+  `);
 });

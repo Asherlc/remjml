@@ -4,7 +4,7 @@ import {
   shorthandParser,
 } from "../helpers/shorthand-parser";
 
-function getShorthandAttrValue<Attributes extends Record<string, any>>(
+export function getShorthandAttrValue<Attributes extends Record<string, any>>(
   attribute: string,
   direction: Direction,
   attributes: Attributes

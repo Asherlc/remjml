@@ -17,7 +17,10 @@ export function mjBody(
 ): HElement {
   const attributes = { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 
-  const children = all(node, options, context);
+  const children = all(node, options, {
+    ...context,
+    containerWidth: attributes.width,
+  });
 
   const hBody = hastH(
     "div",

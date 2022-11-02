@@ -19,6 +19,7 @@
     "target": "ESNext",
     "esModuleInterop": false,
     "moduleResolution": "node",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "allowSyntheticDefaultImports": true
   }
 }

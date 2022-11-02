@@ -1,11 +1,11 @@
-import type { MjBody } from "mjmlast";
+import type { MjBody, MjBodyAttributes } from "mjmlast";
 import { h as hastH } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 
-const DEFAULT_ATTRIBUTES: Pick<MjBody["attributes"], "width"> = {
+const DEFAULT_ATTRIBUTES: Pick<MjBodyAttributes, "width"> = {
   width: "600px",
 };
 
@@ -22,7 +22,7 @@ export function mjBody(
   const hBody = hastH(
     "div",
     {
-      class: node.attributes["css-class"],
+      class: attributes["css-class"],
       style: jsonToCss({ backgroundColor: attributes["background-color"] }),
     },
     children

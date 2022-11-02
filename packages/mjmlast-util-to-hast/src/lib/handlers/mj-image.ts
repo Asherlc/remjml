@@ -1,13 +1,13 @@
 import { getBoxWidths } from "../helpers/get-box-widths";
 import { min } from "lodash-es";
-import type { MjImage, MjHero, MjColumn } from "mjmlast";
+import type { MjImage, MjHero, MjColumn, MjImageAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 
 const DEFAULT_ATTRIBUTES: Pick<
-  MjImage["attributes"],
+  MjImageAttributes,
   "align" | "border" | "height" | "padding" | "target" | "font-size"
 > = {
   align: "center",
@@ -20,10 +20,8 @@ const DEFAULT_ATTRIBUTES: Pick<
 
 type ImageParent = MjHero | MjColumn;
 
-function getContentWidth(attributes: MjImage["attributes"], context: Context) {
-  const width = attributes.width
-    ? parseInt(attributes.width, 10)
-    : Infinity;
+function getContentWidth(attributes: MjImageAttributes, context: Context) {
+  const width = attributes.width ? parseInt(attributes.width, 10) : Infinity;
 
   const { box } = getBoxWidths(attributes, context.containerWidth || "0");
 

@@ -41,7 +41,7 @@ export interface MjPreview extends Parent<EmptyAttributes, Text> {
   type: "mj-preview";
 }
 
-type MjImageAttributes = Partial<{
+export type MjImageAttributes = Partial<{
   alt: string;
   href: string;
   name: string;
@@ -340,12 +340,15 @@ export interface MjCarousel
   type: "mj-carousel";
 }
 
+export type MjBodyAttributes = Partial<{
+  width: string;
+  "background-color": string;
+}> &
+  UniversalAttributes;
+
 export interface MjBody
   extends Parent<
-    {
-      width: string;
-      "background-color": string;
-    },
+    MjBodyAttributes,
     /* eslint-disable-next-line no-use-before-define */
     MjRaw | MjSection | MjWrapper | MjHero
   > {

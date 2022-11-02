@@ -1,5 +1,5 @@
 import type { MjBody, MjBodyAttributes } from "mjmlast";
-import { h as hastH } from "hastscript";
+import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { all } from "../traverse";
@@ -22,13 +22,23 @@ export function mjBody(
     containerWidth: attributes.width,
   });
 
-  const hBody = hastH(
-    "div",
+  const backgroundColor = attributes["background-color"];
+  const hBody = h(
+    "body",
     {
-      class: attributes["css-class"],
-      style: jsonToCss({ backgroundColor: attributes["background-color"] }),
+      style: jsonToCss({
+        wordSpacing: "normal",
+        backgroundColor,
+      }),
     },
-    children
+    h(
+      "div",
+      {
+        class: attributes["css-class"],
+        style: jsonToCss({ backgroundColor }),
+      },
+      children
+    )
   );
 
   return addPosition(node, hBody);

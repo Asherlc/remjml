@@ -630,7 +630,13 @@ export interface MjHero extends Parent<MjHeroAttributes, MjHeroChild> {
   type: "mj-hero";
 }
 
-export interface MjmlRoot extends Parent<never, MjBody | MjHead | MjRaw> {
+export type MjmlRootAttributes = Partial<{
+  lang: string;
+  dir: string;
+}>;
+
+export interface MjmlRoot
+  extends Parent<MjmlRootAttributes, MjBody | MjHead | MjRaw> {
   type: "mjml";
 }
 

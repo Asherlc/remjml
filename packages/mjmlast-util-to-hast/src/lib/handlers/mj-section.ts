@@ -167,30 +167,30 @@ function wrapper(
   ) as unknown as HElement;
 
   const cssClass = attributes["css-class"];
-  return [
-    u("conditional-comment", {
+  return u(
+    "conditional-comment",
+    {
       value: "mso | IE",
       commentType: "downlevel-hidden",
-    }),
-    h(
-      "table",
-      {
-        align: "center",
-        border: "0",
-        cellpadding: "0",
-        cellspacing: "0",
-        class: cssClass ? suffixCssClasses(cssClass, "outlook") : undefined,
-        role: "presentation",
-        style: jsonToCss({ width: containerWidth }),
-        width: containerWidth ? parseInt(containerWidth, 10) : undefined,
-        ...bgcolorAttr,
-      },
-      [h("tr", td)]
-    ),
-    u("conditional-end-comment", {
-      commentType: "downlevel-hidden",
-    }),
-  ];
+    },
+    [
+      h(
+        "table",
+        {
+          align: "center",
+          border: "0",
+          cellpadding: "0",
+          cellspacing: "0",
+          class: cssClass ? suffixCssClasses(cssClass, "outlook") : undefined,
+          role: "presentation",
+          style: jsonToCss({ width: containerWidth }),
+          width: containerWidth ? parseInt(containerWidth, 10) : undefined,
+          ...bgcolorAttr,
+        },
+        [h("tr", td)]
+      ),
+    ]
+  ) as any;
 }
 
 function getBackgroundString(attributes: MjSectionAttributes): string {

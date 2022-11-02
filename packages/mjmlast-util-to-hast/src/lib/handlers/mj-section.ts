@@ -137,186 +137,8 @@ function getBackgroundPosition(attributes: MjSectionAttributes): {
   throw new Error(`No background position`);
 }
 
-function isPercentage(str: string) {
-  return /^\d+(\.\d+)?%$/.test(str);
-}
-
-function withBackground(
-  node: MjSection,
-  parent: SectionParent,
-  context: Context,
-  children: HElement | HElement[]
-) {
-  const attributes = attributesWithDefaults(node.attributes || {});
-  const fullWidth = isFullWidth(attributes);
-
-  let bgPosX: string;
-  let bgPosY: string;
-
-  let vSizeAttributes = {};
-
-  ({ posX: bgPosX, posY: bgPosY } = getBackgroundPosition(attributes));
-
-  switch (bgPosX) {
-    case "left":
-      bgPosX = "0%";
-      break;
-    case "center":
-      bgPosX = "50%";
-      break;
-    case "right":
-      bgPosX = "100%";
-      break;
-    default:
-      if (!isPercentage(bgPosX)) {
-        bgPosX = "50%";
-      }
-      break;
-  }
-  switch (bgPosY) {
-    case "top":
-      bgPosY = "0%";
-      break;
-    case "center":
-      bgPosY = "50%";
-      break;
-    case "bottom":
-      bgPosY = "100%";
-      break;
-    default:
-      if (!isPercentage(bgPosY)) {
-        bgPosY = "0%";
-      }
-      break;
-  }
-
-  // this logic is different when using repeat or no-repeat
-  let [[vOriginX, vPosX], [vOriginY, vPosY]] = ["x", "y"].map((coordinate) => {
-    const isX = coordinate === "x";
-    const bgRepeat = attributes["background-repeat"] === "repeat";
-    let pos: string | number = isX ? bgPosX : bgPosY;
-    let origin: string | number = isX ? bgPosX : bgPosY;
-
-    if (isPercentage(pos)) {
-      // Should be percentage at this point
-      const percentageValue = pos.match(/^(\d+(\.\d+)?)%$/)?.[1];
-
-      if (!percentageValue) {
-        throw new Error(`${pos} was not parseable as a percentage`);
-      }
-
-      const decimal = parseInt(percentageValue, 10) / 100;
-
-      if (bgRepeat) {
-        pos = decimal;
-        origin = decimal;
-      } else {
-        pos = (-50 + decimal * 100) / 100;
-        origin = (-50 + decimal * 100) / 100;
-      }
-    } else if (bgRepeat) {
-      // top (y) or center (x)
-      origin = isX ? "0.5" : "0";
-      pos = isX ? "0.5" : "0";
-    } else {
-      origin = isX ? "0" : "-0.5";
-      pos = isX ? "0" : "-0.5";
-    }
-
-    return [origin, pos];
-  });
-
-  // If background size is either cover or contain, we tell VML to keep the aspect
-  // and fill the entire element.
-  if (
-    attributes["background-size"] === "cover" ||
-    attributes["background-size"] === "contain"
-  ) {
-    vSizeAttributes = {
-      size: "1,1",
-      aspect: attributes["background-size"] === "cover" ? "atleast" : "atmost",
-    };
-  } else if (attributes["background-size"] !== "auto") {
-    const bgSplit = attributes["background-size"]?.split(" ");
-
-    if (bgSplit && bgSplit.length === 1) {
-      vSizeAttributes = {
-        size: attributes["background-size"],
-        aspect: "atmost", // reproduces height auto
-      };
-    } else if (bgSplit) {
-      vSizeAttributes = {
-        size: bgSplit.join(","),
-      };
-    } else {
-      throw new Error(`No background-size`);
-    }
-  }
-
-  let vmlType =
-    attributes["background-repeat"] === "no-repeat" ? "frame" : "tile";
-
-  if (attributes["background-size"] === "auto") {
-    vmlType = "tile"; // if no size provided, keep old behavior because outlook can't use original image size with "frame"
-    [[vOriginX, vPosX], [vOriginY, vPosY]] = [
-      [0.5, 0.5],
-      [0, 0],
-    ]; // also ensure that images are still cropped the same way
-  }
-
-  return u("root", [
-    u("conditional-comment", {
-      value: "mso | IE",
-      commentType: "downlevel-hidden",
-    }),
-    u(
-      "v:rect",
-      {
-        properties: {
-          style: fullWidth
-            ? `'mso-width-percent': '1000';`
-            : jsonToCss({ width: context.containerWidth }),
-          "xmlns:v": "urn:schemas-microsoft-com:vml",
-          fill: "true",
-          stroke: "false",
-        },
-      },
-      [
-        h("v:fill", {
-          properties: {
-            origin: `${vOriginX}, ${vOriginY}`,
-            position: `${vPosX}, ${vPosY}`,
-            src: attributes["background-url"] || "",
-            color: attributes["background-color"] || "",
-            type: vmlType,
-            ...vSizeAttributes,
-          },
-        }),
-        h("v:textbox", {
-          properties: {
-            style: "mso-fit-shape-to-text:true",
-            inset: "0,0,0,0",
-          },
-        }),
-        u("conditional-end-comment", {
-          commentType: "downlevel-hidden",
-        }),
-        ...castArray(children),
-        u("conditional-comment", {
-          value: "mso | IE",
-          commentType: "downlevel-hidden",
-        }),
-      ]
-    ),
-    u("conditional-end-comment", {
-      commentType: "downlevel-hidden",
-    }),
-  ]);
-}
-
 function wrapper(
   node: MjSection,
-  parent: SectionParent,
   context: Context,
   children: Node[] | Node
 ): Node[] {
@@ -370,12 +192,12 @@ function wrapper(
   ];
 }
 
-function getBackgroundString(attributes: MjSection["attributes"]): string {
+function getBackgroundString(attributes: MjSectionAttributes): string {
   const { posX, posY } = getBackgroundPosition(attributes);
   return `${posX} ${posY}`;
 }
 
-function getBackground(attributes: MjSection["attributes"]): string {
+function getBackground(attributes: MjSectionAttributes): string {
   return [
     attributes["background-color"],
     ...(hasBackground(attributes)
@@ -392,7 +214,6 @@ function getBackground(attributes: MjSection["attributes"]): string {
 
 function section(
   node: MjSection,
-  parent: SectionParent,
   context: Context,
   children: ElementContent[]
 ): HElement {
@@ -558,13 +379,9 @@ export function mjSection(
 
   const children = all(node, options, context);
 
-  const main = section(node, parent, context, children);
+  const content = section(node, context, children);
 
-  const content: Node = hasBackground(attributes)
-    ? withBackground(node, parent, context, main)
-    : main;
-
-  const wrapped = wrapper(node, parent, context, content);
+  const wrapped = wrapper(node, context, content);
 
   const full: HElement = isFullWidth(attributes)
     ? (fullWidth(node, parent, context, wrapped as any) as any)

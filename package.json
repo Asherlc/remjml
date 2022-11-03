@@ -30,6 +30,8 @@
     "mjml-json-to-remjml": "*",
     "mjmlast": "*",
     "mjmlast-util-to-hast": "*",
+    "xast-util-to-mjmlast": "*",
+    "remjml-parse": "*",
     "prettier": "^2.7.1",
     "rehype-stringify": "^9.0.3",
     "remjml-rehype": "*",

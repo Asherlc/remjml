@@ -2,6 +2,7 @@ import mjmlJsonToRemjml, { MJMLJsonObject } from "mjml-json-to-remjml/src";
 import { unified } from "unified";
 import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
+import remjmlParse from "remjml-parse";
 
 const mjmlJson: MJMLJsonObject = {
   tagName: "mjml",
@@ -450,5 +451,39 @@ it("transforms mjml json to html", async () => {
       "tagName": "html",
       "type": "element",
     }
+  `);
+});
+
+it("transforms mjml to html", async () => {
+  const mjml = `<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-button font-family="Helvetica" background-color="#f45e43" color="white">
+          Don't click me!
+         </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>`;
+
+  const html = await unified()
+    .use(remjmlParse)
+    .use(remjmlRehype as any)
+    .use(rehypeStringify)
+    .process(mjml);
+
+  expect(String(html)).toMatchInlineSnapshot(`
+    "<div><div>
+      <div>
+        <div>
+          <div>
+            <div>
+              Don't click me!
+             </div>
+          </div>
+        </div>
+      </div>
+    </div></div>"
   `);
 });

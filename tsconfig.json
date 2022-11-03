@@ -12,6 +12,12 @@
     },
     {
       "path": "./packages/remjml/tsconfig.ref.json"
+    },
+    {
+      "path": "./packages/remjml-parse/tsconfig.ref.json"
+    },
+    {
+      "path": "./packages/xast-util-to-mjmlast/tsconfig.ref.json"
     }
   ],
   "compilerOptions": {

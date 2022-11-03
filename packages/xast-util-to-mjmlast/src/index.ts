@@ -1,4 +1,4 @@
-import { Element as HElement, Comment as HComment } from "hast";
+import { Element as HElement, Comment as HComment, Text as HText } from "hast";
 import { u } from "unist-builder";
 import { MjmlNode, nodeTypes } from "mjmlast";
 import {
@@ -7,6 +7,7 @@ import {
   Element as XElement,
   Parent as XParent,
   Comment as XComment,
+  Text as XText,
 } from "xast";
 
 function isRoot(node: Node): node is Root {
@@ -19,6 +20,10 @@ function isXElement(node: Node): node is XElement {
 
 function isComment(node: Node): node is XComment {
   return node.type === "comment";
+}
+
+function isText(node: Node): node is XText {
+  return node.type === "text";
 }
 
 function handler(node: Node): MjmlNode | HElement | XComment {
@@ -42,6 +47,10 @@ function handler(node: Node): MjmlNode | HElement | XComment {
 
   if (isComment(node)) {
     return node as HComment;
+  }
+
+  if (isText(node)) {
+    return node as HText;
   }
 
   throw new Error(`Unrecognized node type: ${node.type}`);
@@ -84,7 +93,7 @@ export function all(parent: XParent): (MjmlNode | HElement)[] {
   return values;
 }
 
-export function fastXmlParserToMjmlast(node: Node): MjmlNode | Root {
+export function fromXast(node: Node): MjmlNode | Root {
   if (isRoot(node)) {
     return u("root", all(node)) as any;
   }

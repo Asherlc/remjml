@@ -90,15 +90,8 @@ it("transforms mjml json to html", async () => {
             {
               "children": [
                 {
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "<!--[if mso | IE]>",
-                    },
-                  ],
-                  "properties": {},
-                  "tagName": "raw",
-                  "type": "element",
+                  "type": "raw",
+                  "value": "<!--[if mso | IE]>",
                 },
                 {
                   "children": [
@@ -117,28 +110,14 @@ it("transforms mjml json to html", async () => {
                                             {
                                               "children": [
                                                 {
-                                                  "children": [
-                                                    {
-                                                      "type": "text",
-                                                      "value": "<!--[if mso | IE]>",
-                                                    },
-                                                  ],
-                                                  "properties": {},
-                                                  "tagName": "raw",
-                                                  "type": "element",
+                                                  "type": "raw",
+                                                  "value": "<!--[if mso | IE]>",
                                                 },
                                                 {
                                                   "children": [
                                                     {
-                                                      "children": [
-                                                        {
-                                                          "type": "text",
-                                                          "value": "<![endif]-->",
-                                                        },
-                                                      ],
-                                                      "properties": {},
-                                                      "tagName": "raw",
-                                                      "type": "element",
+                                                      "type": "raw",
+                                                      "value": "<![endif]-->",
                                                     },
                                                     {
                                                       "children": [
@@ -236,15 +215,8 @@ it("transforms mjml json to html", async () => {
                                                       "type": "element",
                                                     },
                                                     {
-                                                      "children": [
-                                                        {
-                                                          "type": "text",
-                                                          "value": "<!--[if mso | IE]>",
-                                                        },
-                                                      ],
-                                                      "properties": {},
-                                                      "tagName": "raw",
-                                                      "type": "element",
+                                                      "type": "raw",
+                                                      "value": "<!--[if mso | IE]>",
                                                     },
                                                   ],
                                                   "properties": {
@@ -293,15 +265,8 @@ it("transforms mjml json to html", async () => {
                               "type": "element",
                             },
                             {
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "value": "<!--[if mso | IE]>",
-                                },
-                              ],
-                              "properties": {},
-                              "tagName": "raw",
-                              "type": "element",
+                              "type": "raw",
+                              "value": "<!--[if mso | IE]>",
                             },
                           ],
                           "properties": {
@@ -329,15 +294,8 @@ it("transforms mjml json to html", async () => {
                   "type": "element",
                 },
                 {
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "<![endif]-->",
-                    },
-                  ],
-                  "properties": {},
-                  "tagName": "raw",
-                  "type": "element",
+                  "type": "raw",
+                  "value": "<![endif]-->",
                 },
               ],
               "properties": {

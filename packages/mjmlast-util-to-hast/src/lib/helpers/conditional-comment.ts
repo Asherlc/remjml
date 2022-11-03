@@ -2,6 +2,7 @@ import { Element as HElement } from "hast";
 import { h } from "hastscript";
 import { castArray } from "lodash-es";
 import type { Node } from "unist";
+import { Literal, u } from "unist-builder";
 
 type ConditionalCommentType = "downlevel-hidden" | "downlevel-revealed";
 type ConditionalCommentSide = "begin" | "end";
@@ -36,7 +37,10 @@ export function beginConditionalComment({
   expression: string;
   type: ConditionalCommentType;
 }): HElement {
-  return h("raw", beginConditionalCommentString(expression, type));
+  return u(
+    "raw",
+    beginConditionalCommentString(expression, type)
+  ) as unknown as HElement;
 }
 
 export function endConditionalComment({
@@ -44,7 +48,7 @@ export function endConditionalComment({
 }: {
   type: ConditionalCommentType;
 }): HElement {
-  return h("raw", endConditionalCommentString(type));
+  return u("raw", endConditionalCommentString(type)) as unknown as HElement;
 }
 
 type Attributes = { expression: string; type: ConditionalCommentType };

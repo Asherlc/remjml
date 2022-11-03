@@ -14,6 +14,7 @@ import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import { all } from "../traverse";
 import { u } from "unist-builder";
+import { conditionalComment } from "../helpers/conditional-comment";
 
 export function mjml(
   node: MjmlRoot,
@@ -36,14 +37,13 @@ export function mjml(
     },
     [
       h("head", [
-        u(
-          "conditional-comment",
+        conditionalComment(
           {
-            value: "mso",
-            commentType: "downlevel-hidden",
+            expression: "mso",
+            type: "downlevel-hidden",
           },
           [h("meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" })]
-        ) as any,
+        ),
         h("meta", {
           "http-equiv": "Content-Type",
           content: "text/html; charset=UTF-8",
@@ -63,11 +63,10 @@ table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; 
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }`
         ),
-        u(
-          "conditional-comment",
+        conditionalComment(
           {
-            value: "mso",
-            commentType: "downlevel-hidden",
+            expression: "mso",
+            type: "downlevel-hidden",
           },
           [
             h(
@@ -81,11 +80,10 @@ p { display:block;margin:13px 0; }`
               ) as any
             ),
           ]
-        ) as any,
-        u(
-          "conditional-comment",
+        ),
+        conditionalComment(
           {
-            value: "lte mso 11",
+            expression: "lte mso 11",
             type: "downlevel-hidden",
           },
           [

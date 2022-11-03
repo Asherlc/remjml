@@ -1,3 +1,8 @@
+import {
+  conditionalComment,
+  beginConditionalComment,
+  endConditionalComment,
+} from "../helpers/conditional-comment";
 import type { Node } from "unist";
 import suffixCssClasses from "../helpers/suffix-css-classes";
 import type {
@@ -14,7 +19,7 @@ import { all } from "../traverse";
 import { u } from "unist-builder";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Property } from "csstype";
-import { castArray } from "lodash-es";
+import { castArray, cond } from "lodash-es";
 import { getBoxWidths } from "../helpers/get-box-widths";
 
 type SectionParent = MjBody | MjWrapper;
@@ -159,19 +164,19 @@ function wrapper(
     },
     [
       ...castArray(children),
-      u("conditional-comment", {
-        value: "mso | IE",
-        commentType: "downlevel-hidden",
+      beginConditionalComment({
+        expression: "mso | IE",
+        type: "downlevel-hidden",
       }),
     ]
   ) as unknown as HElement;
 
   const cssClass = attributes["css-class"];
-  return u(
-    "conditional-comment",
+
+  return conditionalComment(
     {
-      value: "mso | IE",
-      commentType: "downlevel-hidden",
+      expression: "mso | IE",
+      type: "downlevel-hidden",
     },
     [
       h(
@@ -190,7 +195,7 @@ function wrapper(
         [h("tr", td)]
       ),
     ]
-  ) as any;
+  );
 }
 
 function getBackgroundString(attributes: MjSectionAttributes): string {
@@ -287,10 +292,10 @@ function section(
                 }),
               },
               [
-                u("conditional-comment", {
-                  value: "mso | IE",
-                  commentType: "downlevel-hidden",
-                }) as any,
+                beginConditionalComment({
+                  expression: "mso | IE",
+                  type: "downlevel-hidden",
+                }),
                 h(
                   "table",
                   {
@@ -300,14 +305,14 @@ function section(
                     cellspacing: 0,
                   },
                   [
-                    u("conditional-end-comment", {
-                      commentType: "downlevel-hidden",
-                    }) as any,
+                    endConditionalComment({
+                      type: "downlevel-hidden",
+                    }),
                     ...children,
-                    u("conditional-comment", {
-                      value: "mso | IE",
-                      commentType: "downlevel-hidden",
-                    }) as any,
+                    beginConditionalComment({
+                      expression: "mso | IE",
+                      type: "downlevel-hidden",
+                    }),
                   ]
                 ),
               ]

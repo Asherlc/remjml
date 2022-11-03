@@ -1,19 +1,8 @@
-import { x } from "xastscript";
-import { getBoxWidths } from "../helpers/get-box-widths";
-import { min } from "lodash-es";
-import type {
-  MjImage,
-  MjHero,
-  MjColumn,
-  MjImageAttributes,
-  MjmlRoot,
-} from "mjmlast";
+import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
-import { jsonToCss } from "../helpers/json-to-css";
 import { all } from "../traverse";
-import { u } from "unist-builder";
 import { conditionalComment } from "../helpers/conditional-comment";
 
 export function mjml(
@@ -71,13 +60,13 @@ p { display:block;margin:13px 0; }`
           [
             h(
               "noscript",
-              x(
+              h(
                 "xml",
-                x("o:OfficeDocumentSettings", [
-                  x("o:AllowPNG"),
-                  x("o:PixelsPerInch", 96),
+                h("o:OfficeDocumentSettings", [
+                  h("o:AllowPNG"),
+                  h("o:PixelsPerInch", 96),
                 ])
-              ) as any
+              )
             ),
           ]
         ),

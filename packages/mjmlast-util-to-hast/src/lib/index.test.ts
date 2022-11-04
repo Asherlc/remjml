@@ -66,130 +66,121 @@ fit("transforms a mjmlast section to hast", () => {
 
   expect(toHast(section)).toMatchInlineSnapshot(`
     {
-      "0": {
-        "type": "raw",
-        "value": "<!--[if mso | IE]>",
-      },
-      "1": {
-        "children": [
-          {
-            "children": [
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "children": [
-                          {
-                            "children": [
-                              {
-                                "children": [
-                                  {
-                                    "children": [
-                                      {
-                                        "type": "raw",
-                                        "value": "<!--[if mso | IE]>",
-                                      },
-                                      {
-                                        "children": [
-                                          {
-                                            "type": "raw",
-                                            "value": "<![endif]-->",
-                                          },
-                                          {
-                                            "type": "raw",
-                                            "value": "<!--[if mso | IE]>",
-                                          },
-                                        ],
-                                        "properties": {
-                                          "border": 0,
-                                          "cellPadding": 0,
-                                          "cellSpacing": 0,
-                                          "role": "presentation",
+      "children": [
+        {
+          "type": "raw",
+          "value": "<!--[if mso | IE]>",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "type": "raw",
+                                          "value": "<!--[if mso | IE]>",
                                         },
-                                        "tagName": "table",
-                                        "type": "element",
+                                        {
+                                          "children": [
+                                            {
+                                              "type": "raw",
+                                              "value": "<![endif]-->",
+                                            },
+                                            {
+                                              "type": "raw",
+                                              "value": "<!--[if mso | IE]>",
+                                            },
+                                          ],
+                                          "properties": {
+                                            "border": 0,
+                                            "cellPadding": 0,
+                                            "cellSpacing": 0,
+                                            "role": "presentation",
+                                          },
+                                          "tagName": "table",
+                                          "type": "element",
+                                        },
+                                      ],
+                                      "properties": {
+                                        "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
                                       },
-                                    ],
-                                    "properties": {
-                                      "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
+                                      "tagName": "td",
+                                      "type": "element",
                                     },
-                                    "tagName": "td",
-                                    "type": "element",
-                                  },
-                                ],
-                                "properties": {},
-                                "tagName": "tr",
-                                "type": "element",
-                              },
-                            ],
-                            "properties": {},
-                            "tagName": "tbody",
-                            "type": "element",
+                                  ],
+                                  "properties": {},
+                                  "tagName": "tr",
+                                  "type": "element",
+                                },
+                              ],
+                              "properties": {},
+                              "tagName": "tbody",
+                              "type": "element",
+                            },
+                          ],
+                          "properties": {
+                            "align": "center",
+                            "border": 0,
+                            "cellPadding": "0",
+                            "cellSpacing": "0",
+                            "role": "presentation",
+                            "style": "width:100%",
                           },
-                        ],
-                        "properties": {
-                          "align": "center",
-                          "border": 0,
-                          "cellPadding": "0",
-                          "cellSpacing": "0",
-                          "role": "presentation",
-                          "style": "width:100%",
+                          "tagName": "table",
+                          "type": "element",
                         },
-                        "tagName": "table",
-                        "type": "element",
+                      ],
+                      "properties": {
+                        "style": "margin:0px auto",
                       },
-                    ],
-                    "properties": {
-                      "style": "margin:0px auto",
+                      "tagName": "div",
+                      "type": "element",
                     },
-                    "tagName": "div",
-                    "type": "element",
+                    {
+                      "type": "raw",
+                      "value": "<!--[if mso | IE]>",
+                    },
+                  ],
+                  "properties": {
+                    "style": "line-height:0px;font-size:0px;mso-line-height-rule:exactly",
                   },
-                  {
-                    "type": "raw",
-                    "value": "<!--[if mso | IE]>",
-                  },
-                ],
-                "properties": {
-                  "style": "line-height:0px;font-size:0px;mso-line-height-rule:exactly",
+                  "tagName": "td",
+                  "type": "element",
                 },
-                "tagName": "td",
-                "type": "element",
-              },
-            ],
-            "properties": {},
-            "tagName": "tr",
-            "type": "element",
+              ],
+              "properties": {},
+              "tagName": "tr",
+              "type": "element",
+            },
+          ],
+          "properties": {
+            "align": "center",
+            "border": 0,
+            "cellPadding": "0",
+            "cellSpacing": "0",
+            "role": "presentation",
+            "style": "",
           },
-        ],
-        "properties": {
-          "align": "center",
-          "border": 0,
-          "cellPadding": "0",
-          "cellSpacing": "0",
-          "role": "presentation",
-          "style": "",
+          "tagName": "table",
+          "type": "element",
         },
-        "tagName": "table",
-        "type": "element",
-      },
-      "2": {
-        "type": "raw",
-        "value": "<![endif]-->",
-      },
-      "position": {
-        "end": {
-          "column": 26,
-          "line": 1,
-          "offset": 25,
+        {
+          "type": "raw",
+          "value": "<![endif]-->",
         },
-        "start": {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
-      },
+      ],
+      "type": "root",
     }
   `);
 });

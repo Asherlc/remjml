@@ -15,6 +15,9 @@
     },
     {
       "path": "./packages/xast-util-to-mjmlast/tsconfig.ref.json"
+    },
+    {
+      "path": "./packages/mjmlast-util-to-hast/tsconfig.ref.json"
     }
   ],
   "compilerOptions": {

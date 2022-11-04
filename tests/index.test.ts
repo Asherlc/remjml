@@ -474,7 +474,7 @@ it("transforms mjml to html", async () => {
     .process(mjml);
 
   expect(String(html)).toMatchInlineSnapshot(`
-    "<div><div>
+    "<div>
       <div>
         <div>
           <div>
@@ -484,6 +484,6 @@ it("transforms mjml to html", async () => {
           </div>
         </div>
       </div>
-    </div></div>"
+    </div>"
   `);
 });

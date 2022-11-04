@@ -8,7 +8,7 @@ type Options = {
   emitParseErrors?: boolean;
 };
 
-export default function rehypeParse(
+export default function remjmlParse(
   this: Plugin<[Options?] | Array<void>, string, Root>
 ) {
   Object.assign(this, { Parser: parser });
@@ -17,4 +17,6 @@ export default function rehypeParse(
     const xAst = fromXml(String(file));
     return fromXast(xAst);
   }
+
+  return parser;
 }

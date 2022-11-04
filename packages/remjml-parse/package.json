@@ -7,7 +7,9 @@
   "dependencies": {
     "mjmlast": "*",
     "xast-util-to-mjmlast": "*",
-    "xast-util-from-xml": "2.0.1"
+    "xast-util-from-xml": "2.0.1",
+    "vfile": "5.3.5",
+    "unified": "10.1.2"
   },
   "scripts": {
     "clean": "tsc --build --clean",

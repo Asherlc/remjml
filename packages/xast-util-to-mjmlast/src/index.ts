@@ -27,9 +27,11 @@ function isText(node: Node): node is XText {
 }
 
 function handler(node: Node): MjmlNode | HElement | XComment {
-  if (isXElement(node) && nodeTypes.has(node.type)) {
+  const nodeIsXElement = isXElement(node);
+
+  if (nodeIsXElement && nodeTypes.has(node.name)) {
     return {
-      ...node,
+      position: node.position,
       type: node.name,
       attributes: node.attributes || {},
       children: all(node) as any,
@@ -38,7 +40,8 @@ function handler(node: Node): MjmlNode | HElement | XComment {
 
   if (isXElement(node)) {
     return {
-      ...node,
+      position: node.position,
+      type: "element",
       tagName: node.name,
       properties: node.attributes,
       children: all(node) as any,
@@ -56,7 +59,7 @@ function handler(node: Node): MjmlNode | HElement | XComment {
   throw new Error(`Unrecognized node type: ${node.type}`);
 }
 
-export function one(node: Node): MjmlNode | HElement {
+function one(node: Node): MjmlNode | HElement {
   const type = node && node.type;
 
   // Fail on non-nodes.
@@ -67,7 +70,7 @@ export function one(node: Node): MjmlNode | HElement {
   return handler(node) as any;
 }
 
-export function all(parent: XParent): (MjmlNode | HElement)[] {
+function all(parent: XParent): (MjmlNode | HElement)[] {
   const values: (MjmlNode | HElement)[] = [];
 
   if ("children" in parent) {
@@ -94,6 +97,15 @@ export function all(parent: XParent): (MjmlNode | HElement)[] {
 }
 
 export function fromXast(node: Node): MjmlNode | Root {
+  if (
+    isRoot(node) &&
+    node.children.length === 1 &&
+    isXElement(node.children[0]) &&
+    node.children[0].name === "mjml"
+  ) {
+    return one(node.children[0] as any) as any;
+  }
+
   if (isRoot(node)) {
     return u("root", all(node)) as any;
   }

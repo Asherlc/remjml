@@ -113,7 +113,7 @@ function column(
   const attributes = attributesWithDefaults(node.attributes || {});
   const containerWidth = getContainerWidth(attributes, parent, context);
   const children = node.children.map((child: MjColumnChild) => {
-    const childAttributes = child.attributes as MjColumnChildAttributes;
+    const childAttributes = (child.attributes || {}) as MjColumnChildAttributes;
     const hChild = one(child as MjmlNode, node, options, {
       ...context,
       containerWidth,

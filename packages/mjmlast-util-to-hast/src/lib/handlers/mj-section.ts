@@ -19,7 +19,7 @@ import { all } from "../traverse";
 import { u } from "unist-builder";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Property } from "csstype";
-import { castArray, cond } from "lodash-es";
+import { castArray } from "lodash-es";
 import { getBoxWidths } from "../helpers/get-box-widths";
 
 type SectionParent = MjBody | MjWrapper;
@@ -154,6 +154,8 @@ function wrapper(
     ? { bgcolor: attributes["background-color"] }
     : {};
 
+  const childrenArray = castArray(children);
+
   const td = u(
     "element",
     {
@@ -163,7 +165,7 @@ function wrapper(
       },
     },
     [
-      ...castArray(children),
+      ...childrenArray,
       beginConditionalComment({
         expression: "mso | IE",
         type: "downlevel-hidden",
@@ -332,12 +334,7 @@ function section(
   );
 }
 
-function fullWidth(
-  node: MjSection,
-  parent: SectionParent,
-  context: Context,
-  children: HElement[]
-): HElement {
+function fullWidth(node: MjSection, children: Node[]): HElement {
   const attributes = attributesWithDefaults(node.attributes || {});
   const fullWidth = isFullWidth(attributes);
   const background = attributes["background-url"]
@@ -377,17 +374,15 @@ function fullWidth(
 
 export function mjSection(
   node: MjSection,
-  parent: SectionParent,
+  parent: SectionParent | null,
   options: Options,
   context: Context
-): HElement {
+): HElement | HElement[] {
   const attributes = attributesWithDefaults(node.attributes || {});
 
-  if (!context.containerWidth) {
-    throw new Error(`No containerWidth on context`);
-  }
-
-  const { box } = getBoxWidths(attributes, context.containerWidth);
+  const { box } = context.containerWidth
+    ? getBoxWidths(attributes, context.containerWidth)
+    : { box: undefined };
   const containerWidth = `${box}px`;
 
   const children = all(node, options, {
@@ -399,9 +394,9 @@ export function mjSection(
 
   const wrapped = wrapper(node, context, content);
 
-  const full: HElement = isFullWidth(attributes)
-    ? (fullWidth(node, parent, context, wrapped as any) as any)
-    : wrapped;
+  const full: HElement | HElement[] = isFullWidth(attributes)
+    ? fullWidth(node, wrapped)
+    : (wrapped as HElement[]);
 
-  return addPosition(node, full);
+  return full;
 }

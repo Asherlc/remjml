@@ -39,10 +39,6 @@ export function mjImage(
   const height = attributes.height;
   const contentWidth = getContentWidth(attributes, context);
 
-  if (!context.containerWidth) {
-    throw new Error(`No containerWidth on context`);
-  }
-
   const width = context.containerWidth;
 
   const hImage = h("image", {

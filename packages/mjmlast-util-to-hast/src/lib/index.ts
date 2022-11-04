@@ -17,8 +17,8 @@ type HastNode = HRoot | HParent | HParent["children"][number];
 export type Context = {
   containerWidth?: string;
   mobileWidth?: string;
-  mjHead: MjHead;
-  mediaQueries: {
+  mjHead?: MjHead;
+  mediaQueries?: {
     [className: string]: string;
   };
 };

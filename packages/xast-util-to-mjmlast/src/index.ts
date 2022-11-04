@@ -100,8 +100,7 @@ export function fromXast(node: Node): MjmlNode | Root {
   if (
     isRoot(node) &&
     node.children.length === 1 &&
-    isXElement(node.children[0]) &&
-    node.children[0].name === "mjml"
+    isXElement(node.children[0])
   ) {
     return one(node.children[0] as any) as any;
   }

@@ -38,7 +38,7 @@ function getMobileWidth(
   attributes: MjColumnAttributes,
   parent: ColumnParent,
   context: Context
-): string {
+): string | undefined {
   const siblingsLength = parent.children.length;
   const { width } = attributes;
   const mobileWidth = context.mobileWidth;
@@ -62,7 +62,7 @@ function getMobileWidth(
   }
 
   if (!context.containerWidth) {
-    throw new Error(`No containerWidth`);
+    return undefined;
   }
 
   return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
@@ -72,11 +72,11 @@ function getContainerWidth(
   attributes: MjColumnAttributes,
   parent: ColumnParent,
   context: Context
-) {
+): string | undefined {
   const { containerWidth: parentWidth } = context;
 
   if (!parentWidth) {
-    throw new Error(`No containerWidth on context`);
+    return undefined;
   }
 
   const { borders, paddings } = getBoxWidths(attributes, parentWidth);

@@ -13,7 +13,7 @@ import type {
   UniversalAttributes,
 } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Context, Options } from "..";
+import { Context, Options } from "..";
 import { Element as HElement, ElementContent } from "hast";
 import { all } from "../traverse";
 import { u } from "unist-builder";

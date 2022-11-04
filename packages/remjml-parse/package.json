@@ -11,6 +11,9 @@
     "vfile": "5.3.5",
     "unified": "10.1.2"
   },
+  "devDependencies": {
+    "jest-serializer-html": "7.1.0"
+  },
   "scripts": {
     "clean": "tsc --build --clean",
     "build": "tsc --build",

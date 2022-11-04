@@ -350,7 +350,7 @@ function fullWidth(node: MjSection, children: Node[]): HElement {
         "background-color": attributes["background-color"],
       };
 
-  const tr = h("td", children);
+  const tr = h("td", children as any);
 
   return h(
     "table",

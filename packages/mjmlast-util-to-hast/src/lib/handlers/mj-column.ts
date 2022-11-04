@@ -227,7 +227,7 @@ function getColumnClass(
 ): string {
   let className = "";
 
-  const { parsedWidth, unit } = getParsedWidth(attributes, parent);
+  const { parsedWidth, unit = "px" } = getParsedWidth(attributes, parent);
   const formattedClassNb = parsedWidth.toString().replace(".", "-");
 
   switch (unit) {
@@ -242,7 +242,9 @@ function getColumnClass(
   }
 
   // Add className to media queries
-  context.mediaQueries[className] = generateMediaQuery(parsedWidth, unit);
+  if (context.mediaQueries) {
+    context.mediaQueries[className] = generateMediaQuery(parsedWidth, unit);
+  }
 
   return className;
 }

@@ -15,7 +15,9 @@ it("parses mjml", () => {
 </mjml>`;
   const vfile = new VFile(mjml);
 
-  expect(remjmlParse.bind([])()("foo", vfile)).toMatchInlineSnapshot(`
+  const parser = remjmlParse.bind([])();
+
+  expect(parser("foo", vfile)).toMatchInlineSnapshot(`
     {
       "attributes": {},
       "children": [

@@ -36,6 +36,7 @@
     "remjml-parse": "*",
     "remjml-rehype": "*",
     "unified": "^10.1.2",
-    "xast-util-to-mjmlast": "*"
+    "xast-util-to-mjmlast": "*",
+    "jest-xml-matcher": "1.2.0"
   }
 }

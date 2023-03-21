@@ -16,5 +16,5 @@ export default {
         ],
     },
     testEnvironment: "node",
-    snapshotSerializers: ["jest-serializer-html"]
+    snapshotSerializers: ["jest-serializer-html"],
 };

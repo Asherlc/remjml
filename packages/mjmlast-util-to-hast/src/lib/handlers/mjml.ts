@@ -10,7 +10,7 @@ export function mjml(
   parent: never,
   options: Options,
   context: Context
-): HElement {
+): HElement[] {
   const attributes = node.attributes || {};
 
   const children = all(node, options, context);
@@ -90,5 +90,7 @@ p { display:block;margin:13px 0; }`
     ]
   );
 
-  return addPosition(node, hDoc);
+  const hDoctype = { type: "doctype" };
+
+  return [hDoctype, addPosition(node, hDoc)];
 }

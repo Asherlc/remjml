@@ -1,3 +1,4 @@
+import { is } from "unist-util-is";
 import { generateMediaQuery } from "../helpers/generate-media-query";
 import widthParser from "../helpers/width-parser";
 import { jsonToCss } from "../helpers/json-to-css";
@@ -39,7 +40,9 @@ function getMobileWidth(
   parent: ColumnParent,
   context: Context
 ): string | undefined {
-  const siblingsLength = parent.children.length;
+  const nonRawSiblings = parent.children.filter(
+    (sibling) => !is(sibling, "raw")
+  );
   const { width } = attributes;
   const mobileWidth = context.mobileWidth;
 
@@ -48,7 +51,7 @@ function getMobileWidth(
   }
 
   if (width === undefined) {
-    return `${Math.round(100 / siblingsLength)}%`;
+    return `${Math.round(100 / nonRawSiblings.length)}%`;
   }
 
   const { unit, parsedWidth } = widthParser(width, {
@@ -79,6 +82,11 @@ function getContainerWidth(
     return undefined;
   }
 
+  const nonRawSiblings = parent.children.filter((sibling) =>
+    is(sibling, "element")
+  );
+  console.log(nonRawSiblings);
+
   const { borders, paddings } = getBoxWidths(attributes, parentWidth);
   const innerBorders =
     getShorthandAttrValue("inner-border", "left", attributes) +
@@ -87,7 +95,7 @@ function getContainerWidth(
   const allPaddings = paddings + borders + innerBorders;
 
   let containerWidth =
-    attributes.width || `${parseFloat(parentWidth) / parent.children.length}px`;
+    attributes.width || `${parseFloat(parentWidth) / nonRawSiblings.length}px`;
 
   const { unit, parsedWidth } = widthParser(containerWidth, {
     parseFloatToInt: false,
@@ -208,11 +216,15 @@ function getParsedWidth(
   attributes: MjColumnAttributes,
   parent: ColumnParent
 ): { unit: string; parsedWidth: number } {
-  const width = attributes.width || `${100 / parent.children.length}%`;
+  const nonRawSiblings = parent.children.filter(
+    (sibling) => !is(sibling, "raw")
+  );
+  const width = attributes.width || `${100 / nonRawSiblings.length}%`;
 
   const { unit, parsedWidth } = widthParser(width, {
     parseFloatToInt: false,
   });
+  console.log({ width, unit });
 
   return {
     unit,

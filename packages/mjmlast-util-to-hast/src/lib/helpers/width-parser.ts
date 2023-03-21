@@ -1,4 +1,4 @@
-const unitRegex = /^(\d+)(px|%)$/;
+const unitRegex = /(\d+\.?\d*)(px|%)?$/;
 
 export type Unit = "px" | "%";
 
@@ -27,6 +27,10 @@ export class Width {
     }
 
     const widthUnit = unitRegex.exec(this.#rawWidth)?.[2];
+
+    if (!widthUnit) {
+      return "%";
+    }
 
     if (!widthUnitIsValid(widthUnit)) {
       throw new Error(`Invalid width unit ${widthUnit}`);

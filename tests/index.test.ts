@@ -51,7 +51,7 @@ it("transforms mjml to html", async () => {
       <body style="word-spacing:normal">
         <div style>
           <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px" width="600"><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly"><div style="margin:0px auto;max-width:600px"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"><tbody><tr><td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center"><!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
-          <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+          <div class="mj-column-per-33 mj-outlook-group-fix"
                style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
           >
             <table border="0"

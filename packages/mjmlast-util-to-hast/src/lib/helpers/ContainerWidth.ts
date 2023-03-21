@@ -63,7 +63,6 @@ export class ContainerWidth {
     unit: Unit;
   } {
     const { unit, width } = this.#totalWidth;
-    console.log({ width, unit });
 
     if (unit === "%") {
       return {

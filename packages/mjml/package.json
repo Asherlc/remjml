@@ -1,5 +1,5 @@
 {
-  "name": "mjml",
+  "name": "mjml-types",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"

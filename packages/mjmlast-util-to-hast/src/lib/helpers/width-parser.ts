@@ -40,6 +40,12 @@ export class Width {
       return this.#rawWidth;
     }
 
-    return parseInt(this.unit);
+    const widthString = unitRegex.exec(this.#rawWidth)?.[1];
+
+    if (!widthString) {
+      throw new Error(`Could not parse width value from ${this.#rawWidth}`);
+    }
+
+    return parseInt(widthString);
   }
 }

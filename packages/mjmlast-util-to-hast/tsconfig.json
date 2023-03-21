@@ -1,5 +1,5 @@
 {
-  "files": ["src/index.ts"],
+  "files": ["src/index.ts", "src/lib/helpers/ContainerWidth.ts"],
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",

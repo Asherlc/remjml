@@ -87,7 +87,7 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                             <image height="auto"
                                    src="/assets/img/logo-small.png"
                                    style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                   width="100"
+                                   width="50"
                             >
                             </image>
                           </td>

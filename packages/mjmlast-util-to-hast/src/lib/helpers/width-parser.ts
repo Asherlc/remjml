@@ -1,10 +1,6 @@
-type Options = {
-  parseFloatToInt?: boolean;
-};
+const unitRegex = /^(\d+)(px|%)$/;
 
-const unitRegex = /[\d.,]*(\D*)$/;
-
-type Unit = "px" | "%";
+export type Unit = "px" | "%";
 
 function widthUnitIsValid(widthUnit: string | undefined): widthUnit is Unit {
   const units: Unit[] = ["px", "%"];
@@ -14,32 +10,36 @@ function widthUnitIsValid(widthUnit: string | undefined): widthUnit is Unit {
 
 const DEFAULT_UNIT: Unit = "px";
 
-export default function widthParser(
-  width: string | number,
-  { parseFloatToInt }: Options = { parseFloatToInt: true }
-): { parsedWidth: number; unit: string } {
-  if (typeof width === "number") {
-    return {
-      parsedWidth: width,
-      unit: DEFAULT_UNIT,
-    };
+export class Width {
+  #rawWidth: string | number;
+
+  constructor(rawWidth: string | number) {
+    if (typeof rawWidth === "string" && !unitRegex.test(rawWidth)) {
+      throw new Error(`Invalid raw width ${rawWidth}`);
+    }
+
+    this.#rawWidth = rawWidth;
   }
 
-  const widthString = width.toString();
-  const widthUnit = unitRegex.exec(widthString)?.[1];
-  const unitParsers = {
-    px: parseInt,
-    "%": parseFloatToInt ? parseInt : parseFloat,
-  };
+  get unit(): Unit {
+    if (typeof this.#rawWidth === "number") {
+      return DEFAULT_UNIT;
+    }
 
-  if (widthUnit && !widthUnitIsValid(widthUnit)) {
-    throw new Error(`No matching parser for width unit ${widthUnit}`);
+    const widthUnit = unitRegex.exec(this.#rawWidth)?.[2];
+
+    if (!widthUnitIsValid(widthUnit)) {
+      throw new Error(`Invalid width unit ${widthUnit}`);
+    }
+
+    return widthUnit;
   }
 
-  const parser = widthUnit ? unitParsers[widthUnit as Unit] : parseInt;
+  get width(): number {
+    if (typeof this.#rawWidth === "number") {
+      return this.#rawWidth;
+    }
 
-  return {
-    parsedWidth: parser(width),
-    unit: widthUnit || DEFAULT_UNIT,
-  };
+    return parseInt(this.unit);
+  }
 }

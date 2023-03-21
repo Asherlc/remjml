@@ -1,10 +1,11 @@
-import { getBoxWidths } from "../helpers/get-box-widths";
+import { BoxWidths } from "../helpers/get-box-widths";
 import { min } from "lodash-es";
 import type { MjImage, MjHero, MjColumn, MjImageAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
+import { Width } from "../helpers/width-parser";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjImageAttributes,
@@ -21,9 +22,11 @@ const DEFAULT_ATTRIBUTES: Pick<
 type ImageParent = MjHero | MjColumn;
 
 function getContentWidth(attributes: MjImageAttributes, context: Context) {
-  const width = attributes.width ? parseInt(attributes.width, 10) : Infinity;
+  const width: Width = attributes.width
+    ? new Width(attributes.width)
+    : new Width(Infinity);
 
-  const { box } = getBoxWidths(attributes, context.containerWidth || "0");
+  const { box } = new BoxWidths(attributes, width);
 
   return min([box, width]);
 }

@@ -1,6 +1,6 @@
 import { is } from "unist-util-is";
 import { generateMediaQuery } from "../helpers/generate-media-query";
-import widthParser from "../helpers/width-parser";
+import { Unit, Width } from "../helpers/width-parser";
 import { jsonToCss } from "../helpers/json-to-css";
 import type {
   MjColumn,
@@ -17,7 +17,7 @@ import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../traverse";
-import { getBoxWidths, getShorthandAttrValue } from "../helpers/get-box-widths";
+import { BoxWidths, getShorthandAttrValue } from "../helpers/get-box-widths";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumnAttributes,
@@ -54,9 +54,7 @@ function getMobileWidth(
     return `${Math.round(100 / nonRawSiblings.length)}%`;
   }
 
-  const { unit, parsedWidth } = widthParser(width, {
-    parseFloatToInt: false,
-  });
+  const { unit, width: parsedWidth } = new Width(width);
 
   switch (unit) {
     case "%":
@@ -69,6 +67,82 @@ function getMobileWidth(
   }
 
   return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
+}
+
+class ContainerWidth {
+  #attributes: MjColumnAttributes;
+  #parentWidth: Width;
+  #nonRawSiblingsCount: number;
+
+  constructor({
+    attributes,
+    parentWidth,
+    nonRawSiblingCount: nonRawSiblingsCount,
+  }: {
+    attributes: MjColumnAttributes;
+    parentWidth: string;
+    nonRawSiblingCount: number;
+  }) {
+    this.#attributes = attributes;
+    this.#nonRawSiblingsCount = nonRawSiblingsCount;
+    this.#parentWidth = new Width(parentWidth);
+  }
+
+  get #boxWidths(): {
+    borders: number;
+    paddings: number;
+    box: number;
+  } {
+    return new BoxWidths(this.#attributes, this.#parentWidth);
+  }
+
+  get #innerBorders(): number {
+    return (
+      getShorthandAttrValue("inner-border", "left", this.#attributes) +
+      getShorthandAttrValue("inner-border", "right", this.#attributes)
+    );
+  }
+
+  get #allPaddings() {
+    return (
+      this.#boxWidths.paddings + this.#boxWidths.borders + this.#innerBorders
+    );
+  }
+
+  get #totalWidth(): {
+    unit: Unit;
+    width: number;
+  } {
+    if (this.#attributes.width) {
+      return new Width(this.#attributes.width);
+    } else if (this.#nonRawSiblingsCount === 0) {
+      return this.#parentWidth;
+    }
+
+    return {
+      unit: this.#parentWidth.unit,
+      width: this.#parentWidth.width / this.#nonRawSiblingsCount,
+    };
+  }
+
+  get widthMinusPaddings(): {
+    width: number;
+    unit: Unit;
+  } {
+    const { unit, width } = this.#totalWidth;
+    console.log({ width, unit });
+
+    if (unit === "%") {
+      return {
+        width: (this.#parentWidth.width * width) / 100 - this.#allPaddings,
+        unit: "px",
+      };
+    }
+    return {
+      width: width - this.#allPaddings,
+      unit: "px",
+    };
+  }
 }
 
 function getContainerWidth(
@@ -85,31 +159,16 @@ function getContainerWidth(
   const nonRawSiblings = parent.children.filter((sibling) =>
     is(sibling, "element")
   );
-  console.log(nonRawSiblings);
 
-  const { borders, paddings } = getBoxWidths(attributes, parentWidth);
-  const innerBorders =
-    getShorthandAttrValue("inner-border", "left", attributes) +
-    getShorthandAttrValue("inner-border", "right", attributes);
-
-  const allPaddings = paddings + borders + innerBorders;
-
-  let containerWidth =
-    attributes.width || `${parseFloat(parentWidth) / nonRawSiblings.length}px`;
-
-  const { unit, parsedWidth } = widthParser(containerWidth, {
-    parseFloatToInt: false,
+  const containerWidth = new ContainerWidth({
+    attributes,
+    parentWidth,
+    nonRawSiblingCount: nonRawSiblings.length,
   });
 
-  if (unit === "%") {
-    containerWidth = `${
-      (parseFloat(parentWidth) * parsedWidth) / 100 - allPaddings
-    }px`;
-  } else {
-    containerWidth = `${parsedWidth - allPaddings}px`;
-  }
+  const { width, unit } = containerWidth.widthMinusPaddings;
 
-  return containerWidth;
+  return `${width}${unit}`;
 }
 
 function column(
@@ -221,10 +280,7 @@ function getParsedWidth(
   );
   const width = attributes.width || `${100 / nonRawSiblings.length}%`;
 
-  const { unit, parsedWidth } = widthParser(width, {
-    parseFloatToInt: false,
-  });
-  console.log({ width, unit });
+  const { unit, width: parsedWidth } = new Width(width);
 
   return {
     unit,

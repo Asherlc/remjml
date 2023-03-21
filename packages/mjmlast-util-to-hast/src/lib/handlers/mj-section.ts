@@ -20,7 +20,8 @@ import { u } from "unist-builder";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Property } from "csstype";
 import { castArray } from "lodash-es";
-import { getBoxWidths } from "../helpers/get-box-widths";
+import { BoxWidths } from "../helpers/get-box-widths";
+import { Width } from "../helpers/width-parser";
 
 type SectionParent = MjBody | MjWrapper;
 
@@ -379,15 +380,16 @@ export function mjSection(
   context: Context
 ): HElement | HElement[] {
   const attributes = attributesWithDefaults(node.attributes || {});
-
-  const { box } = context.containerWidth
-    ? getBoxWidths(attributes, context.containerWidth)
-    : { box: undefined };
-  const containerWidth = `${box}px`;
+  const containerWidth: Width | undefined = context.containerWidth
+    ? new Width(context.containerWidth)
+    : undefined;
+  const boxWidths = containerWidth
+    ? new BoxWidths(attributes, containerWidth)
+    : undefined;
 
   const children = all(node, options, {
     ...context,
-    containerWidth,
+    containerWidth: boxWidths ? `${boxWidths.box}px` : undefined,
   });
 
   const content = section(node, context, children);

@@ -3,6 +3,7 @@ import {
   Direction,
   shorthandParser,
 } from "../helpers/shorthand-parser";
+import { Width } from "./width-parser";
 
 export function getShorthandAttrValue<Attributes extends Record<string, any>>(
   attribute: string,
@@ -33,29 +34,29 @@ function getShorthandBorderValue<Attributes extends Record<string, any>>(
   return borderParser(borderDirection || border || "0");
 }
 
-export function getBoxWidths<Attributes extends Record<string, any>>(
-  attributes: Attributes,
-  containerWidth: string
-): {
-  totalWidth: number;
-  borders: number;
-  paddings: number;
-  box: number;
-} {
-  const parsedWidth = parseInt(containerWidth, 10);
+export class BoxWidths<Attributes extends Record<string, any>> {
+  #attributes: Attributes;
+  #containerWidth: Width;
 
-  const paddings =
-    getShorthandAttrValue("padding", "right", attributes) +
-    getShorthandAttrValue("padding", "left", attributes);
+  constructor(attributes: Attributes, containerWidth: Width) {
+    this.#attributes = attributes;
+    this.#containerWidth = containerWidth;
+  }
 
-  const borders =
-    getShorthandBorderValue("right", attributes) +
-    getShorthandBorderValue("left", attributes);
+  get paddings(): number {
+    return (
+      getShorthandAttrValue("padding", "right", this.#attributes) +
+      getShorthandAttrValue("padding", "left", this.#attributes)
+    );
+  }
+  get borders(): number {
+    return (
+      getShorthandBorderValue("right", this.#attributes) +
+      getShorthandBorderValue("left", this.#attributes)
+    );
+  }
 
-  return {
-    totalWidth: parsedWidth,
-    borders,
-    paddings,
-    box: parsedWidth - paddings - borders,
-  };
+  get box(): number {
+    return this.#containerWidth.width - this.paddings - this.borders;
+  }
 }

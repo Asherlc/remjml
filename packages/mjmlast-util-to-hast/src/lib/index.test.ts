@@ -43,6 +43,8 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
           xmlns:o="urn:schemas-microsoft-com:office:office"
     >
       <head>
+        <title>
+        </title>
         <!--[if mso]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
         <meta http-equiv="Content-Type"
               content="text/html; charset=UTF-8"

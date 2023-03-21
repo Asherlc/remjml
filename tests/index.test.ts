@@ -5,6 +5,7 @@ import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
 import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
+import prettier from "prettier";
 
 it("transforms mjml to html", async () => {
   const mjml = `<mjml>
@@ -90,7 +91,7 @@ it("transforms mjml to html", async () => {
   `);
 });
 
-fit("outputs the same html as the original mjml library", async () => {
+it("outputs the same html as the original mjml library (xml compare)", async () => {
   const mjml = `<mjml>
   <mj-body>
     <mj-section>
@@ -116,4 +117,34 @@ fit("outputs the same html as the original mjml library", async () => {
   const theirHtml = originalMjml(mjml).html;
 
   expect(ourHtml).toEqualXML(theirHtml);
+});
+
+fit("outputs the same html as the original mjml library (prettier compare)", async () => {
+  const mjml = `<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-button font-family="Helvetica" background-color="#f45e43" color="white">
+          Don't click me!
+         </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>`;
+
+  const ourHtml = (
+    await unified()
+      .use(remjmlParse)
+      .use(remjmlRehype as any)
+      .use(rehypeStringify, {
+        allowDangerousHtml: true,
+      })
+      .process(mjml)
+  ).value;
+
+  const theirHtml = originalMjml(mjml).html;
+
+  expect(prettier.format(ourHtml.toString(), { parser: "html" })).toEqualXML(
+    prettier.format(theirHtml, { parser: "html" })
+  );
 });

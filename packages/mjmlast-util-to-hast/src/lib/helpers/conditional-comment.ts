@@ -12,7 +12,7 @@ function beginConditionalCommentString(
   type: ConditionalCommentType
 ): string {
   if (type === "downlevel-hidden") {
-    return `<!--[if ${expression}]>`;
+    return `<!--[if ${expression}]><!-->`;
   } else if (type === "downlevel-revealed") {
     return `<![if ${expression}]>`;
   }
@@ -22,7 +22,7 @@ function beginConditionalCommentString(
 
 function endConditionalCommentString(type: ConditionalCommentType): string {
   if (type === "downlevel-hidden") {
-    return `<![endif]-->`;
+    return `<!--<![endif]-->`;
   } else if (type === "downlevel-revealed") {
     return `<![endif]>`;
   }

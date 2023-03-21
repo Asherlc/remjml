@@ -29,7 +29,7 @@ export function mjml(
         h("title"),
         conditionalComment(
           {
-            expression: "!mso",
+            expression: "mso",
             type: "downlevel-hidden",
           },
           [h("meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" })]

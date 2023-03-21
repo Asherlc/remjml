@@ -15,7 +15,8 @@ export default function remjmlParse(
 
   function parser(doc: string, file: VFile) {
     const xAst = fromXml(String(file));
-    return fromXast(xAst);
+    const mjmlast = fromXast(xAst);
+    return mjmlast;
   }
 
   return parser;

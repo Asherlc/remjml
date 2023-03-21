@@ -36,6 +36,7 @@ function bridge(destination: Processor, options?: Options) {
  */
 function mutate(options: Options) {
   return (node: MjmlNode) => {
-    return toHast(node, options);
+    const hast = toHast(node, options);
+    return hast;
   };
 }

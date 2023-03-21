@@ -1,5 +1,4 @@
 import "jest-xml-matcher";
-
 import { unified } from "unified";
 import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
@@ -119,7 +118,7 @@ it("outputs the same html as the original mjml library (xml compare)", async () 
   expect(ourHtml).toEqualXML(theirHtml);
 });
 
-fit("outputs the same html as the original mjml library (prettier compare)", async () => {
+it("outputs the same html as the original mjml library (prettier compare)", async () => {
   const mjml = `<mjml>
   <mj-body>
     <mj-section>

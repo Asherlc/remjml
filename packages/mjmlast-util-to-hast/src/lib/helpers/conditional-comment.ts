@@ -12,9 +12,9 @@ function beginConditionalCommentString(
   type: ConditionalCommentType
 ): string {
   if (type === "downlevel-hidden") {
-    return `<!--[if ${expression}]><!-->`;
+    return `<!--if ${expression}]>`;
   } else if (type === "downlevel-revealed") {
-    return `<![if ${expression}]>`;
+    return `<!--[if ${expression}]><!-->`;
   }
 
   throw new Error(`Unknown conditional comment type ${type}`);
@@ -22,7 +22,7 @@ function beginConditionalCommentString(
 
 function endConditionalCommentString(type: ConditionalCommentType): string {
   if (type === "downlevel-hidden") {
-    return `<!--<![endif]-->`;
+    return `<![endif]-->`;
   } else if (type === "downlevel-revealed") {
     return `<![endif]>`;
   }

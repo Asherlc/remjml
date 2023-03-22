@@ -14,7 +14,7 @@ import {
   endConditionalComment,
 } from "../helpers/conditional-comment";
 import { Attributes } from "../helpers/Attributes";
-import { Width } from "../helpers/width-parser";
+import { Width } from "../helpers/Width";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjDividerAttributes,
@@ -80,6 +80,7 @@ export function mjDivider(
   options: Options,
   context: Context
 ): HElement[] {
+  console.log("run");
   if (!context.containerWidth) {
     throw new Error(`Context must have container width`);
   }

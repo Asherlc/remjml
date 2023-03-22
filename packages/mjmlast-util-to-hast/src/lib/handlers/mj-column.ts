@@ -1,6 +1,6 @@
 import { is } from "unist-util-is";
 import { generateMediaQuery } from "../helpers/generate-media-query";
-import { Width } from "../helpers/width-parser";
+import { Width } from "../helpers/Width";
 import { jsonToCss } from "../helpers/json-to-css";
 import type {
   MjColumn,

@@ -1,5 +1,5 @@
 import { Attributes } from "./Attributes";
-import { Unit, Width } from "./width-parser";
+import { Unit, Width } from "./Width";
 import { MjColumnAttributes } from "mjmlast";
 import { BoxWidths } from "./get-box-widths";
 

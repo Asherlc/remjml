@@ -1,4 +1,5 @@
 import { mjml } from "./mjml";
+import { mjDivider } from "./mj-divider";
 import { text } from "./text";
 import { mjBody } from "./mj-body";
 import { mjColumn } from "./mj-column";
@@ -14,5 +15,6 @@ export const handlers: Handlers = {
   "mj-column": mjColumn as Handler,
   "mj-image": mjImage as Handler,
   "mj-text": mjText as Handler,
+  "mj-divider": mjDivider as Handler,
   mjml: mjml as Handler,
 };

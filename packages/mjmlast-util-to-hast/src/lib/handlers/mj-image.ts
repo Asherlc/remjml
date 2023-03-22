@@ -5,7 +5,7 @@ import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Width } from "../helpers/width-parser";
+import { Width } from "../helpers/Width";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjImageAttributes,

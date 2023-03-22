@@ -1,5 +1,5 @@
 import { Attributes } from "./Attributes";
-import { Width } from "./width-parser";
+import { Width } from "./Width";
 
 export class BoxWidths {
   #attributes: Attributes;

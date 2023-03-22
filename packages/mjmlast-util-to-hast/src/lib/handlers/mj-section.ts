@@ -1,5 +1,4 @@
 import {
-  conditionalComment,
   beginConditionalComment,
   endConditionalComment,
 } from "../helpers/conditional-comment";
@@ -16,12 +15,11 @@ import { h } from "hastscript";
 import { Context, Options } from "..";
 import { Element as HElement, ElementContent } from "hast";
 import { all } from "../traverse";
-import { u } from "unist-builder";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Property } from "csstype";
 import { castArray } from "lodash-es";
 import { BoxWidths } from "../helpers/get-box-widths";
-import { Width } from "../helpers/width-parser";
+import { Width } from "../helpers/Width";
 
 type SectionParent = MjBody | MjWrapper;
 
@@ -148,7 +146,7 @@ function wrapper(
   node: MjSection,
   context: Context,
   children: Node[] | Node
-): Node[] {
+): HElement[] {
   const { containerWidth } = context;
   const attributes = attributesWithDefaults(node.attributes || {});
   const bgcolorAttr = attributes["background-color"]
@@ -157,48 +155,46 @@ function wrapper(
 
   const childrenArray = castArray(children);
 
-  const td = u(
-    "element",
+  const hTd = h(
+    "td",
     {
-      tagName: "td",
-      properties: {
-        style: "line-height:0px;font-size:0px;mso-line-height-rule:exactly",
-      },
+      style: jsonToCss({
+        lineHeight: "0px",
+        fontSize: "0px",
+        "mso-line-height-rule": "exactly",
+      }),
     },
     [
-      ...childrenArray,
-      beginConditionalComment({
-        expression: "mso | IE",
+      endConditionalComment({
         type: "downlevel-hidden",
       }),
+      ...childrenArray,
     ]
-  ) as unknown as HElement;
+  );
 
   const cssClass = attributes["css-class"];
 
-  return conditionalComment(
-    {
+  return [
+    beginConditionalComment({
       expression: "mso | IE",
       type: "downlevel-hidden",
-    },
-    [
-      h(
-        "table",
-        {
-          align: "center",
-          border: "0",
-          cellpadding: "0",
-          cellspacing: "0",
-          class: cssClass ? suffixCssClasses(cssClass, "outlook") : undefined,
-          role: "presentation",
-          style: jsonToCss({ width: containerWidth }),
-          width: containerWidth ? parseInt(containerWidth, 10) : undefined,
-          ...bgcolorAttr,
-        },
-        [h("tr", td)]
-      ),
-    ]
-  );
+    }),
+    h(
+      "table",
+      {
+        align: "center",
+        border: "0",
+        cellpadding: "0",
+        cellspacing: "0",
+        class: cssClass ? suffixCssClasses(cssClass, "outlook") : undefined,
+        role: "presentation",
+        style: jsonToCss({ width: containerWidth }),
+        width: containerWidth ? parseInt(containerWidth, 10) : undefined,
+        ...bgcolorAttr,
+      },
+      [h("tr", hTd)]
+    ),
+  ];
 }
 
 function getBackgroundString(attributes: MjSectionAttributes): string {
@@ -232,7 +228,7 @@ function section(
   const background = attributes["background-url"]
     ? {
         background: getBackground(attributes),
-        // background size, repeat and position has to be seperate since yahoo does not support shorthand background css property
+        // background size, repeat and position has to be separate since yahoo does not support shorthand background css property
         "background-position": getBackgroundString(attributes),
         "background-repeat": attributes["background-repeat"],
         "background-size": attributes["background-size"],
@@ -396,9 +392,9 @@ export function mjSection(
 
   const wrapped = wrapper(node, context, content);
 
-  const full: HElement | HElement[] = isFullWidth(attributes)
-    ? fullWidth(node, wrapped)
-    : (wrapped as HElement[]);
+  if (isFullWidth(attributes)) {
+    return fullWidth(node, wrapped);
+  }
 
-  return full;
+  return wrapped as HElement[];
 }

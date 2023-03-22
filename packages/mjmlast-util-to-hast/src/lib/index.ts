@@ -21,6 +21,7 @@ export type Context = {
   mediaQueries?: {
     [className: string]: string;
   };
+  fullWidth?: boolean;
 };
 
 export type Options = {

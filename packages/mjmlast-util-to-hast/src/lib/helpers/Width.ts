@@ -10,7 +10,13 @@ function widthUnitIsValid(widthUnit: string | undefined): widthUnit is Unit {
 
 const DEFAULT_UNIT: Unit = "px";
 
-export class Width {
+export interface IWidth {
+  unit: Unit;
+  width: number;
+  toString(): string;
+}
+
+export class Width implements IWidth {
   #rawWidth: string | number;
 
   constructor(rawWidth: string | number) {

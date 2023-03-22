@@ -1,8 +1,8 @@
 import { Attributes } from "./Attributes";
-import { Width } from "./Width";
+import { IWidth, Unit, Width } from "./Width";
 
 export class BoxWidths {
-  #attributes: Attributes;
+  #attributes: Attributes<any>;
   #containerWidth: Width;
 
   constructor(attributes: Record<string, string>, containerWidth: Width) {
@@ -24,7 +24,16 @@ export class BoxWidths {
     );
   }
 
-  get box(): number {
-    return this.#containerWidth.width - this.paddings - this.borders;
+  get box(): IWidth {
+    const unit: Unit = "px";
+    const width: number =
+      this.#containerWidth.width - this.paddings - this.borders;
+    return {
+      unit,
+      width,
+      toString(): string {
+        return `${width}${unit}`;
+      },
+    };
   }
 }

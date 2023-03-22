@@ -1,11 +1,11 @@
 import { BoxWidths } from "../helpers/get-box-widths";
-import { min } from "lodash-es";
+import { minBy } from "lodash-es";
 import type { MjImage, MjHero, MjColumn, MjImageAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Width } from "../helpers/Width";
+import { IWidth, Width } from "../helpers/Width";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjImageAttributes,
@@ -24,14 +24,14 @@ type ImageParent = MjHero | MjColumn;
 function getContentWidth(
   attributes: MjImageAttributes,
   context: Context
-): number {
+): IWidth {
   const width: Width = attributes.width
     ? new Width(attributes.width)
     : new Width(Infinity);
 
   const { box } = new BoxWidths(attributes, width);
 
-  return min([box, width.width]) as number;
+  return minBy<IWidth>([box, width], "width")!;
 }
 
 export function mjImage(
@@ -42,10 +42,8 @@ export function mjImage(
 ): HElement {
   const attributes = { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 
-  const height = attributes.height;
-  const contentWidth = getContentWidth(attributes, context);
-
-  const width = context.containerWidth;
+  const height: string | undefined = attributes.height;
+  const contentWidth: IWidth = getContentWidth(attributes, context);
 
   const hImage = h("image", {
     alt: attributes.alt,
@@ -69,7 +67,7 @@ export function mjImage(
       fontSize: attributes["font-size"],
     }),
     title: attributes.title,
-    width: contentWidth,
+    width: contentWidth.width,
     usemap: attributes.usemap,
   });
 
@@ -96,8 +94,8 @@ export function mjImage(
       role: "presentation",
       class: attributes["fluid-on-mobile"] ? "mj-full-width-mobile" : undefined,
       style: jsonToCss({
-        minWidth: width ? "100%" : undefined,
-        maxWidth: width ? "100%" : undefined,
+        minWidth: context.fullWidth ? "100%" : undefined,
+        maxWidth: context.fullWidth ? "100%" : undefined,
         borderCollapse: "collapse",
         borderSpacing: "0px",
       }),
@@ -111,6 +109,9 @@ export function mjImage(
               class: attributes["fluid-on-mobile"]
                 ? "mj-full-width-mobile"
                 : undefined,
+              style: jsonToCss({
+                width: context.fullWidth ? undefined : contentWidth.toString(),
+              }),
             },
             [wrappedHImage]
           ),

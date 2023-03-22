@@ -20,6 +20,7 @@ import { Property } from "csstype";
 import { castArray } from "lodash-es";
 import { BoxWidths } from "../helpers/get-box-widths";
 import { Width } from "../helpers/Width";
+import { Background } from "../helpers/Background";
 
 type SectionParent = MjBody | MjWrapper;
 
@@ -42,115 +43,15 @@ const DEFAULT_ATTRIBUTES: Pick<
   "text-padding": "4px 4px 4px 0",
 };
 
-function isFullWidth(attributes: MjSectionAttributes): boolean {
-  return attributes["full-width"] === "full-width";
-}
-
-function attributesWithDefaults(
-  attributes: MjSectionAttributes & UniversalAttributes
-): MjSectionAttributes & UniversalAttributes {
-  return { ...DEFAULT_ATTRIBUTES, ...attributes };
-}
-
-function hasBackground(attributes: MjSectionAttributes): boolean {
-  return attributes["background-url"] != null;
-}
-
-type YPosition = "top" | "bottom" | "center";
-type XPosition = "left" | "right" | "center";
-
-function isYPosition(value: string): value is YPosition {
-  return ["center", "top", "bottom"].includes(value);
-}
-
-function isXPosition(value: string): value is XPosition {
-  return ["center", "top", "bottom"].includes(value);
-}
-
-function parseBackgroundPosition(backgroundPosition: string): {
-  x: XPosition;
-  y: YPosition;
-} {
-  const posSplit = backgroundPosition.split(" ");
-
-  if (posSplit.length === 1) {
-    const val = posSplit[0];
-    // here we must determine if x or y was provided ; other will be center
-    if (isYPosition(val) && ["top", "bottom"].includes(val)) {
-      return {
-        x: "center",
-        y: val,
-      };
-    } else if (isXPosition(val)) {
-      return {
-        x: val,
-        y: "center",
-      };
-    }
-  }
-
-  if (posSplit.length === 2) {
-    // x and y can be put in any order in background-position so we need to determine that based on values
-    const val1 = posSplit[0];
-    const val2 = posSplit[1];
-
-    if (
-      isYPosition(val1) &&
-      isXPosition(val2) &&
-      (["top", "bottom"].includes(val1) ||
-        (val1 === "center" && ["left", "right"].includes(val2)))
-    ) {
-      return {
-        x: val2,
-        y: val1,
-      };
-    } else if (isXPosition(val1) && isYPosition(val2)) {
-      return {
-        x: val1,
-        y: val2,
-      };
-    }
-  }
-
-  // more than 2 values is not supported, let's treat as default value
-  return { x: "center", y: "top" };
-}
-
-function getBackgroundPosition(attributes: MjSectionAttributes): {
-  posX: XPosition;
-  posY: YPosition;
-} {
-  const backgroundPosition = attributes["background-position"];
-  const backgroundPositionX = attributes["background-position-x"];
-  const backgroundPositionY = attributes["background-position-y"];
-
-  if (
-    backgroundPositionX &&
-    backgroundPositionY &&
-    isXPosition(backgroundPositionX) &&
-    isYPosition(backgroundPositionY)
-  ) {
-    return { posX: backgroundPositionX, posY: backgroundPositionY };
-  }
-
-  if (backgroundPosition) {
-    const { x, y } = parseBackgroundPosition(backgroundPosition);
-
-    return { posX: x, posY: y };
-  }
-
-  throw new Error(`No background position`);
-}
-
 function wrapper(
   node: MjSection,
   context: Context,
   children: Node[] | Node
 ): HElement[] {
   const { containerWidth } = context;
-  const attributes = attributesWithDefaults(node.attributes || {});
-  const bgcolorAttr = attributes["background-color"]
-    ? { bgcolor: attributes["background-color"] }
+  const attributes = new SectionAttributes(node.attributes || {});
+  const bgcolorAttr = attributes.get("background-color")
+    ? { bgcolor: attributes.get("background-color") }
     : {};
 
   const childrenArray = castArray(children);
@@ -167,12 +68,12 @@ function wrapper(
     [
       endConditionalComment({
         type: "downlevel-hidden",
-      }),
+      }) as any,
       ...childrenArray,
     ]
   );
 
-  const cssClass = attributes["css-class"];
+  const cssClass = attributes.get("css-class");
 
   return [
     beginConditionalComment({
@@ -197,24 +98,36 @@ function wrapper(
   ];
 }
 
-function getBackgroundString(attributes: MjSectionAttributes): string {
-  const { posX, posY } = getBackgroundPosition(attributes);
-  return `${posX} ${posY}`;
-}
+class SectionAttributes {
+  #attributes: MjSectionAttributes & UniversalAttributes;
 
-function getBackground(attributes: MjSectionAttributes): string {
-  return [
-    attributes["background-color"],
-    ...(hasBackground(attributes)
-      ? [
-          `url('${attributes["background-url"]}')`,
-          getBackgroundString(attributes),
-          `/ ${attributes["background-size"]}`,
-          attributes["background-repeat"],
-        ]
-      : []
-    ).join(" "),
-  ].join(" ");
+  constructor(attributes: MjSectionAttributes & UniversalAttributes) {
+    this.#attributes = attributes;
+  }
+
+  get withDefaults(): MjSectionAttributes & UniversalAttributes {
+    return { ...DEFAULT_ATTRIBUTES, ...this.#attributes };
+  }
+
+  get isFullWidth(): boolean {
+    return this.withDefaults["full-width"] === "full-width";
+  }
+
+  get(attributeKey: string): string {
+    return this.withDefaults[attributeKey];
+  }
+
+  get background(): Background {
+    return new Background({
+      url: this.withDefaults["background-url"],
+      size: this.withDefaults["background-size"],
+      repeat: this.withDefaults["background-repeat"],
+      color: this.withDefaults["background-color"],
+      position: this.withDefaults["background-position"],
+      positionY: this.withDefaults["background-position-y"],
+      positionX: this.withDefaults["background-position-x"],
+    });
+  }
 }
 
 function section(
@@ -222,30 +135,29 @@ function section(
   context: Context,
   children: ElementContent[]
 ): HElement {
-  const attributes = attributesWithDefaults(node.attributes || {});
-  const fullWidth = isFullWidth(attributes);
+  const attributes = new SectionAttributes(node.attributes || {});
   const { containerWidth } = context;
-  const background = attributes["background-url"]
+  const background = attributes.background.url
     ? {
-        background: getBackground(attributes),
+        background: attributes.background.toCssPropertyValue(),
         // background size, repeat and position has to be separate since yahoo does not support shorthand background css property
-        "background-position": getBackgroundString(attributes),
-        "background-repeat": attributes["background-repeat"],
-        "background-size": attributes["background-size"],
+        "background-position": attributes.background,
+        "background-repeat": attributes.background.repeat,
+        "background-size": attributes.background.size,
       }
     : {
-        background: attributes["background-color"],
-        "background-color": attributes["background-color"],
+        background: attributes.background.color,
+        "background-color": attributes.background.color,
       };
 
   return h(
     "div",
     {
-      class: fullWidth ? null : attributes["css-class"],
+      class: attributes.isFullWidth ? null : attributes.get("css-class"),
       style: jsonToCss({
-        ...(fullWidth ? {} : background),
+        ...(attributes.isFullWidth ? {} : background),
         margin: "0px auto",
-        borderRadius: attributes["border-radius"],
+        borderRadius: attributes.get("border-radius"),
         maxWidth: containerWidth,
       }),
     },
@@ -254,17 +166,17 @@ function section(
         "table",
         {
           align: "center",
-          background: isFullWidth(attributes)
+          background: attributes.isFullWidth
             ? null
-            : attributes["background-url"],
+            : attributes.get("background-url"),
           border: "0",
           cellpadding: "0",
           cellspacing: "0",
           role: "presentation",
           style: jsonToCss({
-            ...(fullWidth ? {} : background),
+            ...(attributes.isFullWidth ? {} : background),
             width: "100%",
-            borderRadius: attributes["border-radius"],
+            borderRadius: attributes.get("border-radius"),
           }),
         },
         h(
@@ -275,19 +187,19 @@ function section(
               "td",
               {
                 style: jsonToCss({
-                  border: attributes.border,
-                  borderBottom: attributes["border-bottom"],
-                  borderLeft: attributes["border-left"],
-                  borderRight: attributes["border-right"],
-                  borderTop: attributes["border-top"],
-                  direction: attributes.direction,
+                  border: attributes.get("border"),
+                  borderBottom: attributes.get("border-bottom"),
+                  borderLeft: attributes.get("border-left"),
+                  borderRight: attributes.get("border-right"),
+                  borderTop: attributes.get("border-top"),
+                  direction: attributes.get("direction"),
                   fontSize: "0px",
-                  padding: attributes.padding,
-                  paddingBottom: attributes["padding-bottom"],
-                  paddingLeft: attributes["padding-left"],
-                  paddingRight: attributes["padding-right"],
-                  paddingTop: attributes["padding-top"],
-                  textAlign: attributes["text-align"] as Property.TextAlign,
+                  padding: attributes.get("padding"),
+                  paddingBottom: attributes.get("padding-bottom"),
+                  paddingLeft: attributes.get("padding-left"),
+                  paddingRight: attributes.get("padding-right"),
+                  paddingTop: attributes.get("padding-top"),
+                  textAlign: attributes.get("text-align") as Property.TextAlign,
                 }),
               },
               [
@@ -319,7 +231,7 @@ function section(
           )
         )
       ),
-      hasBackground(attributes)
+      attributes.background.url
         ? h("div", {
             style: jsonToCss({
               lineHeight: "0",
@@ -375,24 +287,25 @@ export function mjSection(
   options: Options,
   context: Context
 ): HElement | HElement[] {
-  const attributes = attributesWithDefaults(node.attributes || {});
+  const attributes = new SectionAttributes(node.attributes || {});
   const containerWidth: Width | undefined = context.containerWidth
     ? new Width(context.containerWidth)
     : undefined;
   const boxWidths = containerWidth
-    ? new BoxWidths(attributes, containerWidth)
+    ? new BoxWidths(attributes.withDefaults, containerWidth)
     : undefined;
 
   const children = all(node, options, {
     ...context,
-    containerWidth: boxWidths ? `${boxWidths.box}px` : undefined,
+    fullWidth: attributes.isFullWidth,
+    containerWidth: boxWidths?.box?.toString(),
   });
 
   const content = section(node, context, children);
 
   const wrapped = wrapper(node, context, content);
 
-  if (isFullWidth(attributes)) {
+  if (attributes.isFullWidth) {
     return fullWidth(node, wrapped);
   }
 

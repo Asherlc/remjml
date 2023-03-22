@@ -508,7 +508,7 @@ export interface MjButton extends Parent<MjButtonAttributes, Text> {
   type: "mj-button";
 }
 
-type MjTextAttributes = {
+export type MjTextAttributes = {
   align: "left" | "right" | "center" | "justify" | "justify";
   "background-color": string;
   color: string;

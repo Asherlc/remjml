@@ -1,4 +1,7 @@
 import "expect-puppeteer";
+import path from "path";
+import fs from "fs";
+import fsPromise from "fs/promises";
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
@@ -10,74 +13,70 @@ import originalMjml from "mjml";
 
 expect.extend({ toMatchImageSnapshot });
 
-fit("renders the same visual html as original mjml library", async () => {
-  const mjml = `<mjml>
-  <mj-body>
-    <mj-section>
-      <mj-column>
-        <mj-button font-family="Helvetica" background-color="#f45e43" color="white">
-          Don't click me!
-         </mj-button>
-      </mj-column>
-    </mj-section>
-  </mj-body>
-</mjml>`;
+const emailFixtureDirectoryPath = path.resolve("./tests/fixtures/mjml-emails");
 
-  const ourHtml = (
-    await unified()
-      .use(remjmlParse)
-      .use(remjmlRehype as any)
-      .use(rehypeStringify, {
-        allowDangerousHtml: true,
-      })
-      .process(mjml)
-  ).value;
+const emailFixtureFileNames = fs.readdirSync(emailFixtureDirectoryPath);
 
-  const theirHtml = originalMjml(mjml).html;
+describe.each(emailFixtureFileNames)(
+  "%s email fixture",
+  (emailFixtureFilename) => {
+    let mjml: string;
+    let html: string;
 
-  await page.goto(`data:text/html,${ourHtml}`, { waitUntil: "networkidle0" });
-  const ourImageData = await page.screenshot();
-  await page.goto(`data:text/html,${theirHtml}`, { waitUntil: "networkidle0" });
-  const theirImageData = await page.screenshot();
+    beforeAll(async () => {
+      const mjmlBuffer = await fsPromise.readFile(
+        path.join(emailFixtureDirectoryPath, emailFixtureFilename)
+      );
 
-  const ourPng = PNG.sync.read(ourImageData);
-  const theirPng = PNG.sync.read(theirImageData);
+      mjml = mjmlBuffer.toString();
 
-  const diff = pixelmatch(
-    theirPng.data,
-    ourPng.data,
-    null,
-    ourPng.width,
-    ourPng.height
-  );
+      html = (
+        await unified()
+          .use(remjmlParse)
+          .use(remjmlRehype as any)
+          .use(rehypeStringify, {
+            allowDangerousHtml: true,
+          })
+          .process(mjml)
+      ).value.toString();
+    });
 
-  expect(diff).toBe(0);
-});
+    it("renders the same visual as original mjml library for %s", async (emailFixtureFileName) => {
+      const theirHtml = originalMjml(mjml).html;
 
-it("renders the same visual html as before`", async () => {
-  const mjml = `<mjml>
-  <mj-body>
-    <mj-section>
-      <mj-column>
-        <mj-button font-family="Helvetica" background-color="#f45e43" color="white">
-          Don't click me!
-         </mj-button>
-      </mj-column>
-    </mj-section>
-  </mj-body>
-</mjml>`;
+      await page.goto(`data:text/html,${html}`, {
+        waitUntil: "networkidle0",
+      });
+      const ourImageData = await page.screenshot();
+      await page.goto(`data:text/html,${theirHtml}`, {
+        waitUntil: "networkidle0",
+      });
+      const theirImageData = await page.screenshot();
 
-  const ourHtml = (
-    await unified()
-      .use(remjmlParse)
-      .use(remjmlRehype as any)
-      .use(rehypeStringify, {
-        allowDangerousHtml: true,
-      })
-      .process(mjml)
-  ).value;
+      const ourPng = PNG.sync.read(ourImageData);
+      const theirPng = PNG.sync.read(theirImageData);
 
-  await page.goto(`data:text/html,${ourHtml}`, { waitUntil: "networkidle0" });
-  const image = await page.screenshot();
-  expect(image).toMatchImageSnapshot();
-});
+      const diff = pixelmatch(
+        theirPng.data,
+        ourPng.data,
+        null,
+        ourPng.width,
+        ourPng.height
+      );
+
+      expect(diff).toBe(0);
+    });
+
+    it("renders the same visual html as before`", async () => {
+      await page.goto(`data:text/html,${html}`, {
+        waitUntil: "networkidle0",
+      });
+      const image = await page.screenshot();
+      expect(image).toMatchImageSnapshot();
+    });
+
+    it("renders the same html as before`", async () => {
+      expect(html).toMatchSnapshot();
+    });
+  }
+);

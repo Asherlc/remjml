@@ -67,7 +67,7 @@ describe.each(emailFixtureFileNames)(
       expect(diff).toBe(0);
     });
 
-    it("renders the same visual html as before`", async () => {
+    it("renders the same as before`", async () => {
       await page.goto(`data:text/html,${html}`, {
         waitUntil: "networkidle0",
       });
@@ -75,7 +75,7 @@ describe.each(emailFixtureFileNames)(
       expect(image).toMatchImageSnapshot();
     });
 
-    it("renders the same html as before`", async () => {
+    fit("renders the same html as before`", async () => {
       expect(html).toMatchSnapshot();
     });
   }

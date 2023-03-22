@@ -1,20 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`arturia.mjml email fixture renders the same html as before\` 1`] = `
-<div>
-</div>
-`;
-
-exports[`black-friday.mjml email fixture renders the same html as before\` 1`] = `
-<div>
-</div>
-`;
-
-exports[`happy-new-year.mjml email fixture renders the same html as before\` 1`] = `
-<div>
-</div>
-`;
-
 exports[`hello-world.mjml email fixture renders the same html as before\` 1`] = `
 <div>
   <!doctype html>
@@ -990,6 +975,12 @@ p { display:block;margin:13px 0; }
                                       style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
                                   >
                                     <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
+                                      <span style="color: #feeb35">
+                                        Dear [[FirstName]]
+                                      </span>
+                                      <br>
+                                      <br>
+                                      Welcome to [[CompanyName]].
                                     </div>
                                   </td>
                                 </tr>
@@ -1032,6 +1023,8 @@ p { display:block;margin:13px 0; }
                                   >
                                     <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                                       Thanks,
+                                      <br>
+                                      The [[CompanyName]] Team
                                     </div>
                                   </td>
                                 </tr>
@@ -1169,6 +1162,9 @@ p { display:block;margin:13px 0; }
                                   <tr>
                                     <td style="font-size:0px;word-break:break-word">
                                       <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                                        <a href="https://mjml.io">
+                                          [[HEADLINE]]
+                                        </a>
                                       </div>
                                     </td>
                                   </tr>
@@ -1199,6 +1195,9 @@ p { display:block;margin:13px 0; }
                                         style="font-size:0px;word-break:break-word"
                                     >
                                       <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
+                                        <a href="https://mjml.io">
+                                          [[PERMALINK_LABEL]]
+                                        </a>
                                       </div>
                                     </td>
                                   </tr>
@@ -1439,6 +1438,8 @@ p { display:block;margin:13px 0; }
                                   >
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
                                       ARE YOU
+                                      <br>
+                                      SEASCAPE?
                                     </div>
                                   </td>
                                 </tr>
@@ -1470,6 +1471,8 @@ p { display:block;margin:13px 0; }
                                   >
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
                                       OR
+                                      <br>
+                                      CITYSCAPE?
                                     </div>
                                   </td>
                                 </tr>
@@ -1542,6 +1545,9 @@ p { display:block;margin:13px 0; }
                                       style="font-size:0px;padding:10px 25px;word-break:break-word"
                                   >
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
+                                      <p>
+                                        SUNNIEST DESTINATIONS
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>
@@ -1650,6 +1656,9 @@ p { display:block;margin:13px 0; }
                                       style="font-size:0px;padding:10px 25px;word-break:break-word"
                                   >
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
+                                      <p>
+                                        CHEAP CITY TOUR
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>
@@ -1848,6 +1857,9 @@ p { display:block;margin:13px 0; }
                                       style="font-size:0px;padding:0 25px;word-break:break-word"
                                   >
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000000">
+                                      <p>
+                                        RATE YOUR STAY !
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>
@@ -1976,6 +1988,9 @@ p { display:block;margin:13px 0; }
                                 <tr>
                                   <td style="font-size:0px;word-break:break-word">
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                                      <p>
+                                        BEST COMPANIES FOR YOUR FLIGHTS
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>
@@ -2032,6 +2047,9 @@ p { display:block;margin:13px 0; }
                                 <tr>
                                   <td style="font-size:0px;word-break:break-word">
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                                      <p>
+                                        INSURANCES INCLUDED
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>
@@ -2088,6 +2106,9 @@ p { display:block;margin:13px 0; }
                                 <tr>
                                   <td style="font-size:0px;word-break:break-word">
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                                      <p>
+                                        HOTELS BEST SELECTION
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>
@@ -2344,6 +2365,9 @@ p { display:block;margin:13px 0; }
                                   >
                                     <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
                                       [[DELIVERY_INFO]]
+                                      <p>
+                                        [[POSTAL_ADDRESS]]
+                                      </p>
                                     </div>
                                   </td>
                                 </tr>

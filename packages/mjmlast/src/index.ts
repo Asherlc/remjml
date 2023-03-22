@@ -1,3 +1,4 @@
+import { Element } from "hast";
 import type { Node, Parent as UnistParent, Literal } from "unist";
 
 export const nodeTypes = new Set([
@@ -530,7 +531,7 @@ export type MjTextAttributes = {
   "vertical-align": "top" | "bottom" | "middle";
 };
 
-export interface MjText extends Parent<MjTextAttributes, Text> {
+export interface MjText extends Parent<MjTextAttributes, Text | Element> {
   type: "mj-text";
 }
 

@@ -21,14 +21,17 @@ const DEFAULT_ATTRIBUTES: Pick<
 
 type ImageParent = MjHero | MjColumn;
 
-function getContentWidth(attributes: MjImageAttributes, context: Context) {
+function getContentWidth(
+  attributes: MjImageAttributes,
+  context: Context
+): number {
   const width: Width = attributes.width
     ? new Width(attributes.width)
     : new Width(Infinity);
 
   const { box } = new BoxWidths(attributes, width);
 
-  return min([box, width]);
+  return min([box, width.width]) as number;
 }
 
 export function mjImage(

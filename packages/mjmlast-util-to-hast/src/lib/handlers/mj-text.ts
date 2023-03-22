@@ -5,7 +5,7 @@ import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Width } from "../helpers/width-parser";
+import { Property } from "csstype";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjTextAttributes,
@@ -28,16 +28,6 @@ const DEFAULT_ATTRIBUTES: Pick<
 
 type TextParent = MjHero | MjColumn;
 
-function getContentWidth(attributes: MjTextAttributes, context: Context) {
-  const width: Width = attributes.width
-    ? new Width(attributes.width)
-    : new Width(Infinity);
-
-  const { box } = new BoxWidths(attributes, width);
-
-  return min([box, width]);
-}
-
 export function mjText(
   node: MjText,
   parent: TextParent,
@@ -50,29 +40,29 @@ export function mjText(
     "div",
     {
       style: jsonToCss({
-        "font-family": attributes["font-family"],
-        "font-size": attributes["font-size"],
-        "font-style": attributes["font-style"],
-        "font-weight": attributes["font-weight"],
-        "letter-spacing": attributes["letter-spacing"],
-        "line-height": attributes["line-height"],
-        "text-align": attributes["align"],
-        "text-decoration": attributes["text-decoration"],
-        "text-transform": attributes["text-transform"],
-        color: attributes["color"],
-        height: attributes["height"],
+        fontFamily: attributes["font-family"],
+        fontSize: attributes["font-size"],
+        fontStyle: attributes["font-style"],
+        fontWeight: attributes["font-weight"],
+        letterSpacing: attributes["letter-spacing"],
+        lineHeight: attributes["line-height"],
+        textAlign: attributes.align,
+        textDecoration: attributes["text-decoration"],
+        textTransform: attributes["text-transform"] as Property.TextTransform,
+        color: attributes.color,
+        height: attributes.height,
       }),
     },
-    node.children[0].value
+    { type: "text", value: node.children[0].value as string }
   );
 
   let hNode: HElement;
 
-  if (attributes["height"]) {
+  if (attributes.height) {
     const hTd = h("td", {
       height: attributes.height,
       style: jsonToCss({
-        "vertical-align": "top",
+        verticalAlign: "top",
         height: attributes.height,
       }),
     });

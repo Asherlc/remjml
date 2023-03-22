@@ -7,7 +7,7 @@ import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Width } from "../helpers/Width";
 
-const DEFAULT_ATTRIBUTES: Pick<
+export const DEFAULT_ATTRIBUTES: Pick<
   MjImageAttributes,
   "align" | "border" | "height" | "padding" | "target" | "font-size"
 > = {

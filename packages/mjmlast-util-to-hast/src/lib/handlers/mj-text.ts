@@ -7,7 +7,7 @@ import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Property } from "csstype";
 
-const DEFAULT_ATTRIBUTES: Pick<
+export const DEFAULT_ATTRIBUTES: Pick<
   MjTextAttributes,
   | "color"
   | "font-family"
@@ -36,7 +36,7 @@ export function mjText(
 ): HElement {
   const attributes = { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 
-  const hDiv = h(
+  const hDiv: HElement = h(
     "div",
     {
       style: jsonToCss({
@@ -53,7 +53,7 @@ export function mjText(
         height: attributes.height,
       }),
     },
-    node.children
+    node.children as HElement
   );
 
   let hNode: HElement;

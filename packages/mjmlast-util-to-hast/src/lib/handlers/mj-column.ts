@@ -18,6 +18,7 @@ import { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../traverse";
 import { ContainerWidth } from "../helpers/ContainerWidth";
+import { defaultAttributes } from ".";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumnAttributes,
@@ -104,7 +105,13 @@ function column(
   const attributes = attributesWithDefaults(node.attributes || {});
   const containerWidth = getContainerWidth(attributes, parent, context);
   const children = node.children.map((child: MjColumnChild) => {
-    const childAttributes = (child.attributes || {}) as MjColumnChildAttributes;
+    const defaultChildAttributes: MjColumnChildAttributes =
+      defaultAttributes[child.type] || {};
+    const childAttributes: MjColumnChildAttributes = {
+      ...defaultChildAttributes,
+      ...(child.attributes || {}),
+    };
+
     const hChild = one(child as MjmlNode, node, options, {
       ...context,
       containerWidth,

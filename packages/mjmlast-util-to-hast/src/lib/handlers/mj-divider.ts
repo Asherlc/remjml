@@ -16,7 +16,7 @@ import {
 import { Attributes } from "../helpers/Attributes";
 import { Width } from "../helpers/Width";
 
-const DEFAULT_ATTRIBUTES: Pick<
+export const DEFAULT_ATTRIBUTES: Pick<
   MjDividerAttributes,
   | "align"
   | "border-color"

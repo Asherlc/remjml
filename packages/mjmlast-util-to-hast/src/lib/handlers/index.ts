@@ -1,12 +1,28 @@
 import { mjml } from "./mjml";
-import { mjDivider } from "./mj-divider";
+import {
+  mjDivider,
+  DEFAULT_ATTRIBUTES as MJ_DIVIDER_DEFAULT_ATTRIBUTES,
+} from "./mj-divider";
 import { text } from "./text";
 import { mjBody } from "./mj-body";
 import { mjColumn } from "./mj-column";
 import { mjSection } from "./mj-section";
-import { mjImage } from "./mj-image";
-import { mjText } from "./mj-text";
+import {
+  mjImage,
+  DEFAULT_ATTRIBUTES as MJ_IMAGE_DEFAULT_ATTRIBUTES,
+} from "./mj-image";
+import {
+  mjText,
+  DEFAULT_ATTRIBUTES as MJ_TEXT_DEFAULT_ATTRIBUTES,
+} from "./mj-text";
 import { Handler, Handlers } from "..";
+import { Attributes } from "xast";
+
+export const defaultAttributes: Record<string, Attributes> = {
+  "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,
+  "mj-image": MJ_IMAGE_DEFAULT_ATTRIBUTES,
+  "mj-divider": MJ_DIVIDER_DEFAULT_ATTRIBUTES,
+};
 
 export const handlers: Handlers = {
   text: text as Handler,

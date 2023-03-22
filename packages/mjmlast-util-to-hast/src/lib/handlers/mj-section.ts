@@ -18,7 +18,7 @@ import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Property } from "csstype";
 import { castArray } from "lodash-es";
-import { BoxWidths } from "../helpers/get-box-widths";
+import { BoxWidth } from "../helpers/BoxWidth";
 import { Width } from "../helpers/Width";
 import { Background } from "../helpers/Background";
 
@@ -292,7 +292,7 @@ export function mjSection(
     ? new Width(context.containerWidth)
     : undefined;
   const boxWidths = containerWidth
-    ? new BoxWidths(attributes.withDefaults, containerWidth)
+    ? new BoxWidth(attributes.withDefaults, containerWidth)
     : undefined;
 
   const children = all(node, options, {

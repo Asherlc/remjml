@@ -1,4 +1,4 @@
-import { BoxWidths } from "../helpers/get-box-widths";
+import { BoxWidth } from "../helpers/BoxWidth";
 import { minBy } from "lodash-es";
 import type { MjImage, MjHero, MjColumn, MjImageAttributes } from "mjmlast";
 import { h } from "hastscript";
@@ -21,17 +21,32 @@ export const DEFAULT_ATTRIBUTES: Pick<
 
 type ImageParent = MjHero | MjColumn;
 
-function getContentWidth(
-  attributes: MjImageAttributes,
-  context: Context
-): IWidth {
-  const width: Width = attributes.width
-    ? new Width(attributes.width)
-    : new Width(Infinity);
+class ContentWidth {
+  #containerWidth: Width;
+  #attributes: MjImageAttributes;
 
-  const { box } = new BoxWidths(attributes, width);
+  constructor(containerWidth: Width, attributes: Record<string, string>) {
+    this.#containerWidth = containerWidth;
+    this.#attributes = attributes;
+  }
 
-  return minBy<IWidth>([box, width], "width")!;
+  get #nodeWidth(): Width {
+    return this.#attributes.width
+      ? new Width(this.#attributes.width)
+      : new Width(Infinity);
+  }
+
+  get #boxWidth(): BoxWidth {
+    return new BoxWidth(this.#attributes, this.#containerWidth);
+  }
+
+  get width(): IWidth {
+    return minBy<IWidth>([this.#boxWidth.box, this.#nodeWidth], "width")!;
+  }
+
+  toString(): string {
+    return `${this.width}px`;
+  }
 }
 
 export function mjImage(
@@ -40,10 +55,17 @@ export function mjImage(
   options: Options,
   context: Context
 ): HElement {
+  if (!context.containerWidth) {
+    throw new Error(`No containerWidth`);
+  }
+
   const attributes = { ...DEFAULT_ATTRIBUTES, ...node.attributes };
 
   const height: string | undefined = attributes.height;
-  const contentWidth: IWidth = getContentWidth(attributes, context);
+  const contentWidth: ContentWidth = new ContentWidth(
+    new Width(context.containerWidth),
+    attributes
+  );
 
   const hImage = h("image", {
     alt: attributes.alt,
@@ -67,7 +89,7 @@ export function mjImage(
       fontSize: attributes["font-size"],
     }),
     title: attributes.title,
-    width: contentWidth.width,
+    width: "100%",
     usemap: attributes.usemap,
   });
 

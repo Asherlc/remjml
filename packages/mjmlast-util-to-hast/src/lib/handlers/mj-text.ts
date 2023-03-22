@@ -1,4 +1,4 @@
-import { BoxWidths } from "../helpers/get-box-widths";
+import { BoxWidth } from "../helpers/BoxWidth";
 import { min } from "lodash-es";
 import type { MjColumn, MjHero, MjText, MjTextAttributes } from "mjmlast";
 import { h } from "hastscript";

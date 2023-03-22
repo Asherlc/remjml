@@ -80,7 +80,6 @@ export function mjDivider(
   options: Options,
   context: Context
 ): HElement[] {
-  console.log("run");
   if (!context.containerWidth) {
     throw new Error(`Context must have container width`);
   }

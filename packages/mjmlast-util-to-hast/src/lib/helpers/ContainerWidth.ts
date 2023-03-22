@@ -1,7 +1,7 @@
 import { Attributes } from "./Attributes";
 import { Unit, Width } from "./Width";
 import { MjColumnAttributes } from "mjmlast";
-import { BoxWidths } from "./get-box-widths";
+import { BoxWidth } from "./BoxWidth";
 
 export class ContainerWidth {
   #attributes: MjColumnAttributes;
@@ -27,7 +27,7 @@ export class ContainerWidth {
     paddings: number;
     box: number;
   } {
-    return new BoxWidths(this.#attributes, this.#parentWidth);
+    return new BoxWidth(this.#attributes, this.#parentWidth);
   }
 
   get #innerBorders(): number {

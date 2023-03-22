@@ -1,7 +1,7 @@
 import { Attributes } from "./Attributes";
 import { IWidth, Unit, Width } from "./Width";
 
-export class BoxWidths {
+export class BoxWidth {
   #attributes: Attributes<any>;
   #containerWidth: Width;
 
@@ -28,6 +28,7 @@ export class BoxWidths {
     const unit: Unit = "px";
     const width: number =
       this.#containerWidth.width - this.paddings - this.borders;
+
     return {
       unit,
       width,

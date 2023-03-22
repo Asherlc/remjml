@@ -315,21 +315,23 @@ export interface MjBreakpoint extends Component<{ width: string }> {
   type: "mj-breakpoint";
 }
 
-interface MjDivider extends Node {
+export type MjDividerAttributes = {
+  "border-color": string;
+  "border-style": string;
+  "border-width": string;
+  "container-background-color": string;
+  padding: string;
+  "padding-bottom": string;
+  "padding-left": string;
+  "padding-right": string;
+  "padding-top": string;
+  width: string;
+  align: "left" | "right" | "center" | "justify";
+};
+
+export interface MjDivider extends Node {
   type: "mj-divider";
-  attributes: UniversalAttributes & {
-    "border-color": string;
-    "border-style": string;
-    "border-width": string;
-    "container-background-color": string;
-    padding: string;
-    "padding-bottom": string;
-    "padding-left": string;
-    "padding-right": string;
-    "padding-top": string;
-    width: string;
-    align: "left" | "right" | "center" | "justify";
-  };
+  attributes: UniversalAttributes & MjDividerAttributes;
 }
 
 export interface MjCarouselImage extends Node {

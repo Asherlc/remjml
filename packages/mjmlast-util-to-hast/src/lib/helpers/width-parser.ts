@@ -52,4 +52,8 @@ export class Width {
 
     return parseInt(widthString);
   }
+
+  toString(): string {
+    return `${this.width}${this.unit}`;
+  }
 }

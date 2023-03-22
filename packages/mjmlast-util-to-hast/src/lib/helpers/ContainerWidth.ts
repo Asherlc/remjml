@@ -1,6 +1,7 @@
+import { Attributes } from "./Attributes";
 import { Unit, Width } from "./width-parser";
 import { MjColumnAttributes } from "mjmlast";
-import { BoxWidths, getShorthandAttrValue } from "./get-box-widths";
+import { BoxWidths } from "./get-box-widths";
 
 export class ContainerWidth {
   #attributes: MjColumnAttributes;
@@ -30,9 +31,11 @@ export class ContainerWidth {
   }
 
   get #innerBorders(): number {
+    const attributes = new Attributes(this.#attributes);
+
     return (
-      getShorthandAttrValue("inner-border", "left", this.#attributes) +
-      getShorthandAttrValue("inner-border", "right", this.#attributes)
+      attributes.getShorthandValue("inner-border", "left") +
+      attributes.getShorthandValue("inner-border", "right")
     );
   }
 

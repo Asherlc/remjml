@@ -30,18 +30,23 @@ describe.each(emailFixtureFileNames)(
 
       mjml = mjmlBuffer.toString();
 
-      html = (
-        await unified()
-          .use(remjmlParse)
-          .use(remjmlRehype as any)
-          .use(rehypeStringify, {
-            allowDangerousHtml: true,
-          })
-          .process(mjml)
-      ).value.toString();
+      try {
+        html = (
+          await unified()
+            .use(remjmlParse)
+            .use(remjmlRehype as any)
+            .use(rehypeStringify, {
+              allowDangerousHtml: true,
+            })
+            .process(mjml)
+        ).value.toString();
+      } catch (error) {
+        console.error(error);
+        throw new Error(`Error rendering mjml: ${error}`);
+      }
     });
 
-    it("renders the same visual as original mjml library", async (emailFixtureFileName) => {
+    it("renders the same visual as original mjml library", async () => {
       const theirHtml = originalMjml(mjml).html;
       const ourBuffer = Buffer.from(html);
       const theirBuffer = Buffer.from(theirHtml);
@@ -72,7 +77,7 @@ describe.each(emailFixtureFileNames)(
       expect(diff).toBe(0);
     });
 
-    fit("renders the same as before`", async () => {
+    fit("renders the same as before", async () => {
       const buffer = Buffer.from(html);
       await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
         waitUntil: ["load", "networkidle0"],

@@ -77,7 +77,7 @@ describe.each(emailFixtureFileNames)(
       expect(diff).toBe(0);
     });
 
-    fit("renders the same as before", async () => {
+    it("renders the same as before", async () => {
       const buffer = Buffer.from(html);
       await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
         waitUntil: ["load", "networkidle0"],

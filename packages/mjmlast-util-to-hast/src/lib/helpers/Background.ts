@@ -177,6 +177,64 @@ class BackgroundPosition {
   }
 }
 
+class YahooCompatibleBackground {
+  #position: BackgroundPosition;
+  #repeat?: string;
+  #size?: string;
+  #color?: string;
+  #url?: string;
+
+  constructor({
+    position,
+    repeat,
+    size,
+    color,
+    url,
+  }: {
+    position: BackgroundPosition;
+    repeat?: string;
+    size?: string;
+    color?: string;
+    url?: string;
+  }) {
+    this.#position = position;
+    this.#repeat = repeat;
+    this.#size = size;
+    this.#color = color;
+    this.#url = url;
+  }
+
+  #singleLine(): string {
+    return [
+      this.#color,
+      ...(this.#url
+        ? [
+            `url('${this.#url}')`,
+            `${this.#position.x} ${this.#position.y}`,
+            `/ ${this.#size}`,
+            this.#repeat,
+          ]
+        : []
+      ).join(" "),
+    ].join(" ");
+  }
+
+  get styles(): Properties {
+    return this.#url
+      ? {
+          background: this.#singleLine,
+          // background size, repeat and position has to be separate since yahoo does not support shorthand background css property
+          "background-position": this.#position,
+          "background-repeat": this.#repeat,
+          "background-size": this.#size,
+        }
+      : {
+          background: this.#color,
+          "background-color": this.#color,
+        };
+  }
+}
+
 export class Background {
   url?: string;
   size?: string;
@@ -220,18 +278,13 @@ export class Background {
     });
   }
 
-  toCssPropertyValue(): string {
-    return [
-      this.color,
-      ...(this.url
-        ? [
-            `url('${this.url}')`,
-            `${this.position.x} ${this.position.y}`,
-            `/ ${this.size}`,
-            this.repeat,
-          ]
-        : []
-      ).join(" "),
-    ].join(" ");
+  toStyles() {
+    return new YahooCompatibleBackground({
+      position: this.position,
+      repeat: this.repeat,
+      size: this.size,
+      color: this.color,
+      url: this.url,
+    });
   }
 }

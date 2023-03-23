@@ -122,6 +122,15 @@ function section(
     DEFAULT_ATTRIBUTES
   );
   const { containerWidth } = context;
+  const background = new Background({
+    url: attributes.get("background-url"),
+    size: attributes.get("background-size"),
+    repeat: attributes.get("background-repeat"),
+    color: attributes.get("background-color"),
+    position: attributes.get("background-position"),
+    positionY: attributes.get("background-position-y"),
+    positionX: attributes.get("background-position-x"),
+  });
   const fullWidth = isFullWidth(attributes.get("full-width"));
 
   return h(
@@ -146,7 +155,7 @@ function section(
           cellspacing: "0",
           role: "presentation",
           style: jsonToCss({
-            ...(attributes.isFullWidth ? {} : background),
+            ...(fullWidth ? {} : background.toStyles()),
             width: "100%",
             borderRadius: attributes.get("border-radius"),
           }),
@@ -203,7 +212,7 @@ function section(
           )
         )
       ),
-      attributes.background.url
+      background.url
         ? h("div", {
             style: jsonToCss({
               lineHeight: "0",
@@ -228,6 +237,14 @@ function fullWidthWrapper(
   );
   const fullWidth = isFullWidth(attributes.get("full-width"));
   const background = new Background({
+    url: attributes.get("background-url"),
+    size: attributes.get("background-size"),
+    repeat: attributes.get("background-repeat"),
+    color: attributes.get("background-color"),
+    position: attributes.get("background-position"),
+    positionY: attributes.get("background-position-y"),
+    positionX: attributes.get("background-position-x"),
+  });
 
   const tr = h("td", children as any);
 
@@ -242,7 +259,7 @@ function fullWidthWrapper(
       cellspacing: "0",
       role: "presentation",
       style: jsonToCss({
-        ...(fullWidth ? background : undefined),
+        ...(fullWidth ? background.toStyles() : undefined),
         width: "100%",
         borderRadius: attributes.get("border-radius"),
       }),

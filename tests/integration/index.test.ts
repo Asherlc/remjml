@@ -41,16 +41,21 @@ describe.each(emailFixtureFileNames)(
       ).value.toString();
     });
 
-    it("renders the same visual as original mjml library for %s", async (emailFixtureFileName) => {
+    it("renders the same visual as original mjml library", async (emailFixtureFileName) => {
       const theirHtml = originalMjml(mjml).html;
+      const ourBuffer = Buffer.from(html);
+      const theirBuffer = Buffer.from(theirHtml);
 
-      await page.goto(`data:text/html,${html}`, {
+      await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
         waitUntil: "networkidle0",
       });
       const ourImageData = await page.screenshot();
-      await page.goto(`data:text/html,${theirHtml}`, {
-        waitUntil: "networkidle0",
-      });
+      await page.goto(
+        `data:text/html;base64,${theirBuffer.toString("base64")}`,
+        {
+          waitUntil: "networkidle0",
+        }
+      );
       const theirImageData = await page.screenshot();
 
       const ourPng = PNG.sync.read(ourImageData);

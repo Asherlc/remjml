@@ -37,7 +37,11 @@
     >
   </mj-head>
   <mj-body background-color="#d2eeff">
-    <mj-section padding-bottom="20px" padding-top="20px">
+    <mj-section
+      padding-bottom="20px"
+      padding-top="20px"
+      css-class="mj-section-preheader"
+    >
       <mj-group>
         <mj-column>
           <mj-text mj-class="preheader"
@@ -51,7 +55,7 @@
         </mj-column>
       </mj-group>
     </mj-section>
-    <mj-section background-color="#ffffff">
+    <mj-section background-color="#ffffff" css-class="mj-section-logo">
       <mj-column>
         <mj-image
           src="http://191n.mj.am/img/191n/3s/x0j.png"

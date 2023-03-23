@@ -29,6 +29,17 @@ table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; 
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }
       </style>
+      <style type="text/css">
+        noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+            @media only screen and (max-width:479px) {
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+            }
+      </style>
     </head>
     <body style="word-spacing:normal">
       <div class="mj-body"
@@ -155,6 +166,17 @@ table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; 
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }
       </style>
+      <style type="text/css">
+        noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+            @media only screen and (max-width:479px) {
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+            }
+      </style>
     </head>
     <body style="word-spacing:normal">
       <div style>
@@ -216,13 +238,13 @@ p { display:block;margin:13px 0; }
                       </tbody>
                     </table>
                   </div>
-                  <div style="margin:0px auto;max-width:600px">
+                  <div style="background:#f3f3f3;background-color:#f3f3f3;margin:0px auto;max-width:600px">
                     <table align="center"
                            border="0"
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="width:100%"
+                           style="background:#f3f3f3;background-color:#f3f3f3;width:100%"
                     >
                       <tbody>
                         <tr>
@@ -639,16 +661,27 @@ table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; 
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }
       </style>
+      <style type="text/css">
+        noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+            @media only screen and (max-width:479px) {
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+            }
+      </style>
     </head>
     <body style="word-spacing:normal;background-color:#ffffff">
       <div style="background-color:#ffffff">
-        <div style="margin:0px auto;max-width:600px">
+        <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
           <table align="center"
                  border="0"
                  cellpadding="0"
                  cellspacing="0"
                  role="presentation"
-                 style="width:100%"
+                 style="background:#ffffff;background-color:#ffffff;width:100%"
           >
             <tbody>
               <tr>
@@ -701,13 +734,13 @@ p { display:block;margin:13px 0; }
                       </tbody>
                     </table>
                   </div>
-                  <div style="margin:0px auto;max-width:600px">
+                  <div style="background:#009FE3;background-color:#009FE3;margin:0px auto;max-width:600px">
                     <table align="center"
                            border="0"
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="width:100%"
+                           style="background:#009FE3;background-color:#009FE3;width:100%"
                     >
                       <tbody>
                         <tr>
@@ -743,13 +776,13 @@ p { display:block;margin:13px 0; }
                                 </tbody>
                               </table>
                             </div>
-                            <div style="margin:0px auto;max-width:600px">
+                            <div style="background:#009fe3;background-color:#009fe3;margin:0px auto;max-width:600px">
                               <table align="center"
                                      border="0"
                                      cellpadding="0"
                                      cellspacing="0"
                                      role="presentation"
-                                     style="width:100%"
+                                     style="background:#009fe3;background-color:#009fe3;width:100%"
                               >
                                 <tbody>
                                   <tr>
@@ -878,6 +911,17 @@ table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; 
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }
       </style>
+      <style type="text/css">
+        noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+            @media only screen and (max-width:479px) {
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+            }
+      </style>
     </head>
     <div>
       <div>
@@ -965,13 +1009,13 @@ p { display:block;margin:13px 0; }
                       </table>
                     </div>
                   </div>
-                  <div style="margin:0px auto;max-width:600px">
+                  <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
                     <table align="center"
                            border="0"
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="width:100%"
+                           style="background:#ffffff;background-color:#ffffff;width:100%"
                     >
                       <tbody>
                         <tr>
@@ -1024,18 +1068,20 @@ p { display:block;margin:13px 0; }
                                 </tbody>
                               </table>
                             </div>
-                            <div style="margin:0px auto;max-width:600px">
+                            <div class="mj-section-nav"
+                                 style="background:#ffe118;background-color:#ffe118;margin:0px auto;max-width:600px"
+                            >
                               <table align="center"
                                      border="0"
                                      cellpadding="0"
                                      cellspacing="0"
                                      role="presentation"
-                                     style="width:100%"
+                                     style="background:#ffe118;background-color:#ffe118;width:100%"
                               >
                                 <tbody>
                                   <tr>
                                     <td style="direction:ltr;font-size:0px;padding:20px;text-align:center">
-                                      <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                                      <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix mj-column-nav"
                                            style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                       >
                                         <table border="0"
@@ -1106,14 +1152,14 @@ p { display:block;margin:13px 0; }
                                           </tbody>
                                         </table>
                                       </div>
-                                      <div style="margin:0px auto;max-width:600px">
+                                      <div style="background: u r l ( &#x27; h t t p : / / 1 9 1 n . m j . a m / i m g / 1 9 1 n / 3 s / x m 9 . j p g &#x27; )   c e n t e r   t o p   /   c o v e r   n o - r e p e a t;background-position:[object Object];background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px">
                                         <table align="center"
                                                background="http://191n.mj.am/img/191n/3s/xm9.jpg"
                                                border="0"
                                                cellpadding="0"
                                                cellspacing="0"
                                                role="presentation"
-                                               style="width:100%"
+                                               style="background: u r l ( &#x27; h t t p : / / 1 9 1 n . m j . a m / i m g / 1 9 1 n / 3 s / x m 9 . j p g &#x27; )   c e n t e r   t o p   /   c o v e r   n o - r e p e a t;background-position:[object Object];background-repeat:no-repeat;background-size:cover;width:100%"
                                         >
                                           <tbody>
                                             <tr>
@@ -1184,13 +1230,13 @@ p { display:block;margin:13px 0; }
                                                     </tbody>
                                                   </table>
                                                 </div>
-                                                <div style="margin:0px auto;max-width:600px">
+                                                <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
                                                   <table align="center"
                                                          border="0"
                                                          cellpadding="0"
                                                          cellspacing="0"
                                                          role="presentation"
-                                                         style="width:100%"
+                                                         style="background:#ffffff;background-color:#ffffff;width:100%"
                                                   >
                                                     <tbody>
                                                       <tr>
@@ -1425,13 +1471,13 @@ p { display:block;margin:13px 0; }
                                                               </tbody>
                                                             </table>
                                                           </div>
-                                                          <div style="margin:0px auto;max-width:600px">
+                                                          <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
                                                             <table align="center"
                                                                    border="0"
                                                                    cellpadding="0"
                                                                    cellspacing="0"
                                                                    role="presentation"
-                                                                   style="width:100%"
+                                                                   style="background:#ffffff;background-color:#ffffff;width:100%"
                                                             >
                                                               <tbody>
                                                                 <tr>
@@ -1555,13 +1601,13 @@ p { display:block;margin:13px 0; }
                                                                         </tbody>
                                                                       </table>
                                                                     </div>
-                                                                    <div style="margin:0px auto;max-width:600px">
+                                                                    <div style="background:#4b525c;background-color:#4b525c;margin:0px auto;max-width:600px">
                                                                       <table align="center"
                                                                              border="0"
                                                                              cellpadding="0"
                                                                              cellspacing="0"
                                                                              role="presentation"
-                                                                             style="width:100%"
+                                                                             style="background:#4b525c;background-color:#4b525c;width:100%"
                                                                       >
                                                                         <tbody>
                                                                           <tr>
@@ -1755,13 +1801,13 @@ p { display:block;margin:13px 0; }
                                                                                   </tbody>
                                                                                 </table>
                                                                               </div>
-                                                                              <div style="margin:0px auto;max-width:600px">
+                                                                              <div style="background:#4395b1;background-color:#4395b1;margin:0px auto;max-width:600px">
                                                                                 <table align="center"
                                                                                        border="0"
                                                                                        cellpadding="0"
                                                                                        cellspacing="0"
                                                                                        role="presentation"
-                                                                                       style="width:100%"
+                                                                                       style="background:#4395b1;background-color:#4395b1;width:100%"
                                                                                 >
                                                                                   <tbody>
                                                                                     <tr>

@@ -204,7 +204,7 @@ class YahooCompatibleBackground {
     this.#url = url;
   }
 
-  #singleLine(): string {
+  get #singleLine(): string {
     return [
       this.#color,
       ...(this.#url
@@ -278,13 +278,13 @@ export class Background {
     });
   }
 
-  toStyles() {
+  toStyles(): Properties {
     return new YahooCompatibleBackground({
       position: this.position,
       repeat: this.repeat,
       size: this.size,
       color: this.color,
       url: this.url,
-    });
+    }).styles;
   }
 }

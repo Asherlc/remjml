@@ -62,8 +62,12 @@
         ></mj-image>
       </mj-column>
     </mj-section>
-    <mj-section background-color="#ffe118" padding="20px">
-      <mj-column>
+    <mj-section
+      css-class="mj-section-nav"
+      background-color="#ffe118"
+      padding="20px"
+    >
+      <mj-column css-class="mj-column-nav">
         <mj-navbar
           base-url="https://mjml.io"
           hamburger="hamburger"

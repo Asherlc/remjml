@@ -1,9 +1,29 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../../../types/units-css.d.ts" />
+import units, { Parts } from "units-css";
 import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { conditionalComment } from "../helpers/conditional-comment";
+
+// MJML only supports px-based breakpoints
+class Breakpoint {
+  #px: string;
+
+  constructor(px: string) {
+    this.#px = px;
+  }
+
+  get lower(): Parts {
+    const { value, unit } = units.parse(this.#px);
+
+    return { value: value - 1, unit };
+  }
+}
+
+const DEFAULT_BREAKPOINT = "480px";
 
 export function mjml(
   node: MjmlRoot,
@@ -14,6 +34,8 @@ export function mjml(
   const attributes = node.attributes || {};
 
   const children = all(node, options, context);
+
+  const breakpoint = new Breakpoint(DEFAULT_BREAKPOINT).lower;
 
   const hDoc = h(
     "html",
@@ -85,6 +107,23 @@ p { display:block;margin:13px 0; }`
               ".mj-outlook-group-fix { width:100% !important; }"
             ),
           ]
+        ),
+        // mj-navbar styles
+        h(
+          "style",
+          {
+            type: "text/css",
+          },
+          `
+            noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+            @media only screen and (max-width:${breakpoint.value}${breakpoint.unit}) {
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+            }`
         ),
       ]),
       ...children,

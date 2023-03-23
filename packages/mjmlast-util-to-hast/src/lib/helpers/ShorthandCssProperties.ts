@@ -6,10 +6,10 @@ import units, { Parts } from "units-css";
 type Value = PaddingValue | BorderValue;
 
 interface IDirectionalCssProperty<ValueType> {
-  left: ValueType;
-  right: ValueType;
-  top: ValueType;
-  bottom: ValueType;
+  left: ValueType | undefined;
+  right: ValueType | undefined;
+  top: ValueType | undefined;
+  bottom: ValueType | undefined;
 }
 
 export class ShorthandCssProperties<ValueType extends Value>
@@ -19,7 +19,7 @@ export class ShorthandCssProperties<ValueType extends Value>
   #right?: string;
   #top?: string;
   #bottom?: string;
-  shorthand?: string;
+  #shorthand?: string;
   #name: string;
 
   constructor({
@@ -57,19 +57,19 @@ export class ShorthandCssProperties<ValueType extends Value>
     throw new Error(`Invalid name ${this.#name}`);
   }
 
-  get top(): ValueType {
+  get top(): ValueType | undefined {
     return this.#parser.value(this.#top, "top");
   }
 
-  get bottom(): ValueType {
+  get bottom(): ValueType | undefined {
     return this.#parser.value(this.#bottom, "bottom");
   }
 
-  get left(): ValueType {
+  get left(): ValueType | undefined {
     return this.#parser.value(this.#left, "left");
   }
 
-  get right(): ValueType {
+  get right(): ValueType | undefined {
     return this.#parser.value(this.#right, "right");
   }
 }
@@ -92,7 +92,7 @@ export class StringifiableValue {
 interface ShorthandProperty<ValueType extends Value> {
   value(expandedValue: string | undefined, direction: string): ValueType;
 }
-type PaddingValue = Parts;
+export type PaddingValue = Parts | undefined;
 class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
   #shorthandValue?: string;
 
@@ -106,7 +106,7 @@ class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
     }
 
     if (!this.#shorthandValue) {
-      throw new Error(`No value`);
+      return undefined;
     }
 
     const properties = expandShorthandProperty("padding", this.#shorthandValue);
@@ -119,7 +119,7 @@ class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
   }
 }
 
-type BorderValue = Parts | "none";
+export type BorderValue = Parts | "none" | undefined;
 class BorderShorthandProperty implements ShorthandProperty<BorderValue> {
   #shorthandValue?: string;
 
@@ -137,7 +137,7 @@ class BorderShorthandProperty implements ShorthandProperty<BorderValue> {
     }
 
     if (!this.#shorthandValue) {
-      throw new Error(`No value`);
+      return undefined;
     }
 
     const properties = expandShorthandProperty("border", this.#shorthandValue);

@@ -1,7 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
 import { Parts } from "units-css";
-import { ShorthandCssProperties } from "./ShorthandCssProperties";
+import {
+  BorderValue,
+  PaddingValue,
+  ShorthandCssProperties,
+} from "./ShorthandCssProperties";
 
 type BorderAttributes = {
   "border-top"?: string;
@@ -32,7 +36,7 @@ export class BoxWidth {
   }
 
   get paddings(): number {
-    const padding = new ShorthandCssProperties<Parts>({
+    const padding = new ShorthandCssProperties<PaddingValue>({
       top: this.#attributes["padding-top"],
       bottom: this.#attributes["padding-bottom"],
       left: this.#attributes["padding-left"],
@@ -41,11 +45,11 @@ export class BoxWidth {
       name: "padding",
     });
 
-    return padding.right.value + padding.left.value;
+    return (padding.right?.value || 0) + (padding.left?.value || 0);
   }
 
   get borders(): number {
-    const border = new ShorthandCssProperties<Parts>({
+    const border = new ShorthandCssProperties<BorderValue>({
       top: this.#attributes["border-top"],
       bottom: this.#attributes["border-bottom"],
       left: this.#attributes["border-left"],
@@ -54,7 +58,11 @@ export class BoxWidth {
       name: "border",
     });
 
-    return border.right.value + border.left.value;
+    const right: number =
+      border.right === "none" ? 0 : border.right?.value || 0;
+    const left: number = border.left === "none" ? 0 : border.left?.value || 0;
+
+    return right + left;
   }
 
   get box(): Parts {

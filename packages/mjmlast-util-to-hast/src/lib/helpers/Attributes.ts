@@ -1,4 +1,4 @@
-import { pick } from "lodash-es";
+import { isUndefined, omitBy, pick } from "lodash-es";
 
 export class Attributes<AllowedAttributes> {
   #attributes: AllowedAttributes;
@@ -24,9 +24,9 @@ export class Attributes<AllowedAttributes> {
     return {
       // The order is critical!
       ...this.#defaultAttributes,
-      ...this.#globalAllAttributes,
-      ...this.#globalTypeAttributes,
-      ...this.#attributes,
+      ...omitBy(this.#globalAllAttributes, isUndefined),
+      ...omitBy(this.#globalTypeAttributes, isUndefined),
+      ...omitBy(this.#attributes, isUndefined),
     };
   }
 

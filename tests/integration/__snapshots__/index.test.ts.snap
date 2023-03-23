@@ -1120,25 +1120,29 @@ p { display:block;margin:13px 0; }
                                                 >
                                                   <a class="mj-link"
                                                      href="https://mjml.io/https://mjml.io"
-                                                     style="display:inline-block"
+                                                     target="_blank"
+                                                     style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:22px;text-decoration:none;text-transform:uppercase;padding:15px 10px"
                                                   >
                                                     home
                                                   </a>
                                                   <a class="mj-link"
                                                      href="https://mjml.io/https://mjml.io"
-                                                     style="display:inline-block"
+                                                     target="_blank"
+                                                     style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:22px;text-decoration:none;text-transform:uppercase;padding:15px 10px"
                                                   >
                                                     Summer deals
                                                   </a>
                                                   <a class="mj-link"
                                                      href="https://mjml.io/https://mjml.io"
-                                                     style="display:inline-block"
+                                                     target="_blank"
+                                                     style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:22px;text-decoration:none;text-transform:uppercase;padding:15px 10px"
                                                   >
                                                     Our blog
                                                   </a>
                                                   <a class="mj-link"
                                                      href="https://mjml.io/https://mjml.io"
-                                                     style="display:inline-block"
+                                                     target="_blank"
+                                                     style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:22px;text-decoration:none;text-transform:uppercase;padding:15px 10px"
                                                   >
                                                     Follow us
                                                   </a>

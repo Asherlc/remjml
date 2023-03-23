@@ -8,7 +8,6 @@ import { Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
-import { defaultAttributes } from ".";
 import {
   beginConditionalComment,
   endConditionalComment,
@@ -72,7 +71,7 @@ export function mjNavbarLink(
     Partial<MjNavbarLinkAttributes & UniversalAttributes>
   >(
     node.attributes || {},
-    defaultAttributes || {},
+    DEFAULT_ATTRIBUTES || {},
     context.defaultAttributes["mj-navbar"] || {},
     context.defaultAttributes["mj-all"] || {}
   );

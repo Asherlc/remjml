@@ -881,18 +881,6 @@ p { display:block;margin:13px 0; }
     </head>
     <div>
       <div>
-        <div>
-        </div>
-        <div>
-        </div>
-        <div>
-        </div>
-        <div>
-        </div>
-        <div>
-        </div>
-      </div>
-      <div>
         a { text-decoration: none; color: inherit; }
       </div>
     </div>
@@ -1064,19 +1052,46 @@ p { display:block;margin:13px 0; }
                                             </tr>
                                             <tr>
                                               <td style="font-size:0px;word-break:break-word">
-                                                <div>
-                                                  <div>
-                                                    home
-                                                  </div>
-                                                  <div>
-                                                    Summer deals
-                                                  </div>
-                                                  <div>
-                                                    Our blog
-                                                  </div>
-                                                  <div>
-                                                    Follow us
-                                                  </div>
+                                                <div class="mj-menu-trigger"
+                                                     style="display:none;max-height:0px;max-width:0px;font-size:0px;overflow:hidden"
+                                                >
+                                                  <label for="mj-navbar-hamburger-input-1"
+                                                         class="mj-menu-label"
+                                                         style="display:block;cursor:pointer;mso-hide:all;-moz-user-select:none;user-select:none;color:#444"
+                                                  >
+                                                    <span class="mj-menu-icon-open"
+                                                          style="mso-hide:all"
+                                                    >
+                                                    </span>
+                                                    <span class="mj-menu-icon-close"
+                                                          style="display:none;mso-hide:all"
+                                                    >
+                                                    </span>
+                                                  </label>
+                                                </div>
+                                                <div class="mj-inline-links"
+                                                     style="width:100%"
+                                                >
+                                                  <a class="mj-link"
+                                                     href="https://mjml.io/https://mjml.io"
+                                                     style="display:inline-block"
+                                                  >
+                                                  </a>
+                                                  <a class="mj-link"
+                                                     href="https://mjml.io/https://mjml.io"
+                                                     style="display:inline-block"
+                                                  >
+                                                  </a>
+                                                  <a class="mj-link"
+                                                     href="https://mjml.io/https://mjml.io"
+                                                     style="display:inline-block"
+                                                  >
+                                                  </a>
+                                                  <a class="mj-link"
+                                                     href="https://mjml.io/https://mjml.io"
+                                                     style="display:inline-block"
+                                                  >
+                                                  </a>
                                                 </div>
                                               </td>
                                             </tr>
@@ -1991,6 +2006,6 @@ p { display:block;margin:13px 0; }
         </div>
       </div>
     </body>
-</html>
+  </html>
 </div>
 `;

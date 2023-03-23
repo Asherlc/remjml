@@ -4,6 +4,7 @@ import units, { Parts } from "units-css";
 import {
   beginConditionalComment,
   endConditionalComment,
+  MSO_OR_IE,
 } from "../helpers/conditional-comment";
 import type { Node } from "unist";
 import suffixCssClasses from "../helpers/suffix-css-classes";
@@ -85,7 +86,7 @@ function wrapper(
 
   return [
     beginConditionalComment({
-      expression: "mso | IE",
+      expression: MSO_OR_IE,
       type: "downlevel-hidden",
     }),
     h(
@@ -185,7 +186,7 @@ function section(
               },
               [
                 beginConditionalComment({
-                  expression: "mso | IE",
+                  expression: MSO_OR_IE,
                   type: "downlevel-hidden",
                 }),
                 h(
@@ -202,7 +203,7 @@ function section(
                     }),
                     ...children,
                     beginConditionalComment({
-                      expression: "mso | IE",
+                      expression: MSO_OR_IE,
                       type: "downlevel-hidden",
                     }),
                   ]

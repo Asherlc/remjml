@@ -14,6 +14,7 @@ import { Element as HElement } from "hast";
 import {
   beginConditionalComment,
   endConditionalComment,
+  MSO_OR_IE,
 } from "../helpers/conditional-comment";
 import { Attributes } from "../helpers/Attributes";
 import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
@@ -139,7 +140,7 @@ export function mjDivider(
   );
 
   const openConditional = beginConditionalComment({
-    expression: "mso | IE",
+    expression: MSO_OR_IE,
     type: "downlevel-hidden",
   });
   const endConditional = endConditionalComment({

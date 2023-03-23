@@ -5,7 +5,10 @@ import {
 } from "./mj-divider";
 import { text } from "./text";
 import { mjBody } from "./mj-body";
+import { mjNavbar } from "./mj-navbar";
+import { mjNavbarLink } from "./mj-navbar-link";
 import { mjColumn } from "./mj-column";
+import { mjAttributes } from "./mj-attributes";
 import { mjSection } from "./mj-section";
 import {
   mjImage,
@@ -26,11 +29,14 @@ export const defaultAttributes: Record<string, Attributes> = {
 
 export const handlers: Handlers = {
   text: text as Handler,
+  "mj-attributes": mjAttributes as Handler,
   "mj-body": mjBody as Handler,
   "mj-section": mjSection as Handler,
   "mj-column": mjColumn as Handler,
   "mj-image": mjImage as Handler,
   "mj-text": mjText as Handler,
   "mj-divider": mjDivider as Handler,
+  "mj-navbar": mjNavbar as Handler,
+  "mj-navbar-link": mjNavbarLink as Handler,
   mjml: mjml as Handler,
 };

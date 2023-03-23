@@ -1,0 +1,142 @@
+import type {
+  MjNavbarLink,
+  MjNavbarLinkAttributes,
+  UniversalAttributes,
+} from "mjmlast";
+import { h } from "hastscript";
+import { Context, Options } from "..";
+import { Element as HElement } from "hast";
+import { jsonToCss } from "../helpers/json-to-css";
+import { Attributes } from "../helpers/Attributes";
+import { defaultAttributes } from ".";
+import {
+  beginConditionalComment,
+  endConditionalComment,
+  MSO_OR_IE,
+} from "../helpers/conditional-comment";
+import classnames from "classnames";
+import { MjNavbarContext } from "./mj-navbar";
+import { Property } from "csstype";
+
+const DEFAULT_ATTRIBUTES: Pick<
+  MjNavbarLinkAttributes,
+  | "color"
+  | "font-size"
+  | "font-family"
+  | "font-weight"
+  | "line-height"
+  | "padding"
+  | "target"
+  | "text-decoration"
+  | "text-transform"
+> = {
+  color: "#000000",
+  "font-family": "Ubuntu, Helvetica, Arial, sans-serif",
+  "font-size": "13px",
+  "font-weight": "normal",
+  "line-height": "22px",
+  padding: "15px 10px",
+  target: "_blank",
+  "text-decoration": "none",
+  "text-transform": "uppercase",
+};
+
+class Link {
+  #href: string;
+  #baseUrl?: string;
+
+  constructor(baseUrl: string | undefined, href: string) {
+    this.#baseUrl = baseUrl;
+    this.#href = href;
+  }
+
+  get url(): URL {
+    if (this.#baseUrl) {
+      const url: URL = new URL(this.#baseUrl);
+      url.pathname = this.#href;
+
+      return url;
+    }
+
+    return new URL(this.#href);
+  }
+}
+
+export function mjNavbarLink(
+  node: MjNavbarLink,
+  parent: null,
+  options: Options,
+  context: MjNavbarContext
+): HElement[] {
+  const attributes = new Attributes<
+    Partial<MjNavbarLinkAttributes & UniversalAttributes>
+  >(
+    node.attributes || {},
+    defaultAttributes || {},
+    context.defaultAttributes["mj-navbar"] || {},
+    context.defaultAttributes["mj-all"] || {}
+  );
+
+  const href = attributes.get("href");
+
+  if (!href) {
+    throw new Error(`No href on mj-navbar-link: ${JSON.stringify(node)}`);
+  }
+
+  return [
+    beginConditionalComment({
+      type: "downlevel-hidden",
+      expression: MSO_OR_IE,
+    }),
+    h(
+      "td",
+      {
+        style: jsonToCss({
+          padding: attributes.get("padding"),
+          paddingTop: attributes.get("padding-top"),
+          paddingLeft: attributes.get("padding-left"),
+          paddingRight: attributes.get("padding-right"),
+          paddingBottom: attributes.get("padding-bottom"),
+        }),
+        class: `${attributes.get("css-class")}-outlook`,
+      },
+      [
+        endConditionalComment({
+          type: "downlevel-hidden",
+        }),
+        h("a", {
+          class: classnames(`mj-link`, attributes.get("css-class")),
+          href: new Link(context.navbarBaseUrl, href).url.toString(),
+          target: attributes.get("target"),
+          name: attributes.get("name"),
+          style: jsonToCss({
+            display: "inline-block",
+            color: attributes.get("color"),
+            fontFamily: attributes.get("font-family"),
+            fontSize: attributes.get("font-size"),
+            fontStyle: attributes.get("font-style"),
+            fontWeight: attributes.get("font-weight"),
+            letterSpacing: attributes.get("letter-spacing"),
+            lineHeight: attributes.get("line-height"),
+            textDecoration: attributes.get("text-decoration"),
+            textTransform: attributes.get(
+              "text-transform"
+            ) as Property.TextTransform,
+            padding: attributes.get("padding"),
+            paddingTop: attributes.get("padding-top"),
+            paddingLeft: attributes.get("padding-left"),
+            paddingRight: attributes.get("padding-right"),
+            paddingBottom: attributes.get("padding-bottom"),
+          }),
+        }),
+        beginConditionalComment({
+          type: "downlevel-hidden",
+          expression: MSO_OR_IE,
+        }),
+      ]
+    ),
+    endConditionalComment({
+      type: "downlevel-hidden",
+    }),
+  ];
+}

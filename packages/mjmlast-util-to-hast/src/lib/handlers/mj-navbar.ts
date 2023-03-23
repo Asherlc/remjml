@@ -10,6 +10,8 @@ import {
   beginConditionalComment,
   conditionalComment,
   endConditionalComment,
+  MSO_OR_IE,
+  NOT_MSO_OR_IE,
 } from "../helpers/conditional-comment";
 import { uniqueId } from "lodash-es";
 import { Property } from "csstype";
@@ -45,7 +47,7 @@ const DEFAULT_ATTRIBUTES: Pick<
   "ico-line-height": "30px",
 };
 
-export function MjNavbar(
+export function mjNavbar(
   node: MjNavbar,
   parent: null,
   options: Options,
@@ -67,7 +69,7 @@ export function MjNavbar(
   const hamburger: HElement[] = [
     ...conditionalComment(
       {
-        expression: "!mso | IE",
+        expression: NOT_MSO_OR_IE,
         type: "downlevel-hidden",
       },
       h("input", {
@@ -159,7 +161,7 @@ export function MjNavbar(
       [
         beginConditionalComment({
           type: "downlevel-hidden",
-          expression: "mso | IE",
+          expression: MSO_OR_IE,
         }),
         h(
           "table",
@@ -176,7 +178,7 @@ export function MjNavbar(
             }),
             ...children,
             beginConditionalComment({
-              expression: "mso | IE",
+              expression: MSO_OR_IE,
               type: "downlevel-hidden",
             }),
           ])

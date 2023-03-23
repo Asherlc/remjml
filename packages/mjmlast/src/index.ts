@@ -122,7 +122,7 @@ export interface MjTitle extends Parent<never, Text> {
   type: "mj-title";
 }
 
-type MjNavbarLinkAttributes = {
+export type MjNavbarLinkAttributes = {
   color: string;
   "font-family": string;
   "font-size": string;

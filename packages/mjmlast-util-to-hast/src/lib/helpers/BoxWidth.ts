@@ -32,26 +32,26 @@ export class BoxWidth {
   }
 
   get paddings(): number {
-    const padding = new ShorthandCssProperties({
+    const padding = new ShorthandCssProperties<Parts>({
       top: this.#attributes["padding-top"],
       bottom: this.#attributes["padding-bottom"],
       left: this.#attributes["padding-left"],
       right: this.#attributes["padding-right"],
       full: this.#attributes["padding"],
-      propertyName: "padding",
+      name: "padding",
     });
 
     return padding.right.value + padding.left.value;
   }
 
   get borders(): number {
-    const border = new ShorthandCssProperties({
+    const border = new ShorthandCssProperties<Parts>({
       top: this.#attributes["border-top"],
       bottom: this.#attributes["border-bottom"],
       left: this.#attributes["border-left"],
       right: this.#attributes["border-right"],
       full: this.#attributes["border"],
-      propertyName: "border",
+      name: "border",
     });
 
     return border.right.value + border.left.value;

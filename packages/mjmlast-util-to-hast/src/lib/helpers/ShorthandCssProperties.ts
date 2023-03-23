@@ -3,13 +3,24 @@
 import { expandShorthandProperty } from "css-property-parser";
 import units, { Parts } from "units-css";
 
-export class ShorthandCssProperties {
+type Value = PaddingValue | BorderValue;
+
+interface IDirectionalCssProperty<ValueType> {
+  left: ValueType;
+  right: ValueType;
+  top: ValueType;
+  bottom: ValueType;
+}
+
+export class ShorthandCssProperties<ValueType extends Value>
+  implements IDirectionalCssProperty<ValueType>
+{
   #left?: string;
   #right?: string;
   #top?: string;
   #bottom?: string;
-  #full?: string;
-  #propertyName: string;
+  shorthand?: string;
+  #name: string;
 
   constructor({
     top,
@@ -17,110 +28,121 @@ export class ShorthandCssProperties {
     bottom,
     left,
     full,
-    propertyName,
+    name,
   }: {
     left?: string;
     right?: string;
     bottom?: string;
     top?: string;
     full?: string;
-    propertyName: string;
+    name: string;
   }) {
     this.#bottom = bottom;
     this.#left = left;
     this.#right = right;
     this.#top = top;
-    this.#full = full;
-    this.#propertyName = propertyName;
+    this.shorthand = full;
+    this.#name = name;
   }
 
-  get top(): Parts {
-    if (this.#top) {
-      return units.parse(this.#top);
+  get #parser(): ShorthandProperty<ValueType> {
+    if (this.#name === "padding") {
+      return new PaddingShorthandProperty(this.#shorthand);
     }
 
-    if (!this.#full || this.#full === "0") {
+    if (this.#name === "border") {
+      return new BorderShorthandProperty(this.#shorthand);
+    }
+
+    throw new Error(`Invalid name ${this.#name}`);
+  }
+
+  get top(): ValueType {
+    return this.#parser.value(this.#top, "top");
+  }
+
+  get bottom(): ValueType {
+    return this.#parser.value(this.#bottom, "bottom");
+  }
+
+  get left(): ValueType {
+    return this.#parser.value(this.#left, "left");
+  }
+
+  get right(): ValueType {
+    return this.#parser.value(this.#right, "right");
+  }
+}
+
+export class StringifiableValue {
+  #value: Parts | string;
+  constructor(value: Parts | string) {
+    this.#value = value;
+  }
+
+  toString(): string {
+    if (typeof this.#value === "string") {
+      return this.#value;
+    }
+
+    return `${this.#value.value}${this.#value.unit}`;
+  }
+}
+
+interface ShorthandProperty<ValueType extends Value> {
+  value(expandedValue: string | undefined, direction: string): ValueType;
+}
+type PaddingValue = Parts;
+class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
+  #shorthandValue?: string;
+
+  constructor(shorthandValue: string | undefined) {
+    this.#shorthandValue = shorthandValue;
+  }
+
+  value(expandedValue: string | undefined, direction: string): PaddingValue {
+    if (!expandedValue || expandedValue === "0") {
       return units.parse("0");
     }
 
-    return units.parse(
-      expandShorthandProperty(this.#propertyName, this.#full)[
-        `${this.#propertyName}-top`
-      ]
-    );
-  }
-
-  get bottom(): Parts {
-    if (this.#bottom) {
-      return units.parse(this.#bottom);
+    if (!this.#shorthandValue) {
+      throw new Error(`No value`);
     }
 
-    if (!this.#full || this.#full === "0") {
-      return units.parse("0");
-    }
+    const properties = expandShorthandProperty("padding", this.#shorthandValue);
 
-    return units.parse(
-      expandShorthandProperty(this.#propertyName, this.#full)[
-        `${this.#propertyName}-bottom`
-      ]
-    );
-  }
+    const expandedPropertyName = `padding-${direction}`;
 
-  get left(): Parts {
-    if (this.#left) {
-      return units.parse(this.#left);
-    }
-
-    if (!this.#full || this.#full === "0") {
-      return units.parse("0");
-    }
-
-    return units.parse(
-      expandShorthandProperty(this.#propertyName, this.#full)[
-        `${this.#propertyName}-left`
-      ]
-    );
-  }
-
-  get right(): Parts {
-    if (this.#right) {
-      return units.parse(this.#right);
-    }
-
-    if (!this.#full || this.#full === "0") {
-      return units.parse("0");
-    }
-
-    const properties = expandShorthandProperty(this.#propertyName, this.#full);
-    const expandedPropertyName = `${this.#propertyName}-right`;
-
-    console.log(this.#full, properties, expandedPropertyName);
     const expandedProperty = properties[expandedPropertyName];
 
     return units.parse(expandedProperty);
   }
 }
 
-class ShorthandProperty {
-  #name: string;
-  #direction: string;
-  #value?: string;
+type BorderValue = Parts | "none";
+class BorderShorthandProperty implements ShorthandProperty<BorderValue> {
+  #shorthandValue?: string;
 
-  constructor(name: string, direction: string, value: string | undefined) {
-    this.#value = value;
-    this.#name = name;
-    this.#direction = direction;
+  constructor(shorthandValue: string | undefined) {
+    this.#shorthandValue = shorthandValue;
   }
 
-  get parts() {
-    if (!this.#value || this.#value === "0") {
+  value(expandedValue: string | undefined, direction: string): BorderValue {
+    if (!expandedValue || expandedValue === "0") {
       return units.parse("0");
     }
 
-    const properties = expandShorthandProperty(this.#name, this.#value);
-    const expandedPropertyName = `${this.#name}-right`;
+    if (expandedValue === "none") {
+      return "none";
+    }
 
-    console.log(this.#full, properties, expandedPropertyName);
+    if (!this.#shorthandValue) {
+      throw new Error(`No value`);
+    }
+
+    const properties = expandShorthandProperty("border", this.#shorthandValue);
+    const expandedPropertyName = `border-${direction}`;
+
     const expandedProperty = properties[expandedPropertyName];
 
     return units.parse(expandedProperty);

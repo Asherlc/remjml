@@ -44,13 +44,13 @@ export class ContainerWidth {
   }
 
   get #innerBorders(): number {
-    const border = new ShorthandCssProperties({
+    const border = new ShorthandCssProperties<Parts>({
       top: this.#attributes.get("border-top"),
       bottom: this.#attributes.get("border-bottom"),
       left: this.#attributes.get("border-left"),
       right: this.#attributes.get("border-right"),
       full: this.#attributes.get("border"),
-      propertyName: "border",
+      name: "border",
     });
 
     return border.left.value + border.right.value;

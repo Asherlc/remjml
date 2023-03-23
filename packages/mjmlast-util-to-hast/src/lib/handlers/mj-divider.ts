@@ -3,7 +3,6 @@
 import units, { Parts } from "units-css";
 import { jsonToCss } from "../helpers/json-to-css";
 import type {
-  MjAttributes,
   MjColumn,
   MjDivider,
   MjDividerAttributes,
@@ -58,8 +57,8 @@ function getOutlookWidth(
   containerWidth: Parts,
   attributes: Attributes<MjDividerAttributes>
 ): string {
-  const padding = new ShorthandCssProperties({
-    propertyName: "padding",
+  const padding = new ShorthandCssProperties<Parts>({
+    name: "padding",
     top: attributes.get("padding-top"),
     bottom: attributes.get("padding-bottom"),
     left: attributes.get("padding-left"),

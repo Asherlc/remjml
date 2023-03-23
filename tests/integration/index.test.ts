@@ -67,15 +67,16 @@ describe.each(emailFixtureFileNames)(
       expect(diff).toBe(0);
     });
 
-    it("renders the same as before`", async () => {
-      await page.goto(`data:text/html,${html}`, {
-        waitUntil: "networkidle0",
+    fit("renders the same as before`", async () => {
+      const buffer = Buffer.from(html);
+      await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
+        waitUntil: ["load", "networkidle0"],
       });
       const image = await page.screenshot();
       expect(image).toMatchImageSnapshot();
     });
 
-    fit("renders the same html as before`", async () => {
+    it("renders the same html as before`", async () => {
       expect(html).toMatchSnapshot();
     });
   }

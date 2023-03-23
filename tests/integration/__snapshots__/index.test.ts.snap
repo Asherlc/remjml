@@ -930,7 +930,9 @@ p { display:block;margin:13px 0; }
     </div>
     <body style="word-spacing:normal;background-color:#d2eeff">
       <div style="background-color:#d2eeff">
-        <div style="margin:0px auto;max-width:600px">
+        <div class="mj-section-preheader"
+             style="margin:0px auto;max-width:600px"
+        >
           <table align="center"
                  border="0"
                  cellpadding="0"
@@ -1009,7 +1011,9 @@ p { display:block;margin:13px 0; }
                       </table>
                     </div>
                   </div>
-                  <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
+                  <div class="mj-section-logo"
+                       style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px"
+                  >
                     <table align="center"
                            border="0"
                            cellpadding="0"

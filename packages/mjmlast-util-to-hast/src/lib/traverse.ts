@@ -20,11 +20,11 @@ function unknown(
   return hastH("div", nodes);
 }
 
-export function one(
+export function one<ContextType = Context>(
   node: MjmlNode,
   parent: MjmlParent<any, any> | null,
   options: Options,
-  context: Context
+  context: ContextType
 ): HContent | Array<HContent> {
   const type = node && node.type;
 
@@ -33,16 +33,16 @@ export function one(
     throw new Error("Expected node, got `" + node + "`");
   }
 
-  const handler: Handler =
+  const handler: Handler<ContextType> =
     options.handlers?.[type] || options.unknownHandler || unknown;
 
   return handler(node, parent, options, context);
 }
 
-export function all(
+export function all<ContextType = Context>(
   parent: MjmlNode,
   options: Options,
-  context: Context
+  context: ContextType
 ): HContent[] {
   const values: HContent[] = [];
 

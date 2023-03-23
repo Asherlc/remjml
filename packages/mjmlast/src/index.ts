@@ -263,7 +263,7 @@ export interface MjSocial
   type: "mj-social";
 }
 
-type MjNavbarAttributes = {
+export type MjNavbarAttributes = {
   align: "left" | "right" | "center" | "justify";
   "base-url": string;
   hamburger: string;

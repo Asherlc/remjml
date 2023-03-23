@@ -39,11 +39,11 @@ export type Options = {
   handlers?: Handlers;
 };
 
-export type Handler = (
+export type Handler<ContextType = Context> = (
   node: MjmlNode,
   parent: Parent<any, any> | null,
   options: Options,
-  context: Context
+  context: ContextType
 ) => HContent | Array<HContent>;
 
 export type Handlers = Record<string, Handler>;

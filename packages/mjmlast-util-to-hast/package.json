@@ -26,6 +26,8 @@
     "unist-util-generated": "^2.0.0",
     "unist-util-position": "^4.0.3",
     "unist-util-visit": "^4.1.1",
-    "unist-util-is": "5.1.1"
+    "unist-util-is": "5.1.1",
+    "css-property-parser": "1.0.6",
+    "units-css": "0.4.0"
   }
 }

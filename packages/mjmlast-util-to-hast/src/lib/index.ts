@@ -11,17 +11,24 @@ import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
 import type { MjHead, MjmlNode, Parent } from "mjmlast";
 import { u } from "unist-builder";
+import { Properties } from "csstype";
 
 type HastNode = HRoot | HParent | HParent["children"][number];
+type DefaultAttributes = Partial<
+  Record<MjmlNode["type"], Record<string, string>>
+>;
+type CssClasses = Record<string, Properties>;
 
 export type Context = {
   containerWidth?: string;
   mobileWidth?: string;
-  mjHead?: MjHead;
-  mediaQueries?: {
+  mjHead: MjHead;
+  mediaQueries: {
     [className: string]: string;
   };
   fullWidth?: boolean;
+  defaultAttributes: DefaultAttributes;
+  cssClasses: CssClasses;
 };
 
 export type Options = {
@@ -71,6 +78,8 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const context: Context = {
     mjHead,
     mediaQueries: {},
+    defaultAttributes: {},
+    cssClasses: {},
   };
 
   const node = one(tree, null, { ...options, handlers }, context);

@@ -1,3 +1,4 @@
+import { Properties } from "csstype";
 import { Element } from "hast";
 import type { Node, Parent as UnistParent, Literal } from "unist";
 
@@ -665,6 +666,16 @@ export interface MjHero extends Parent<MjHeroAttributes, MjHeroChild> {
   type: "mj-hero";
 }
 
+export interface MjClass extends Node {
+  type: "mj-class";
+  attributes: { name: string } & Properties;
+}
+
+export interface MjAll extends Node {
+  type: "mj-all";
+  attributes: Record<string, string>;
+}
+
 export type MjmlRootAttributes = Partial<{
   lang: string;
   dir: string;
@@ -676,6 +687,8 @@ export interface MjmlRoot
 }
 
 type MjAttributesChild =
+  | MjClass
+  | MjAll
   | MjColumn
   | MjWrapper
   | MjSection
@@ -709,7 +722,6 @@ type MjAttributesChild =
   | MjPreview
   | MjStyle
   | MjTitle
-  | Text
   | MjSelector;
 
 export interface MjAttributes extends Parent<never, MjAttributesChild> {
@@ -717,6 +729,7 @@ export interface MjAttributes extends Parent<never, MjAttributesChild> {
 }
 
 export type MjmlNode =
+  | MjAll
   | MjColumn
   | MjWrapper
   | MjSection
@@ -726,6 +739,7 @@ export type MjmlNode =
   | MjAccordionElement
   | MjAccordionTitle
   | MjAccordionText
+  | MjAttributes
   | MjBody
   | MjButton
   | MjCarousel

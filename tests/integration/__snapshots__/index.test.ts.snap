@@ -41,7 +41,7 @@ p { display:block;margin:13px 0; }
             <tbody>
               <tr>
                 <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
-                  <div class="mj-column-per-33 mj-outlook-group-fix mj-column"
+                  <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix mj-column"
                        style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                   >
                     <table border="0"
@@ -69,7 +69,7 @@ p { display:block;margin:13px 0; }
                             >
                               <tbody>
                                 <tr>
-                                  <td style="width:100pxpx">
+                                  <td style="width:[object Object]px">
                                     <image height="auto"
                                            src="https://mjml.io/assets/img/logo-small.png"
                                            style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -163,7 +163,7 @@ p { display:block;margin:13px 0; }
             <tbody>
               <tr>
                 <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
-                  <div class="mj-column-per-33 mj-outlook-group-fix"
+                  <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
                        style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                   >
                     <table border="0"
@@ -190,7 +190,7 @@ p { display:block;margin:13px 0; }
                             >
                               <tbody>
                                 <tr>
-                                  <td style="width:162pxpx">
+                                  <td style="width:[object Object]px">
                                     <image height="auto"
                                            src="http://i.imgur.com/6wwIX3R.png"
                                            style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -210,13 +210,13 @@ p { display:block;margin:13px 0; }
                       </tbody>
                     </table>
                   </div>
-                  <div style="background:#f3f3f3;background-color:#f3f3f3;margin:0px auto;max-width:600px">
+                  <div style="margin:0px auto;max-width:600px">
                     <table align="center"
                            border="0"
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="background:#f3f3f3;background-color:#f3f3f3;width:100%"
+                           style="width:100%"
                     >
                       <tbody>
                         <tr>
@@ -248,7 +248,7 @@ p { display:block;margin:13px 0; }
                                       >
                                         <tbody>
                                           <tr>
-                                            <td style="width:170pxpx">
+                                            <td style="width:[object Object]px">
                                               <image height="auto"
                                                      src="http://i.imgur.com/nwNZ0TW.png"
                                                      style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -337,7 +337,7 @@ p { display:block;margin:13px 0; }
                                 <tbody>
                                   <tr>
                                     <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
-                                      <div class="mj-column-per-14 mj-outlook-group-fix"
+                                      <div class="mj-column-per-14-285714285714286 mj-outlook-group-fix"
                                            style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                       >
                                         <table border="0"
@@ -364,7 +364,7 @@ p { display:block;margin:13px 0; }
                                                 >
                                                   <tbody>
                                                     <tr>
-                                                      <td style="width:165pxpx">
+                                                      <td style="width:[object Object]px">
                                                         <image height="auto"
                                                                src="http://i.imgur.com/2aRBc7u.png"
                                                                style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -421,7 +421,7 @@ p { display:block;margin:13px 0; }
                                           </tbody>
                                         </table>
                                       </div>
-                                      <div class="mj-column-per-14 mj-outlook-group-fix"
+                                      <div class="mj-column-per-14-285714285714286 mj-outlook-group-fix"
                                            style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                       >
                                         <table border="0"
@@ -448,7 +448,7 @@ p { display:block;margin:13px 0; }
                                                 >
                                                   <tbody>
                                                     <tr>
-                                                      <td style="width:165pxpx">
+                                                      <td style="width:[object Object]px">
                                                         <image height="auto"
                                                                src="http://i.imgur.com/L7Q88fd.png"
                                                                style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -505,7 +505,7 @@ p { display:block;margin:13px 0; }
                                           </tbody>
                                         </table>
                                       </div>
-                                      <div class="mj-column-per-14 mj-outlook-group-fix"
+                                      <div class="mj-column-per-14-285714285714286 mj-outlook-group-fix"
                                            style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                       >
                                         <table border="0"
@@ -532,7 +532,7 @@ p { display:block;margin:13px 0; }
                                                 >
                                                   <tbody>
                                                     <tr>
-                                                      <td style="width:165pxpx">
+                                                      <td style="width:[object Object]px">
                                                         <image height="auto"
                                                                src="http://i.imgur.com/0NBMznR.png"
                                                                style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -971,18 +971,18 @@ p { display:block;margin:13px 0; }
                       </table>
                     </div>
                   </div>
-                  <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
+                  <div style="margin:0px auto;max-width:600px">
                     <table align="center"
                            border="0"
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="background:#ffffff;background-color:#ffffff;width:100%"
+                           style="width:100%"
                     >
                       <tbody>
                         <tr>
                           <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
-                            <div class="mj-column-per-33 mj-outlook-group-fix"
+                            <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
                                  style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                             >
                               <table border="0"
@@ -1009,7 +1009,7 @@ p { display:block;margin:13px 0; }
                                       >
                                         <tbody>
                                           <tr>
-                                            <td style="width:105pxpx">
+                                            <td style="width:[object Object]px">
                                               <image alt="Worldly logo"
                                                      height="auto"
                                                      src="http://191n.mj.am/img/191n/3s/x0j.png"
@@ -1030,18 +1030,18 @@ p { display:block;margin:13px 0; }
                                 </tbody>
                               </table>
                             </div>
-                            <div style="background:#ffe118;background-color:#ffe118;margin:0px auto;max-width:600px">
+                            <div style="margin:0px auto;max-width:600px">
                               <table align="center"
                                      border="0"
                                      cellpadding="0"
                                      cellspacing="0"
                                      role="presentation"
-                                     style="background:#ffe118;background-color:#ffe118;width:100%"
+                                     style="width:100%"
                               >
                                 <tbody>
                                   <tr>
                                     <td style="direction:ltr;font-size:0px;padding:20px;text-align:center">
-                                      <div class="mj-column-per-33 mj-outlook-group-fix"
+                                      <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
                                            style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                       >
                                         <table border="0"
@@ -1081,14 +1081,14 @@ p { display:block;margin:13px 0; }
                                           </tbody>
                                         </table>
                                       </div>
-                                      <div style="background: u r l ( &#x27; h t t p : / / 1 9 1 n . m j . a m / i m g / 1 9 1 n / 3 s / x m 9 . j p g &#x27; )   c e n t e r   t o p   /   c o v e r   n o - r e p e a t;background-position:[object Object];background-repeat:no-repeat;background-size:cover;margin:0px auto;max-width:600px">
+                                      <div style="margin:0px auto;max-width:600px">
                                         <table align="center"
                                                background="http://191n.mj.am/img/191n/3s/xm9.jpg"
                                                border="0"
                                                cellpadding="0"
                                                cellspacing="0"
                                                role="presentation"
-                                               style="background: u r l ( &#x27; h t t p : / / 1 9 1 n . m j . a m / i m g / 1 9 1 n / 3 s / x m 9 . j p g &#x27; )   c e n t e r   t o p   /   c o v e r   n o - r e p e a t;background-position:[object Object];background-repeat:no-repeat;background-size:cover;width:100%"
+                                               style="width:100%"
                                         >
                                           <tbody>
                                             <tr>
@@ -1159,13 +1159,13 @@ p { display:block;margin:13px 0; }
                                                     </tbody>
                                                   </table>
                                                 </div>
-                                                <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
+                                                <div style="margin:0px auto;max-width:600px">
                                                   <table align="center"
                                                          border="0"
                                                          cellpadding="0"
                                                          cellspacing="0"
                                                          role="presentation"
-                                                         style="background:#ffffff;background-color:#ffffff;width:100%"
+                                                         style="width:100%"
                                                   >
                                                     <tbody>
                                                       <tr>
@@ -1212,7 +1212,7 @@ p { display:block;margin:13px 0; }
                                                                     >
                                                                       <tbody>
                                                                         <tr>
-                                                                          <td style="width:240pxpx">
+                                                                          <td style="width:[object Object]px">
                                                                             <image alt="Maldives, Corse : -15%"
                                                                                    height="auto"
                                                                                    src="http://191n.mj.am/img/191n/3s/x2w.jpg"
@@ -1253,7 +1253,7 @@ p { display:block;margin:13px 0; }
                                                                     >
                                                                       <tbody>
                                                                         <tr>
-                                                                          <td style="width:240pxpx">
+                                                                          <td style="width:[object Object]px">
                                                                             <image alt="Tahiti, Bora Bora : -10 %"
                                                                                    height="auto"
                                                                                    src="http://191n.mj.am/img/191n/3s/x2x.jpg"
@@ -1327,7 +1327,7 @@ p { display:block;margin:13px 0; }
                                                                     >
                                                                       <tbody>
                                                                         <tr>
-                                                                          <td style="width:240pxpx">
+                                                                          <td style="width:[object Object]px">
                                                                             <image alt="Stockholm, Rome : from 162 € / day"
                                                                                    height="auto"
                                                                                    src="http://191n.mj.am/img/191n/3s/x20.jpg"
@@ -1368,7 +1368,7 @@ p { display:block;margin:13px 0; }
                                                                     >
                                                                       <tbody>
                                                                         <tr>
-                                                                          <td style="width:240pxpx">
+                                                                          <td style="width:[object Object]px">
                                                                             <image alt="New York, London : -30 %"
                                                                                    height="auto"
                                                                                    src="http://191n.mj.am/img/191n/3s/x2s.jpg"
@@ -1400,13 +1400,13 @@ p { display:block;margin:13px 0; }
                                                               </tbody>
                                                             </table>
                                                           </div>
-                                                          <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
+                                                          <div style="margin:0px auto;max-width:600px">
                                                             <table align="center"
                                                                    border="0"
                                                                    cellpadding="0"
                                                                    cellspacing="0"
                                                                    role="presentation"
-                                                                   style="background:#ffffff;background-color:#ffffff;width:100%"
+                                                                   style="width:100%"
                                                             >
                                                               <tbody>
                                                                 <tr>
@@ -1438,7 +1438,7 @@ p { display:block;margin:13px 0; }
                                                                               >
                                                                                 <tbody>
                                                                                   <tr>
-                                                                                    <td style="width:250pxpx">
+                                                                                    <td style="width:[object Object]px">
                                                                                       <a href="https://mjml.io"
                                                                                          target="_blank"
                                                                                       >
@@ -1505,7 +1505,7 @@ p { display:block;margin:13px 0; }
                                                                               >
                                                                                 <tbody>
                                                                                   <tr>
-                                                                                    <td style="width:131pxpx">
+                                                                                    <td style="width:[object Object]px">
                                                                                       <a href="https://mjml.io"
                                                                                          target="_blank"
                                                                                       >
@@ -1530,13 +1530,13 @@ p { display:block;margin:13px 0; }
                                                                         </tbody>
                                                                       </table>
                                                                     </div>
-                                                                    <div style="background:#4b525c;background-color:#4b525c;margin:0px auto;max-width:600px">
+                                                                    <div style="margin:0px auto;max-width:600px">
                                                                       <table align="center"
                                                                              border="0"
                                                                              cellpadding="0"
                                                                              cellspacing="0"
                                                                              role="presentation"
-                                                                             style="background:#4b525c;background-color:#4b525c;width:100%"
+                                                                             style="width:100%"
                                                                       >
                                                                         <tbody>
                                                                           <tr>
@@ -1568,7 +1568,7 @@ p { display:block;margin:13px 0; }
                                                                                         >
                                                                                           <tbody>
                                                                                             <tr>
-                                                                                              <td style="width:30pxpx">
+                                                                                              <td style="width:[object Object]px">
                                                                                                 <image alt="Best companies for your flights"
                                                                                                        height="auto"
                                                                                                        src="http://191n.mj.am/img/191n/3s/x09.png"
@@ -1631,7 +1631,7 @@ p { display:block;margin:13px 0; }
                                                                                         >
                                                                                           <tbody>
                                                                                             <tr>
-                                                                                              <td style="width:29pxpx">
+                                                                                              <td style="width:[object Object]px">
                                                                                                 <image alt="Insurances included"
                                                                                                        height="auto"
                                                                                                        src="http://191n.mj.am/img/191n/3s/xsw.png"
@@ -1694,7 +1694,7 @@ p { display:block;margin:13px 0; }
                                                                                         >
                                                                                           <tbody>
                                                                                             <tr>
-                                                                                              <td style="width:31pxpx">
+                                                                                              <td style="width:[object Object]px">
                                                                                                 <image alt="Hotels best selection"
                                                                                                        height="auto"
                                                                                                        src="http://191n.mj.am/img/191n/3s/xsx.png"
@@ -1730,18 +1730,18 @@ p { display:block;margin:13px 0; }
                                                                                   </tbody>
                                                                                 </table>
                                                                               </div>
-                                                                              <div style="background:#4395b1;background-color:#4395b1;margin:0px auto;max-width:600px">
+                                                                              <div style="margin:0px auto;max-width:600px">
                                                                                 <table align="center"
                                                                                        border="0"
                                                                                        cellpadding="0"
                                                                                        cellspacing="0"
                                                                                        role="presentation"
-                                                                                       style="background:#4395b1;background-color:#4395b1;width:100%"
+                                                                                       style="width:100%"
                                                                                 >
                                                                                   <tbody>
                                                                                     <tr>
                                                                                       <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
-                                                                                        <div class="mj-column-per-33 mj-outlook-group-fix"
+                                                                                        <div class="mj-column-per-33-33333333333333 mj-outlook-group-fix"
                                                                                              style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                                                                         >
                                                                                           <table border="0"
@@ -1768,7 +1768,7 @@ p { display:block;margin:13px 0; }
                                                                                                   >
                                                                                                     <tbody>
                                                                                                       <tr>
-                                                                                                        <td style="width:97pxpx">
+                                                                                                        <td style="width:[object Object]px">
                                                                                                           <image alt="Call us : 0 800 123 456"
                                                                                                                  height="auto"
                                                                                                                  src="http://191n.mj.am/img/191n/3s/x1l.png"
@@ -1789,7 +1789,7 @@ p { display:block;margin:13px 0; }
                                                                                             </tbody>
                                                                                           </table>
                                                                                         </div>
-                                                                                        <div class="mj-column-per-33 mj-outlook-group-fix"
+                                                                                        <div class="mj-column-per-33-33333333333333 mj-outlook-group-fix"
                                                                                              style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                                                                         >
                                                                                           <table border="0"
@@ -1816,7 +1816,7 @@ p { display:block;margin:13px 0; }
                                                                                                   >
                                                                                                     <tbody>
                                                                                                       <tr>
-                                                                                                        <td style="width:117pxpx">
+                                                                                                        <td style="width:[object Object]px">
                                                                                                           <a href="https://mjml.io"
                                                                                                              target="_blank"
                                                                                                           >
@@ -1841,7 +1841,7 @@ p { display:block;margin:13px 0; }
                                                                                             </tbody>
                                                                                           </table>
                                                                                         </div>
-                                                                                        <div class="mj-column-per-33 mj-outlook-group-fix"
+                                                                                        <div class="mj-column-per-33-33333333333333 mj-outlook-group-fix"
                                                                                              style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                                                                         >
                                                                                           <table border="0"
@@ -1868,7 +1868,7 @@ p { display:block;margin:13px 0; }
                                                                                                   >
                                                                                                     <tbody>
                                                                                                       <tr>
-                                                                                                        <td style="width:110pxpx">
+                                                                                                        <td style="width:[object Object]px">
                                                                                                           <a href="https://mjml.io"
                                                                                                              target="_blank"
                                                                                                           >
@@ -1904,7 +1904,7 @@ p { display:block;margin:13px 0; }
                                                                                             <tbody>
                                                                                               <tr>
                                                                                                 <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
-                                                                                                  <div class="mj-column-per-33 mj-outlook-group-fix"
+                                                                                                  <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
                                                                                                        style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                                                                                                   >
                                                                                                     <table border="0"

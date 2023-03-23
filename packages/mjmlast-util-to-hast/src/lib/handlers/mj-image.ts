@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../../../types/units-css.d.ts" />
+import units, { Parts } from "units-css";
 import { BoxWidth } from "../helpers/BoxWidth";
 import { minBy } from "lodash-es";
 import type { MjImage, MjHero, MjColumn, MjImageAttributes } from "mjmlast";
@@ -5,7 +8,6 @@ import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import { IWidth, Width } from "../helpers/Width";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjImageAttributes,
@@ -22,26 +24,26 @@ export const DEFAULT_ATTRIBUTES: Pick<
 type ImageParent = MjHero | MjColumn;
 
 class ContentWidth {
-  #containerWidth: Width;
+  #containerWidth: Parts;
   #attributes: MjImageAttributes;
 
-  constructor(containerWidth: Width, attributes: Record<string, string>) {
+  constructor(containerWidth: Parts, attributes: Record<string, string>) {
     this.#containerWidth = containerWidth;
     this.#attributes = attributes;
   }
 
-  get #nodeWidth(): Width {
+  get #nodeWidth(): Parts {
     return this.#attributes.width
-      ? new Width(this.#attributes.width)
-      : new Width(Infinity);
+      ? units.parse(this.#attributes.width)
+      : units.parse(Infinity);
   }
 
   get #boxWidth(): BoxWidth {
     return new BoxWidth(this.#attributes, this.#containerWidth);
   }
 
-  get width(): IWidth {
-    return minBy<IWidth>([this.#boxWidth.box, this.#nodeWidth], "width")!;
+  get width(): Parts {
+    return minBy<Parts>([this.#boxWidth.box, this.#nodeWidth], "value")!;
   }
 
   toString(): string {
@@ -63,7 +65,7 @@ export function mjImage(
 
   const height: string | undefined = attributes.height;
   const contentWidth: ContentWidth = new ContentWidth(
-    new Width(context.containerWidth),
+    units.parse(context.containerWidth),
     attributes
   );
 

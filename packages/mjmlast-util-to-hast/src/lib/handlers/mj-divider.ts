@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../../../types/units-css.d.ts" />
+import units, { Parts } from "units-css";
 import { jsonToCss } from "../helpers/json-to-css";
 import type {
   MjAttributes,
@@ -14,7 +17,7 @@ import {
   endConditionalComment,
 } from "../helpers/conditional-comment";
 import { Attributes } from "../helpers/Attributes";
-import { Width } from "../helpers/Width";
+import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjDividerAttributes,
@@ -41,7 +44,7 @@ function attributesWithDefaults(
 
 type DividerParent = MjColumn;
 
-function getMargin(alignAttribute: MjDividerAttributes["align"]) {
+function getMargin(alignAttribute: MjDividerAttributes["align"] | undefined) {
   if (alignAttribute === "left") {
     return "0px";
   } else if (alignAttribute === "right") {
@@ -52,25 +55,31 @@ function getMargin(alignAttribute: MjDividerAttributes["align"]) {
 }
 
 function getOutlookWidth(
-  containerWidth: Width,
+  containerWidth: Parts,
   attributes: Attributes<MjDividerAttributes>
 ): string {
-  const paddingSize =
-    attributes.getShorthandValue("padding", "left") +
-    attributes.getShorthandValue("padding", "right");
+  const padding = new ShorthandCssProperties({
+    propertyName: "padding",
+    top: attributes.get("padding-top"),
+    bottom: attributes.get("padding-bottom"),
+    left: attributes.get("padding-left"),
+    right: attributes.get("padding-right"),
+    full: attributes.get("padding"),
+  });
+  const paddingSize = padding.left.value + padding.right.value;
 
-  const width = new Width(attributes.get("width"));
+  const width = units.parse(attributes.get("width"));
 
   switch (width.unit) {
     case "%": {
-      const effectiveWidth = containerWidth.width - paddingSize;
-      const percentMultiplier = width.width / 100;
+      const effectiveWidth = containerWidth.value - paddingSize;
+      const percentMultiplier = width.value / 100;
       return `${effectiveWidth * percentMultiplier}px`;
     }
     case "px":
       return width.toString();
     default:
-      return `${containerWidth.width - paddingSize}px`;
+      return `${containerWidth.value - paddingSize}px`;
   }
 }
 
@@ -84,14 +93,21 @@ export function mjDivider(
     throw new Error(`Context must have container width`);
   }
 
-  const attributes = attributesWithDefaults(node.attributes || {});
+  const attributes = new Attributes<MjDividerAttributes>(
+    node.attributes,
+    DEFAULT_ATTRIBUTES,
+    context.defaultAttributes["mj-divider"] || {},
+    context.defaultAttributes["mj-all"] || {}
+  );
   const styles = {
     borderTop: ["style", "width", "color"]
-      .map((attr) => attributes[`border-${attr}` as keyof MjDividerAttributes])
+      .map((attr) =>
+        attributes.get(`border-${attr}` as keyof MjDividerAttributes)
+      )
       .join(" "),
     fontSize: "1px",
-    margin: getMargin(attributes.align),
-    width: attributes.width,
+    margin: getMargin(attributes.get("align")),
+    width: attributes.get("width"),
   };
 
   const hP = h("p", {
@@ -102,14 +118,14 @@ export function mjDivider(
   const hTr = h("tr", hTd);
 
   const outlookWidth = getOutlookWidth(
-    new Width(context.containerWidth),
-    new Attributes(attributes)
+    units.parse(context.containerWidth),
+    attributes
   );
 
   const hTable = h(
     "table",
     {
-      align: attributes.align,
+      align: attributes.get("align"),
       border: "0",
       cellpadding: "0",
       cellspacing: "0",

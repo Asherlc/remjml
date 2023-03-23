@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../../../types/units-css.d.ts" />
+import units, { Parts } from "units-css";
 import {
   beginConditionalComment,
   endConditionalComment,
@@ -16,11 +19,11 @@ import { Context, Options } from "..";
 import { Element as HElement, ElementContent } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Property } from "csstype";
+import { Properties, Property } from "csstype";
 import { castArray } from "lodash-es";
 import { BoxWidth } from "../helpers/BoxWidth";
-import { Width } from "../helpers/Width";
 import { Background } from "../helpers/Background";
+import { Attributes } from "../helpers/Attributes";
 
 type SectionParent = MjBody | MjWrapper;
 
@@ -49,7 +52,12 @@ function wrapper(
   children: Node[] | Node
 ): HElement[] {
   const { containerWidth } = context;
-  const attributes = new SectionAttributes(node.attributes || {});
+  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+    node.attributes || {},
+    context.defaultAttributes["mj-section"] || {},
+    context.defaultAttributes["mj-all"] || {},
+    DEFAULT_ATTRIBUTES
+  );
   const bgcolorAttr = attributes.get("background-color")
     ? { bgcolor: attributes.get("background-color") }
     : {};
@@ -98,36 +106,8 @@ function wrapper(
   ];
 }
 
-class SectionAttributes {
-  #attributes: MjSectionAttributes & UniversalAttributes;
-
-  constructor(attributes: MjSectionAttributes & UniversalAttributes) {
-    this.#attributes = attributes;
-  }
-
-  get withDefaults(): MjSectionAttributes & UniversalAttributes {
-    return { ...DEFAULT_ATTRIBUTES, ...this.#attributes };
-  }
-
-  get isFullWidth(): boolean {
-    return this.withDefaults["full-width"] === "full-width";
-  }
-
-  get(attributeKey: string): string {
-    return this.withDefaults[attributeKey];
-  }
-
-  get background(): Background {
-    return new Background({
-      url: this.withDefaults["background-url"],
-      size: this.withDefaults["background-size"],
-      repeat: this.withDefaults["background-repeat"],
-      color: this.withDefaults["background-color"],
-      position: this.withDefaults["background-position"],
-      positionY: this.withDefaults["background-position-y"],
-      positionX: this.withDefaults["background-position-x"],
-    });
-  }
+function isFullWidth(fullWidthAttribute: string | undefined): boolean {
+  return fullWidthAttribute === "full-width";
 }
 
 function section(
@@ -135,27 +115,21 @@ function section(
   context: Context,
   children: ElementContent[]
 ): HElement {
-  const attributes = new SectionAttributes(node.attributes || {});
+  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+    node.attributes || {},
+    context.defaultAttributes["mj-section"] || {},
+    context.defaultAttributes["mj-all"] || {},
+    DEFAULT_ATTRIBUTES
+  );
   const { containerWidth } = context;
-  const background = attributes.background.url
-    ? {
-        background: attributes.background.toCssPropertyValue(),
-        // background size, repeat and position has to be separate since yahoo does not support shorthand background css property
-        "background-position": attributes.background,
-        "background-repeat": attributes.background.repeat,
-        "background-size": attributes.background.size,
-      }
-    : {
-        background: attributes.background.color,
-        "background-color": attributes.background.color,
-      };
+  const fullWidth = isFullWidth(attributes.get("full-width"));
 
   return h(
     "div",
     {
-      class: attributes.isFullWidth ? null : attributes.get("css-class"),
+      class: fullWidth ? null : attributes.get("css-class"),
       style: jsonToCss({
-        ...(attributes.isFullWidth ? {} : background),
+        ...(fullWidth ? {} : background.toStyles()),
         margin: "0px auto",
         borderRadius: attributes.get("border-radius"),
         maxWidth: containerWidth,
@@ -166,9 +140,7 @@ function section(
         "table",
         {
           align: "center",
-          background: attributes.isFullWidth
-            ? null
-            : attributes.get("background-url"),
+          background: fullWidth ? null : attributes.get("background-url"),
           border: "0",
           cellpadding: "0",
           cellspacing: "0",
@@ -243,21 +215,19 @@ function section(
   );
 }
 
-function fullWidth(node: MjSection, children: Node[]): HElement {
-  const attributes = attributesWithDefaults(node.attributes || {});
-  const fullWidth = isFullWidth(attributes);
-  const background = attributes["background-url"]
-    ? {
-        background: getBackground(attributes),
-        // background size, repeat and position has to be seperate since yahoo does not support shorthand background css property
-        "background-position": getBackgroundString(attributes),
-        "background-repeat": attributes["background-repeat"],
-        "background-size": attributes["background-size"],
-      }
-    : {
-        background: attributes["background-color"],
-        "background-color": attributes["background-color"],
-      };
+function fullWidthWrapper(
+  node: MjSection,
+  children: Node[],
+  context: Context
+): HElement {
+  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+    node.attributes || {},
+    context.defaultAttributes["mj-section"] || {},
+    context.defaultAttributes["mj-all"] || {},
+    DEFAULT_ATTRIBUTES
+  );
+  const fullWidth = isFullWidth(attributes.get("full-width"));
+  const background = new Background({
 
   const tr = h("td", children as any);
 
@@ -265,8 +235,8 @@ function fullWidth(node: MjSection, children: Node[]): HElement {
     "table",
     {
       align: "center",
-      class: attributes["css-class"],
-      background: attributes["background-url"],
+      class: attributes.get("css-class"),
+      background: attributes.get("background-url"),
       border: "0",
       cellpadding: "0",
       cellspacing: "0",
@@ -274,7 +244,7 @@ function fullWidth(node: MjSection, children: Node[]): HElement {
       style: jsonToCss({
         ...(fullWidth ? background : undefined),
         width: "100%",
-        borderRadius: attributes["border-radius"],
+        borderRadius: attributes.get("border-radius"),
       }),
     },
     [h("tbody", [h("tr", [tr])])]
@@ -287,17 +257,37 @@ export function mjSection(
   options: Options,
   context: Context
 ): HElement | HElement[] {
-  const attributes = new SectionAttributes(node.attributes || {});
-  const containerWidth: Width | undefined = context.containerWidth
-    ? new Width(context.containerWidth)
+  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+    node.attributes || {},
+    context.defaultAttributes["mj-section"] || {},
+    context.defaultAttributes["mj-all"] || {},
+    DEFAULT_ATTRIBUTES
+  );
+  const fullWidth = isFullWidth(attributes.get("full-width"));
+  const containerWidth: Parts | undefined = context.containerWidth
+    ? units.parse(context.containerWidth)
     : undefined;
   const boxWidths = containerWidth
-    ? new BoxWidth(attributes.withDefaults, containerWidth)
+    ? new BoxWidth(
+        attributes.pick(
+          "padding-top",
+          "padding-bottom",
+          "padding-left",
+          "padding-right",
+          "padding",
+          "border-top",
+          "border-bottom",
+          "border-left",
+          "border-right",
+          "border"
+        ),
+        containerWidth
+      )
     : undefined;
 
   const children = all(node, options, {
     ...context,
-    fullWidth: attributes.isFullWidth,
+    fullWidth: fullWidth,
     containerWidth: boxWidths?.box?.toString(),
   });
 
@@ -305,8 +295,8 @@ export function mjSection(
 
   const wrapped = wrapper(node, context, content);
 
-  if (attributes.isFullWidth) {
-    return fullWidth(node, wrapped);
+  if (fullWidth) {
+    return fullWidthWrapper(node, wrapped, context);
   }
 
   return wrapped as HElement[];

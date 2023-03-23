@@ -1,74 +1,44 @@
-type Direction = "top" | "bottom" | "left" | "right";
+import { pick } from "lodash-es";
 
-function borderParser(border: string): number {
-  const matches = border.match(/(?:(?:^| )(\d+))/);
-  // Not sure what this is... copied from original mjml
-  const firstMatch = matches?.[1];
-  return firstMatch ? parseInt(firstMatch, 10) : 0;
-}
-
-function shorthandParser(cssValue: string, direction: Direction): number {
-  const splittedCssValue = cssValue.split(" ");
-  let directions: Record<Direction, number>;
-
-  switch (splittedCssValue.length) {
-    case 2:
-      directions = { top: 0, bottom: 0, left: 1, right: 1 };
-      break;
-
-    case 3:
-      directions = { top: 0, left: 1, right: 1, bottom: 2 };
-      break;
-
-    case 4:
-      directions = { top: 0, right: 1, bottom: 2, left: 3 };
-      break;
-    case 1:
-    default:
-      return parseInt(cssValue, 10);
-  }
-
-  const directionNumber = directions[direction];
-  const directionSegment = splittedCssValue[directionNumber];
-
-  return directionSegment ? parseInt(directionSegment, 10) : 0;
-}
-
-export class Attributes<AllowedAttributes extends Record<string, string>> {
+export class Attributes<AllowedAttributes> {
   #attributes: AllowedAttributes;
+  #defaultAttributes: Partial<AllowedAttributes>;
+  // from mj-attributes
+  #globalTypeAttributes: Partial<AllowedAttributes>;
+  // from mj-all
+  #globalAllAttributes: Partial<AllowedAttributes>;
 
-  constructor(attributes: AllowedAttributes) {
+  constructor(
+    attributes: AllowedAttributes,
+    defaultAttributes: Partial<AllowedAttributes>,
+    globalTypeAttributes: Partial<AllowedAttributes>,
+    globalAllAttributes: Partial<AllowedAttributes>
+  ) {
     this.#attributes = attributes;
+    this.#defaultAttributes = defaultAttributes;
+    this.#globalTypeAttributes = globalTypeAttributes;
+    this.#globalAllAttributes = globalAllAttributes;
   }
 
-  get(propertyName: keyof AllowedAttributes): string {
-    return this.#attributes[propertyName];
+  get #allAttributes() {
+    return {
+      // The order is critical!
+      ...this.#defaultAttributes,
+      ...this.#globalAllAttributes,
+      ...this.#globalTypeAttributes,
+      ...this.#attributes,
+    };
   }
 
-  getShorthandValue(
-    attribute: keyof AllowedAttributes,
-    direction: Direction
-  ): number {
-    const mjAttributeDirection =
-      this.#attributes[`${String(attribute)}-${direction}`];
-    const mjAttribute = this.#attributes[attribute];
-
-    if (mjAttributeDirection) {
-      return parseInt(mjAttributeDirection, 10);
-    }
-
-    if (!mjAttribute) {
-      return 0;
-    }
-
-    return shorthandParser(mjAttribute, direction);
+  get<P extends keyof AllowedAttributes>(
+    propertyName: P
+  ): AllowedAttributes[P] {
+    return this.#allAttributes[propertyName];
   }
 
-  getShorthandBorderValue(direction: string): number {
-    const borderDirection =
-      direction && this.#attributes[`border-${direction}`];
-    const border = this.#attributes.border;
-
-    return borderParser(borderDirection || border || "0");
+  pick<P extends (keyof AllowedAttributes)[]>(
+    ...propertyNames: P
+  ): Record<P[number], AllowedAttributes[P[number]]> {
+    return pick(this.#allAttributes, propertyNames);
   }
 }

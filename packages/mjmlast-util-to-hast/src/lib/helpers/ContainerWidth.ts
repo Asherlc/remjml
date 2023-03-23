@@ -1,11 +1,14 @@
-import { Attributes } from "./Attributes";
-import { Unit, Width } from "./Width";
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../../../types/units-css.d.ts" />
+import units, { Parts } from "units-css";
 import { MjColumnAttributes } from "mjmlast";
 import { BoxWidth } from "./BoxWidth";
+import { ShorthandCssProperties } from "./ShorthandCssProperties";
+import { Attributes } from "./Attributes";
 
 export class ContainerWidth {
-  #attributes: MjColumnAttributes;
-  #parentWidth: Width;
+  #attributes: Attributes<MjColumnAttributes>;
+  #parentWidth: Parts;
   #nonRawSiblingsCount: number;
 
   constructor({
@@ -13,8 +16,8 @@ export class ContainerWidth {
     parentWidth,
     nonRawSiblingCount: nonRawSiblingsCount,
   }: {
-    attributes: MjColumnAttributes;
-    parentWidth: Width;
+    attributes: Attributes<MjColumnAttributes>;
+    parentWidth: Parts;
     nonRawSiblingCount: number;
   }) {
     this.#attributes = attributes;
@@ -22,21 +25,35 @@ export class ContainerWidth {
     this.#parentWidth = parentWidth;
   }
 
-  get #boxWidths(): {
-    borders: number;
-    paddings: number;
-    box: number;
-  } {
-    return new BoxWidth(this.#attributes, this.#parentWidth);
+  get #boxWidths(): BoxWidth {
+    return new BoxWidth(
+      this.#attributes.pick(
+        "padding-top",
+        "padding-bottom",
+        "padding-left",
+        "padding-right",
+        "padding",
+        "border-top",
+        "border-bottom",
+        "border-left",
+        "border-right",
+        "border"
+      ),
+      this.#parentWidth
+    );
   }
 
   get #innerBorders(): number {
-    const attributes = new Attributes(this.#attributes);
+    const border = new ShorthandCssProperties({
+      top: this.#attributes.get("border-top"),
+      bottom: this.#attributes.get("border-bottom"),
+      left: this.#attributes.get("border-left"),
+      right: this.#attributes.get("border-right"),
+      full: this.#attributes.get("border"),
+      propertyName: "border",
+    });
 
-    return (
-      attributes.getShorthandValue("inner-border", "left") +
-      attributes.getShorthandValue("inner-border", "right")
-    );
+    return border.left.value + border.right.value;
   }
 
   get #allPaddings() {
@@ -45,36 +62,32 @@ export class ContainerWidth {
     );
   }
 
-  get #totalWidth(): {
-    unit: Unit;
-    width: number;
-  } {
-    if (this.#attributes.width) {
-      return new Width(this.#attributes.width);
+  get #totalWidth(): Parts {
+    const width = this.#attributes.get("width");
+
+    if (width) {
+      return units.parse(width);
     } else if (this.#nonRawSiblingsCount === 0) {
       return this.#parentWidth;
     }
 
     return {
       unit: this.#parentWidth.unit,
-      width: this.#parentWidth.width / this.#nonRawSiblingsCount,
+      value: this.#parentWidth.value / this.#nonRawSiblingsCount,
     };
   }
 
-  get widthMinusPaddings(): {
-    width: number;
-    unit: Unit;
-  } {
-    const { unit, width } = this.#totalWidth;
+  get widthMinusPaddings(): Parts {
+    const { unit, value: width } = this.#totalWidth;
 
     if (unit === "%") {
       return {
-        width: (this.#parentWidth.width * width) / 100 - this.#allPaddings,
+        value: (this.#parentWidth.value * width) / 100 - this.#allPaddings,
         unit: "px",
       };
     }
     return {
-      width: width - this.#allPaddings,
+      value: width - this.#allPaddings,
       unit: "px",
     };
   }

@@ -1,3 +1,5 @@
+import { Properties } from "csstype";
+
 type YPosition = "top" | "bottom" | "center";
 type XPosition = "left" | "right" | "center";
 type Position = XPosition | YPosition;

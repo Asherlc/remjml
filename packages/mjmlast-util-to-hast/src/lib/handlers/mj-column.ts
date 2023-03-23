@@ -1,6 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="../../../../../types/units-css.d.ts" />
+import units, { Parts } from "units-css";
 import { is } from "unist-util-is";
 import { generateMediaQuery } from "../helpers/generate-media-query";
-import { Width } from "../helpers/Width";
 import { jsonToCss } from "../helpers/json-to-css";
 import type {
   MjColumn,
@@ -19,6 +21,7 @@ import classNames from "classnames";
 import { one } from "../traverse";
 import { ContainerWidth } from "../helpers/ContainerWidth";
 import { defaultAttributes } from ".";
+import { Attributes } from "../helpers/Attributes";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumnAttributes,
@@ -37,30 +40,27 @@ function attributesWithDefaults(
 type ColumnParent = MjGroup | MjSection;
 
 function getMobileWidth(
-  attributes: MjColumnAttributes,
+  widthString: string | undefined,
   parent: ColumnParent,
   context: Context
 ): string | undefined {
   const nonRawSiblings = parent.children.filter(
     (sibling) => !is(sibling, "raw")
   );
-  const { width } = attributes;
   const mobileWidth = context.mobileWidth;
 
   if (mobileWidth !== "mobileWidth") {
     return "100%";
   }
 
-  if (width === undefined) {
+  if (widthString === undefined) {
     return `${Math.round(100 / nonRawSiblings.length)}%`;
   }
 
-  const { unit, width: parsedWidth } = new Width(width);
+  const { unit, value: parsedWidth } = units.parse(widthString);
 
-  switch (unit) {
-    case "%":
-      return width;
-    case "px":
+  if (unit === "%") {
+    return widthString;
   }
 
   if (!context.containerWidth) {
@@ -71,7 +71,7 @@ function getMobileWidth(
 }
 
 function getContainerWidth(
-  attributes: MjColumnAttributes,
+  attributes: Attributes<MjColumnAttributes>,
   parent: ColumnParent,
   context: Context
 ): string | undefined {
@@ -87,11 +87,11 @@ function getContainerWidth(
 
   const containerWidth = new ContainerWidth({
     attributes,
-    parentWidth: new Width(parentWidth),
+    parentWidth: units.parse(parentWidth),
     nonRawSiblingCount: nonRawSiblings.length,
   });
 
-  const { width, unit } = containerWidth.widthMinusPaddings;
+  const { value: width, unit } = containerWidth.widthMinusPaddings;
 
   return `${width}${unit}`;
 }
@@ -102,7 +102,12 @@ function column(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = attributesWithDefaults(node.attributes || {});
+  const attributes = new Attributes(
+    node.attributes || {},
+    context.defaultAttributes["mj-column"] || {},
+    context.defaultAttributes["mj-all"] || {},
+    DEFAULT_ATTRIBUTES
+  );
   const containerWidth = getContainerWidth(attributes, parent, context);
   const children = node.children.map((child: MjColumnChild) => {
     const defaultChildAttributes: MjColumnChildAttributes =
@@ -154,7 +159,7 @@ function column(
   );
 }
 
-function hasGutter(attributes: MjColumnAttributes): boolean {
+function hasGutter(attributes: Attributes<MjColumnAttributes>): boolean {
   const gutterAttributes = new Set<keyof MjColumnAttributes>([
     "padding",
     "padding-bottom",
@@ -163,29 +168,34 @@ function hasGutter(attributes: MjColumnAttributes): boolean {
     "padding-top",
   ]);
 
-  return Array.from(gutterAttributes).some((attr) => attributes[attr] != null);
+  return Array.from(gutterAttributes).some(
+    (attr) => attributes.get(attr) != null
+  );
 }
 
-function tableStyles(attributes: MjColumnAttributes) {
+function tableStyles(attributes: Attributes<MjColumnAttributes>) {
   return {
-    backgroundColor: attributes["background-color"],
-    border: attributes.border,
-    borderBottom: attributes["border-bottom"],
-    borderLeft: attributes["border-left"],
-    borderRadius: attributes["border-radius"],
-    borderRight: attributes["border-right"],
-    borderTop: attributes["border-top"],
-    verticalAlign: attributes["vertical-align"],
+    backgroundColor: attributes.get("background-color"),
+    border: attributes.get("border"),
+    borderBottom: attributes.get("border-bottom"),
+    borderLeft: attributes.get("border-left"),
+    borderRadius: attributes.get("border-radius"),
+    borderRight: attributes.get("border-right"),
+    borderTop: attributes.get("border-top"),
+    verticalAlign: attributes.get("vertical-align"),
   };
 }
 
-function gutter(attributes: MjColumnAttributes, hColumn: HElement): HElement {
+function gutter(
+  attributes: Attributes<MjColumnAttributes>,
+  hColumn: HElement
+): HElement {
   const style = jsonToCss({
-    padding: attributes.padding,
-    paddingTop: attributes["padding-top"],
-    paddingRight: attributes["padding-right"],
-    paddingBottom: attributes["padding-bottom"],
-    paddingLeft: attributes["padding-left"],
+    padding: attributes.get("padding"),
+    paddingTop: attributes.get("padding-top"),
+    paddingRight: attributes.get("padding-right"),
+    paddingBottom: attributes.get("padding-bottom"),
+    paddingLeft: attributes.get("padding-left"),
     ...tableStyles(attributes),
   });
 
@@ -203,15 +213,15 @@ function gutter(attributes: MjColumnAttributes, hColumn: HElement): HElement {
 }
 
 function getParsedWidth(
-  attributes: MjColumnAttributes,
+  widthString: string | undefined,
   parent: ColumnParent
 ): { unit: string; parsedWidth: number } {
   const nonRawSiblings = parent.children.filter(
     (sibling) => !is(sibling, "raw")
   );
-  const width = attributes.width || `${100 / nonRawSiblings.length}%`;
+  const width = widthString || `${100 / nonRawSiblings.length}%`;
 
-  const { unit, width: parsedWidth } = new Width(width);
+  const { unit, value: parsedWidth } = units.parse(width);
 
   return {
     unit,
@@ -220,13 +230,13 @@ function getParsedWidth(
 }
 
 function getColumnClass(
-  attributes: MjColumnAttributes,
+  widthString: string | undefined,
   parent: ColumnParent,
   context: Context
 ): string {
   let className = "";
 
-  const { parsedWidth, unit = "px" } = getParsedWidth(attributes, parent);
+  const { parsedWidth, unit = "px" } = getParsedWidth(widthString, parent);
   const formattedClassNb = parsedWidth.toString().replace(".", "-");
 
   switch (unit) {
@@ -254,14 +264,21 @@ export function mjColumn(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = attributesWithDefaults(node.attributes || {});
-  const cssClass = attributes["css-class"];
+  const attributes = new Attributes(
+    node.attributes || {},
+    context.defaultAttributes["mj-column"] || {},
+    context.defaultAttributes["mj-all"] || {},
+    DEFAULT_ATTRIBUTES
+  );
+  const cssClass = attributes.get("css-class");
+  const width = attributes.get("width");
+
   const classesName = classNames(
-    getColumnClass(attributes, parent, context),
+    getColumnClass(width, parent, context),
     "mj-outlook-group-fix",
     cssClass
       ? {
-          [cssClass]: Boolean(attributes["css-class"]),
+          [cssClass]: Boolean(attributes.get("css-class")),
         }
       : {}
   );
@@ -278,10 +295,10 @@ export function mjColumn(
       style: jsonToCss({
         fontSize: "0px",
         textAlign: "left",
-        direction: attributes.direction,
+        direction: attributes.get("direction"),
         display: "inline-block",
-        verticalAlign: attributes["vertical-align"],
-        width: getMobileWidth(attributes, parent, context),
+        verticalAlign: attributes.get("vertical-align"),
+        width: getMobileWidth(width, parent, context),
       }),
     },
     columnWithGutter

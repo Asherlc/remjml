@@ -27,7 +27,7 @@ export type Context = {
     [className: string]: string;
   };
   fullWidth?: boolean;
-  defaultAttributes: DefaultAttributes;
+  defaultAttributes?: DefaultAttributes;
   cssClasses: CssClasses;
 };
 

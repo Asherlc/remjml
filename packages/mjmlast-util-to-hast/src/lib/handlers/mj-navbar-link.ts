@@ -72,8 +72,8 @@ export function mjNavbarLink(
   >(
     node.attributes || {},
     DEFAULT_ATTRIBUTES || {},
-    context.defaultAttributes["mj-navbar-link"] || {},
-    context.defaultAttributes["mj-all"] || {}
+    context.defaultAttributes?.["mj-navbar-link"] || {},
+    context.defaultAttributes?.["mj-all"] || {}
   );
 
   const href = attributes.get("href");

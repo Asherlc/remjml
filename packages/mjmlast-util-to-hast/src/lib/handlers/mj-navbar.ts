@@ -1,6 +1,6 @@
 import type { MjNavbar, MjNavbarAttributes } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Context, Options } from "..";
+import { Context, Options } from "..";
 import { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
@@ -56,8 +56,8 @@ export function mjNavbar(
   const attributes = new Attributes<Partial<MjNavbarAttributes>>(
     node.attributes || {},
     defaultAttributes || {},
-    context.defaultAttributes["mj-navbar"] || {},
-    context.defaultAttributes["mj-all"] || {}
+    context.defaultAttributes?.["mj-navbar"] || {},
+    context.defaultAttributes?.["mj-all"] || {}
   );
 
   const children = all<MjNavbarContext>(node, options, {

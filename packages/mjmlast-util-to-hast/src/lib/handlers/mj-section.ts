@@ -51,8 +51,8 @@ function section(
 ): HElement {
   const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
     node.attributes || {},
-    context.defaultAttributes["mj-section"] || {},
-    context.defaultAttributes["mj-all"] || {},
+    context.defaultAttributes?.["mj-section"] || {},
+    context.defaultAttributes?.["mj-all"] || {},
     DEFAULT_ATTRIBUTES
   );
   const { containerWidth } = context;
@@ -141,8 +141,8 @@ function fullWidthWrapper(
 ): HElement {
   const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
     node.attributes || {},
-    context.defaultAttributes["mj-section"] || {},
-    context.defaultAttributes["mj-all"] || {},
+    context.defaultAttributes?.["mj-section"] || {},
+    context.defaultAttributes?.["mj-all"] || {},
     DEFAULT_ATTRIBUTES
   );
   const fullWidth = isFullWidth(attributes.get("full-width"));
@@ -186,8 +186,8 @@ export function mjSection(
 ): HElement | HElement[] {
   const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
     node.attributes || {},
-    context.defaultAttributes["mj-section"] || {},
-    context.defaultAttributes["mj-all"] || {},
+    context.defaultAttributes?.["mj-section"] || {},
+    context.defaultAttributes?.["mj-all"] || {},
     DEFAULT_ATTRIBUTES
   );
   const fullWidth = isFullWidth(attributes.get("full-width"));

@@ -49,7 +49,7 @@ const mjmlAst: MjmlRoot = {
   type: "mjml",
 };
 
-fit("converts to mjmlast to hast", () => {
+it("converts to mjmlast to hast", () => {
   const hast = toHast(mjmlAst);
 
   expect(hast).toMatchInlineSnapshot(`

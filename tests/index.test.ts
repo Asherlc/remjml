@@ -151,7 +151,7 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
   );
 });
 
-fit("transforms mjml to html", async () => {
+it("transforms mjml to html", async () => {
   const mjml = `<mjml>
   <mj-body background-color="#ffffff" font-size="13px">
     <mj-section background-color="#ffffff" padding-bottom="0px" padding-top="0">

@@ -82,7 +82,7 @@ describe.each(emailFixtureFileNames)(
       await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
         waitUntil: ["load", "networkidle0"],
       });
-      const image = await page.screenshot();
+      const image = await page.screenshot({ fullPage: true });
       expect(image).toMatchImageSnapshot();
     });
 

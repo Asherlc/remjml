@@ -1,7 +1,5 @@
 import { VFile } from "vfile";
-import { Root } from "xast";
-import { fromXml } from "xast-util-from-xml";
-import { fromXast } from "xast-util-to-mjmlast";
+import { fromMjml } from "mjmlast-util-from-mjml";
 import { Plugin } from "unified";
 
 type Options = {
@@ -9,13 +7,12 @@ type Options = {
 };
 
 export default function remjmlParse(
-  this: Plugin<[Options?] | Array<void>, string, Root>
+  this: Plugin<[Options?] | Array<void>, string, string>
 ) {
   Object.assign(this, { Parser: parser });
 
   function parser(doc: string, file: VFile) {
-    const xAst = fromXml(String(file));
-    const mjmlast = fromXast(xAst);
+    const mjmlast = fromMjml(String(file));
     return mjmlast;
   }
 

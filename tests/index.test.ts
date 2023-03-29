@@ -1,7 +1,4 @@
 import "jest-xml-matcher";
-import path from "path";
-import fs from "fs";
-import fsPromise from "fs/promises";
 import { unified } from "unified";
 import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
@@ -37,7 +34,8 @@ it("transforms mjml to html", async () => {
           xmlns:o="urn:schemas-microsoft-com:office:office"
     >
       <head>
-        <!--[if mso]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+        <title>
+        </title>
         <meta http-equiv="Content-Type"
               content="text/html; charset=UTF-8"
         >
@@ -51,42 +49,65 @@ it("transforms mjml to html", async () => {
     img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
     p { display:block;margin:13px 0; }
         </style>
-        <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+        <style type="text/css">
+          noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+                @media only screen and (max-width:479px) {
+                  .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+                  .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+                  .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+                }
+        </style>
       </head>
       <body style="word-spacing:normal">
         <div style>
-          <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:600px" width="600"><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly"><div style="margin:0px auto;max-width:600px"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"><tbody><tr><td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center"><!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><![endif]-->
-          <div class="mj-column-per-33 mj-outlook-group-fix"
-               style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
-          >
-            <table border="0"
+          <div style="margin:0px auto;max-width:600px">
+            <table align="center"
+                   border="0"
                    cellpadding="0"
                    cellspacing="0"
                    role="presentation"
-                   style="vertical-align:top"
-                   width="100%"
+                   style="width:100%"
             >
               <tbody>
                 <tr>
-                  <td style="font-size:0px;word-break:break-word">
-                  </td>
-                </tr>
-                <tr>
-                  <td style="font-size:0px;word-break:break-word">
-                    <div>
-                      Don't click me!
+                  <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                    <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                         style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                    >
+                      <table border="0"
+                             cellpadding="0"
+                             cellspacing="0"
+                             role="presentation"
+                             style="vertical-align:top"
+                             width="100%"
+                      >
+                        <tbody>
+                          <tr>
+                            <td style="font-size:0px;word-break:break-word">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="font-size:0px;word-break:break-word">
+                              <div>
+                                Don't click me!
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="font-size:0px;word-break:break-word">
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="font-size:0px;word-break:break-word">
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <!--[if mso | IE]></table></td></tr></tbody></table></div><!--[if mso | IE]></td></tr></table><![endif]-->
         </div>
       </body>
     </html>

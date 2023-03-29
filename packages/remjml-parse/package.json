@@ -6,9 +6,7 @@
   },
   "dependencies": {
     "mjmlast": "*",
-    "xast-util-to-mjmlast": "*",
-    "xast-util-from-xml": "2.0.1",
-    "vfile": "5.3.5",
+    "vfile": "5.3.7",
     "unified": "10.1.2"
   },
   "devDependencies": {

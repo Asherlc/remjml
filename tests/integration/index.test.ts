@@ -13,81 +13,108 @@ import originalMjml from "mjml";
 
 expect.extend({ toMatchImageSnapshot });
 
-const emailFixtureDirectoryPath = path.resolve("./tests/fixtures/mjml-emails");
+const emailFixtureNames = [
+  "arturia",
+  "black-friday",
+  "happy-new-year",
+  "hello-world",
+  "proof",
+  "welcome-email",
+  "worldly",
+];
 
-const emailFixtureFileNames = fs.readdirSync(emailFixtureDirectoryPath);
+const emailFixtureDirectoryPath = path.resolve("./tests/fixtures/mjml-emails/");
 
-describe.each(emailFixtureFileNames)(
-  "%s email fixture",
-  (emailFixtureFilename) => {
-    let mjml: string;
-    let html: string;
+const loggerPlugin = (...args: any[]) => {
+  return (tree, file) => {
+    console.log(...args, JSON.stringify(tree), file);
+  };
+};
 
-    beforeAll(async () => {
-      const mjmlBuffer = await fsPromise.readFile(
-        path.join(emailFixtureDirectoryPath, emailFixtureFilename)
-      );
+describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
+  let mjml: string;
+  let html: string;
 
-      mjml = mjmlBuffer.toString();
+  beforeAll(async () => {
+    const mjmlBuffer = await fsPromise.readFile(
+      path.format({
+        dir: emailFixtureDirectoryPath,
+        name: emailFixtureName,
+        ext: ".mjml",
+      })
+    );
 
-      try {
-        html = (
-          await unified()
-            .use(remjmlParse)
-            .use(remjmlRehype as any)
-            .use(rehypeStringify, {
-              allowDangerousHtml: true,
-            })
-            .process(mjml)
-        ).value.toString();
-      } catch (error) {
-        console.error(error);
-        throw new Error(`Error rendering mjml: ${error}`);
-      }
+    mjml = mjmlBuffer.toString();
+
+    try {
+      html = (
+        await unified()
+          .use(remjmlParse)
+          .use(remjmlRehype as any)
+          .use(rehypeStringify, {
+            allowDangerousHtml: true,
+          })
+          .process(mjml)
+      ).value.toString();
+    } catch (error) {
+      console.error(error);
+      throw new Error(`test Error rendering mjml: ${error}`);
+    }
+
+    try {
+      html = (
+        await unified()
+          .use(remjmlParse)
+          .use(remjmlRehype as any)
+          .use(rehypeStringify, {
+            allowDangerousHtml: true,
+          })
+          .process(mjml)
+      ).value.toString();
+    } catch (error) {
+      console.error(error);
+      throw new Error(`Error rendering mjml: ${error}`);
+    }
+  });
+
+  it("renders the same visual as original mjml library", async () => {
+    const theirHtml = originalMjml(mjml).html;
+    const ourBuffer = Buffer.from(html);
+    const theirBuffer = Buffer.from(theirHtml);
+
+    await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
+      waitUntil: "networkidle0",
     });
-
-    it("renders the same visual as original mjml library", async () => {
-      const theirHtml = originalMjml(mjml).html;
-      const ourBuffer = Buffer.from(html);
-      const theirBuffer = Buffer.from(theirHtml);
-
-      await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
-        waitUntil: "networkidle0",
-      });
-      const ourImageData = await page.screenshot();
-      await page.goto(
-        `data:text/html;base64,${theirBuffer.toString("base64")}`,
-        {
-          waitUntil: "networkidle0",
-        }
-      );
-      const theirImageData = await page.screenshot();
-
-      const ourPng = PNG.sync.read(ourImageData);
-      const theirPng = PNG.sync.read(theirImageData);
-
-      const diff = pixelmatch(
-        theirPng.data,
-        ourPng.data,
-        null,
-        ourPng.width,
-        ourPng.height
-      );
-
-      expect(diff).toBe(0);
+    const ourImageData = await page.screenshot();
+    await page.goto(`data:text/html;base64,${theirBuffer.toString("base64")}`, {
+      waitUntil: "networkidle0",
     });
+    const theirImageData = await page.screenshot();
 
-    it("renders the same as before", async () => {
-      const buffer = Buffer.from(html);
-      await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
-        waitUntil: ["load", "networkidle0"],
-      });
-      const image = await page.screenshot({ fullPage: true });
-      expect(image).toMatchImageSnapshot();
-    });
+    const ourPng = PNG.sync.read(ourImageData);
+    const theirPng = PNG.sync.read(theirImageData);
 
-    it("renders the same html as before`", async () => {
-      expect(html).toMatchSnapshot();
+    const diff = pixelmatch(
+      theirPng.data,
+      ourPng.data,
+      null,
+      ourPng.width,
+      ourPng.height
+    );
+
+    expect(diff).toBe(0);
+  });
+
+  it("renders the same as before", async () => {
+    const buffer = Buffer.from(html);
+    await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
+      waitUntil: ["load", "networkidle0"],
     });
-  }
-);
+    const image = await page.screenshot({ fullPage: true });
+    expect(image).toMatchImageSnapshot();
+  });
+
+  it("renders the same html as before`", async () => {
+    expect(html).toMatchSnapshot();
+  });
+});

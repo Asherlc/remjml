@@ -32,6 +32,8 @@ export const nodeTypes = new Set([
   "mj-wrapper",
 ]);
 
+export type Attributes = Record<string, string>;
+
 export type UniversalAttributes = Partial<{
   "css-class": string;
   "mj-class": string;

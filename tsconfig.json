@@ -14,7 +14,7 @@
       "path": "./packages/remjml-parse/tsconfig.ref.json"
     },
     {
-      "path": "./packages/xast-util-to-mjmlast/tsconfig.ref.json"
+      "path": "./packages/mjmlast-util-from-mjml/tsconfig.ref.json"
     },
     {
       "path": "./packages/mjmlast-util-to-hast/tsconfig.ref.json"

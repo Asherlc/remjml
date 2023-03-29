@@ -1,4 +1,4 @@
-import { mjml } from "./mjml";
+import { mjml, Attributes } from "./mjml";
 import {
   mjDivider,
   DEFAULT_ATTRIBUTES as MJ_DIVIDER_DEFAULT_ATTRIBUTES,
@@ -19,7 +19,6 @@ import {
   DEFAULT_ATTRIBUTES as MJ_TEXT_DEFAULT_ATTRIBUTES,
 } from "./mj-text";
 import { Handler, Handlers } from "..";
-import { Attributes } from "xast";
 
 export const defaultAttributes: Record<string, Attributes> = {
   "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,

@@ -1,17 +1,14 @@
 {
-  "name": "xast-util-to-mjmlast",
+  "name": "mjmlast-util-from-mjml",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
   "dependencies": {
     "mjmlast": "*",
-    "@types/xast": "1.0.2",
-    "unist-builder": "^3.0.0",
-    "hast": "^1.0.0"
-  },
-  "devDependencies": {
-    "xastscript": "3.1.0"
+    "unist-builder": "^3.0.1",
+    "hast": "^1.0.0",
+    "@rgrove/parse-xml": "4.1.0"
   },
   "scripts": {
     "clean": "tsc --build --clean",

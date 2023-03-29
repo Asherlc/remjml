@@ -1,39 +1,971 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`arturia email fixture renders the same html as before\` 1`] = `
+<div>
+  <body style="word-spacing:normal;background-color:#F2F2F2">
+    <div style="background-color:#F2F2F2">
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;text-align:center">
+                <div class="mj-column-per-14-285714285714286 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:middle"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="https://www.arturia.com"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-black/Logo-Baseline-0.15x.png"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mj-column-per-14-285714285714286 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mj-column-per-14-285714285714286 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:none;line-height:120%;text-align:left;text-decoration:underline;color:#000000">
+                            NEWS
+                            <br>
+                            MARCH 2016
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="background:#000001;background-color:#000001;margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="background:#000001;background-color:#000001;width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#FFFFFE">
+                            Dear {firstname},
+                            <br>
+                            <br>
+                            You used to follow rhythm, now rhythm follows you, everywhere you
+          go!
+                            <br>
+                            Discover iSpark, the mobile transposition of our renowned beat-making
+          solution Spark.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="background-color:#FFFFFE;vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="https://www.arturia.com/products/ipad-synths/ispark/overview"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/05.jpg"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
+                            iSpark is a powerful mobile production tool allowing you to create
+          and play rhythmic tracks, complex grooves and even complete songs. Its
+          sonic strike force comes along with an unwavering workflow and a real
+          flexibility.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="background-color:#FFFFFE;vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="https://www.arturia.com/products/ipad-synths/ispark/overview"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/06.jpg"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
+                            Check out the iSpark introduction movie shot during the Arturia
+          Experience event at the ADE featuring the Dutch beatmaker
+          FilosofischeStilte.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="background-color:#FFFFFE;vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="https://www.arturia.com/products/ipad-synths/ispark/details"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/07.jpg"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
+                            Follow Mauricio Garcia, Arturia Product Specialist, presenting you
+          the many clever features of iSpark in this series of
+          tutorials.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="background-color:#FFFFFE;vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="https://www.arturia.com/products/ipad-synths/ispark/details"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/08.jpg"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
+                            iSpark includes a tremendous collection of factory kits and
+          individual instruments covering most of the field of application of
+          beat-making but it is also compatible with the existing Spark
+          resources and Expansion Packs.
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;padding-bottom:25px;word-break:break-word">
+                          <div>
+                            Learn more about iSpark
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="background:#000001;background-color:#000001;margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="background:#000001;background-color:#000001;width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:1;text-align:left;color:#FFFFFE">
+                            Musically yours,
+                            <br>
+                            The Arturia Team
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center">
+                <div class="mj-column-per-11-11111111111111 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="http://www.facebook.com/arturia2"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/facebook_arturia.png"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mj-column-per-11-11111111111111 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="http://www.youtube.com/arturiaweb"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/youtube.png"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mj-column-per-11-11111111111111 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="http://soundcloud.com/arturia-official"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/Soundcloud.png"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="mj-column-per-11-11111111111111 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:[object Object]px">
+                                  <a href="http://twitter.com/arturiaofficial"
+                                     target="_blank"
+                                  >
+                                    <image alt
+                                           height="auto"
+                                           src="https://www.arturia.com/images/newsletters/2016-02-ispark/twitter_arturia.png"
+                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                           width="100%"
+                                    >
+                                    </image>
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
+                            See this email in your browser
+                            <a href="https://www.arturia.com/images/newsletters/2016-02-ispark/newsletter.html"
+                               style="text-decoration: none; color: #2ddcb4"
+                            >
+                              here
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-right:0px;padding-left:0px;word-break:break-word"
+                        >
+                          <p style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:100%">
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center">
+                <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:none;line-height:12px;text-align:left;color:#000000">
+                            Your email address is on this list as a result of a subscription,
+          information request, competition, or other correspondence you may have
+          had with us in the past. If you would like to be removed from our
+          list, check the email address this newsletter was sent to and use the
+          following link:
+                            <a href="https://www.arturia.com/index.php?option=com_myarturia&#x26;view=newsletter&#x26;task=unsubscribeFromEmail&#x26;email={email}&#x26;token={title}&#x26;utm_source=elasticemail&#x26;utm_medium=email&#x26;utm_campaign=arturia_unsubscribe_2016&#x26;utm_term=nl-ispark-launch&#x26;utm_content=unsubscribe_footer"
+                               style="text-decoration: none; color: #2ddcb4"
+                            >
+                              Unsubscribe
+                            </a>
+                            . Privacy policy available
+                            <a href="https://www.arturia.com/privacypolicy"
+                               style="text-decoration: none; color: #2ddcb4"
+                            >
+                              here
+                            </a>
+                            .
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="left"
+                            style="font-size:0px;padding:10px 25px;padding-bottom:0px;word-break:break-word"
+                        >
+                          <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:none;line-height:12px;text-align:left;color:#000000">
+                            ARTURIA:
+                            <a href="https://www.arturia.com"
+                               style="text-decoration: none; color: #2ddcb4"
+                            >
+                              https://www.arturia.com
+                            </a>
+                            - Contact:
+                            <a href="mailto:info@arturia.com"
+                               style="text-decoration: none; color: #2ddcb4"
+                            >
+                              info
+                            </a>
+                            <br>
+                            ARTURIA France: 30 chemin du vieux chêne, 38240 Meylan - FRANCE
+                            <br>
+                            ARTURIA US: : 5776-D Lindero Cyn Rd #239 -Westlake Village, CA 91362 -
+          USA
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center"
+                            style="font-size:0px;padding:10px 25px;padding-right:0px;padding-left:0px;word-break:break-word"
+                        >
+                          <p style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:100%">
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</div>
+`;
+
 exports[`black-friday email fixture renders the same html as before\` 1`] = `
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <title>
-    </title>
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"
-    >
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1"
-    >
-    <style type="text/css">
-      #outlook a { padding:0; }
-body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-p { display:block;margin:13px 0; }
-    </style>
-    <style type="text/css">
-      noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-            @media only screen and (max-width:479px) {
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-            }
-    </style>
-  </head>
+<div>
   <body style="word-spacing:normal;background-color:#F4F4F4">
     <div style="background-color:#F4F4F4">
       <div style="background:#000000;background-color:#000000;margin:0px auto;max-width:600px">
@@ -97,9 +1029,16 @@ p { display:block;margin:13px 0; }
                             style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
-                            <p style="               line-height: 18px;               margin: 10px 0;               text-align: center;               font-size: 14px;               color: #ffffff;               font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;             ">
-                              WOMEN&#x26;nbsp; &#x26;nbsp; &#x26;nbsp; &#x26;nbsp;| &#x26;nbsp; &#x26;nbsp; &#x26;nbsp; MEN&#x26;nbsp;
-            &#x26;nbsp; &#x26;nbsp; &#x26;nbsp;| &#x26;nbsp; &#x26;nbsp; &#x26;nbsp; KIDS
+                            <p style="
+              line-height: 18px;
+              margin: 10px 0;
+              text-align: center;
+              font-size: 14px;
+              color: #ffffff;
+              font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;
+            ">
+                              WOMEN       |       MEN 
+                 |       KIDS
                             </p>
                           </div>
                         </td>
@@ -211,7 +1150,14 @@ p { display:block;margin:13px 0; }
                             style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:5px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
-                            <p style="               line-height: 60px;               text-align: center;               margin: 10px 0;               font-size: 55px;               color: #fcfcfc;               font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;             ">
+                            <p style="
+              line-height: 60px;
+              text-align: center;
+              margin: 10px 0;
+              font-size: 55px;
+              color: #fcfcfc;
+              font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;
+            ">
                               <b>
                                 Black Friday
                               </b>
@@ -228,12 +1174,23 @@ p { display:block;margin:13px 0; }
                             style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:20px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
-                            <p style="               line-height: 30px;               text-align: center;               margin: 10px 0;               color: #f5f5f5;               font-size: 25px;               font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;             ">
+                            <p style="
+              line-height: 30px;
+              text-align: center;
+              margin: 10px 0;
+              color: #f5f5f5;
+              font-size: 25px;
+              font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;
+            ">
                               <b>
-                                Take an&#x26;nbsp; extra 50% off
+                                Take an  extra 50% off
                               </b>
                               <br>
-                              <span style="                 color: #ffffff;                 font-size: 18px;                 font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;               ">
+                              <span style="
+                color: #ffffff;
+                font-size: 18px;
+                font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;
+              ">
                                 Use code SALEONSALE* at checkout
                               </span>
                             </p>
@@ -296,11 +1253,21 @@ p { display:block;margin:13px 0; }
                             style="font-size:0px;padding:10px 25px;padding-top:5px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
-                            <p style="               line-height: 16px;               text-align: center;               margin: 10px 0;               font-size: 12px;               color: #ffffff;               font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;             ">
+                            <p style="
+              line-height: 16px;
+              text-align: center;
+              margin: 10px 0;
+              font-size: 12px;
+              color: #ffffff;
+              font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;
+            ">
                               * Offer valid on Allura purchases on 17/29/11 at 11:59 pm. No price
-            adjustments on previous&#x26;nbsp;
+            adjustments on previous 
                               <br>
-                              <span style="                 color: #ffffff;                 font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;               ">
+                              <span style="
+                color: #ffffff;
+                font-family: &#x27;Times New Roman&#x27;, Helvetica, Arial, sans-serif;
+              ">
                                 purchases, offer limited to stock. Cannot be combined with any
               offer or promotion other than free.
                               </span>
@@ -322,43 +1289,11 @@ p { display:block;margin:13px 0; }
       </div>
     </div>
   </body>
-</html>
+</div>
 `;
 
 exports[`happy-new-year email fixture renders the same html as before\` 1`] = `
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <title>
-    </title>
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"
-    >
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1"
-    >
-    <style type="text/css">
-      #outlook a { padding:0; }
-body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-p { display:block;margin:13px 0; }
-    </style>
-    <style type="text/css">
-      noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-            @media only screen and (max-width:479px) {
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-            }
-    </style>
-  </head>
+<div>
   <body style="word-spacing:normal;background-color:#F4F4F4">
     <div style="background-color:#F4F4F4">
       <div style="background:#C1272D;background-color:#C1272D;margin:0px auto;max-width:600px">
@@ -626,7 +1561,7 @@ p { display:block;margin:13px 0; }
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:center;color:#ffffff">
-                            Simply created&#x26;nbsp;on&#x26;nbsp;
+                            Simply created on 
                             <a style="color: #ffffff"
                                href="http://www.mailjet.com"
                             >
@@ -698,43 +1633,11 @@ p { display:block;margin:13px 0; }
       </div>
     </div>
   </body>
-</html>
+</div>
 `;
 
 exports[`hello-world email fixture renders the same html as before\` 1`] = `
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <title>
-    </title>
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"
-    >
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1"
-    >
-    <style type="text/css">
-      #outlook a { padding:0; }
-body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-p { display:block;margin:13px 0; }
-    </style>
-    <style type="text/css">
-      noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-            @media only screen and (max-width:479px) {
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-            }
-    </style>
-  </head>
+<div>
   <body style="word-spacing:normal">
     <div class="mj-body"
          style
@@ -833,43 +1736,11 @@ p { display:block;margin:13px 0; }
       </div>
     </div>
   </body>
-</html>
+</div>
 `;
 
 exports[`proof email fixture renders the same html as before\` 1`] = `
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <title>
-    </title>
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"
-    >
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1"
-    >
-    <style type="text/css">
-      #outlook a { padding:0; }
-body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-p { display:block;margin:13px 0; }
-    </style>
-    <style type="text/css">
-      noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-            @media only screen and (max-width:479px) {
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-            }
-    </style>
-  </head>
+<div>
   <body style="word-spacing:normal">
     <div style>
       <div style="margin:0px auto;max-width:600px">
@@ -1326,43 +2197,11 @@ p { display:block;margin:13px 0; }
       </div>
     </div>
   </body>
-</html>
+</div>
 `;
 
 exports[`welcome-email email fixture renders the same html as before\` 1`] = `
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <title>
-    </title>
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"
-    >
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1"
-    >
-    <style type="text/css">
-      #outlook a { padding:0; }
-body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-p { display:block;margin:13px 0; }
-    </style>
-    <style type="text/css">
-      noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-            @media only screen and (max-width:479px) {
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-            }
-    </style>
-  </head>
+<div>
   <body style="word-spacing:normal;background-color:#ffffff">
     <div style="background-color:#ffffff">
       <div style="background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px">
@@ -1574,43 +2413,11 @@ p { display:block;margin:13px 0; }
       </div>
     </div>
   </body>
-</html>
+</div>
 `;
 
 exports[`worldly email fixture renders the same html as before\` 1`] = `
-<!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office"
->
-  <head>
-    <title>
-    </title>
-    <meta http-equiv="Content-Type"
-          content="text/html; charset=UTF-8"
-    >
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1"
-    >
-    <style type="text/css">
-      #outlook a { padding:0; }
-body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
-table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
-img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
-p { display:block;margin:13px 0; }
-    </style>
-    <style type="text/css">
-      noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-            @media only screen and (max-width:479px) {
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-              .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-              .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-            }
-    </style>
-  </head>
+<div>
   <div>
     <div>
       a { text-decoration: none; color: inherit; }
@@ -2754,5 +3561,5 @@ p { display:block;margin:13px 0; }
       </div>
     </div>
   </body>
-</html>
+</div>
 `;

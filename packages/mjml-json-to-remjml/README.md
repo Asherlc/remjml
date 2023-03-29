@@ -75,7 +75,6 @@ output:
                       src: "/assets/img/logo-small.png",
                       width: "100px",
                     },
-                    children: [],
                     type: "mj-image",
                   },
                   {
@@ -91,7 +90,6 @@ output:
                       "font-family": "Helvetica",
                       "font-size": "20px",
                     },
-                    children: [],
                     content: "Hello World",
                     type: "mj-text",
                   },

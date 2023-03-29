@@ -67,14 +67,12 @@ it("converts mjml json to remjml", () => {
                       src: "/assets/img/logo-small.png",
                       width: "100px",
                     },
-                    children: [],
                     type: "mj-image",
                   },
                   {
                     attributes: {
                       "border-color": "#F46E43",
                     },
-                    children: [],
                     type: "mj-divider",
                   },
                   {
@@ -83,7 +81,6 @@ it("converts mjml json to remjml", () => {
                       "font-family": "Helvetica",
                       "font-size": "20px",
                     },
-                    children: [],
                     content: "Hello World",
                     type: "mj-text",
                   },

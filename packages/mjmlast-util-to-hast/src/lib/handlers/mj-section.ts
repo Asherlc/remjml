@@ -1,13 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
 import units, { Parts } from "units-css";
-import {
-  beginConditionalComment,
-  endConditionalComment,
-  MSO_OR_IE,
-} from "../helpers/conditional-comment";
 import type { Node } from "unist";
-import suffixCssClasses from "../helpers/suffix-css-classes";
 import type {
   MjBody,
   MjSection,
@@ -20,8 +14,7 @@ import { Context, Options } from "..";
 import { Element as HElement, ElementContent } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Properties, Property } from "csstype";
-import { castArray } from "lodash-es";
+import { Property } from "csstype";
 import { BoxWidth } from "../helpers/BoxWidth";
 import { Background } from "../helpers/Background";
 import { Attributes } from "../helpers/Attributes";
@@ -46,66 +39,6 @@ const DEFAULT_ATTRIBUTES: Pick<
   "text-align": "center",
   "text-padding": "4px 4px 4px 0",
 };
-
-function wrapper(
-  node: MjSection,
-  context: Context,
-  children: Node[] | Node
-): HElement[] {
-  const { containerWidth } = context;
-  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
-    node.attributes || {},
-    context.defaultAttributes["mj-section"] || {},
-    context.defaultAttributes["mj-all"] || {},
-    DEFAULT_ATTRIBUTES
-  );
-  const bgcolorAttr = attributes.get("background-color")
-    ? { bgcolor: attributes.get("background-color") }
-    : {};
-
-  const childrenArray = castArray(children);
-
-  const hTd = h(
-    "td",
-    {
-      style: jsonToCss({
-        lineHeight: "0px",
-        fontSize: "0px",
-        "mso-line-height-rule": "exactly",
-      }),
-    },
-    [
-      endConditionalComment({
-        type: "downlevel-hidden",
-      }) as any,
-      ...childrenArray,
-    ]
-  );
-
-  const cssClass = attributes.get("css-class");
-
-  return [
-    beginConditionalComment({
-      expression: MSO_OR_IE,
-      type: "downlevel-hidden",
-    }),
-    h(
-      "table",
-      {
-        align: "center",
-        border: "0",
-        cellpadding: "0",
-        cellspacing: "0",
-        class: cssClass ? suffixCssClasses(cssClass, "outlook") : undefined,
-        role: "presentation",
-        style: jsonToCss({ width: containerWidth }),
-        width: containerWidth ? parseInt(containerWidth, 10) : undefined,
-        ...bgcolorAttr,
-      },
-      [h("tr", hTd)]
-    ),
-  ];
-}
 
 function isFullWidth(fullWidthAttribute: string | undefined): boolean {
   return fullWidthAttribute === "full-width";
@@ -184,31 +117,7 @@ function section(
                   textAlign: attributes.get("text-align") as Property.TextAlign,
                 }),
               },
-              [
-                beginConditionalComment({
-                  expression: MSO_OR_IE,
-                  type: "downlevel-hidden",
-                }),
-                h(
-                  "table",
-                  {
-                    role: "presentation",
-                    border: 0,
-                    cellpadding: 0,
-                    cellspacing: 0,
-                  },
-                  [
-                    endConditionalComment({
-                      type: "downlevel-hidden",
-                    }),
-                    ...children,
-                    beginConditionalComment({
-                      expression: MSO_OR_IE,
-                      type: "downlevel-hidden",
-                    }),
-                  ]
-                ),
-              ]
+              children
             )
           )
         )
@@ -227,7 +136,7 @@ function section(
 
 function fullWidthWrapper(
   node: MjSection,
-  children: Node[],
+  children: Node,
   context: Context
 ): HElement {
   const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
@@ -311,11 +220,9 @@ export function mjSection(
 
   const content = section(node, context, children);
 
-  const wrapped = wrapper(node, context, content);
-
   if (fullWidth) {
-    return fullWidthWrapper(node, wrapped, context);
+    return fullWidthWrapper(node, content, context);
   }
 
-  return wrapped as HElement[];
+  return content;
 }

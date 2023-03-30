@@ -41,17 +41,21 @@ export class ShorthandCssProperties<ValueType extends Value>
     this.#left = left;
     this.#right = right;
     this.#top = top;
-    this.shorthand = full;
+    this.#shorthand = full;
     this.#name = name;
   }
 
   get #parser(): ShorthandProperty<ValueType> {
     if (this.#name === "padding") {
-      return new PaddingShorthandProperty(this.#shorthand);
+      return new PaddingShorthandProperty(
+        this.#shorthand
+      ) as ShorthandProperty<ValueType>;
     }
 
     if (this.#name === "border") {
-      return new BorderShorthandProperty(this.#shorthand);
+      return new BorderShorthandProperty(
+        this.#shorthand
+      ) as ShorthandProperty<ValueType>;
     }
 
     throw new Error(`Invalid name ${this.#name}`);

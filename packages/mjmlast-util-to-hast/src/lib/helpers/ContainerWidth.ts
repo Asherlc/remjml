@@ -53,7 +53,7 @@ export class ContainerWidth {
       name: "border",
     });
 
-    return border.left.value + border.right.value;
+    return (border.left?.value || 0) + (border.right?.value || 0);
   }
 
   get #allPaddings() {

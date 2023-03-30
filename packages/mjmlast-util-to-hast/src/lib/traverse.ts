@@ -33,8 +33,9 @@ export function one<ContextType = Context>(
     throw new Error("Expected node, got `" + node + "`");
   }
 
-  const handler: Handler<ContextType> =
-    options.handlers?.[type] || options.unknownHandler || unknown;
+  const handler: Handler<ContextType> = (options.handlers?.[type] ||
+    options.unknownHandler ||
+    unknown) as Handler<ContextType>;
 
   return handler(node, parent, options, context);
 }

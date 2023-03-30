@@ -6,7 +6,7 @@ import type {
   Parent as HParent,
   ElementContent as HContent,
 } from "hast";
-import { pointStart, pointEnd, PositionLike } from "unist-util-position";
+import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
 import type { MjHead, MjmlNode, Parent } from "mjmlast";
@@ -49,7 +49,7 @@ export type Handler<ContextType = Context> = (
 export type Handlers = Record<string, Handler>;
 
 export function addPosition<Right extends HContent>(
-  left: MjmlNode | PositionLike | undefined | null,
+  left: MjmlNode | undefined | null,
   right: Right
 ): Right {
   if (left && "position" in left) {

@@ -4,7 +4,7 @@ import units, { Parts } from "units-css";
 import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Context, Options } from "..";
-import { Element as HElement } from "hast";
+import { Node } from "unist";
 import { all } from "../traverse";
 import { conditionalComment } from "../helpers/conditional-comment";
 
@@ -30,7 +30,7 @@ export function mjml(
   parent: never,
   options: Options,
   context: Context
-): HElement[] {
+): Node[] {
   const attributes = node.attributes || {};
 
   const children = all(node, options, context);

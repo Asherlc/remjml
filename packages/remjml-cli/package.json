@@ -17,6 +17,6 @@
     "clean": "tsc --build --clean",
     "build": "tsc --build",
     "watch": "tsc --build --watch",
-    "process": "NODE_OPTIONS='--loader ts-node/esm' ts-node src/index.ts"
+    "process": "NODE_OPTIONS='--loader ts-node/esm --experimental-specifier-resolution=node' ts-node src/index.ts"
   }
 }

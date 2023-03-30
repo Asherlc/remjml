@@ -1,4 +1,5 @@
-import { mjml, Attributes } from "./mjml";
+import { Attributes } from "mjml-types";
+import { mjml } from "./mjml";
 import {
   mjDivider,
   DEFAULT_ATTRIBUTES as MJ_DIVIDER_DEFAULT_ATTRIBUTES,

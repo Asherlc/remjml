@@ -7,7 +7,14 @@ function jsonPropertyNameToCssPropertyName(jsonPropertyName: string): string {
   );
 }
 
-export function jsonToCss(properties: Properties): string {
+export type CssPropertiesWithWeirdEmail = Properties & {
+  "mso-hide"?: string;
+  "-moz-user-select"?: string;
+  "user-select"?: string;
+  align?: string;
+};
+
+export function jsonToCss(properties: CssPropertiesWithWeirdEmail): string {
   const styleString = Object.entries(properties)
     .filter(([, value]) => {
       return Boolean(value);

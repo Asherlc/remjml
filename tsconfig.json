@@ -2,7 +2,7 @@
   "include": ["**/*"],
   "references": [
     {
-      "path": "./packages/mjml/tsconfig.ref.json"
+      "path": "./packages/mjml-types/tsconfig.ref.json"
     },
     {
       "path": "./packages/mjml-json-to-remjml/tsconfig.ref.json"

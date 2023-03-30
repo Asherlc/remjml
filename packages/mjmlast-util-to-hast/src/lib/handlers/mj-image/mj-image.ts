@@ -22,8 +22,6 @@ export function mjImage(
     throw new Error(`No containerWidth`);
   }
 
-  console.log(node.attributes);
-
   const attributes = new Attributes(
     node.attributes || {},
     context.defaultAttributes?.["mj-image"] || {},

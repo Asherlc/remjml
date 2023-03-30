@@ -1,27 +1,26 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../../../../types/units-css.d.ts" />
-import units, { Parts } from "units-css";
+/// <reference path="../../../../../../types/units-css.d.ts" />
+import units from "units-css";
 import { is } from "unist-util-is";
-import { generateMediaQuery } from "../helpers/generate-media-query";
-import { jsonToCss } from "../helpers/json-to-css";
+import { generateMediaQuery } from "../../helpers/generate-media-query";
+import { jsonToCss } from "../../helpers/json-to-css";
+import { ColumnParent } from "./types";
+import { ColumnContainerWidth } from "./ColumnContainerWidth";
 import type {
   MjColumn,
   MjColumnAttributes,
   MjColumnChild,
   MjColumnChildAttributes,
-  MjGroup,
   MjmlNode,
-  MjSection,
-  UniversalAttributes,
 } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Context, Options } from "..";
+import { addPosition, Context, Options } from "../..";
 import { Element as HElement } from "hast";
 import classNames from "classnames";
-import { one } from "../traverse";
-import { ContainerWidth } from "../helpers/ContainerWidth";
-import { defaultAttributes } from ".";
-import { Attributes } from "../helpers/Attributes";
+import { one } from "../../traverse";
+import { ContainerWidth } from "../../helpers/ContainerWidth";
+import { defaultAttributes } from "..";
+import { Attributes } from "../../helpers/Attributes";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumnAttributes,
@@ -30,14 +29,6 @@ const DEFAULT_ATTRIBUTES: Pick<
   direction: "ltr",
   "vertical-align": "top",
 };
-
-function attributesWithDefaults(
-  attributes: MjColumnAttributes & UniversalAttributes
-): MjColumnAttributes & UniversalAttributes {
-  return { ...DEFAULT_ATTRIBUTES, ...attributes };
-}
-
-type ColumnParent = MjGroup | MjSection;
 
 function getMobileWidth(
   widthString: string | undefined,
@@ -70,32 +61,6 @@ function getMobileWidth(
   return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
 }
 
-function getContainerWidth(
-  attributes: Attributes<MjColumnAttributes>,
-  parent: ColumnParent,
-  context: Context
-): string | undefined {
-  const { containerWidth: parentWidth } = context;
-
-  if (!parentWidth) {
-    return undefined;
-  }
-
-  const nonRawSiblings = parent.children.filter((sibling) =>
-    is(sibling, "element")
-  );
-
-  const containerWidth = new ContainerWidth({
-    attributes,
-    parentWidth: units.parse(parentWidth),
-    nonRawSiblingCount: nonRawSiblings.length,
-  });
-
-  const { value: width, unit } = containerWidth.widthMinusPaddings;
-
-  return `${width}${unit}`;
-}
-
 function column(
   node: MjColumn,
   parent: ColumnParent,
@@ -108,7 +73,10 @@ function column(
     context.defaultAttributes?.["mj-all"] || {},
     DEFAULT_ATTRIBUTES
   );
-  const containerWidth = getContainerWidth(attributes, parent, context);
+  const containerWidth = context.containerWidth
+    ? new ColumnContainerWidth(context.containerWidth, parent, attributes)
+    : null;
+
   const children = node.children.map((child: MjColumnChild) => {
     const defaultChildAttributes: MjColumnChildAttributes =
       defaultAttributes[child.type] || {};
@@ -119,7 +87,7 @@ function column(
 
     const hChild = one(child as MjmlNode, node, options, {
       ...context,
-      containerWidth,
+      containerWidth: containerWidth?.toString(),
     });
 
     return h("tr", [

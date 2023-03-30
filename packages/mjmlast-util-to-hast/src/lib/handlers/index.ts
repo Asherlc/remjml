@@ -8,7 +8,7 @@ import { text } from "./text";
 import { mjBody } from "./mj-body";
 import { mjNavbar } from "./mj-navbar";
 import { mjNavbarLink } from "./mj-navbar-link";
-import { mjColumn } from "./mj-column";
+import { mjColumn } from "./mj-column/mj-column";
 import { mjAttributes } from "./mj-attributes";
 import { mjSection } from "./mj-section";
 import {

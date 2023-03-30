@@ -3,7 +3,8 @@
 import units, { Parts } from "units-css";
 import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Context, Options } from "..";
+import { addPosition, Options } from "..";
+import { Context } from "../types";
 import { Node } from "unist";
 import { all } from "../traverse";
 import { conditionalComment } from "../helpers/conditional-comment";

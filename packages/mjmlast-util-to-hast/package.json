@@ -22,7 +22,6 @@
     "lodash-es": "^4.17.21",
     "mjmlast": "*",
     "unist-builder": "^3.0.1",
-    "unist-util-find": "^1.0.2",
     "unist-util-generated": "^2.0.1",
     "unist-util-position": "^4.0.4",
     "unist-util-visit": "^4.1.2",
@@ -30,6 +29,8 @@
     "css-property-parser": "1.0.6",
     "units-css": "0.4.0",
     "classnames": "2.3.2",
-    "mjml-types": "*"
+    "mjml-types": "*",
+    "unist-util-select": "4.0.3",
+    "hast-util-select": "5.0.5"
   }
 }

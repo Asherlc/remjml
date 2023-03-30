@@ -3,7 +3,8 @@
 import units from "units-css";
 import type { MjImage, MjHero, MjColumn } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Context, Options } from "../..";
+import { addPosition, Options } from "../..";
+import { Context } from "../../types";
 import { Element as HElement } from "hast";
 import { jsonToCss } from "../../helpers/json-to-css";
 import { DEFAULT_ATTRIBUTES } from "./default-attributes";

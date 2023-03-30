@@ -2,6 +2,7 @@ import units, { Parts } from "units-css";
 import { Node } from "unist";
 import { is } from "unist-util-is";
 import { ColumnParent } from "./types";
+import { whitespace } from "hast-util-whitespace";
 
 const PREFIX_PIXEL = "mj-column-px";
 const PREFIX_PERCENT = "mj-column-per";
@@ -20,8 +21,13 @@ export class ColumnWidthCssClass {
     this.#parent = parent;
   }
 
-  get #nonRawSiblings(): Node[] {
-    return this.#parent.children.filter((sibling) => !is(sibling, "raw"));
+  get #siblingsWithControlledWidths(): Node[] {
+    return this.#parent.children.filter((sibling) => {
+      const isRaw = is(sibling, "raw");
+      const isWhitespace = whitespace(sibling);
+
+      return !isRaw && !isWhitespace;
+    });
   }
 
   get width(): Parts {
@@ -30,7 +36,7 @@ export class ColumnWidthCssClass {
     }
 
     return {
-      value: 100 / this.#nonRawSiblings.length,
+      value: 100 / this.#siblingsWithControlledWidths.length,
       unit: "%",
     };
   }

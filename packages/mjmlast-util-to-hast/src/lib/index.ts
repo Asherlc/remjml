@@ -1,35 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../../../types/unist-util-find.d.ts" />
-import find from "unist-util-find";
-import type {
-  Root as HRoot,
-  Parent as HParent,
-  ElementContent as HContent,
-} from "hast";
+import type { ElementContent as HContent, Node, Parent as HParent } from "hast";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
-import type { MjHead, MjmlNode, Parent } from "mjmlast";
+import { MjHead, MjmlNode, MjmlRoot, Parent } from "mjmlast";
 import { u } from "unist-builder";
-import { Properties } from "csstype";
-
-type HastNode = HRoot | HParent | HParent["children"][number];
-type DefaultAttributes = Partial<
-  Record<MjmlNode["type"], Record<string, string>>
->;
-type CssClasses = Record<string, Properties>;
-
-export type Context = {
-  containerWidth?: string;
-  mobileWidth?: string;
-  mjHead: MjHead;
-  mediaQueries: {
-    [className: string]: string;
-  };
-  fullWidth?: boolean;
-  defaultAttributes?: DefaultAttributes;
-  cssClasses: CssClasses;
-};
+import { Context, HastNode } from "./types";
+import { mediaQueries } from "./helpers/media-queries";
+import { Element as HElement } from "hast";
+import { select as uSelect } from "unist-util-select";
+import { select as hSelect } from "hast-util-select";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -62,8 +41,8 @@ export function addPosition<Right extends HContent>(
   return right;
 }
 
-function head(tree: MjmlNode): MjHead {
-  const mjHead = find<MjHead>(tree, "mj-head");
+function findOrBuildMjHead(tree: MjmlNode): MjHead {
+  const mjHead = uSelect("mj-head", tree) as MjHead | undefined;
 
   return mjHead || u("mj-head", { children: [] });
 }
@@ -73,7 +52,8 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
     ...defaultHandlers,
     ...(options.handlers || {}),
   };
-  const mjHead = head(tree);
+  const mjHead = findOrBuildMjHead(tree);
+  const mjmlDoc = uSelect("mjml", tree) as MjmlRoot | undefined;
 
   const context: Context = {
     mjHead,
@@ -82,13 +62,30 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
     cssClasses: {},
   };
 
-  const node = one(tree, null, { ...options, handlers }, context);
+  const node: HElement = one(
+    tree,
+    null,
+    { ...options, handlers },
+    context
+  ) as HElement;
 
-  if (Array.isArray(node)) {
-    return u("root", node);
+  const hast: HElement = Array.isArray(node)
+    ? (u("root", node) as any as HElement)
+    : (node as HElement);
+
+  const mediaQueriesStyles = mediaQueries(
+    context.mediaQueries,
+    "480px",
+    mjmlDoc?.attributes?.owa === "desktop"
+  );
+
+  const head = hSelect("head", hast) as HElement | undefined;
+
+  if (head) {
+    head.children = [...head.children, ...(mediaQueriesStyles || [])];
   }
 
-  return node;
+  return hast;
 }
 
 export { handlers as defaultHandlers } from "./handlers";

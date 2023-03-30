@@ -677,6 +677,7 @@ export interface MjAll extends Node {
 }
 
 export type MjmlRootAttributes = Partial<{
+  owa: string;
   lang: string;
   dir: string;
 }>;

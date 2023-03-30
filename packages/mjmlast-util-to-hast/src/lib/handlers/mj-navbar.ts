@@ -1,6 +1,7 @@
 import type { MjNavbar, MjNavbarAttributes } from "mjmlast";
 import { h } from "hastscript";
-import { Context, Options } from "..";
+import { Options } from "..";
+import { Context } from "../types";
 import { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";

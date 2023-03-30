@@ -1,5 +1,6 @@
 import type { MjAttributes, MjHead } from "mjmlast";
-import { Context, Options } from "..";
+import { Options } from "..";
+import { Context } from "../types";
 
 export function mjAttributes(
   node: MjAttributes,

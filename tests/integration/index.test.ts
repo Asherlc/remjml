@@ -1,6 +1,5 @@
 import "expect-puppeteer";
 import path from "path";
-import fs from "fs";
 import fsPromise from "fs/promises";
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";

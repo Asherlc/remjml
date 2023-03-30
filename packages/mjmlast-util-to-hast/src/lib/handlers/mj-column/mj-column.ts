@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../../types/units-css.d.ts" />
 import units from "units-css";
+import { ColumnWidthCssClass } from "./ColumnWidthCssClass";
 import { is } from "unist-util-is";
 import { generateMediaQuery } from "../../helpers/generate-media-query";
 import { jsonToCss } from "../../helpers/json-to-css";
@@ -18,7 +19,6 @@ import { addPosition, Context, Options } from "../..";
 import { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../../traverse";
-import { ContainerWidth } from "../../helpers/ContainerWidth";
 import { defaultAttributes } from "..";
 import { Attributes } from "../../helpers/Attributes";
 
@@ -180,52 +180,6 @@ function gutter(
   );
 }
 
-function getParsedWidth(
-  widthString: string | undefined,
-  parent: ColumnParent
-): { unit: string; parsedWidth: number } {
-  const nonRawSiblings = parent.children.filter(
-    (sibling) => !is(sibling, "raw")
-  );
-  const width = widthString || `${100 / nonRawSiblings.length}%`;
-
-  const { unit, value: parsedWidth } = units.parse(width);
-
-  return {
-    unit,
-    parsedWidth,
-  };
-}
-
-function getColumnClass(
-  widthString: string | undefined,
-  parent: ColumnParent,
-  context: Context
-): string {
-  let className = "";
-
-  const { parsedWidth, unit = "px" } = getParsedWidth(widthString, parent);
-  const formattedClassNb = parsedWidth.toString().replace(".", "-");
-
-  switch (unit) {
-    case "%":
-      className = `mj-column-per-${formattedClassNb}`;
-      break;
-
-    case "px":
-    default:
-      className = `mj-column-px-${formattedClassNb}`;
-      break;
-  }
-
-  // Add className to media queries
-  if (context.mediaQueries) {
-    context.mediaQueries[className] = generateMediaQuery(parsedWidth, unit);
-  }
-
-  return className;
-}
-
 export function mjColumn(
   node: MjColumn,
   parent: ColumnParent,
@@ -240,9 +194,18 @@ export function mjColumn(
   );
   const cssClass = attributes.get("css-class");
   const width = attributes.get("width");
+  const widthCssClass = new ColumnWidthCssClass(width, parent);
+
+  // Add className to media queries
+  if (context.mediaQueries) {
+    context.mediaQueries[widthCssClass.toString()] = generateMediaQuery(
+      widthCssClass.width.value,
+      widthCssClass.width.unit
+    );
+  }
 
   const classesName = classNames(
-    getColumnClass(width, parent, context),
+    widthCssClass.toString(),
     "mj-outlook-group-fix",
     cssClass
   );

@@ -6,7 +6,7 @@ import type {
 import { h } from "hastscript";
 import { Options } from "..";
 import { Element as HElement } from "hast";
-import { jsonToCss } from "../helpers/json-to-css";
+import { CssPropertiesWithWeirdEmail, jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
 import {
   beginConditionalComment,
@@ -82,6 +82,28 @@ export function mjNavbarLink(
     throw new Error(`No href on mj-navbar-link: ${JSON.stringify(node)}`);
   }
 
+  const anchorStyleProperties: CssPropertiesWithWeirdEmail = {
+    display: "inline-block",
+    color: attributes.get("color"),
+    fontFamily: attributes.get("font-family"),
+    fontSize: attributes.get("font-size"),
+    fontStyle: attributes.get("font-style"),
+    fontWeight: attributes.get("font-weight"),
+    letterSpacing: attributes.get("letter-spacing"),
+    lineHeight: attributes.get("line-height"),
+    textDecoration: attributes.get("text-decoration"),
+    textTransform: attributes.get("text-transform") as Property.TextTransform,
+    padding: attributes.get("padding"),
+    paddingTop: attributes.get("padding-top"),
+    paddingLeft: attributes.get("padding-left"),
+    paddingRight: attributes.get("padding-right"),
+    paddingBottom: attributes.get("padding-bottom"),
+  };
+
+  const url = new Link(context.navbarBaseUrl, href).url.toString();
+
+  const anchorClassnames = classnames(`mj-link`, attributes.get("css-class"));
+
   return [
     beginConditionalComment({
       type: "downlevel-hidden",
@@ -106,31 +128,13 @@ export function mjNavbarLink(
         h(
           "a",
           {
-            class: classnames(`mj-link`, attributes.get("css-class")),
-            href: new Link(context.navbarBaseUrl, href).url.toString(),
+            class: anchorClassnames,
+            href: url,
             target: attributes.get("target"),
             name: attributes.get("name"),
-            style: jsonToCss({
-              display: "inline-block",
-              color: attributes.get("color"),
-              fontFamily: attributes.get("font-family"),
-              fontSize: attributes.get("font-size"),
-              fontStyle: attributes.get("font-style"),
-              fontWeight: attributes.get("font-weight"),
-              letterSpacing: attributes.get("letter-spacing"),
-              lineHeight: attributes.get("line-height"),
-              textDecoration: attributes.get("text-decoration"),
-              textTransform: attributes.get(
-                "text-transform"
-              ) as Property.TextTransform,
-              padding: attributes.get("padding"),
-              paddingTop: attributes.get("padding-top"),
-              paddingLeft: attributes.get("padding-left"),
-              paddingRight: attributes.get("padding-right"),
-              paddingBottom: attributes.get("padding-bottom"),
-            }),
+            style: jsonToCss(anchorStyleProperties),
           },
-          node.children
+          node.children as any
         ),
         beginConditionalComment({
           type: "downlevel-hidden",

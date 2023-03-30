@@ -13,7 +13,10 @@ export function mjAttributes(
 
       context.cssClasses[className] = properties;
     } else {
-      context.defaultAttributes[child.type] = child.attributes;
+      context.defaultAttributes = {
+        ...(context.defaultAttributes || {}),
+        [child.type]: child.attributes,
+      };
     }
   });
 }

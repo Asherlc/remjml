@@ -104,8 +104,8 @@ function column(
 ): HElement {
   const attributes = new Attributes(
     node.attributes || {},
-    context.defaultAttributes["mj-column"] || {},
-    context.defaultAttributes["mj-all"] || {},
+    context.defaultAttributes?.["mj-column"] || {},
+    context.defaultAttributes?.["mj-all"] || {},
     DEFAULT_ATTRIBUTES
   );
   const containerWidth = getContainerWidth(attributes, parent, context);
@@ -266,8 +266,8 @@ export function mjColumn(
 ): HElement {
   const attributes = new Attributes(
     node.attributes || {},
-    context.defaultAttributes["mj-column"] || {},
-    context.defaultAttributes["mj-all"] || {},
+    context.defaultAttributes?.["mj-column"] || {},
+    context.defaultAttributes?.["mj-all"] || {},
     DEFAULT_ATTRIBUTES
   );
   const cssClass = attributes.get("css-class");

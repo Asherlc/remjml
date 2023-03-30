@@ -53,7 +53,7 @@ export function mjText(
         height: attributes.height,
       }),
     },
-    node.children as HElement
+    node.children as HElement[]
   );
 
   let hNode: HElement;

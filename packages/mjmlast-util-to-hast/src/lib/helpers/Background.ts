@@ -221,17 +221,17 @@ class YahooCompatibleBackground {
 
   get styles(): Properties {
     return this.#url
-      ? {
+      ? ({
           background: this.#singleLine,
           // background size, repeat and position has to be separate since yahoo does not support shorthand background css property
           "background-position": this.#position,
           "background-repeat": this.#repeat,
           "background-size": this.#size,
-        }
-      : {
+        } as Properties)
+      : ({
           background: this.#color,
           "background-color": this.#color,
-        };
+        } as Properties);
   }
 }
 

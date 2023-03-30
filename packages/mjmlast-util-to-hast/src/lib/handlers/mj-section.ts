@@ -212,7 +212,6 @@ export function mjSection(
       )
     : undefined;
 
-  console.log("section", context.containerWidth, boxWidths?.box.toString());
   const children = all(node, options, {
     ...context,
     fullWidth: fullWidth,

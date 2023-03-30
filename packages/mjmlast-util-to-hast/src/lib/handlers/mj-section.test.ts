@@ -5,22 +5,22 @@ it("transforms a mjmlast section to hast", () => {
   const section: MjSection = {
     attributes: {},
     children: [],
-    position: {
-      end: {
-        column: 26,
-        line: 1,
-        offset: 25,
-      },
-      start: {
-        column: 1,
-        line: 1,
-        offset: 0,
-      },
-    },
     type: "mj-section",
   };
 
-  const hast = mjSection(section, null, {}, {});
+  const hast = mjSection(
+    section,
+    null,
+    {},
+    {
+      mjHead: {
+        type: "mj-head",
+        children: [],
+      },
+      mediaQueries: {},
+      cssClasses: {},
+    }
+  );
 
   expect(hast).toMatchInlineSnapshot(`
     {

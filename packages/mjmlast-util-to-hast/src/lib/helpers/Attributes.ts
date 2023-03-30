@@ -20,7 +20,7 @@ export class Attributes<AllowedAttributes> {
     this.#globalAllAttributes = globalAllAttributes;
   }
 
-  get #allAttributes() {
+  toHash() {
     return {
       // The order is critical!
       ...this.#defaultAttributes,
@@ -33,12 +33,12 @@ export class Attributes<AllowedAttributes> {
   get<P extends keyof AllowedAttributes>(
     propertyName: P
   ): AllowedAttributes[P] {
-    return this.#allAttributes[propertyName];
+    return this.toHash()[propertyName];
   }
 
   pick<P extends (keyof AllowedAttributes)[]>(
     ...propertyNames: P
   ): Record<P[number], AllowedAttributes[P[number]]> {
-    return pick(this.#allAttributes, propertyNames);
+    return pick(this.toHash(), propertyNames);
   }
 }

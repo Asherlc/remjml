@@ -1,5 +1,4 @@
 #!/usr/bin/env ts-node --esm --experimentalSpecifierResolution node
-import { createRequire } from "node:module";
 import { args } from "unified-args";
 import { remjml } from "remjml";
 

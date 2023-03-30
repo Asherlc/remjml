@@ -65,7 +65,7 @@ export class BoxWidth {
     return right + left;
   }
 
-  get box(): Parts {
+  get box(): Parts & { toString(): string } {
     const unit: Parts["unit"] = "px";
     const value: number =
       this.#containerWidth.value - this.paddings - this.borders;
@@ -73,6 +73,9 @@ export class BoxWidth {
     return {
       unit,
       value,
+      toString(): string {
+        return `${value}${unit}`;
+      },
     };
   }
 }

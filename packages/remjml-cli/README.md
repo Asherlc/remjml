@@ -1,9 +1,9 @@
-# remjml
+# remjml-cli
 
-Convert mjml json directly to HTML, when used in the unified ecosystem
+Convert mjml json to HTML from the CLI
 
 ## Example
 
-```javascript
-  const html = await remjml().process(mjml);
+```
+$ npx remjml '/Users/asher.cohen/src/remjml/tests/fixtures/mjml-emails/arturia.mjml' --output ./tmp/arturia.html
 ```

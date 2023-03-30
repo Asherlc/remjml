@@ -3,7 +3,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
-  },
+ },
   "main": "./src/index.ts",
   "dependencies": {
     "remjml": "*",
@@ -16,7 +16,6 @@
   "scripts": {
     "clean": "tsc --build --clean",
     "build": "tsc --build",
-    "watch": "tsc --build --watch",
-    "process": "NODE_OPTIONS='--loader ts-node/esm --experimental-specifier-resolution=node' ts-node src/index.ts"
+    "watch": "tsc --build --watch"
   }
 }

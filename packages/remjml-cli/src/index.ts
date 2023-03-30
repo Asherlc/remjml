@@ -1,12 +1,17 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env ts-node --esm --experimentalSpecifierResolution node
 import { createRequire } from "node:module";
 import { args } from "unified-args";
 import { remjml } from "remjml";
 
-const require = createRequire(import.meta.url);
-
-const proc = require("remjml/package.json");
-const cli = require("./package.json");
+const proc = {
+  name: "mjml",
+  version: "*",
+};
+const cli = {
+  name: "remjml-cli",
+  description: "",
+  version: "*",
+};
 
 const extensions = ["mjml"];
 

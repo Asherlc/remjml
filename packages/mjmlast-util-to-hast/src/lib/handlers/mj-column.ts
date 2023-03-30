@@ -277,10 +277,6 @@ export function mjColumn(
     getColumnClass(width, parent, context),
     "mj-outlook-group-fix",
     cssClass
-      ? {
-          [cssClass]: Boolean(attributes.get("css-class")),
-        }
-      : {}
   );
 
   const hColumn = column(node, parent, options, context);

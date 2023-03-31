@@ -1,11 +1,14 @@
 import { isUndefined, omitBy } from "lodash-es";
-import { MJMLJsonObject, MjmlNode } from "mjml-types";
+import { MJMLJsonObject } from "mjml-types";
+import { MjmlNode as MjmlAstNode } from "mjmlast";
 
-export default function mjmlJsonToRemjml(mjmlJson: MJMLJsonObject): MjmlNode {
-  const childNodes: MjmlNode[] | undefined =
+export default function mjmlJsonToRemjml(
+  mjmlJson: MJMLJsonObject
+): MjmlAstNode {
+  const childNodes: MjmlAstNode[] | undefined =
     mjmlJson.children?.map(mjmlJsonToRemjml);
 
-  const node: MjmlNode = omitBy(
+  const node: MjmlAstNode = omitBy(
     {
       type: mjmlJson.tagName,
       attributes: mjmlJson.attributes,
@@ -13,7 +16,7 @@ export default function mjmlJsonToRemjml(mjmlJson: MJMLJsonObject): MjmlNode {
       content: mjmlJson.content,
     },
     isUndefined
-  ) as unknown as MjmlNode;
+  ) as unknown as MjmlAstNode;
 
   return node;
 }

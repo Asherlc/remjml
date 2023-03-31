@@ -3,7 +3,14 @@
 import { expandShorthandProperty } from "css-property-parser";
 import units, { Parts } from "units-css";
 
+export type BorderValue = Parts | "none" | undefined;
+export type PaddingValue = Parts | undefined;
+
 type Value = PaddingValue | BorderValue;
+
+interface ShorthandProperty<ValueType extends Value> {
+  value(expandedValue: string | undefined, direction: string): ValueType;
+}
 
 interface IDirectionalCssProperty<ValueType> {
   left: ValueType | undefined;
@@ -93,10 +100,6 @@ export class StringifiableValue {
   }
 }
 
-interface ShorthandProperty<ValueType extends Value> {
-  value(expandedValue: string | undefined, direction: string): ValueType;
-}
-export type PaddingValue = Parts | undefined;
 class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
   #shorthandValue?: string;
 
@@ -123,7 +126,6 @@ class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
   }
 }
 
-export type BorderValue = Parts | "none" | undefined;
 class BorderShorthandProperty implements ShorthandProperty<BorderValue> {
   #shorthandValue?: string;
 

@@ -2,12 +2,7 @@
 /// <reference path="../../../../../types/units-css.d.ts" />
 import units, { Parts } from "units-css";
 import { jsonToCss } from "../helpers/json-to-css";
-import type {
-  MjColumn,
-  MjDivider,
-  MjDividerAttributes,
-  UniversalAttributes,
-} from "mjmlast";
+import type { MjColumn, MjDivider, MjDividerAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { Options } from "..";
 import { Context } from "../types";
@@ -36,12 +31,6 @@ export const DEFAULT_ATTRIBUTES: Pick<
   padding: "10px 25px",
   width: "100%",
 };
-
-function attributesWithDefaults(
-  attributes: MjDividerAttributes & UniversalAttributes
-): MjDividerAttributes & UniversalAttributes {
-  return { ...DEFAULT_ATTRIBUTES, ...attributes };
-}
 
 type DividerParent = MjColumn;
 

@@ -1,4 +1,4 @@
-import type { ElementContent as HContent, Node, Parent as HParent } from "hast";
+import type { ElementContent as HContent } from "hast";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";

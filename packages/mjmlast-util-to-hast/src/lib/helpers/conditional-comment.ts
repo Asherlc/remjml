@@ -6,7 +6,6 @@ export const MSO_OR_IE = "mso | IE";
 export const NOT_MSO_OR_IE = "!mso | IE";
 
 type ConditionalCommentType = "downlevel-hidden" | "downlevel-revealed";
-type ConditionalCommentSide = "begin" | "end";
 
 function beginConditionalCommentString(
   expression: string,

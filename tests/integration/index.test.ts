@@ -24,6 +24,7 @@ const emailFixtureNames = [
 
 const emailFixtureDirectoryPath = path.resolve("./tests/fixtures/mjml-emails/");
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const loggerPlugin = (...args: any[]) => {
   return (tree, file) => {
     console.log(...args, JSON.stringify(tree), file);

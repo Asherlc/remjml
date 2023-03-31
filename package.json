@@ -1,5 +1,5 @@
 {
-  "name": "remjml",
+  "name": "remjml-project",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -9,7 +9,6 @@
     "clean": "tsc --build --clean",
     "build": "tsc --build",
     "watch": "tsc --build --watch",
-    "typecheck": "tsc",
     "test": "run-s test:*",
     "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js -u",
     "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest-integration.config.js -u",

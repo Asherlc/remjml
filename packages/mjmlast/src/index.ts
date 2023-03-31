@@ -57,7 +57,7 @@ type BaseAttributes = Record<string, string | number>;
 type EmptyAttributes = Record<string, never>;
 
 export interface Component<Attributes extends BaseAttributes> extends Node {
-  attributes?: UniversalAttributes & Attributes;
+  attributes?: Partial<UniversalAttributes & Attributes>;
 }
 
 export type Parent<
@@ -330,9 +330,8 @@ export type MjDividerAttributes = {
   align: "left" | "right" | "center" | "justify";
 };
 
-export interface MjDivider extends Node {
+export interface MjDivider extends Component<MjDividerAttributes> {
   type: "mj-divider";
-  attributes: UniversalAttributes & MjDividerAttributes;
 }
 
 export interface MjCarouselImage extends Node {

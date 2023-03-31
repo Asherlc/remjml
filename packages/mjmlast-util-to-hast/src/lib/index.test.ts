@@ -33,7 +33,12 @@ const mjmlAst: MjmlRoot = {
                     "font-family": "Helvetica",
                     "font-size": "20px",
                   },
-                  content: "Hello World",
+                  children: [
+                    {
+                      type: "text",
+                      value: "Hello World",
+                    },
+                  ],
                   type: "mj-text",
                 },
               ],

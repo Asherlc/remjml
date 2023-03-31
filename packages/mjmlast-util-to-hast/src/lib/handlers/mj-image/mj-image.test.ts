@@ -1,5 +1,6 @@
 import { MjImage } from "mjmlast";
 import { mjImage } from "./mj-image";
+import { Element as HElement } from "hast";
 
 it("computes the correct width based on a set width", () => {
   const image: MjImage = {
@@ -27,7 +28,8 @@ it("computes the correct width based on a set width", () => {
     }
   );
 
-  const td = hast.children[0].children[0].children[0];
+  const td = ((hast.children[0] as HElement).children[0] as HElement)
+    .children[0] as HElement;
 
-  expect(td.properties.style).toEqual("width:50px");
+  expect(td.properties?.style).toEqual("width:50px");
 });

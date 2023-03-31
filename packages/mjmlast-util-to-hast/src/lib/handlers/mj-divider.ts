@@ -58,7 +58,13 @@ function getOutlookWidth(
   });
   const paddingSize = (padding.left?.value || 0) + (padding.right?.value || 0);
 
-  const width = units.parse(attributes.get("width"));
+  const widthAttribute = attributes.get("width");
+
+  if (!widthAttribute) {
+    throw new Error(`No width attribute`);
+  }
+
+  const width = units.parse(widthAttribute);
 
   switch (width.unit) {
     case "%": {
@@ -84,7 +90,7 @@ export function mjDivider(
   }
 
   const attributes = new Attributes<MjDividerAttributes>(
-    node.attributes,
+    node.attributes || {},
     DEFAULT_ATTRIBUTES,
     context.defaultAttributes?.["mj-divider"] || {},
     context.defaultAttributes?.["mj-all"] || {}

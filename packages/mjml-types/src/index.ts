@@ -1,5 +1,3 @@
-import type { Node, Parent as UnistParent, Literal } from "unist";
-
 export const nodeTypes = new Set([
   "mj-attributes",
   "mj-breakpoint",
@@ -60,18 +58,19 @@ export interface Component<Attributes extends BaseAttributes> extends Node {
   attributes?: UniversalAttributes & Attributes;
 }
 
-export type Parent<
-  Attributes extends BaseAttributes,
-  ChildNode extends Node
-> = Component<Attributes> & UnistParent<ChildNode>;
+// eslint-disable-next-line no-use-before-define
+export type Parent<ChildNode extends MjmlNode> = {
+  children: ChildNode[];
+};
 
-export interface Text extends Literal {
+export interface Text {
   type: "text";
 }
 
-export type End<Attributes extends BaseAttributes> = Parent<Attributes, Text>;
+export type End<Attributes extends BaseAttributes> = Component<Attributes> &
+  Parent<Text>;
 
-export interface MjPreview extends Parent<EmptyAttributes, Text> {
+export interface MjPreview extends Component<EmptyAttributes>, Parent<Text> {
   type: "mj-preview";
 }
 
@@ -110,15 +109,15 @@ export interface MjImage extends Component<MjImageAttributes> {
   type: "mj-image";
 }
 
-export interface MjStyle extends Parent<{ inline: string }, Text> {
+export interface MjStyle extends Component<{ inline: string }>, Parent<Text> {
   type: "mj-parent";
 }
 
-export interface MjHead extends Parent<never, Text> {
+export interface MjHead extends Parent<Text> {
   type: "mj-head";
 }
 
-export interface MjTitle extends Parent<never, Text> {
+export interface MjTitle extends Parent<Text> {
   type: "mj-title";
 }
 
@@ -143,7 +142,9 @@ type MjNavbarLinkAttributes = {
   "text-transform": string;
 };
 
-export interface MjNavbarLink extends Parent<MjNavbarLinkAttributes, Text> {
+export interface MjNavbarLink
+  extends Component<MjNavbarLinkAttributes>,
+    Parent<Text> {
   type: "mj-navbar-link";
 }
 
@@ -180,7 +181,8 @@ type MjSocialElementAttributes = {
 };
 
 export interface MjSocialElement
-  extends Parent<MjSocialElementAttributes, Text> {
+  extends Component<MjSocialElementAttributes>,
+    Parent<Text> {
   type: "mj-social-element";
 }
 
@@ -225,7 +227,7 @@ type MjTableAttributes = {
   width: string;
 };
 
-export interface MjTable extends Parent<MjTableAttributes, Text> {
+export interface MjTable extends Component<MjTableAttributes>, Parent<Text> {
   type: "mj-table";
 }
 
@@ -259,7 +261,8 @@ type MjSocialAttributes = {
 };
 
 export interface MjSocial
-  extends Parent<MjSocialAttributes, MjSocialElement | MjRaw> {
+  extends Component<MjSocialAttributes>,
+    Parent<MjSocialElement | MjRaw> {
   type: "mj-social";
 }
 
@@ -289,7 +292,8 @@ type MjNavbarAttributes = {
 };
 
 export interface MjNavbar
-  extends Parent<MjNavbarAttributes, MjNavbarLink | MjRaw> {
+  extends Component<MjNavbarAttributes>,
+    Parent<MjNavbarLink | MjRaw> {
   type: "mj-navbar";
 }
 
@@ -300,7 +304,7 @@ export interface MjSelector
   type: "mj-preview";
 }
 
-export interface MjHtmlAttributes extends Parent<never, MjSelector> {
+export interface MjHtmlAttributes extends Parent<MjSelector> {
   type: "mj-html-attributes";
 }
 
@@ -370,7 +374,8 @@ type MjCarouselAttributes = {
 };
 
 export interface MjCarousel
-  extends Parent<MjCarouselAttributes, MjCarouselImage> {
+  extends Component<MjCarouselAttributes>,
+    Parent<MjCarouselImage> {
   type: "mj-carousel";
 }
 
@@ -381,11 +386,11 @@ export type MjBodyAttributes = Partial<{
   UniversalAttributes;
 
 export interface MjBody
-  extends Parent<
-    MjBodyAttributes,
-    /* eslint-disable-next-line no-use-before-define */
-    MjRaw | MjSection | MjWrapper | MjHero
-  > {
+  extends Component<MjBodyAttributes>,
+    Parent<
+      /* eslint-disable-next-line no-use-before-define */
+      MjRaw | MjSection | MjWrapper | MjHero
+    > {
   type: "mj-body";
 }
 
@@ -439,10 +444,8 @@ type MjAccordionElementAttributes = {
 };
 
 export interface MjAccordionElement
-  extends Parent<
-    MjAccordionElementAttributes,
-    MjAccordionTitle | MjAccordionText | MjRaw
-  > {
+  extends Component<MjAccordionElementAttributes>,
+    Parent<MjAccordionTitle | MjAccordionText | MjRaw> {
   type: "mj-accordion-element";
 }
 
@@ -466,7 +469,8 @@ type MjAccordionAttributes = {
 };
 
 export interface MjAccordion
-  extends Parent<MjAccordionAttributes, MjAccordionElement | MjRaw> {
+  extends Component<MjAccordionAttributes>,
+    Parent<MjAccordionElement | MjRaw> {
   type: "mj-accordion";
 }
 
@@ -506,7 +510,7 @@ type MjButtonAttributes = {
   width: string;
 };
 
-export interface MjButton extends Parent<MjButtonAttributes, Text> {
+export interface MjButton extends Component<MjButtonAttributes>, Parent<Text> {
   type: "mj-button";
 }
 
@@ -532,7 +536,7 @@ type MjTextAttributes = {
   "vertical-align": "top" | "bottom" | "middle";
 };
 
-export interface MjText extends Parent<MjTextAttributes, Text> {
+export interface MjText extends Component<MjTextAttributes>, Parent<Text> {
   type: "mj-text";
 }
 
@@ -574,7 +578,9 @@ export type MjColumnChild =
   | MjText
   | MjNavbar;
 
-export interface MjColumn extends Parent<MjColumnAttributes, MjColumnChild> {
+export interface MjColumn
+  extends Component<MjColumnAttributes>,
+    Parent<MjColumnChild> {
   type: "mj-column";
 }
 
@@ -585,7 +591,9 @@ type MjGroupAttributes = {
   width: string;
 };
 
-export interface MjGroup extends Parent<MjGroupAttributes, MjColumn | MjRaw> {
+export interface MjGroup
+  extends Component<MjGroupAttributes>,
+    Parent<MjColumn | MjRaw> {
   type: "mj-group";
 }
 
@@ -615,7 +623,8 @@ export type MjSectionAttributes = Partial<{
 }>;
 
 export interface MjSection
-  extends Parent<MjSectionAttributes, MjColumn | MjGroup | MjRaw> {
+  extends Component<MjSectionAttributes>,
+    Parent<MjColumn | MjGroup | MjRaw> {
   type: "mj-section";
 }
 
@@ -660,7 +669,9 @@ type MjHeroChild =
   | MjNavbar
   | MjRaw;
 
-export interface MjHero extends Parent<MjHeroAttributes, MjHeroChild> {
+export interface MjHero
+  extends Component<MjHeroAttributes>,
+    Parent<MjHeroChild> {
   type: "mj-hero";
 }
 
@@ -670,7 +681,8 @@ export type MjmlRootAttributes = Partial<{
 }>;
 
 export interface MjmlRoot
-  extends Parent<MjmlRootAttributes, MjBody | MjHead | MjRaw> {
+  extends Component<MjmlRootAttributes>,
+    Parent<MjBody | MjHead | MjRaw> {
   type: "mjml";
 }
 
@@ -711,7 +723,7 @@ type MjAttributesChild =
   | Text
   | MjSelector;
 
-export interface MjAttributes extends Parent<never, MjAttributesChild> {
+export interface MjAttributes extends Parent<MjAttributesChild> {
   type: "mj-attributes";
 }
 
@@ -752,3 +764,13 @@ export type MjmlNode =
   | Text
   | MjSelector
   | MjmlRoot;
+
+export interface MJMLJsonObject<
+  A extends object = Record<string, any>,
+  Children extends MJMLJsonObject[] = any[]
+> {
+  readonly tagName: Node;
+  readonly attributes: A;
+  readonly children?: Children;
+  readonly content?: string;
+}

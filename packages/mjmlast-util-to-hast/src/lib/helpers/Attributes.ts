@@ -1,7 +1,7 @@
 import { pick } from "lodash-es";
 
 export class Attributes<AllowedAttributes> {
-  #attributes: AllowedAttributes;
+  #attributes: Partial<AllowedAttributes>;
   #defaultAttributes: Partial<AllowedAttributes>;
   // from mj-attributes
   #globalTypeAttributes: Partial<AllowedAttributes>;
@@ -9,7 +9,7 @@ export class Attributes<AllowedAttributes> {
   #globalAllAttributes: Partial<AllowedAttributes>;
 
   constructor(
-    attributes: AllowedAttributes,
+    attributes: Partial<AllowedAttributes>,
     defaultAttributes: Partial<AllowedAttributes>,
     globalTypeAttributes: Partial<AllowedAttributes>,
     globalAllAttributes: Partial<AllowedAttributes>
@@ -32,13 +32,16 @@ export class Attributes<AllowedAttributes> {
 
   get<P extends keyof AllowedAttributes>(
     propertyName: P
-  ): AllowedAttributes[P] {
+  ): Partial<AllowedAttributes>[P] {
     return this.toHash()[propertyName];
   }
 
   pick<P extends (keyof AllowedAttributes)[]>(
     ...propertyNames: P
-  ): Record<P[number], AllowedAttributes[P[number]]> {
-    return pick(this.toHash(), propertyNames);
+  ): Record<P[number], Partial<AllowedAttributes>[P[number]]> {
+    return pick(this.toHash(), propertyNames) as Record<
+      P[number],
+      Partial<AllowedAttributes>[P[number]]
+    >;
   }
 }

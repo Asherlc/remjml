@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
+  "exclude": ["node_modules", "**/*/dist"],
   "references": [
     {
       "path": "./packages/mjml-types/tsconfig.ref.json"
@@ -29,12 +30,4 @@
       "path": "./packages/remjml-rehype/tsconfig.ref.json"
     }
   ],
-  "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
-    "esModuleInterop": false,
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "allowSyntheticDefaultImports": true
-  }
 }

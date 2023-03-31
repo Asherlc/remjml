@@ -65,7 +65,7 @@ export type Parent<
   ChildNode extends Node
 > = Component<Attributes> & UnistParent<ChildNode>;
 
-export interface Text extends Literal {
+export interface Text extends Literal<string> {
   type: "text";
 }
 

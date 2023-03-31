@@ -1,4 +1,8 @@
-import type { ElementContent as HContent, Element as HElement } from "hast";
+import type {
+  ElementContent as HContent,
+  Element as HElement,
+  Root as HRoot,
+} from "hast";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
@@ -8,6 +12,7 @@ import type { Context, HastNode } from "./types";
 import { mediaQueries } from "./helpers/media-queries";
 import { select as uSelect } from "unist-util-select";
 import { select as hSelect } from "hast-util-select";
+import { applyInlineStyles, removeInlineStyles } from "./helpers/inline-styles";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -51,6 +56,7 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
     ...defaultHandlers,
     ...(options.handlers || {}),
   };
+  const inlineStyles = removeInlineStyles(tree);
   const mjHead = findOrBuildMjHead(tree);
   const mjmlDoc = uSelect("mjml", tree) as MjmlRoot | undefined;
 
@@ -68,9 +74,7 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
     context
   ) as HElement;
 
-  const hast: HElement = Array.isArray(node)
-    ? (u("root", node) as any as HElement)
-    : (node as HElement);
+  const hast: HRoot = u("root", node as any);
 
   const mediaQueriesStyles = mediaQueries(
     context.mediaQueries,
@@ -83,6 +87,8 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   if (head) {
     head.children = [...head.children, ...(mediaQueriesStyles || [])];
   }
+
+  applyInlineStyles(hast, inlineStyles);
 
   return hast;
 }

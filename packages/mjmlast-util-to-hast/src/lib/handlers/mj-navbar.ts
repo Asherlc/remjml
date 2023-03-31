@@ -6,7 +6,6 @@ import { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
-import { defaultAttributes } from ".";
 import {
   beginConditionalComment,
   conditionalComment,
@@ -56,7 +55,7 @@ export function mjNavbar(
 ): HElement[] {
   const attributes = new Attributes<Partial<MjNavbarAttributes>>(
     node.attributes || {},
-    defaultAttributes || {},
+    DEFAULT_ATTRIBUTES,
     context.defaultAttributes?.["mj-navbar"] || {},
     context.defaultAttributes?.["mj-all"] || {}
   );

@@ -1,5 +1,5 @@
 {
-  "include": ["**/*"],
+  "extends": "./tsconfig.base.json",
   "references": [
     {
       "path": "./packages/mjml-types/tsconfig.ref.json"

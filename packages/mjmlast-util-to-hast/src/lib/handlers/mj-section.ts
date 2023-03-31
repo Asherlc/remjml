@@ -10,12 +10,12 @@ import type {
   UniversalAttributes,
 } from "mjmlast";
 import { h } from "hastscript";
-import { Options } from "..";
-import { Context } from "../types";
-import { Element as HElement, ElementContent } from "hast";
+import type { Options } from "..";
+import type { Context } from "../types";
+import type { Element as HElement, ElementContent } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Property } from "csstype";
+import type { Property } from "csstype";
 import { BoxWidth } from "../helpers/BoxWidth";
 import { Background } from "../helpers/Background";
 import { Attributes } from "../helpers/Attributes";

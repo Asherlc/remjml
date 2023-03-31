@@ -1,5 +1,5 @@
 import { toHtml } from "hast-util-to-html";
-import { MjmlRoot, MjSection } from "mjmlast";
+import type { MjmlRoot, MjSection } from "mjmlast";
 import { toHast } from ".";
 
 const mjmlAst: MjmlRoot = {

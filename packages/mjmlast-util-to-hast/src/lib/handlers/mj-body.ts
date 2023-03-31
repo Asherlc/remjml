@@ -1,8 +1,8 @@
 import type { MjBody, MjBodyAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Options } from "..";
-import { Context } from "../types";
-import { Element as HElement } from "hast";
+import type { Context } from "../types";
+import type { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 

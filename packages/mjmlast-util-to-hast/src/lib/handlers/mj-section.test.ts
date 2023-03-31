@@ -1,4 +1,4 @@
-import { MjSection } from "mjmlast";
+import type { MjSection } from "mjmlast";
 import { mjSection } from "./mj-section";
 
 it("transforms a mjmlast section to hast", () => {

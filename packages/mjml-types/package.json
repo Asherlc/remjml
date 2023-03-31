@@ -6,7 +6,6 @@
   },
   "main": "./src/index.ts",
   "dependencies": {
-    "@types/unist": "^2.0.6"
   },
   "scripts": {
     "clean": "tsc --build --clean",

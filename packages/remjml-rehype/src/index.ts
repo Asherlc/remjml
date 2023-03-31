@@ -1,9 +1,8 @@
 import type { MjmlNode } from "mjmlast";
 import type { Processor, RunCallback } from "unified";
-import { toHast } from "mjmlast-util-to-hast";
+import { toHast, Options } from "mjmlast-util-to-hast";
 import { Compatible, Data } from "vfile";
 import type { Node } from "unist";
-import { Options } from "mjmlast-util-to-hast/src/lib";
 
 export default function remjmlRehype(
   destination: Processor,

@@ -1,6 +1,6 @@
 import { isUndefined, omitBy } from "lodash-es";
-import { MJMLJsonObject } from "mjml-types";
-import { MjmlNode as MjmlAstNode } from "mjmlast";
+import type { MJMLJsonObject } from "mjml-types";
+import type { MjmlNode as MjmlAstNode } from "mjmlast";
 
 export default function mjmlJsonToRemjml(
   mjmlJson: MJMLJsonObject

@@ -4,8 +4,8 @@ import type {
   UniversalAttributes,
 } from "mjmlast";
 import { h } from "hastscript";
-import { Options } from "..";
-import { Element as HElement } from "hast";
+import type { Options } from "..";
+import type { Element as HElement } from "hast";
 import { CssPropertiesWithWeirdEmail, jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
 import {
@@ -14,8 +14,8 @@ import {
   MSO_OR_IE,
 } from "../helpers/conditional-comment";
 import classnames from "classnames";
-import { MjNavbarContext } from "./mj-navbar";
-import { Property } from "csstype";
+import type { MjNavbarContext } from "./mj-navbar";
+import type { Property } from "csstype";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjNavbarLinkAttributes,

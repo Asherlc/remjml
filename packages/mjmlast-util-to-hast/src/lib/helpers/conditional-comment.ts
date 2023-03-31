@@ -1,4 +1,4 @@
-import { Element as HElement } from "hast";
+import type { Element as HElement } from "hast";
 import { castArray } from "lodash-es";
 import { u } from "unist-builder";
 

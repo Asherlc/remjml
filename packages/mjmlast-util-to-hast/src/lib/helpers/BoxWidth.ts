@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
-import { Parts } from "units-css";
+import type { Parts } from "units-css";
 import {
   BorderValue,
   PaddingValue,

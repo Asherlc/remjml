@@ -1,5 +1,5 @@
-import { Properties } from "csstype";
-import { Element } from "hast";
+import type { Properties } from "csstype";
+import type { Element } from "hast";
 import type { Node, Parent as UnistParent, Literal } from "unist";
 
 export const nodeTypes = new Set([

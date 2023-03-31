@@ -1,8 +1,8 @@
 import units from "units-css";
 import { Attributes } from "../../helpers/Attributes";
-import { MjColumnAttributes, MjGroup, MjSection } from "mjmlast";
+import type { MjColumnAttributes, MjGroup, MjSection } from "mjmlast";
 import { ContainerWidth } from "../../helpers/ContainerWidth";
-import { Node } from "unist";
+import type { Node } from "unist";
 import { is } from "unist-util-is";
 
 type ColumnParent = MjGroup | MjSection;

@@ -1,7 +1,7 @@
-import { Element as HElement } from "hast";
+import type { Element as HElement } from "hast";
 import { h } from "hastscript";
 import { compact, isEmpty } from "lodash-es";
-import { MediaQueries } from "../types";
+import type { MediaQueries } from "../types";
 
 const THUNDERBIRD_CLASS_NAME = `moz-text-html`;
 

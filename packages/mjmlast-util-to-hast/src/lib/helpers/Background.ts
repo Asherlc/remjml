@@ -1,4 +1,4 @@
-import { Properties } from "csstype";
+import type { Properties } from "csstype";
 
 type YPosition = "top" | "bottom" | "center";
 type XPosition = "left" | "right" | "center";

@@ -5,7 +5,7 @@ import { ColumnWidthCssClass } from "./ColumnWidthCssClass";
 import { is } from "unist-util-is";
 import { generateMediaQuery } from "../../helpers/generate-media-query";
 import { jsonToCss } from "../../helpers/json-to-css";
-import { ColumnParent } from "./types";
+import type { ColumnParent } from "./types";
 import { ColumnContainerWidth } from "./ColumnContainerWidth";
 import type {
   MjColumn,
@@ -16,8 +16,8 @@ import type {
 } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition, Options } from "../..";
-import { Context } from "../../types";
-import { Element as HElement } from "hast";
+import type { Context } from "../../types";
+import type { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../../traverse";
 import { defaultAttributes } from "..";

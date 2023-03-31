@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
 import units, { Parts } from "units-css";
-import { MjColumnAttributes } from "mjmlast";
+import type { MjColumnAttributes } from "mjmlast";
 import { BoxWidth } from "./BoxWidth";
 import { ShorthandCssProperties } from "./ShorthandCssProperties";
 import { Attributes } from "./Attributes";

@@ -4,9 +4,9 @@ import units, { Parts } from "units-css";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { MjColumn, MjDivider, MjDividerAttributes } from "mjmlast";
 import { h } from "hastscript";
-import { Options } from "..";
-import { Context } from "../types";
-import { Element as HElement } from "hast";
+import type { Options } from "..";
+import type { Context } from "../types";
+import type { Element as HElement } from "hast";
 import {
   beginConditionalComment,
   endConditionalComment,

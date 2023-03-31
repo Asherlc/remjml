@@ -1,12 +1,11 @@
-import type { ElementContent as HContent } from "hast";
+import type { ElementContent as HContent, Element as HElement } from "hast";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
-import { MjHead, MjmlNode, MjmlRoot, Parent } from "mjmlast";
+import type { MjHead, MjmlNode, MjmlRoot, Parent } from "mjmlast";
 import { u } from "unist-builder";
-import { Context, HastNode } from "./types";
+import type { Context, HastNode } from "./types";
 import { mediaQueries } from "./helpers/media-queries";
-import { Element as HElement } from "hast";
 import { select as uSelect } from "unist-util-select";
 import { select as hSelect } from "hast-util-select";
 

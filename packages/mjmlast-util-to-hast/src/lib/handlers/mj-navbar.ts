@@ -1,8 +1,8 @@
 import type { MjNavbar, MjNavbarAttributes } from "mjmlast";
 import { h } from "hastscript";
-import { Options } from "..";
-import { Context } from "../types";
-import { Element as HElement } from "hast";
+import type { Options } from "..";
+import type { Context } from "../types";
+import type { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
@@ -14,7 +14,7 @@ import {
   NOT_MSO_OR_IE,
 } from "../helpers/conditional-comment";
 import { uniqueId } from "lodash-es";
-import { Property } from "csstype";
+import type { Property } from "csstype";
 
 export type MjNavbarContext = Context & {
   navbarBaseUrl: string | undefined;

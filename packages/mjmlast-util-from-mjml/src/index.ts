@@ -1,6 +1,6 @@
 import { location } from "vfile-location";
 import { parse, HTMLElement, NodeType, Node, TextNode } from "node-html-parser";
-import { Element as HElement } from "hast";
+import type { Element as HElement } from "hast";
 
 import { MjmlNode, MjmlRoot, nodeTypes, Text } from "mjmlast";
 

@@ -1,3 +1,3 @@
-import { MjSection, MjGroup } from "mjmlast";
+import type { MjSection, MjGroup } from "mjmlast";
 
 export type ColumnParent = MjGroup | MjSection;

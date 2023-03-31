@@ -1,6 +1,6 @@
-import { Root as HRoot, Parent as HParent } from "hast";
-import { MjHead, MjmlNode } from "mjmlast";
-import { Properties } from "csstype";
+import type { Root as HRoot, Parent as HParent } from "hast";
+import type { MjHead, MjmlNode } from "mjmlast";
+import type { Properties } from "csstype";
 
 export type HastNode = HRoot | HParent | HParent["children"][number];
 type DefaultAttributes = Partial<

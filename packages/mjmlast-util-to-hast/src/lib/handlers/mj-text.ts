@@ -1,9 +1,9 @@
 import type { MjText, MjTextAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition } from "..";
-import { Element as HElement } from "hast";
+import type { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Property } from "csstype";
+import type { Property } from "csstype";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjTextAttributes,

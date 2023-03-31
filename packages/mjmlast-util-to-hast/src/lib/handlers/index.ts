@@ -1,4 +1,4 @@
-import { Attributes } from "mjml-types";
+import type { Attributes } from "mjml-types";
 import { mjml } from "./mjml";
 import {
   mjDivider,
@@ -19,7 +19,7 @@ import {
   mjText,
   DEFAULT_ATTRIBUTES as MJ_TEXT_DEFAULT_ATTRIBUTES,
 } from "./mj-text";
-import { Handler, Handlers } from "..";
+import type { Handler, Handlers } from "..";
 
 export const defaultAttributes: Record<string, Attributes> = {
   "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,

@@ -23,7 +23,13 @@ export class ContentWidth {
   }
 
   get width(): Parts {
-    return minBy<Parts>([this.#boxWidth.box, this.#nodeWidth], "value")!;
+    const min = minBy<Parts>([this.#boxWidth.box, this.#nodeWidth], "value");
+
+    if (typeof min === "undefined") {
+      throw new Error(`No min value`);
+    }
+
+    return min;
   }
 
   toString(): string {

@@ -18,8 +18,6 @@ export type Options = {
   handlers?: Handlers;
 };
 
-const foo;
-
 export type Handler<ContextType = Context> = (
   node: MjmlNode,
   parent: Parent<any, any> | null,

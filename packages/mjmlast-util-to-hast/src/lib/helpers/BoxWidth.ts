@@ -41,7 +41,7 @@ export class BoxWidth {
       bottom: this.#attributes["padding-bottom"],
       left: this.#attributes["padding-left"],
       right: this.#attributes["padding-right"],
-      full: this.#attributes["padding"],
+      full: this.#attributes.padding,
       name: "padding",
     });
 
@@ -54,7 +54,7 @@ export class BoxWidth {
       bottom: this.#attributes["border-bottom"],
       left: this.#attributes["border-left"],
       right: this.#attributes["border-right"],
-      full: this.#attributes["border"],
+      full: this.#attributes.border,
       name: "border",
     });
 

@@ -215,7 +215,7 @@ export function mjSection(
 
   const children = all(node, options, {
     ...context,
-    fullWidth: fullWidth,
+    fullWidth,
     containerWidth: boxWidths?.box?.toString(),
   });
 

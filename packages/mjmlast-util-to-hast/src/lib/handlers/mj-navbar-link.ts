@@ -69,12 +69,7 @@ export function mjNavbarLink(
 ): HElement[] {
   const attributes = new Attributes<
     Partial<MjNavbarLinkAttributes & UniversalAttributes>
-  >(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES || {},
-    context.defaultAttributes?.["mj-navbar-link"] || {},
-    context.defaultAttributes?.["mj-all"] || {}
-  );
+  >(node.attributes || {}, DEFAULT_ATTRIBUTES || {});
 
   const href = attributes.get("href");
 

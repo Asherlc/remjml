@@ -18,7 +18,6 @@ it("transforms a mjmlast section to hast", () => {
         children: [],
       },
       mediaQueries: {},
-      cssClasses: {},
     }
   );
 

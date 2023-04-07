@@ -91,9 +91,7 @@ export function mjDivider(
 
   const attributes = new Attributes<MjDividerAttributes>(
     node.attributes || {},
-    DEFAULT_ATTRIBUTES,
-    context.defaultAttributes?.["mj-divider"] || {},
-    context.defaultAttributes?.["mj-all"] || {}
+    DEFAULT_ATTRIBUTES
   );
   const styles = {
     borderTop: ["style", "width", "color"]

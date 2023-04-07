@@ -107,9 +107,7 @@ export function mjButton(
 ): HElement {
   const attributes = new Attributes<MjButtonAttributes>(
     node.attributes || {},
-    DEFAULT_ATTRIBUTES,
-    context.defaultAttributes?.["mj-divider"] || {},
-    context.defaultAttributes?.["mj-all"] || {}
+    DEFAULT_ATTRIBUTES
   );
 
   if (!context.containerWidth) {

@@ -1,8 +1,8 @@
-import type { Properties } from "csstype";
 import type { Element } from "hast";
 import type { Node, Parent as UnistParent, Literal } from "unist";
 
-export const nodeTypes = new Set([
+export const componentTypes = new Set([
+  "mj-class",
   "mj-attributes",
   "mj-breakpoint",
   "mj-font",
@@ -33,6 +33,8 @@ export const nodeTypes = new Set([
   "mj-text",
   "mj-wrapper",
 ]);
+
+export const nodeTypes = new Set([...Array.from(componentTypes), "text"]);
 
 export type UniversalAttributes = Partial<{
   "css-class": string;
@@ -334,9 +336,8 @@ export interface MjDivider extends Component<MjDividerAttributes> {
   type: "mj-divider";
 }
 
-export interface MjCarouselImage extends Node {
-  type: "mj-carousel-image";
-  attributes: UniversalAttributes & {
+export interface MjCarouselImage
+  extends Component<{
     alt: string;
     href: string;
     rel: string;
@@ -347,7 +348,8 @@ export interface MjCarouselImage extends Node {
     "border-radius": string;
     "tb-border": string;
     "tb-border-radius": string;
-  };
+  }> {
+  type: "mj-carousel-image";
 }
 
 type MjCarouselAttributes = {
@@ -665,14 +667,13 @@ export interface MjHero extends Parent<MjHeroAttributes, MjHeroChild> {
   type: "mj-hero";
 }
 
-export interface MjClass extends Node {
+export interface MjClass
+  extends Component<{ name: string } & Record<string, string>> {
   type: "mj-class";
-  attributes: { name: string } & Properties;
 }
 
-export interface MjAll extends Node {
+export interface MjAll extends Component<Record<string, string>> {
   type: "mj-all";
-  attributes: Record<string, string>;
 }
 
 export type MjmlRootAttributes = Partial<{
@@ -728,7 +729,8 @@ export interface MjAttributes extends Parent<never, MjAttributesChild> {
   type: "mj-attributes";
 }
 
-export type MjmlNode =
+export type MjmlComponent =
+  | MjClass
   | MjAll
   | MjColumn
   | MjWrapper
@@ -764,6 +766,7 @@ export type MjmlNode =
   | MjPreview
   | MjStyle
   | MjTitle
-  | Text
   | MjSelector
   | MjmlRoot;
+
+export type MjmlNode = MjmlComponent | Text;

@@ -55,9 +55,7 @@ export function mjNavbar(
 ): HElement[] {
   const attributes = new Attributes<Partial<MjNavbarAttributes>>(
     node.attributes || {},
-    DEFAULT_ATTRIBUTES,
-    context.defaultAttributes?.["mj-navbar"] || {},
-    context.defaultAttributes?.["mj-all"] || {}
+    DEFAULT_ATTRIBUTES
   );
 
   const children = all<MjNavbarContext>(node, options, {

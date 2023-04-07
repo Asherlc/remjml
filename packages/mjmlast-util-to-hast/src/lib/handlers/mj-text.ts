@@ -1,10 +1,9 @@
 import type { MjText, MjTextAttributes } from "mjmlast";
 import { h } from "hastscript";
-import { Options, addPosition } from "..";
+import { addPosition } from "..";
 import type { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";
-import { Context } from "../types";
 import { Attributes } from "../helpers/Attributes";
 
 export const DEFAULT_ATTRIBUTES: Pick<
@@ -26,17 +25,10 @@ export const DEFAULT_ATTRIBUTES: Pick<
   padding: "10px 25px",
 };
 
-export function mjText(
-  node: MjText,
-  parent: null,
-  options: Options,
-  context: Context
-): HElement {
+export function mjText(node: MjText): HElement {
   const attributes = new Attributes<MjTextAttributes>(
     node.attributes || {},
-    DEFAULT_ATTRIBUTES,
-    context.defaultAttributes?.["mj-divider"] || {},
-    context.defaultAttributes?.["mj-all"] || {}
+    DEFAULT_ATTRIBUTES
   );
 
   const hDiv: HElement = h(

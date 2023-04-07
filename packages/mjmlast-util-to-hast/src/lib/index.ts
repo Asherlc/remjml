@@ -7,7 +7,15 @@ import { remove } from "unist-util-remove";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
-import type { MjHead, MjStyle, MjmlNode, MjmlRoot, Parent } from "mjmlast";
+import type {
+  MjAttributes,
+  MjBody,
+  MjHead,
+  MjStyle,
+  MjmlNode,
+  MjmlRoot,
+  Parent,
+} from "mjmlast";
 import { u } from "unist-builder";
 import type { Context, HastNode } from "./types";
 import { mediaQueries } from "./helpers/media-queries";
@@ -16,6 +24,7 @@ import { select as hSelect } from "hast-util-select";
 import { applyInlineStyles, removeInlineStyles } from "./helpers/inline-styles";
 import { toString } from "mjmlast-util-to-string";
 import { h } from "hastscript";
+import { applyGlobalAttributes } from "./helpers/global-attributes";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -79,12 +88,19 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const globalStyles = removeGlobalStyles(tree);
   const mjHead = findOrBuildMjHead(tree);
   const mjmlDoc = uSelect("mjml", tree) as MjmlRoot | undefined;
+  const mjAttributes = uSelect("mj-attributes", tree) as
+    | MjAttributes
+    | undefined;
+  const mjBody = uSelect("mj-body", tree) as MjBody | undefined;
+
+  if (mjAttributes && mjBody) {
+    applyGlobalAttributes(mjAttributes, mjBody);
+    remove(tree, "mj-attributes");
+  }
 
   const context: Context = {
     mjHead,
     mediaQueries: {},
-    defaultAttributes: {},
-    cssClasses: {},
   };
 
   const node: HElement = one(

@@ -19,12 +19,16 @@ import {
   DEFAULT_ATTRIBUTES as MJ_TEXT_DEFAULT_ATTRIBUTES,
 } from "./mj-text";
 import type { Handler, Handlers } from "..";
-import { mjButton } from "./mj-button";
+import {
+  mjButton,
+  DEFAULT_ATTRIBUTES as MJ_BUTTON_DEFAULT_ATTRIBUTES,
+} from "./mj-button";
 
 export const defaultAttributes: Record<string, Attributes> = {
   "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,
   "mj-image": MJ_IMAGE_DEFAULT_ATTRIBUTES,
   "mj-divider": MJ_DIVIDER_DEFAULT_ATTRIBUTES,
+  "mj-button": MJ_BUTTON_DEFAULT_ATTRIBUTES,
 };
 
 export const handlers: Handlers = {

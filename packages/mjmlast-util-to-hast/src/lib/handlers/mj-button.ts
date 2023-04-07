@@ -119,83 +119,78 @@ export function mjButton(
   const tableNode = h(
     "table",
     {
-      style: {
-        border: "0",
-        cellpadding: "0",
-        cellspacing: "0",
-        role: "presentation",
-        style: jsonToCss({
-          borderCollapse: "separate",
-          width: attributes.get("width"),
-          lineHeight: "100%",
-        }),
-      },
+      border: "0",
+      cellpadding: "0",
+      cellspacing: "0",
+      role: "presentation",
+      style: jsonToCss({
+        borderCollapse: "separate",
+        width: attributes.get("width"),
+        lineHeight: "100%",
+      }),
     },
     h(
       "tbody",
       h(
-        "tbody",
+        "tr",
         h(
-          "tr",
+          "td",
+          {
+            align: "center",
+            bgcolor:
+              attributes.get("background-color") === "none"
+                ? undefined
+                : attributes.get("background-color"),
+            role: "presentation",
+            style: jsonToCss({
+              border: attributes.get("border"),
+              borderBottom: attributes.get("border-bottom"),
+              borderLeft: attributes.get("border-left"),
+              borderRadius: attributes.get("border-radius"),
+              borderRight: attributes.get("border-right"),
+              borderTop: attributes.get("border-top"),
+              cursor: "auto",
+              fontStyle: attributes.get("font-style"),
+              height: attributes.get("height"),
+              msoPaddingAlt: attributes.get("inner-padding"),
+              textAlign: attributes.get("text-align"),
+              background: attributes.get("background-color"),
+            }),
+            valign: attributes.get("vertical-align"),
+          },
           h(
-            "td",
+            tag,
             {
-              align: "center",
-              bgcolor:
-                attributes.get("background-color") === "none"
-                  ? undefined
-                  : attributes.get("background-color"),
-              role: "presentation",
+              href: attributes.get("href"),
+              name: attributes.get("name"),
+              rel: attributes.get("rel"),
+              title: attributes.get("title"),
               style: jsonToCss({
-                border: attributes.get("border"),
-                borderBottom: attributes.get("border-bottom"),
-                borderLeft: attributes.get("border-left"),
-                borderRadius: attributes.get("border-radius"),
-                borderRight: attributes.get("border-right"),
-                borderTop: attributes.get("border-top"),
-                cursor: "auto",
-                fontStyle: attributes.get("font-style"),
-                height: attributes.get("height"),
-                msoPaddingAlt: attributes.get("inner-padding"),
-                textAlign: attributes.get("text-align"),
+                display: "inline-block",
+                width: new AWidth(
+                  attributes,
+                  units.parse(context.containerWidth)
+                ).width,
                 background: attributes.get("background-color"),
+                color: attributes.get("color"),
+                fontFamily: attributes.get("font-family"),
+                fontSize: attributes.get("font-size"),
+                fontStyle: attributes.get("font-style"),
+                fontWeight: attributes.get("font-weight"),
+                lineHeight: attributes.get("line-height"),
+                letterSpacing: attributes.get("letter-spacing"),
+                margin: "0",
+                textDecoration: attributes.get("text-decoration"),
+                textTransform: attributes.get(
+                  "text-transform"
+                ) as Property.TextTransform,
+                padding: attributes.get("inner-padding"),
+                msoPaddingAlt: "0px",
+                borderRadius: attributes.get("border-radius"),
               }),
-              valign: attributes.get("vertical-align"),
+              target: tag === "a" ? attributes.get("target") : undefined,
             },
-            h(
-              tag,
-              {
-                href: attributes.get("href"),
-                name: attributes.get("name"),
-                rel: attributes.get("rel"),
-                title: attributes.get("title"),
-                style: jsonToCss({
-                  display: "inline-block",
-                  width: new AWidth(
-                    attributes,
-                    units.parse(context.containerWidth)
-                  ).width,
-                  background: attributes.get("background-color"),
-                  color: attributes.get("color"),
-                  fontFamily: attributes.get("font-family"),
-                  fontSize: attributes.get("font-size"),
-                  fontStyle: attributes.get("font-style"),
-                  fontWeight: attributes.get("font-weight"),
-                  lineHeight: attributes.get("line-height"),
-                  letterSpacing: attributes.get("letter-spacing"),
-                  margin: "0",
-                  textDecoration: attributes.get("text-decoration"),
-                  textTransform: attributes.get(
-                    "text-transform"
-                  ) as Property.TextTransform,
-                  padding: attributes.get("inner-padding"),
-                  msoPaddingAlt: "0px",
-                  borderRadius: attributes.get("border-radius"),
-                }),
-                target: tag === "a" ? attributes.get("target") : undefined,
-              },
-              node.children
-            )
+            node.children
           )
         )
       )

@@ -3,16 +3,19 @@ import type {
   Element as HElement,
   Root as HRoot,
 } from "hast";
+import { remove } from "unist-util-remove";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
 import { handlers as defaultHandlers } from "./handlers";
-import type { MjHead, MjmlNode, MjmlRoot, Parent } from "mjmlast";
+import type { MjHead, MjStyle, MjmlNode, MjmlRoot, Parent } from "mjmlast";
 import { u } from "unist-builder";
 import type { Context, HastNode } from "./types";
 import { mediaQueries } from "./helpers/media-queries";
-import { select as uSelect } from "unist-util-select";
+import { select as uSelect, selectAll as uSelectAll } from "unist-util-select";
 import { select as hSelect } from "hast-util-select";
 import { applyInlineStyles, removeInlineStyles } from "./helpers/inline-styles";
+import { toString } from "mjmlast-util-to-string";
+import { h } from "hastscript";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -51,12 +54,29 @@ function findOrBuildMjHead(tree: MjmlNode): MjHead {
   return mjHead || u("mj-head", { children: [] });
 }
 
+export function removeGlobalStyles(tree: MjmlNode): string {
+  const mjStyleElements = (uSelectAll("mj-style", tree) as MjStyle[]).filter(
+    (node: MjStyle) => {
+      if (!node.attributes?.inline) {
+        remove(tree, node as any);
+        return true;
+      }
+
+      return false;
+    }
+  );
+  const stylesheets = mjStyleElements.map(toString).join("\n");
+
+  return stylesheets;
+}
+
 export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const handlers: Handlers = {
     ...defaultHandlers,
     ...(options.handlers || {}),
   };
   const inlineStyles = removeInlineStyles(tree);
+  const globalStyles = removeGlobalStyles(tree);
   const mjHead = findOrBuildMjHead(tree);
   const mjmlDoc = uSelect("mjml", tree) as MjmlRoot | undefined;
 
@@ -85,7 +105,11 @@ export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
   const head = hSelect("head", hast) as HElement | undefined;
 
   if (head) {
-    head.children = [...head.children, ...(mediaQueriesStyles || [])];
+    head.children = [
+      ...head.children,
+      ...(mediaQueriesStyles || []),
+      h("style", { type: "text/css" }, globalStyles),
+    ];
   }
 
   applyInlineStyles(hast, inlineStyles);

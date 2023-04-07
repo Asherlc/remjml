@@ -14,14 +14,6 @@ import { kebabCase } from "lodash-es";
 
 expect.extend({ toMatchImageSnapshot });
 
-function createSnapshotIdentifier(): string {
-  return kebabCase(
-    `${path.basename(expect.getState().testPath)}-${
-      expect.getState().currentTestName
-    }`
-  );
-}
-
 const emailFixtureNames = [
   "arturia",
   "black-friday",
@@ -103,6 +95,10 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
 
     const ourPng = PNG.sync.read(ourImageData);
     const theirPng = PNG.sync.read(theirImageData);
+
+    expect(ourPng.height).toEqual(theirPng.height);
+    expect(ourPng.width).toEqual(theirPng.width);
+
     const { width, height } = ourPng;
     const diffPng = new PNG({ width, height });
 
@@ -112,11 +108,6 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
       diffPng.data,
       width,
       height
-    );
-
-    fs.writeFileSync(
-      `tmp/${createSnapshotIdentifier()}.png`,
-      PNG.sync.write(diffPng)
     );
 
     expect(diff).toBe(0);

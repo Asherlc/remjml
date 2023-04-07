@@ -1,2 +1,3 @@
 export { one, all } from "./lib/traverse";
-export { defaultHandlers, toHast, Options } from "./lib";
+export { defaultHandlers, toHast } from "./lib";
+export type { Options } from "./lib";

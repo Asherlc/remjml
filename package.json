@@ -35,6 +35,7 @@
     "@types/pngjs": "6.0.1",
     "hast-util-to-html": "^8.0.4",
     "jest-image-snapshot": "6.1.0",
+    "@types/jest-image-snapshot": "6.1.0",
     "jest-puppeteer": "8.0.6",
     "jest-xml-matcher": "1.2.0",
     "mjml-json-to-remjml": "*",

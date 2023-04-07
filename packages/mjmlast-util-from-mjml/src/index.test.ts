@@ -252,6 +252,9 @@ fit("converts mjml with an ampersand in a url into mjmlast", () => {
 
   expect(mjmlast).toMatchInlineSnapshot(`
     {
+      "attributes": {
+        "version": "3.3.3",
+      },
       "children": [
         {
           "position": {
@@ -509,11 +512,7 @@ fit("converts mjml with an ampersand in a url into mjmlast", () => {
     ",
         },
       ],
-      "properties": {
-        "version": "3.3.3",
-      },
-      "tagName": "mjml",
-      "type": "element",
+      "type": "mjml",
     }
   `);
 });

@@ -1,3 +1,4 @@
+import fs from "fs";
 import "expect-puppeteer";
 import path from "path";
 import fsPromise from "fs/promises";
@@ -9,8 +10,17 @@ import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
 import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
+import { kebabCase } from "lodash-es";
 
 expect.extend({ toMatchImageSnapshot });
+
+function createSnapshotIdentifier(): string {
+  return kebabCase(
+    `${path.basename(expect.getState().testPath)}-${
+      expect.getState().currentTestName
+    }`
+  );
+}
 
 const emailFixtureNames = [
   "arturia",
@@ -77,7 +87,7 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     }
   });
 
-  it("renders the same visual as original mjml library", async () => {
+  fit("renders the same visual as original mjml library", async () => {
     const theirHtml = originalMjml(mjml).html;
     const ourBuffer = Buffer.from(html);
     const theirBuffer = Buffer.from(theirHtml);
@@ -85,21 +95,28 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
       waitUntil: "networkidle0",
     });
-    const ourImageData = await page.screenshot();
+    const ourImageData = await page.screenshot({ fullPage: true });
     await page.goto(`data:text/html;base64,${theirBuffer.toString("base64")}`, {
       waitUntil: "networkidle0",
     });
-    const theirImageData = await page.screenshot();
+    const theirImageData = await page.screenshot({ fullPage: true });
 
     const ourPng = PNG.sync.read(ourImageData);
     const theirPng = PNG.sync.read(theirImageData);
+    const { width, height } = ourPng;
+    const diffPng = new PNG({ width, height });
 
     const diff = pixelmatch(
       theirPng.data,
       ourPng.data,
-      null,
-      ourPng.width,
-      ourPng.height
+      diffPng.data,
+      width,
+      height
+    );
+
+    fs.writeFileSync(
+      `tmp/${createSnapshotIdentifier()}.png`,
+      PNG.sync.write(diffPng)
     );
 
     expect(diff).toBe(0);

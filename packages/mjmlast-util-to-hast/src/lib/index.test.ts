@@ -218,6 +218,49 @@ it("converts to mjmlast to hast", () => {
                   "tagName": "style",
                   "type": "element",
                 },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "
+        @media only screen and (min-width:480px) {
+          .mj-column-per-100 { width:100% !important; max-width: 100%; }
+        }
+        ",
+                    },
+                  ],
+                  "properties": {
+                    "type": "text/css",
+                  },
+                  "tagName": "style",
+                  "type": "element",
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": ".moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }",
+                    },
+                  ],
+                  "properties": {
+                    "media": "screen and (min-width:480px)",
+                  },
+                  "tagName": "style",
+                  "type": "element",
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
+                  "properties": {
+                    "type": "text/css",
+                  },
+                  "tagName": "style",
+                  "type": "element",
+                },
               ],
               "properties": {},
               "tagName": "head",
@@ -268,7 +311,7 @@ it("converts to mjmlast to hast", () => {
                                                                             },
                                                                           ],
                                                                           "properties": {
-                                                                            "style": "width:[object Object]px",
+                                                                            "style": "width:100px",
                                                                           },
                                                                           "tagName": "td",
                                                                           "type": "element",
@@ -350,8 +393,8 @@ it("converts to mjmlast to hast", () => {
                                                                 "cellPadding": "0",
                                                                 "cellSpacing": "0",
                                                                 "role": "presentation",
-                                                                "style": "border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:0px",
-                                                                "width": "0px",
+                                                                "style": "border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:600px",
+                                                                "width": "600px",
                                                               },
                                                               "tagName": "table",
                                                               "type": "element",
@@ -378,7 +421,12 @@ it("converts to mjmlast to hast", () => {
                                                         {
                                                           "children": [
                                                             {
-                                                              "children": [],
+                                                              "children": [
+                                                                {
+                                                                  "type": "text",
+                                                                  "value": "Hello World",
+                                                                },
+                                                              ],
                                                               "properties": {
                                                                 "style": "font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43",
                                                               },
@@ -528,6 +576,16 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                   .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
                 }
         </style>
+        <style type="text/css">
+          @media only screen and (min-width:480px) {
+          .mj-column-per-100 { width:100% !important; max-width: 100%; }
+        }
+        </style>
+        <style media="screen and (min-width:480px)">
+          .moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }
+        </style>
+        <style type="text/css">
+        </style>
       </head>
       <body style="word-spacing:normal">
         <div style>
@@ -565,7 +623,7 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                               >
                                 <tbody>
                                   <tr>
-                                    <td style="width:[object Object]px">
+                                    <td style="width:100px">
                                       <image height="auto"
                                              src="/assets/img/logo-small.png"
                                              style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
@@ -591,6 +649,7 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                                 style="font-size:0px;padding:10px 25px;word-break:break-word"
                             >
                               <div style="font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43">
+                                Hello World
                               </div>
                             </td>
                           </tr>
@@ -629,5 +688,51 @@ it("transforms a mjmlast section to hast", () => {
 
   const hast = toHast(section);
 
-  expect(hast).toMatchInlineSnapshot();
+  expect(hast).toMatchInlineSnapshot(`
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [],
+                      "properties": {
+                        "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
+                      },
+                      "tagName": "td",
+                      "type": "element",
+                    },
+                  ],
+                  "properties": {},
+                  "tagName": "tr",
+                  "type": "element",
+                },
+              ],
+              "properties": {},
+              "tagName": "tbody",
+              "type": "element",
+            },
+          ],
+          "properties": {
+            "align": "center",
+            "border": 0,
+            "cellPadding": "0",
+            "cellSpacing": "0",
+            "role": "presentation",
+            "style": "width:100%",
+          },
+          "tagName": "table",
+          "type": "element",
+        },
+      ],
+      "properties": {
+        "style": "margin:0px auto",
+      },
+      "tagName": "div",
+      "type": "element",
+    }
+  `);
 });

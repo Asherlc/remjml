@@ -254,18 +254,6 @@ it("parses mjml", () => {
     ",
         },
       ],
-      "position": {
-        "end": {
-          "column": 8,
-          "line": 11,
-          "offset": 244,
-        },
-        "start": {
-          "column": 1,
-          "line": 1,
-          "offset": 0,
-        },
-      },
       "type": "mjml",
     }
   `);

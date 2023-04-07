@@ -37,11 +37,11 @@ export class ShorthandCssProperties<ValueType extends Value>
     full,
     name,
   }: {
-    left?: string;
-    right?: string;
-    bottom?: string;
-    top?: string;
-    full?: string;
+    left: string | undefined;
+    right: string | undefined;
+    bottom: string | undefined;
+    top: string | undefined;
+    full: string | undefined;
     name: string;
   }) {
     this.#bottom = bottom;

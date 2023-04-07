@@ -24,11 +24,11 @@ type PaddingAttributes = {
 };
 
 export class BoxWidth {
-  #attributes: BorderAttributes & PaddingAttributes;
+  #attributes: Partial<BorderAttributes & PaddingAttributes>;
   #containerWidth: Parts;
 
   constructor(
-    attributes: BorderAttributes & PaddingAttributes,
+    attributes: Partial<BorderAttributes & PaddingAttributes>,
     containerWidth: Parts
   ) {
     this.#containerWidth = containerWidth;

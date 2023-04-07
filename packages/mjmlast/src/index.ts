@@ -471,7 +471,7 @@ export interface MjAccordion
   type: "mj-accordion";
 }
 
-type MjButtonAttributes = {
+export type MjButtonAttributes = {
   align: "left" | "right" | "center" | "justify";
   "background-color": string;
   "border-bottom": string;

@@ -103,9 +103,9 @@ export function mjNavbar(
           style: jsonToCss({
             display: "block",
             cursor: "pointer",
-            "mso-hide": "all",
+            msoHide: "all",
             "-moz-user-select": "none",
-            "user-select": "none",
+            userSelect: "none",
             color: attributes.get("ico-color"),
             fontSize: attributes.get("ico-font-size"),
             fontFamily: attributes.get("ico-font-family"),
@@ -127,7 +127,7 @@ export function mjNavbar(
           {
             class: "mj-menu-icon-open",
             style: jsonToCss({
-              "mso-hide": "all",
+              msoHide: "all",
             }),
           },
           attributes.get("ico-open")
@@ -138,7 +138,7 @@ export function mjNavbar(
             class: "mj-menu-icon-close",
             style: jsonToCss({
               display: "none",
-              "mso-hide": "all",
+              msoHide: "all",
             }),
           },
           attributes.get("ico-close")

@@ -8,9 +8,10 @@ function jsonPropertyNameToCssPropertyName(jsonPropertyName: string): string {
 }
 
 export type CssPropertiesWithWeirdEmail = Properties & {
-  "mso-hide"?: string;
+  msoPaddingAlt?: string;
+  msoHide?: string;
   "-moz-user-select"?: string;
-  "user-select"?: string;
+  userSelect?: string;
   align?: string;
 };
 

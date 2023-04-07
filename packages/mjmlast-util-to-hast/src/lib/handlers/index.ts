@@ -20,6 +20,7 @@ import {
   DEFAULT_ATTRIBUTES as MJ_TEXT_DEFAULT_ATTRIBUTES,
 } from "./mj-text";
 import type { Handler, Handlers } from "..";
+import { mjButton } from "./mj-button";
 
 export const defaultAttributes: Record<string, Attributes> = {
   "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,
@@ -38,5 +39,6 @@ export const handlers: Handlers = {
   "mj-divider": mjDivider as Handler,
   "mj-navbar": mjNavbar as Handler,
   "mj-navbar-link": mjNavbarLink as Handler,
+  "mj-button": mjButton as Handler,
   mjml: mjml as Handler,
 };

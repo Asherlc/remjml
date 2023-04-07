@@ -108,8 +108,8 @@ class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
   }
 
   value(expandedValue: string | undefined, direction: string): PaddingValue {
-    if (!expandedValue || expandedValue === "0") {
-      return units.parse("0");
+    if (expandedValue) {
+      return units.parse(expandedValue);
     }
 
     if (!this.#shorthandValue) {

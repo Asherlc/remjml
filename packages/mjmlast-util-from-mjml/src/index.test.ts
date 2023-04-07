@@ -237,7 +237,7 @@ it("converts mjml into mjmlast", () => {
   });
 });
 
-fit("converts mjml with an ampersand in a url into mjmlast", () => {
+it("converts mjml with an ampersand in a url into mjmlast", () => {
   const mjml = `<mjml version="3.3.3">
   <mj-body background-color="#F4F4F4" color="#55575d" font-family="Arial, sans-serif">
     <mj-section background-color="#C1272D" background-repeat="repeat" padding="20px 0" text-align="center" vertical-align="top">

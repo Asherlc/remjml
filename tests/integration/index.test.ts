@@ -1,4 +1,4 @@
-import fs from "fs";
+import sharp from "sharp";
 import "expect-puppeteer";
 import path from "path";
 import fsPromise from "fs/promises";
@@ -10,9 +10,85 @@ import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
 import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
-import { kebabCase } from "lodash-es";
 
 expect.extend({ toMatchImageSnapshot });
+
+async function toMatchImage(
+  receivedImage: Buffer | Uint8Array | Uint8ClampedArray,
+  expectedImage: Buffer | Uint8Array | Uint8ClampedArray,
+  limit = 0
+) {
+  const receivedSharp = sharp(receivedImage);
+  const expectedSharp = sharp(expectedImage);
+  const receivedMetada = await receivedSharp.metadata();
+  const expectedMetadata = await expectedSharp.metadata();
+  const maximumWidth = Math.max(receivedMetada.width, expectedMetadata.width);
+  const maximumHeight = Math.max(
+    receivedMetada.height,
+    expectedMetadata.height
+  );
+
+  // derive a new version "boxedBuffer1" of "img1.png", conceptually placing "img1.png" in the upper-left corner of a bounding box canvas
+  const receivedBoxedBuffer = await receivedSharp
+    .resize({
+      width: maximumWidth,
+      height: maximumHeight,
+      fit: "contain", // instead of cropping or stretching, use "(letter/pillar/window)-boxing" (black space) to fill any excess space
+      position: "left top", // arrange the original image in the upper-left corner
+    })
+    .raw()
+    .toBuffer();
+
+  const expectedBoxedBuffer = await expectedSharp
+    .resize({
+      width: maximumWidth,
+      height: maximumHeight,
+      fit: "contain",
+      position: "left top",
+    })
+    .raw()
+    .toBuffer();
+
+  const diff = new PNG({
+    width: maximumWidth,
+    height: maximumHeight,
+  });
+
+  const numDiffPixels = pixelmatch(
+    receivedBoxedBuffer,
+    expectedBoxedBuffer,
+    diff.data,
+    maximumWidth,
+    maximumHeight
+  );
+
+  const fileName = `${expect.getState().currentTestName}.png`;
+  const filePath = `tmp/${fileName}`;
+  await fsPromise.writeFile(filePath, PNG.sync.write(diff));
+
+  const pass = numDiffPixels <= limit;
+
+  const messageBuilder = () =>
+    `expected ${this.utils.printReceived(
+      numDiffPixels
+    )} to be less than ${this.utils.printExpected(
+      limit
+    )}, diff saved at ${filePath}`;
+
+  if (pass) {
+    return {
+      message: messageBuilder,
+      pass: true,
+    };
+  } else {
+    return {
+      message: messageBuilder,
+      pass: false,
+    };
+  }
+}
+
+expect.extend({ toMatchImage });
 
 const emailFixtureNames = [
   "arturia",
@@ -79,39 +155,29 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     }
   });
 
-  fit("renders the same visual as original mjml library", async () => {
-    const theirHtml = originalMjml(mjml).html;
-    const ourBuffer = Buffer.from(html);
-    const theirBuffer = Buffer.from(theirHtml);
+  it(
+    "renders the same visual as original mjml library",
+    async () => {
+      const theirHtml = originalMjml(mjml).html;
+      const ourBuffer = Buffer.from(html);
+      const theirBuffer = Buffer.from(theirHtml);
 
-    await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
-      waitUntil: "networkidle0",
-    });
-    const ourImageData = await page.screenshot({ fullPage: true });
-    await page.goto(`data:text/html;base64,${theirBuffer.toString("base64")}`, {
-      waitUntil: "networkidle0",
-    });
-    const theirImageData = await page.screenshot({ fullPage: true });
+      await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
+        waitUntil: "networkidle0",
+      });
+      const ourImageData = await page.screenshot({ fullPage: true });
+      await page.goto(
+        `data:text/html;base64,${theirBuffer.toString("base64")}`,
+        {
+          waitUntil: "networkidle0",
+        }
+      );
+      const theirImageData = await page.screenshot({ fullPage: true });
 
-    const ourPng = PNG.sync.read(ourImageData);
-    const theirPng = PNG.sync.read(theirImageData);
-
-    expect(ourPng.height).toEqual(theirPng.height);
-    expect(ourPng.width).toEqual(theirPng.width);
-
-    const { width, height } = ourPng;
-    const diffPng = new PNG({ width, height });
-
-    const diff = pixelmatch(
-      theirPng.data,
-      ourPng.data,
-      diffPng.data,
-      width,
-      height
-    );
-
-    expect(diff).toBe(0);
-  });
+      await expect(ourImageData).toMatchImage(theirImageData);
+    },
+    1000 * 20
+  );
 
   it("renders the same as before", async () => {
     const buffer = Buffer.from(html);

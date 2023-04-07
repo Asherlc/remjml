@@ -10,6 +10,7 @@ import { jsonToCss } from "../../helpers/json-to-css";
 import { DEFAULT_ATTRIBUTES } from "./default-attributes";
 import { ContentWidth } from "./ContentWidth";
 import { Attributes } from "../../helpers/Attributes";
+import { ContainerWidth } from "../../helpers/ContainerWidth";
 
 type ImageParent = MjHero | MjColumn;
 

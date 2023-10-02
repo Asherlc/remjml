@@ -2,7 +2,7 @@ import { BodyComponent } from "./BodyComponent";
 
 export interface MjDivider extends BodyComponent {
   tagName: "mj-divider";
-  attributes: {
+  attributes: Partial<{
     "border-color": string;
     "border-style": string;
     "border-width": string;
@@ -14,5 +14,5 @@ export interface MjDivider extends BodyComponent {
     "padding-top": string;
     width: string;
     align: "left" | "right" | "center" | "justify";
-  };
+  }>;
 }

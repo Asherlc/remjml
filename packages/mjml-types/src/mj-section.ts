@@ -31,6 +31,6 @@ export type Attributes = {
 
 export interface MjSection extends BodyComponent, ParentComponent {
   tagName: "mj-section";
-  attributes: Attributes;
+  attributes: Partial<Attributes>;
   children: (MjColumn | MjGroup | MjRaw)[];
 }

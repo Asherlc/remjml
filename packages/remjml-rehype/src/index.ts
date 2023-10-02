@@ -1,41 +1,40 @@
-import type { MjmlNode } from "mjmlast";
-import type { Processor, RunCallback } from "unified";
-import { toHast, Options } from "mjmlast-util-to-hast";
-import { Compatible, Data } from "vfile";
-import type { Node } from "unist";
+import { VFile, Compatible } from "vfile";
+import type { MjmlRoot } from "mjmlast";
+import { toHast, Options as ToHastOptions } from "mjmlast-util-to-hast";
+import { Root as HRoot } from "hast";
+import { Processor } from "unified";
+
+//   Bridge-mode.
+//
+//   Runs the destination with the new hast tree.
+//   Discards result.
+type TransformBridge = (tree: MjmlRoot, file: VFile) => Promise<void>;
+
+// Mutate-mode.
+type TransformMutate = (tree: MjmlRoot, file: VFile) => HRoot;
 
 export default function remjmlRehype(
-  destination: Processor,
-  options: Options = {}
-) {
-  return destination && "run" in destination
-    ? bridge(destination, options)
-    : mutate(options);
-}
+  destination?: ToHastOptions | Processor | null | undefined,
+  options?: ToHastOptions | null | undefined
+): TransformBridge | TransformMutate {
+  if (destination && "run" in destination) {
+    const transformBridge: TransformBridge = async function (
+      tree: MjmlRoot,
+      file: Compatible
+    ) {
+      // Cast because root in -> root out.
+      const hastTree: HRoot = toHast(tree, options) as HRoot;
 
-/**
- * Bridge-mode.
- * Runs the destination with the new hast tree.
- *
- */
-function bridge(destination: Processor, options?: Options) {
-  return (node: MjmlNode, file: Compatible, next: RunCallback<Node<Data>>) => {
-    const hast = toHast(node, options);
+      await destination.run(hastTree, file);
+    };
 
-    destination.run(hast, file, (error) => {
-      next(error);
-    });
+    return transformBridge;
+  }
+
+  const transformMutate: TransformMutate = function (tree: MjmlRoot): HRoot {
+    // Cast because root in -> root out.
+    return toHast(tree, options || destination) as HRoot;
   };
-}
 
-/**
- * Mutate-mode.
- * Further plugins run on the hast tree.
- *
- */
-function mutate(options: Options) {
-  return (node: MjmlNode) => {
-    const hast = toHast(node, options);
-    return hast;
-  };
+  return transformMutate;
 }

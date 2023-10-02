@@ -77,7 +77,7 @@ function transformChildren(children: Node[], state: State): Content[] {
   return results;
 }
 
-export function fromMjml(mjml: string): MjmlNode {
+export function fromMjml(mjml: string): MjmlRoot {
   const loc = location(mjml);
 
   const element: HTMLElement = parse(String(mjml)).childNodes[0] as HTMLElement;

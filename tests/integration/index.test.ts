@@ -1,3 +1,4 @@
+import "jest-puppeteer";
 import sharp from "sharp";
 import "expect-puppeteer";
 import path from "path";

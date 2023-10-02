@@ -79,10 +79,13 @@ export function removeGlobalStyles(tree: MjmlNode): string {
   return stylesheets;
 }
 
-export function toHast(tree: MjmlNode, options: Options = {}): HastNode {
+export function toHast(
+  tree: MjmlNode,
+  options: Options | null | undefined = {}
+): HastNode {
   const handlers: Handlers = {
     ...defaultHandlers,
-    ...(options.handlers || {}),
+    ...(options?.handlers || {}),
   };
   const inlineStyles = removeInlineStyles(tree);
   const globalStyles = removeGlobalStyles(tree);

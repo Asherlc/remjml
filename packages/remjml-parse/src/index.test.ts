@@ -15,7 +15,7 @@ it("parses mjml", () => {
 </mjml>`;
   const vfile = new VFile(mjml);
 
-  const parser = remjmlParse.bind([] as any)();
+  const parser = remjmlParse.bind([])();
 
   const mjmlAst = parser("", vfile);
 
@@ -263,7 +263,7 @@ it("parses an mjml section ", () => {
   const mjml = `<mj-section></mj-section>`;
   const vfile = new VFile(mjml);
 
-  expect(remjmlParse.bind([] as any)()("foo", vfile)).toEqual({
+  expect(remjmlParse.bind([])()("foo", vfile)).toEqual({
     attributes: {},
     children: [],
     // position: {

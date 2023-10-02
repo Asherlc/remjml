@@ -1,7 +1,7 @@
 import type { MjButton, MjButtonAttributes } from "mjmlast";
 import { h } from "hastscript";
 import { Options, addPosition } from "..";
-import type { Element as HElement } from "hast";
+import type { Element as HElement, Text as HText } from "hast";
 import { Attributes } from "../helpers/Attributes";
 import { Context } from "../types";
 import { jsonToCss } from "../helpers/json-to-css";
@@ -12,6 +12,7 @@ import {
   PaddingValue,
   ShorthandCssProperties,
 } from "../helpers/ShorthandCssProperties";
+import { text } from "./text";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjButtonAttributes,
@@ -116,6 +117,10 @@ export function mjButton(
 
   const tag = attributes.get("href") ? "a" : "p";
 
+  const children: HText[] = node.children.map((textChild) => {
+    return text(textChild);
+  });
+
   const tableNode = h(
     "table",
     {
@@ -190,7 +195,7 @@ export function mjButton(
               }),
               target: tag === "a" ? attributes.get("target") : undefined,
             },
-            node.children
+            children
           )
         )
       )

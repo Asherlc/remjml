@@ -1,20 +1,16 @@
-import { VFile } from "vfile";
 import { fromMjml } from "mjmlast-util-from-mjml";
-import { Plugin } from "unified";
+import { Processor, Plugin, Parser } from "unified";
+import { MjmlRoot } from "mjmlast";
 
-type Options = {
-  emitParseErrors?: boolean;
+const parser: Parser<MjmlRoot> = (doc: string, file): MjmlRoot => {
+  const mjmlast: MjmlRoot = fromMjml(String(file));
+  return mjmlast;
 };
 
-export default function remjmlParse(
-  this: Plugin<[Options?] | Array<void>, string, string>
-) {
-  Object.assign(this, { Parser: parser });
+const remjmlParse: Plugin<[], string, MjmlRoot> = function (
+  this: Processor
+): void {
+  this.parser = parser;
+};
 
-  function parser(doc: string, file: VFile) {
-    const mjmlast = fromMjml(String(file));
-    return mjmlast;
-  }
-
-  return parser;
-}
+export default remjmlParse;

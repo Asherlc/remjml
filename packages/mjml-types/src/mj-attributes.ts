@@ -1,7 +1,8 @@
+import { ParentComponent } from "./ParentComponent";
 import { MjImage } from "./mj-image";
 import { MjTitle } from "./mj-title";
 import { MjNavbarLink } from "./mj-navbar-link";
-import { MjHead } from "./mj-head";
+import MjHead from "./mj-head";
 import { MjStyle } from "./mj-style";
 import { MjPreview } from "./mj-preview";
 import { MjSocialElement } from "./mj-social-element";
@@ -11,13 +12,13 @@ import { MjRaw } from "./mj-raw";
 import { MjSocial } from "./mj-social";
 import { MjNavbar } from "./mj-navbar";
 import { MjSelector } from "./mj-selector";
-import { MjHtmlAttributes } from "./mj-html-attributes";
+import MjHtmlAttributes from "./mj-html-attributes";
 import { MjDivider } from "./mj-divider";
 import { MjCarouselImage } from "./mj-carousel-image";
 import { MjCarousel } from "./mj-carousel";
 import { MjColumn } from "./mj-column";
 import { MjSection } from "./mj-section";
-import { MjBody } from "./mj-body";
+import MjBody from "./mj-body";
 import { MjAccordionText } from "./mj-accordion-text";
 import { MjAccordionTitle } from "./mj-accordion-title";
 import { MjAccordionElement } from "./mj-accordion-element";
@@ -26,10 +27,9 @@ import { MjText } from "./mj-text";
 import { MjGroup } from "./mj-group";
 import { MjWrapper } from "./mj-wrapper";
 import { MjHero } from "./mj-hero";
-import { mjml } from "./mjml";
-import { MjAccordion } from "./mj-accordion";
+import { MjAccordion } from "mjmlast";
 
-export type MjmlComponent =
+type Child =
   | MjColumn
   | MjWrapper
   | MjSection
@@ -63,8 +63,9 @@ export type MjmlComponent =
   | MjPreview
   | MjStyle
   | MjTitle
-  | Text
-  | MjSelector
-  | mjml;
+  | MjSelector;
 
-export { mjml };
+export interface MjAttributes extends ParentComponent {
+  children: Child[];
+  tagName: "mj-attributes";
+}

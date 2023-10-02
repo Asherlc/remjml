@@ -32,15 +32,15 @@ export const defaultAttributes: Record<string, Attributes> = {
 };
 
 export const handlers: Handlers = {
-  text: text as Handler,
-  "mj-body": mjBody as Handler,
-  "mj-section": mjSection as Handler,
-  "mj-column": mjColumn as Handler,
-  "mj-image": mjImage as Handler,
-  "mj-text": mjText as Handler,
-  "mj-divider": mjDivider as Handler,
-  "mj-navbar": mjNavbar as Handler,
-  "mj-navbar-link": mjNavbarLink as Handler,
-  "mj-button": mjButton as Handler,
-  mjml: mjml as Handler,
+  text: text as unknown as Handler,
+  "mj-body": mjBody as unknown as Handler,
+  "mj-section": mjSection as unknown as Handler,
+  "mj-column": mjColumn as unknown as Handler,
+  "mj-image": mjImage as unknown as Handler,
+  "mj-text": mjText as unknown as Handler,
+  "mj-divider": mjDivider as unknown as Handler,
+  "mj-navbar": mjNavbar as unknown as Handler,
+  "mj-navbar-link": mjNavbarLink as unknown as Handler,
+  "mj-button": mjButton as unknown as Handler,
+  mjml: mjml as unknown as Handler,
 };

@@ -4,6 +4,7 @@ import { u } from "unist-builder";
 import { addPosition, Handler, Options } from ".";
 import { h as hastH } from "hastscript";
 import type { Context } from "./types";
+import { Node as UnistNode } from "unist";
 
 function unknown(
   node: MjmlNode,
@@ -21,7 +22,7 @@ function unknown(
   return hastH("div", nodes);
 }
 
-export function one<ContextType = Context, Node extends MjmlNode = MjmlNode>(
+export function one<ContextType, Node extends UnistNode>(
   node: Node,
   parent: MjmlParent | null,
   options: Options,

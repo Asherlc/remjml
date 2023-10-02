@@ -25,6 +25,7 @@ import { applyInlineStyles, removeInlineStyles } from "./helpers/inline-styles";
 import { toString } from "mjmlast-util-to-string";
 import { h } from "hastscript";
 import { applyGlobalAttributes } from "./helpers/global-attributes";
+import { Node as UnistNode } from "unist";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -35,7 +36,7 @@ export type Options = {
 };
 
 export type Handler<ContextType = Context> = (
-  node: MjmlNode,
+  node: UnistNode,
   parent: Parent | null,
   options: Options,
   context: ContextType

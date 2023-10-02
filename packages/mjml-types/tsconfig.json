@@ -1,5 +1,5 @@
 {
-  "files": ["./src/index.ts"],
+  "files": ["./src/index.ts", "src/component.ts", "src/ParentComponent.ts", "src/EndComponent.ts", "src/mj-image.ts", "src/mj-title.ts", "src/mj-navbar-link.ts", "src/mj-head.ts", "src/mj-style.ts", "src/mj-preview.ts", "src/mj-social-element.ts", "src/mj-spacer.ts", "src/mj-table.ts", "src/mj-raw.ts", "src/mj-social.ts", "src/mj-navbar.ts", "src/mj-selector.ts", "src/mj-html-attributes.ts", "src/mj-font.ts", "src/mj-breakpoint.ts", "src/mj-divider.ts", "src/mj-carousel-image.ts", "src/mj-carousel.ts", "src/BodyComponent.ts", "src/mj-column.ts", "src/mj-section.ts", "src/mj-body.ts", "src/mj-accordion-text.ts", "src/mj-accordion-title.ts", "src/mj-accordion-element.ts", ".src/mj-button.ts, "./src/MjText.ts", "./src/MjGroup.ts", "./src/MjWrapper.ts", "./src/MjHero.ts", "./src/MjmlRoot.ts", "src/mj-attributes-child.ts", "./src/UniversalAttributes.ts", "./src/componentTypes.ts"],
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
@@ -10,5 +10,5 @@
     "strict": true,
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true
-  }
+  }, "./src/MjColumnChildAttributes.ts"
 }

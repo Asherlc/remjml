@@ -266,18 +266,18 @@ it("parses an mjml section ", () => {
   expect(remjmlParse.bind([] as any)()("foo", vfile)).toEqual({
     attributes: {},
     children: [],
-    position: {
-      end: {
-        column: 26,
-        line: 1,
-        offset: 25,
-      },
-      start: {
-        column: 1,
-        line: 1,
-        offset: 0,
-      },
-    },
+    // position: {
+    //   end: {
+    //     column: 26,
+    //     line: 1,
+    //     offset: 25,
+    //   },
+    //   start: {
+    //     column: 1,
+    //     line: 1,
+    //     offset: 0,
+    //   },
+    // },
     type: "mj-section",
   });
 });

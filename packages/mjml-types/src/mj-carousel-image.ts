@@ -4,7 +4,7 @@ import {} from "./UniversalAttributes";
 
 export interface MjCarouselImage extends BodyComponent, Component {
   tagName: "mj-carousel-image";
-  attributes: {
+  attributes: BodyComponent["attributes"] & {
     alt: string;
     href: string;
     rel: string;

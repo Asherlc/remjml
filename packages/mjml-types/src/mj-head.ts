@@ -1,8 +1,11 @@
 import { ParentComponent } from "./ParentComponent";
-import MjHtmlAttributes from "./mj-html-attributes";
+import { MjHtmlAttributes } from "./mj-html-attributes";
 import { MjBreakpoint } from "./mj-breakpoint";
 import { MjFont } from "./mj-font";
-import { MjPreview, MjStyle, MjTitle } from "mjmlast";
+import { MjAttributes } from "./mj-attributes";
+import { MjPreview } from "./mj-preview";
+import { MjTitle } from "./mj-title";
+import { MjStyle } from "./mj-style";
 
 export interface MjHead extends ParentComponent {
   tagName: "mj-head";

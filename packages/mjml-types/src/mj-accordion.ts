@@ -1,6 +1,7 @@
-import { MjAccordionElement, MjRaw } from "mjmlast";
 import { ParentComponent } from "./ParentComponent";
 import { BodyComponent } from "./BodyComponent";
+import { MjAccordionElement } from "./mj-accordion-element";
+import { MjRaw } from "./mj-raw";
 
 type Attributes = {
   "container-background-color": string;
@@ -23,6 +24,6 @@ type Attributes = {
 
 export interface MjAccordion extends BodyComponent, ParentComponent {
   tagName: "mj-accordion";
-  attributes: Attributes;
+  attributes: BodyComponent["attributes"] & Attributes;
   children: (MjAccordionElement | MjRaw)[];
 }

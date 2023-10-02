@@ -23,6 +23,6 @@ interface Attributes {
 }
 
 export interface MjText extends EndComponent {
-  attributes: Attributes;
+  attributes: EndComponent["attributes"] & Attributes;
   tagName: "mj-text";
 }

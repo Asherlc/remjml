@@ -23,7 +23,7 @@ type Attributes = {
 };
 
 export interface MjCarousel extends BodyComponent, ParentComponent {
-  attributes: Attributes;
+  attributes: BodyComponent["attributes"] & Attributes;
   children: [MjCarouselImage];
   tagName: "mj-carousel";
 }

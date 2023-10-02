@@ -1,4 +1,4 @@
-import type { Component } from "./component";
+import type { Component } from "./Component";
 
 export interface EndComponent extends Component {
   content?: string;

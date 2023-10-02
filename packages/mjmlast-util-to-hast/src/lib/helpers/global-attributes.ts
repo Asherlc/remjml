@@ -1,22 +1,8 @@
 import { Node } from "unist";
-import {
-  MjAttributes,
-  MjBody,
-  MjClass,
-  MjmlComponent,
-  componentTypes,
-} from "mjmlast";
+import { MjAttributes, MjBody, isComponent, isMjClass } from "mjmlast";
 import { visit } from "unist-util-visit";
 import { TestFunction } from "unist-util-is";
 import { omit } from "lodash-es";
-
-function isComponent(node: Node): node is MjmlComponent {
-  return componentTypes.has(node.type);
-}
-
-function isMjClass(node: Node): node is MjClass {
-  return node.type === "mj-class";
-}
 
 function createTestFunction(mjAttributesChild: Node): TestFunction {
   const testFn: TestFunction = (node: Node): boolean => {

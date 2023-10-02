@@ -3,6 +3,7 @@ import type { Node } from "unist";
 import { is } from "unist-util-is";
 import { ColumnParent } from "./types";
 import { whitespace } from "hast-util-whitespace";
+import { isText } from "mjmlast";
 
 const PREFIX_PIXEL = "mj-column-px";
 const PREFIX_PERCENT = "mj-column-per";
@@ -23,10 +24,17 @@ export class ColumnWidthCssClass {
 
   get #siblingsWithControlledWidths(): Node[] {
     return this.#parent.children.filter((sibling) => {
-      const isRaw = is(sibling, "raw");
-      const isWhitespace = whitespace(sibling);
+      const isRaw: boolean = is(sibling, "raw");
 
-      return !isRaw && !isWhitespace;
+      if (isRaw) {
+        return false;
+      }
+
+      if (isText(sibling)) {
+        return !whitespace(sibling);
+      }
+
+      return true;
     });
   }
 

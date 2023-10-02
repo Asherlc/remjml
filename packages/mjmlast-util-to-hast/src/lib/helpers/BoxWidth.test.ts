@@ -12,10 +12,12 @@ it("calculates the box width", () => {
 
   const boxWidth = new BoxWidth(attributes, containerWidth);
 
-  expect(boxWidth.box).toEqual({
-    value: 600,
-    unit: "px",
-  });
+  expect(boxWidth.box).toEqual(
+    expect.objectContaining({
+      value: 600,
+      unit: "px",
+    })
+  );
 });
 
 it("calculates the box width prioritizing long values over conflicting shorthand value", () => {

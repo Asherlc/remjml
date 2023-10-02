@@ -11,7 +11,7 @@ it("computes the correct width", () => {
     children: [child1, child2],
   } as MjSection;
 
-  const attributes = new Attributes({}, {}, {}, {});
+  const attributes = new Attributes({}, {})
 
   const width = new ColumnContainerWidth("600px", parent, attributes);
 

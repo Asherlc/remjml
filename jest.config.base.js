@@ -1,3 +1,4 @@
+/** @type {import('jest').Config} */
 export default {
     modulePathIgnorePatterns: ['<rootDir>/dist/'],
     extensionsToTreatAsEsm: [".ts"],
@@ -17,4 +18,6 @@ export default {
     },
     testEnvironment: "node",
     snapshotSerializers: ["jest-serializer-html"],
+    // https://jestjs.io/docs/configuration/#prettierpath-string
+    prettierPath: new URL(import.meta.resolve('prettier-2')).pathname
 };

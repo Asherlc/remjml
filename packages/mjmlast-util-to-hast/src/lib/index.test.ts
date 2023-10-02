@@ -60,148 +60,147 @@ it("converts to mjmlast to hast", () => {
   expect(hast).toMatchInlineSnapshot(`
     {
       "children": [
-        [
-          {
-            "type": "doctype",
-          },
-          {
-            "children": [
-              {
-                "children": [
-                  {
-                    "children": [],
-                    "properties": {},
-                    "tagName": "title",
-                    "type": "element",
+        {
+          "type": "doctype",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "properties": {},
+                  "tagName": "title",
+                  "type": "element",
+                },
+                {
+                  "type": "raw",
+                  "value": <!--[if !mso]><!-->,
+                },
+                {
+                  "children": [],
+                  "properties": {
+                    "content": "IE=edge",
+                    "httpEquiv": [
+                      "X-UA-Compatible",
+                    ],
                   },
-                  {
-                    "type": "raw",
-                    "value": <!--[if !mso]><!-->,
+                  "tagName": "meta",
+                  "type": "element",
+                },
+                {
+                  "type": "raw",
+                  "value": "<![endif]-->;",
+                },
+                {
+                  "children": [],
+                  "properties": {
+                    "content": "text/html; charset=UTF-8",
+                    "httpEquiv": [
+                      "Content-Type",
+                    ],
                   },
-                  {
-                    "children": [],
-                    "properties": {
-                      "content": "IE=edge",
-                      "httpEquiv": [
-                        "X-UA-Compatible",
-                      ],
-                    },
-                    "tagName": "meta",
-                    "type": "element",
+                  "tagName": "meta",
+                  "type": "element",
+                },
+                {
+                  "children": [],
+                  "properties": {
+                    "content": "width=device-width, initial-scale=1",
+                    "name": "viewport",
                   },
-                  {
-                    "type": "raw",
-                    "value": "<![endif]-->;",
-                  },
-                  {
-                    "children": [],
-                    "properties": {
-                      "content": "text/html; charset=UTF-8",
-                      "httpEquiv": [
-                        "Content-Type",
-                      ],
-                    },
-                    "tagName": "meta",
-                    "type": "element",
-                  },
-                  {
-                    "children": [],
-                    "properties": {
-                      "content": "width=device-width, initial-scale=1",
-                      "name": "viewport",
-                    },
-                    "tagName": "meta",
-                    "type": "element",
-                  },
-                  {
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "#outlook a { padding:0; }
+                  "tagName": "meta",
+                  "type": "element",
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "#outlook a { padding:0; }
     body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
     table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
     img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
     p { display:block;margin:13px 0; }",
-                      },
-                    ],
-                    "properties": {
-                      "type": "text/css",
                     },
-                    "tagName": "style",
-                    "type": "element",
+                  ],
+                  "properties": {
+                    "type": "text/css",
                   },
-                  {
-                    "type": "raw",
-                    "value": <!--[if !mso]>-->,
-                  },
-                  {
-                    "children": [
-                      {
-                        "children": [
-                          {
-                            "children": [
-                              {
-                                "children": [],
-                                "properties": {},
-                                "tagName": "o:allowpng",
-                                "type": "element",
-                              },
-                              {
-                                "children": [
-                                  {
-                                    "type": "text",
-                                    "value": "96",
-                                  },
-                                ],
-                                "properties": {},
-                                "tagName": "o:pixelsperinch",
-                                "type": "element",
-                              },
-                            ],
-                            "properties": {},
-                            "tagName": "o:officedocumentsettings",
-                            "type": "element",
-                          },
-                        ],
-                        "properties": {},
-                        "tagName": "xml",
-                        "type": "element",
-                      },
-                    ],
-                    "properties": {},
-                    "tagName": "noscript",
-                    "type": "element",
-                  },
-                  {
-                    "type": "raw",
-                    "value": "<![endif]-->;",
-                  },
-                  {
-                    "type": "raw",
-                    "value": <!--[if !lte mso 11]>-->,
-                  },
-                  {
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": ".mj-outlook-group-fix { width:100% !important; }",
-                      },
-                    ],
-                    "properties": {
-                      "type": "text/css",
+                  "tagName": "style",
+                  "type": "element",
+                },
+                {
+                  "type": "raw",
+                  "value": <!--[if !mso]>-->,
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [],
+                              "properties": {},
+                              "tagName": "o:allowpng",
+                              "type": "element",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "96",
+                                },
+                              ],
+                              "properties": {},
+                              "tagName": "o:pixelsperinch",
+                              "type": "element",
+                            },
+                          ],
+                          "properties": {},
+                          "tagName": "o:officedocumentsettings",
+                          "type": "element",
+                        },
+                      ],
+                      "properties": {},
+                      "tagName": "xml",
+                      "type": "element",
                     },
-                    "tagName": "style",
-                    "type": "element",
+                  ],
+                  "properties": {},
+                  "tagName": "noscript",
+                  "type": "element",
+                },
+                {
+                  "type": "raw",
+                  "value": "<![endif]-->;",
+                },
+                {
+                  "type": "raw",
+                  "value": <!--[if !lte mso 11]>-->,
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": ".mj-outlook-group-fix { width:100% !important; }",
+                    },
+                  ],
+                  "properties": {
+                    "type": "text/css",
                   },
-                  {
-                    "type": "raw",
-                    "value": "<![endif]-->;",
-                  },
-                  {
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "
+                  "tagName": "style",
+                  "type": "element",
+                },
+                {
+                  "type": "raw",
+                  "value": "<![endif]-->;",
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "
                 noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
                 @media only screen and (max-width:479px) {
                   .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
@@ -211,287 +210,329 @@ it("converts to mjmlast to hast", () => {
                   .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
                   .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
                 }",
-                      },
-                    ],
-                    "properties": {
-                      "type": "text/css",
                     },
-                    "tagName": "style",
-                    "type": "element",
+                  ],
+                  "properties": {
+                    "type": "text/css",
                   },
-                ],
-                "properties": {},
-                "tagName": "head",
-                "type": "element",
-              },
-              {
-                "children": [
-                  {
-                    "children": [
-                      {
-                        "children": [
-                          {
-                            "children": [
-                              {
-                                "children": [
-                                  {
-                                    "children": [
-                                      {
-                                        "children": [
-                                          {
-                                            "children": [
-                                              {
-                                                "children": [
-                                                  {
-                                                    "children": [
-                                                      {
-                                                        "children": [
-                                                          {
-                                                            "children": [
-                                                              {
-                                                                "children": [
-                                                                  {
-                                                                    "children": [
-                                                                      {
-                                                                        "children": [
-                                                                          {
-                                                                            "children": [
-                                                                              {
-                                                                                "children": [],
-                                                                                "properties": {
-                                                                                  "height": "auto",
-                                                                                  "src": "/assets/img/logo-small.png",
-                                                                                  "style": "border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px",
-                                                                                  "width": "100%",
-                                                                                },
-                                                                                "tagName": "image",
-                                                                                "type": "element",
-                                                                              },
-                                                                            ],
-                                                                            "properties": {
-                                                                              "style": "width:100px",
-                                                                            },
-                                                                            "tagName": "td",
-                                                                            "type": "element",
-                                                                          },
-                                                                        ],
-                                                                        "properties": {},
-                                                                        "tagName": "tr",
-                                                                        "type": "element",
-                                                                      },
-                                                                    ],
-                                                                    "properties": {},
-                                                                    "tagName": "tbody",
-                                                                    "type": "element",
-                                                                  },
-                                                                ],
-                                                                "properties": {
-                                                                  "border": 0,
-                                                                  "cellPadding": "0",
-                                                                  "cellSpacing": "0",
-                                                                  "role": "presentation",
-                                                                  "style": "border-collapse:collapse;border-spacing:0px",
-                                                                },
-                                                                "tagName": "table",
-                                                                "type": "element",
-                                                              },
-                                                            ],
-                                                            "properties": {
-                                                              "align": "center",
-                                                              "style": "font-size:0px;padding:10px 25px;word-break:break-word",
-                                                            },
-                                                            "tagName": "td",
-                                                            "type": "element",
-                                                          },
-                                                        ],
-                                                        "properties": {},
-                                                        "tagName": "tr",
-                                                        "type": "element",
-                                                      },
-                                                      {
-                                                        "children": [
-                                                          {
-                                                            "children": [
-                                                              {
-                                                                "children": [],
-                                                                "properties": {
-                                                                  "style": "border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:100%",
-                                                                },
-                                                                "tagName": "p",
-                                                                "type": "element",
-                                                              },
-                                                              {
-                                                                "type": "raw",
-                                                                "value": <!--[if !mso | IE]>-->,
-                                                              },
-                                                              {
-                                                                "children": [
-                                                                  {
-                                                                    "children": [
-                                                                      {
-                                                                        "children": [
-                                                                          {
-                                                                            "type": "text",
-                                                                            "value": "&nbsp;",
-                                                                          },
-                                                                        ],
-                                                                        "properties": {},
-                                                                        "tagName": "td",
-                                                                        "type": "element",
-                                                                      },
-                                                                    ],
-                                                                    "properties": {},
-                                                                    "tagName": "tr",
-                                                                    "type": "element",
-                                                                  },
-                                                                ],
-                                                                "properties": {
-                                                                  "align": "center",
-                                                                  "border": 0,
-                                                                  "cellPadding": "0",
-                                                                  "cellSpacing": "0",
-                                                                  "role": "presentation",
-                                                                  "style": "border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:550px",
-                                                                  "width": "550px",
-                                                                },
-                                                                "tagName": "table",
-                                                                "type": "element",
-                                                              },
-                                                              {
-                                                                "type": "raw",
-                                                                "value": "<![endif]-->;",
-                                                              },
-                                                            ],
-                                                            "properties": {
-                                                              "align": "center",
-                                                              "style": "font-size:0px;padding:10px 25px;word-break:break-word",
-                                                            },
-                                                            "tagName": "td",
-                                                            "type": "element",
-                                                          },
-                                                        ],
-                                                        "properties": {},
-                                                        "tagName": "tr",
-                                                        "type": "element",
-                                                      },
-                                                      {
-                                                        "children": [
-                                                          {
-                                                            "children": [
-                                                              {
-                                                                "children": [
-                                                                  {
-                                                                    "type": "text",
-                                                                    "value": "Hello World",
-                                                                  },
-                                                                ],
-                                                                "properties": {
-                                                                  "style": "font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43",
-                                                                },
-                                                                "tagName": "div",
-                                                                "type": "element",
-                                                              },
-                                                            ],
-                                                            "properties": {
-                                                              "align": "left",
-                                                              "style": "font-size:0px;padding:10px 25px;word-break:break-word",
-                                                            },
-                                                            "tagName": "td",
-                                                            "type": "element",
-                                                          },
-                                                        ],
-                                                        "properties": {},
-                                                        "tagName": "tr",
-                                                        "type": "element",
-                                                      },
-                                                    ],
-                                                    "properties": {},
-                                                    "tagName": "tbody",
-                                                    "type": "element",
-                                                  },
-                                                ],
-                                                "properties": {
-                                                  "border": 0,
-                                                  "cellPadding": "0",
-                                                  "cellSpacing": "0",
-                                                  "role": "presentation",
-                                                  "style": "vertical-align:top",
-                                                  "width": "100%",
-                                                },
-                                                "tagName": "table",
-                                                "type": "element",
-                                              },
-                                            ],
-                                            "properties": {
-                                              "className": [
-                                                "mj-column-per-100",
-                                                "mj-outlook-group-fix",
-                                              ],
-                                              "style": "font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%",
-                                            },
-                                            "tagName": "div",
-                                            "type": "element",
-                                          },
-                                        ],
-                                        "properties": {
-                                          "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
-                                        },
-                                        "tagName": "td",
-                                        "type": "element",
-                                      },
-                                    ],
-                                    "properties": {},
-                                    "tagName": "tr",
-                                    "type": "element",
-                                  },
-                                ],
-                                "properties": {},
-                                "tagName": "tbody",
-                                "type": "element",
-                              },
-                            ],
-                            "properties": {
-                              "align": "center",
-                              "border": 0,
-                              "cellPadding": "0",
-                              "cellSpacing": "0",
-                              "role": "presentation",
-                              "style": "width:100%",
-                            },
-                            "tagName": "table",
-                            "type": "element",
-                          },
-                        ],
-                        "properties": {
-                          "style": "margin:0px auto;max-width:600px",
-                        },
-                        "tagName": "div",
-                        "type": "element",
-                      },
-                    ],
-                    "properties": {
-                      "style": "",
-                    },
-                    "tagName": "div",
-                    "type": "element",
-                  },
-                ],
-                "properties": {
-                  "style": "word-spacing:normal",
+                  "tagName": "style",
+                  "type": "element",
                 },
-                "tagName": "body",
-                "type": "element",
-              },
-            ],
-            "properties": {
-              "xmlns": "http://www.w3.org/1999/xhtml",
-              "xmlns:o": "urn:schemas-microsoft-com:office:office",
-              "xmlns:v": "urn:schemas-microsoft-com:vml",
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "
+        @media only screen and (min-width:480px) {
+          .mj-column-per-100 { width:100% !important; max-width: 100%; }
+        }
+        ",
+                    },
+                  ],
+                  "properties": {
+                    "type": "text/css",
+                  },
+                  "tagName": "style",
+                  "type": "element",
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": ".moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }",
+                    },
+                  ],
+                  "properties": {
+                    "media": "screen and (min-width:480px)",
+                  },
+                  "tagName": "style",
+                  "type": "element",
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "",
+                    },
+                  ],
+                  "properties": {
+                    "type": "text/css",
+                  },
+                  "tagName": "style",
+                  "type": "element",
+                },
+              ],
+              "properties": {},
+              "tagName": "head",
+              "type": "element",
             },
-            "tagName": "html",
-            "type": "element",
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "children": [
+                                        {
+                                          "children": [
+                                            {
+                                              "children": [
+                                                {
+                                                  "children": [
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "children": [
+                                                                    {
+                                                                      "children": [
+                                                                        {
+                                                                          "children": [
+                                                                            {
+                                                                              "children": [],
+                                                                              "properties": {
+                                                                                "height": "auto",
+                                                                                "src": "/assets/img/logo-small.png",
+                                                                                "style": "border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px",
+                                                                                "width": "100%",
+                                                                              },
+                                                                              "tagName": "image",
+                                                                              "type": "element",
+                                                                            },
+                                                                          ],
+                                                                          "properties": {
+                                                                            "style": "width:100px",
+                                                                          },
+                                                                          "tagName": "td",
+                                                                          "type": "element",
+                                                                        },
+                                                                      ],
+                                                                      "properties": {},
+                                                                      "tagName": "tr",
+                                                                      "type": "element",
+                                                                    },
+                                                                  ],
+                                                                  "properties": {},
+                                                                  "tagName": "tbody",
+                                                                  "type": "element",
+                                                                },
+                                                              ],
+                                                              "properties": {
+                                                                "border": 0,
+                                                                "cellPadding": "0",
+                                                                "cellSpacing": "0",
+                                                                "role": "presentation",
+                                                                "style": "border-collapse:collapse;border-spacing:0px",
+                                                              },
+                                                              "tagName": "table",
+                                                              "type": "element",
+                                                            },
+                                                          ],
+                                                          "properties": {
+                                                            "align": "center",
+                                                            "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                          },
+                                                          "tagName": "td",
+                                                          "type": "element",
+                                                        },
+                                                      ],
+                                                      "properties": {},
+                                                      "tagName": "tr",
+                                                      "type": "element",
+                                                    },
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [],
+                                                              "properties": {
+                                                                "style": "border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:100%",
+                                                              },
+                                                              "tagName": "p",
+                                                              "type": "element",
+                                                            },
+                                                            {
+                                                              "type": "raw",
+                                                              "value": <!--[if !mso | IE]>-->,
+                                                            },
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "children": [
+                                                                    {
+                                                                      "children": [
+                                                                        {
+                                                                          "type": "text",
+                                                                          "value": "&nbsp;",
+                                                                        },
+                                                                      ],
+                                                                      "properties": {},
+                                                                      "tagName": "td",
+                                                                      "type": "element",
+                                                                    },
+                                                                  ],
+                                                                  "properties": {},
+                                                                  "tagName": "tr",
+                                                                  "type": "element",
+                                                                },
+                                                              ],
+                                                              "properties": {
+                                                                "align": "center",
+                                                                "border": 0,
+                                                                "cellPadding": "0",
+                                                                "cellSpacing": "0",
+                                                                "role": "presentation",
+                                                                "style": "border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:550px",
+                                                                "width": "550px",
+                                                              },
+                                                              "tagName": "table",
+                                                              "type": "element",
+                                                            },
+                                                            {
+                                                              "type": "raw",
+                                                              "value": "<![endif]-->;",
+                                                            },
+                                                          ],
+                                                          "properties": {
+                                                            "align": "center",
+                                                            "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                          },
+                                                          "tagName": "td",
+                                                          "type": "element",
+                                                        },
+                                                      ],
+                                                      "properties": {},
+                                                      "tagName": "tr",
+                                                      "type": "element",
+                                                    },
+                                                    {
+                                                      "children": [
+                                                        {
+                                                          "children": [
+                                                            {
+                                                              "children": [
+                                                                {
+                                                                  "type": "text",
+                                                                  "value": "Hello World",
+                                                                },
+                                                              ],
+                                                              "properties": {
+                                                                "style": "font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43",
+                                                              },
+                                                              "tagName": "div",
+                                                              "type": "element",
+                                                            },
+                                                          ],
+                                                          "properties": {
+                                                            "align": "left",
+                                                            "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                          },
+                                                          "tagName": "td",
+                                                          "type": "element",
+                                                        },
+                                                      ],
+                                                      "properties": {},
+                                                      "tagName": "tr",
+                                                      "type": "element",
+                                                    },
+                                                  ],
+                                                  "properties": {},
+                                                  "tagName": "tbody",
+                                                  "type": "element",
+                                                },
+                                              ],
+                                              "properties": {
+                                                "border": 0,
+                                                "cellPadding": "0",
+                                                "cellSpacing": "0",
+                                                "role": "presentation",
+                                                "style": "vertical-align:top",
+                                                "width": "100%",
+                                              },
+                                              "tagName": "table",
+                                              "type": "element",
+                                            },
+                                          ],
+                                          "properties": {
+                                            "className": [
+                                              "mj-column-per-100",
+                                              "mj-outlook-group-fix",
+                                            ],
+                                            "style": "font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%",
+                                          },
+                                          "tagName": "div",
+                                          "type": "element",
+                                        },
+                                      ],
+                                      "properties": {
+                                        "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
+                                      },
+                                      "tagName": "td",
+                                      "type": "element",
+                                    },
+                                  ],
+                                  "properties": {},
+                                  "tagName": "tr",
+                                  "type": "element",
+                                },
+                              ],
+                              "properties": {},
+                              "tagName": "tbody",
+                              "type": "element",
+                            },
+                          ],
+                          "properties": {
+                            "align": "center",
+                            "border": 0,
+                            "cellPadding": "0",
+                            "cellSpacing": "0",
+                            "role": "presentation",
+                            "style": "width:100%",
+                          },
+                          "tagName": "table",
+                          "type": "element",
+                        },
+                      ],
+                      "properties": {
+                        "style": "margin:0px auto;max-width:600px",
+                      },
+                      "tagName": "div",
+                      "type": "element",
+                    },
+                  ],
+                  "properties": {
+                    "style": "",
+                  },
+                  "tagName": "div",
+                  "type": "element",
+                },
+              ],
+              "properties": {
+                "style": "word-spacing:normal",
+              },
+              "tagName": "body",
+              "type": "element",
+            },
+          ],
+          "properties": {
+            "xmlns": "http://www.w3.org/1999/xhtml",
+            "xmlns:o": "urn:schemas-microsoft-com:office:office",
+            "xmlns:v": "urn:schemas-microsoft-com:vml",
           },
-        ],
+          "tagName": "html",
+          "type": "element",
+        },
       ],
       "type": "root",
     }
@@ -511,6 +552,8 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
       <head>
         <title>
         </title>
+        <!--[if !mso]><!-->
+        ;
         <meta http-equiv="Content-Type"
               content="text/html; charset=UTF-8"
         >
@@ -524,6 +567,10 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
     img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
     p { display:block;margin:13px 0; }
         </style>
+        <!--[if !mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
+        ;
+        <!--[if !lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+        ;
         <style type="text/css">
           noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
                 @media only screen and (max-width:479px) {
@@ -601,6 +648,8 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                             >
                               <p style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:100%">
                               </p>
+                              <!--[if !mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:550px" role="presentation" width="550px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
+                              ;
                             </td>
                           </tr>
                           <tr>
@@ -657,46 +706,41 @@ it("transforms a mjmlast section to hast", () => {
                 {
                   "children": [
                     {
-                      "children": [
-                        {
-                          "children": [],
-                          "properties": {
-                            "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
-                          },
-                          "tagName": "td",
-                          "type": "element",
-                        },
-                      ],
-                      "properties": {},
-                      "tagName": "tr",
+                      "children": [],
+                      "properties": {
+                        "style": "direction:ltr;font-size:0px;padding:20px 0;text-align:center",
+                      },
+                      "tagName": "td",
                       "type": "element",
                     },
                   ],
                   "properties": {},
-                  "tagName": "tbody",
+                  "tagName": "tr",
                   "type": "element",
                 },
               ],
-              "properties": {
-                "align": "center",
-                "border": 0,
-                "cellPadding": "0",
-                "cellSpacing": "0",
-                "role": "presentation",
-                "style": "width:100%",
-              },
-              "tagName": "table",
+              "properties": {},
+              "tagName": "tbody",
               "type": "element",
             },
           ],
           "properties": {
-            "style": "margin:0px auto",
+            "align": "center",
+            "border": 0,
+            "cellPadding": "0",
+            "cellSpacing": "0",
+            "role": "presentation",
+            "style": "width:100%",
           },
-          "tagName": "div",
+          "tagName": "table",
           "type": "element",
         },
       ],
-      "type": "root",
+      "properties": {
+        "style": "margin:0px auto",
+      },
+      "tagName": "div",
+      "type": "element",
     }
   `);
 });

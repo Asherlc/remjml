@@ -107,14 +107,9 @@ export function toHast(
     mediaQueries: {},
   };
 
-  const node: HElement = one(
-    tree,
-    null,
-    { ...options, handlers },
-    context
-  ) as HElement;
+  const node = one(tree, null, { ...options, handlers }, context) as HElement[];
 
-  const hast: HRoot = u("root", [node]);
+  const hast: HRoot = u("root", node);
 
   const mediaQueriesStyles = mediaQueries(
     context.mediaQueries,
@@ -133,8 +128,6 @@ export function toHast(
   }
 
   applyInlineStyles(hast, inlineStyles);
-
-  hast.type = "root";
 
   return hast;
 }

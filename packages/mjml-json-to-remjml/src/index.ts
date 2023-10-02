@@ -1,12 +1,6 @@
 import { isUndefined, omitBy } from "lodash-es";
-import type {
-  Component,
-  EndComponent,
-  ParentComponent} from "mjml-types";
-import {
-  isEndComponent,
-  isParentComponent,
-} from "mjml-types";
+import type { Component, EndComponent, ParentComponent } from "mjml-types";
+import { isEndComponent, isParentComponent } from "mjml-types";
 import type { MjmlNode as MjmlAstNode } from "mjmlast";
 
 export default function mjmlJsonToRemjml(

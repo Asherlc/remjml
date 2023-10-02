@@ -10,6 +10,7 @@ import { MjDivider } from "./mj-divider";
 import { MjCarousel } from "./mj-carousel";
 import { MjButton } from "./mj-button";
 import { MjText } from "./mj-text";
+import { MjAccordion } from "./mj-accordion";
 
 type Attributes = {
   mode: string;

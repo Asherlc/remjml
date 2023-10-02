@@ -27,7 +27,7 @@ import { MjText } from "./mj-text";
 import { MjGroup } from "./mj-group";
 import { MjWrapper } from "./mj-wrapper";
 import { MjHero } from "./mj-hero";
-import { MjAccordion } from "mjmlast";
+import { MjAccordion } from "./mj-accordion";
 
 type Child =
   | MjColumn

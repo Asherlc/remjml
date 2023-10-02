@@ -5,7 +5,7 @@ import type {
 } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "..";
-import type { Element as HElement } from "hast";
+import type { Element as HElement, Text as HText } from "hast";
 import { CssPropertiesWithWeirdEmail, jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
 import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
@@ -13,6 +13,7 @@ import classnames from "classnames";
 import type { MjNavbarContext } from "./mj-navbar";
 import type { Property } from "csstype";
 import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
+import { text } from "./text";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjNavbarLinkAttributes,
@@ -98,6 +99,23 @@ export function mjNavbarLink(
 
   const conditional: DownlevelHidden = new DownlevelHidden(MSO_OR_IE);
 
+  const children: HText[] = node.children.map((textChild) => {
+    return text(textChild);
+  });
+
+  const anchorTag = h(
+    "a",
+    {
+      class: anchorClassnames,
+      href: url,
+      target: attributes.get("target"),
+      name: attributes.get("name"),
+      style: jsonToCss(anchorStyleProperties),
+      value: "",
+    },
+    children
+  );
+
   return [
     conditional.begin,
     h(
@@ -112,21 +130,7 @@ export function mjNavbarLink(
         }),
         class: `${attributes.get("css-class")}-outlook`,
       },
-      [
-        conditional.end,
-        h(
-          "a",
-          {
-            class: anchorClassnames,
-            href: url,
-            target: attributes.get("target"),
-            name: attributes.get("name"),
-            style: jsonToCss(anchorStyleProperties),
-          },
-          node.children
-        ),
-        conditional.begin,
-      ]
+      [conditional.end, anchorTag, conditional.begin]
     ),
     conditional.end,
   ];

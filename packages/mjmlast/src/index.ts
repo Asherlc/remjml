@@ -62,13 +62,17 @@ export interface Component<Attributes extends BaseAttributes> extends Node {
   attributes?: Partial<UniversalAttributes & Attributes>;
 }
 
-export type Parent<
+export interface Parent<
   Attributes extends BaseAttributes,
-  ChildNode extends Node
-> = Component<Attributes> & UnistParent<ChildNode>;
+  ChildNode extends Node,
+> extends Component<Attributes>,
+    UnistParent {
+  children: ChildNode[];
+}
 
-export interface Text extends Literal<string> {
+export interface Text extends Literal {
   type: "text";
+  value: string;
 }
 
 export type End<Attributes extends BaseAttributes> = Parent<Attributes, Text>;

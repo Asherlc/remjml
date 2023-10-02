@@ -1,6 +1,7 @@
 #!/usr/bin/env ts-node --esm --experimentalSpecifierResolution node
 import { args } from "unified-args";
 import { remjml } from "remjml";
+import { Processor } from "unified";
 
 const proc = {
   name: "mjml",
@@ -15,7 +16,7 @@ const cli = {
 const extensions = ["mjml"];
 
 args({
-  processor: remjml,
+  processor: remjml as unknown as Processor,
   name: proc.name,
   description: cli.description,
   version: [

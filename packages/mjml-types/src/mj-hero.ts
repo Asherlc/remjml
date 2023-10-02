@@ -1,5 +1,4 @@
 import { ParentComponent } from "./ParentComponent";
-import { Component } from "./component";
 import { MjImage } from "./mj-image";
 import { MjSpacer } from "./mj-spacer";
 import { MjTable } from "./mj-table";

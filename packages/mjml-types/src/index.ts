@@ -26,8 +26,11 @@ import { MjText } from "./mj-text";
 import { MjGroup } from "./mj-group";
 import { MjWrapper } from "./mj-wrapper";
 import { MjHero } from "./mj-hero";
-import { mjml } from "./mjml";
+import { Mjml } from "./mjml";
 import { MjAccordion } from "./mj-accordion";
+import { Component } from "./component";
+import { ParentComponent, isParentComponent } from "./ParentComponent";
+import { EndComponent, isEndComponent } from "./EndComponent";
 
 export type MjmlComponent =
   | MjColumn
@@ -65,6 +68,13 @@ export type MjmlComponent =
   | MjTitle
   | Text
   | MjSelector
-  | mjml;
+  | Mjml;
 
-export { mjml };
+export {
+  Mjml,
+  Component,
+  ParentComponent,
+  EndComponent,
+  isParentComponent,
+  isEndComponent,
+};

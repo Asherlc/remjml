@@ -1,9 +1,9 @@
-import { mjml } from "mjml-types";
+import { Mjml } from "mjml-types";
 import type { MjmlNode as MjmlAstNode } from "mjmlast";
 import mjmlJsonToRemjml from ".";
 
 it("converts mjml json to remjml", () => {
-  const mjml: mjml = {
+  const mjml: Mjml = {
     tagName: "mjml",
     attributes: {},
     children: [

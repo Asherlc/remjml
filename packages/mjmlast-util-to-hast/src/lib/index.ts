@@ -36,7 +36,7 @@ export type Options = {
 
 export type Handler<ContextType = Context> = (
   node: MjmlNode,
-  parent: Parent<any, any> | null,
+  parent: Parent | null,
   options: Options,
   context: ContextType
 ) => HContent | Array<HContent>;
@@ -67,7 +67,7 @@ export function removeGlobalStyles(tree: MjmlNode): string {
   const mjStyleElements = (uSelectAll("mj-style", tree) as MjStyle[]).filter(
     (node: MjStyle) => {
       if (!node.attributes?.inline) {
-        remove(tree, node as any);
+        remove(tree, node);
         return true;
       }
 
@@ -113,7 +113,7 @@ export function toHast(
     context
   ) as HElement;
 
-  const hast: HRoot = u("root", node as any);
+  const hast: HRoot = u("root", [node]);
 
   const mediaQueriesStyles = mediaQueries(
     context.mediaQueries,

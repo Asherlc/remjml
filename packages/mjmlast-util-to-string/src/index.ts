@@ -1,6 +1,5 @@
 import { Text } from "mjmlast";
-
-type Node = any;
+import { Node, Parent } from "unist";
 
 export function toString(value: unknown): string {
   return one(value);
@@ -15,7 +14,7 @@ function one(value: unknown): string {
     return value.value;
   }
 
-  if (isNode(value) && "children" in value) {
+  if (isNode(value) && isParent(value)) {
     return all(value.children);
   }
 
@@ -39,4 +38,8 @@ function all(values: unknown[]): string {
 
 function isNode(value: unknown): value is Node {
   return Boolean(value && typeof value === "object");
+}
+
+function isParent(value: Node): value is Parent {
+  return "children" in value;
 }

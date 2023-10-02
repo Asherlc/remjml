@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
 import units, { Parts } from "units-css";
-import type { Node } from "unist";
 import type {
   MjBody,
   MjSection,
@@ -133,7 +132,7 @@ function section(
   );
 }
 
-function fullWidthWrapper(node: MjSection, children: Node): HElement {
+function fullWidthWrapper(node: MjSection, children: HElement[]): HElement {
   const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
@@ -149,7 +148,7 @@ function fullWidthWrapper(node: MjSection, children: Node): HElement {
     positionX: attributes.get("background-position-x"),
   });
 
-  const tr = h("td", children as any);
+  const tr = h("td", children);
 
   return h(
     "table",
@@ -212,7 +211,7 @@ export function mjSection(
   const content = section(node, context, children);
 
   if (fullWidth) {
-    return fullWidthWrapper(node, content);
+    return fullWidthWrapper(node, [content]);
   }
 
   return content;

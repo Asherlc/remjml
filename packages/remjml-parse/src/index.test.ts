@@ -1,5 +1,6 @@
 import { VFile } from "vfile";
 import remjmlParse from ".";
+import { unified } from "unified";
 
 it("parses mjml", () => {
   const mjml = `<mjml>
@@ -13,13 +14,10 @@ it("parses mjml", () => {
     </mj-section>
   </mj-body>
 </mjml>`;
-  const vfile = new VFile(mjml);
 
-  const parser = remjmlParse.bind([])();
+  const output = unified().use(remjmlParse).parse(mjml);
 
-  const mjmlAst = parser("", vfile);
-
-  expect(mjmlAst).toMatchInlineSnapshot(`
+  expect(output).toMatchInlineSnapshot(`
     {
       "attributes": {},
       "children": [
@@ -261,23 +259,11 @@ it("parses mjml", () => {
 
 it("parses an mjml section ", () => {
   const mjml = `<mj-section></mj-section>`;
-  const vfile = new VFile(mjml);
+  const output = unified().use(remjmlParse).parse(mjml);
 
-  expect(remjmlParse.bind([])()("foo", vfile)).toEqual({
+  expect(output).toEqual({
     attributes: {},
     children: [],
-    // position: {
-    //   end: {
-    //     column: 26,
-    //     line: 1,
-    //     offset: 25,
-    //   },
-    //   start: {
-    //     column: 1,
-    //     line: 1,
-    //     offset: 0,
-    //   },
-    // },
     type: "mj-section",
   });
 });

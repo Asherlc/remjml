@@ -1,27 +1,30 @@
+import { Node } from "unist";
 import {
   MjAttributes,
   MjBody,
+  MjClass,
   MjmlComponent,
-  MjmlNode,
   componentTypes,
 } from "mjmlast";
 import { visit } from "unist-util-visit";
-import { TestFunctionPredicate } from "unist-util-is";
+import { TestFunction } from "unist-util-is";
 import { omit } from "lodash-es";
 
-function isComponent(node: MjmlNode): node is MjmlComponent {
+function isComponent(node: Node): node is MjmlComponent {
   return componentTypes.has(node.type);
 }
 
-function createTestFunction(
-  mjAttributesChild: MjmlComponent
-): TestFunctionPredicate<MjmlNode> {
-  const testFn = (node: MjmlNode): boolean => {
+function isMjClass(node: Node): node is MjClass {
+  return node.type === "mj-class";
+}
+
+function createTestFunction(mjAttributesChild: Node): TestFunction {
+  const testFn: TestFunction = (node: Node): boolean => {
     if (!isComponent(node)) {
       return false;
     }
 
-    if (mjAttributesChild.type === "mj-class") {
+    if (isMjClass(mjAttributesChild)) {
       return (
         node.attributes?.["mj-class"] === mjAttributesChild?.attributes?.name
       );
@@ -30,14 +33,19 @@ function createTestFunction(
     return node.type === mjAttributesChild.type;
   };
 
-  return testFn as TestFunctionPredicate<MjmlNode>;
+  return testFn as TestFunction;
 }
+
 // Could probably be speed optimized a lot
 export function applyGlobalAttributes(
   mjAttributes: MjAttributes,
   body: MjBody
 ): void {
   mjAttributes.children.forEach((mjAttributesChild) => {
+    if (!isComponent(mjAttributesChild)) {
+      return;
+    }
+
     const test = createTestFunction(mjAttributesChild);
     const attributesToApply = omit(mjAttributesChild.attributes, "mj-class");
 

@@ -23,7 +23,6 @@ it("computes the correct width based on a set width", () => {
         children: [],
       },
       mediaQueries: {},
-      cssClasses: {},
       containerWidth: "600px",
     }
   );

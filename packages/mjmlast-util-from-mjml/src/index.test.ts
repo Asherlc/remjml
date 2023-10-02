@@ -32,7 +32,7 @@ it("converts mjml into mjmlast", () => {
           },
         },
         type: "text",
-        value: "",
+        value: "\n  ",
       },
       {
         attributes: {
@@ -55,7 +55,7 @@ it("converts mjml into mjmlast", () => {
               },
             },
             type: "text",
-            value: "",
+            value: "\n",
           },
           {
             attributes: {

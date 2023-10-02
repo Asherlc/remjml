@@ -11,8 +11,7 @@
     "unified": "11.0.3"
   },
   "devDependencies": {
-    "jest-serializer-html": "7.1.0",
-    "unist-util-inspect": "8.0.0"
+    "jest-serializer-html": "7.1.0"
   },
   "scripts": {
     "clean": "tsc --build --clean",

@@ -3,7 +3,7 @@ import { NON_IE } from "./constants";
 import { u } from "unist-builder";
 import { ConditionalComment } from "./ConditionalComment";
 
-const END_STRING: string = `<![endif]>`;
+const END_STRING: string = `<![endif]>;`;
 
 export class DownlevelRevealed extends ConditionalComment {
   protected get beginString(): string {

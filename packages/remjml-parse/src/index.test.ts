@@ -1,4 +1,3 @@
-import { VFile } from "vfile";
 import remjmlParse from ".";
 import { unified } from "unified";
 

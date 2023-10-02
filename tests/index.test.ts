@@ -145,6 +145,29 @@ it("transforms mjml to html", async () => {
   `);
 });
 
+describe("with no content", () => {
+  fit("outputs the same html as the original mjml library (xml compare)", async () => {
+    const mjml = `<mjml>
+  <mj-body>
+  </mj-body>
+</mjml>`;
+
+    const ourHtml = (
+      await unified()
+        .use(remjmlParse)
+        .use(remjmlRehype as any)
+        .use(rehypeStringify, {
+          allowDangerousHtml: true,
+        })
+        .process(mjml)
+    ).value;
+
+    const theirHtml = originalMjml(mjml).html;
+
+    expect(ourHtml).toEqualXML(theirHtml);
+  });
+});
+
 it("outputs the same html as the original mjml library (xml compare)", async () => {
   const mjml = `<mjml>
   <mj-body>
@@ -186,7 +209,7 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
   </mj-body>
 </mjml>`;
 
-  const ourHtml = (
+  const ourHtml: string = (
     await unified()
       .use(remjmlParse)
       .use(remjmlRehype as any)
@@ -194,12 +217,12 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
         allowDangerousHtml: true,
       })
       .process(mjml)
-  ).value;
+  ).value.toString();
 
-  const theirHtml = originalMjml(mjml).html;
+  const theirHtml: string = originalMjml(mjml).html;
 
-  expect(prettier.format(ourHtml.toString(), { parser: "html" })).toEqualXML(
-    prettier.format(theirHtml, { parser: "html" })
+  expect(await prettier.format(ourHtml, { parser: "html" })).toEqualXML(
+    await prettier.format(theirHtml, { parser: "html" })
   );
 });
 

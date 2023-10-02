@@ -12,7 +12,7 @@ import {
   endConditionalComment,
   MSO_OR_IE,
   NOT_MSO_OR_IE,
-} from "../helpers/conditional-comment";
+} from "../helpers/conditional-comments/conditional-comment";
 import { uniqueId } from "lodash-es";
 import type { Property } from "csstype";
 

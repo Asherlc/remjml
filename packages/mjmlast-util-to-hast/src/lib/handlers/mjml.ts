@@ -7,7 +7,7 @@ import { addPosition, Options } from "..";
 import type { Context } from "../types";
 import type { Node } from "unist";
 import { all } from "../traverse";
-import { conditionalComment } from "../helpers/conditional-comment";
+import { conditionalComment } from "../helpers/conditional-comments/conditional-comment";
 
 // MJML only supports px-based breakpoints
 class Breakpoint {
@@ -54,6 +54,7 @@ export function mjml(
           {
             expression: "mso",
             type: "downlevel-hidden",
+            display: "non-ie",
           },
           [h("meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" })]
         ) as any,

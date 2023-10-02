@@ -11,7 +11,7 @@ import {
   beginConditionalComment,
   endConditionalComment,
   MSO_OR_IE,
-} from "../helpers/conditional-comment";
+} from "../helpers/conditional-comments/conditional-comment";
 import { Attributes } from "../helpers/Attributes";
 import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
 

@@ -767,9 +767,9 @@ export type MjmlNode =
 
 export interface MJMLJsonObject<
   A extends object = Record<string, any>,
-  Children extends MJMLJsonObject[] = any[]
+  Children extends MJMLJsonObject[] = any[],
 > {
-  readonly tagName: Node;
+  readonly tagName: string;
   readonly attributes: A;
   readonly children?: Children;
   readonly content?: string;

@@ -12,7 +12,7 @@ import {
   beginConditionalComment,
   endConditionalComment,
   MSO_OR_IE,
-} from "../helpers/conditional-comment";
+} from "../helpers/conditional-comments/conditional-comment";
 import classnames from "classnames";
 import type { MjNavbarContext } from "./mj-navbar";
 import type { Property } from "csstype";

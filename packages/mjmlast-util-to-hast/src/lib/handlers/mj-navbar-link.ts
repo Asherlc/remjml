@@ -6,7 +6,8 @@ import type {
 import { h } from "hastscript";
 import type { Options } from "..";
 import type { Element as HElement, Text as HText } from "hast";
-import { CssPropertiesWithWeirdEmail, jsonToCss } from "../helpers/json-to-css";
+import type { CssPropertiesWithWeirdEmail} from "../helpers/json-to-css";
+import { jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
 import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
 import classnames from "classnames";

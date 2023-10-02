@@ -1,9 +1,9 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjRaw } from "./mj-raw";
-import { BodyComponent } from "./BodyComponent";
-import { MjSection } from "./mj-section";
-import { MjHero } from "./mj-hero";
-import { MjWrapper } from "./mj-wrapper";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjRaw } from "./mj-raw";
+import type { BodyComponent } from "./BodyComponent";
+import type { MjSection } from "./mj-section";
+import type { MjHero } from "./mj-hero";
+import type { MjWrapper } from "./mj-wrapper";
 
 export interface MjBody extends BodyComponent, ParentComponent {
   attributes: BodyComponent["attributes"];

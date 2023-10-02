@@ -1,5 +1,5 @@
-import { BodyComponent } from "./BodyComponent";
-import { EndComponent } from "./EndComponent";
+import type { BodyComponent } from "./BodyComponent";
+import type { EndComponent } from "./EndComponent";
 
 type Attributes = {
   "background-color": string;

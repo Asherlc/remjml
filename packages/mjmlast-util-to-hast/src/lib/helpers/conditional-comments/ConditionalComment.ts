@@ -1,5 +1,5 @@
 import type { Element as HElement } from "hast";
-import { DisplayType } from "./types";
+import type { DisplayType } from "./types";
 import { castArray } from "lodash-es";
 import { u } from "unist-builder";
 import { NON_IE } from "./constants";

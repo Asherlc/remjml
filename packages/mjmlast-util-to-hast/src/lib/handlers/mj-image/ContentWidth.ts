@@ -1,7 +1,8 @@
-import units, { Parts } from "units-css";
+import type { Parts } from "units-css";
+import units from "units-css";
 import { BoxWidth } from "../../helpers/BoxWidth";
 import { minBy } from "lodash-es";
-import { MjImageAttributes } from "mjmlast";
+import type { MjImageAttributes } from "mjmlast";
 
 export class ContentWidth {
   #containerWidth: Parts;

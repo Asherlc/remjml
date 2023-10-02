@@ -1,5 +1,5 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjSelector } from "./mj-selector";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjSelector } from "./mj-selector";
 
 export interface MjHtmlAttributes extends ParentComponent {
   children: MjSelector[];

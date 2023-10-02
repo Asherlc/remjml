@@ -1,7 +1,8 @@
-import { Node } from "unist";
-import { MjAttributes, MjBody, isComponent, isMjClass } from "mjmlast";
+import type { Node } from "unist";
+import type { MjAttributes, MjBody} from "mjmlast";
+import { isComponent, isMjClass } from "mjmlast";
 import { visit } from "unist-util-visit";
-import { TestFunction } from "unist-util-is";
+import type { TestFunction } from "unist-util-is";
 import { omit } from "lodash-es";
 
 function createTestFunction(mjAttributesChild: Node): TestFunction {

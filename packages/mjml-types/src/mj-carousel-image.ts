@@ -1,4 +1,4 @@
-import { BodyComponent } from "./BodyComponent";
+import type { BodyComponent } from "./BodyComponent";
 import type { Component } from "./component";
 import {} from "./UniversalAttributes";
 

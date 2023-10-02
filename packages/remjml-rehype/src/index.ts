@@ -1,8 +1,9 @@
-import { VFile, Compatible } from "vfile";
+import type { VFile, Compatible } from "vfile";
 import type { MjmlRoot } from "mjmlast";
-import { toHast, Options as ToHastOptions } from "mjmlast-util-to-hast";
-import { Root as HRoot } from "hast";
-import { Processor } from "unified";
+import type { Options as ToHastOptions } from "mjmlast-util-to-hast";
+import { toHast } from "mjmlast-util-to-hast";
+import type { Root as HRoot } from "hast";
+import type { Processor } from "unified";
 
 //   Bridge-mode.
 //

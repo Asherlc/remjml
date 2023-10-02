@@ -1,8 +1,8 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjRaw } from "./mj-raw";
-import { BodyComponent } from "./BodyComponent";
-import { MjColumn } from "./mj-column";
-import { MjGroup } from "./mj-group";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjRaw } from "./mj-raw";
+import type { BodyComponent } from "./BodyComponent";
+import type { MjColumn } from "./mj-column";
+import type { MjGroup } from "./mj-group";
 
 export type Attributes = {
   "background-color": string;

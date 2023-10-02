@@ -1,8 +1,8 @@
 import type { Element as HElement } from "hast";
-import { DisplayType } from "./types";
+import type { DisplayType } from "./types";
 import { DownlevelHidden } from "./DownlevelHidden";
 import { DownlevelRevealed } from "./DownlevelRevealed";
-import { ConditionalCommentConstructor } from "./ConditionalComment";
+import type { ConditionalCommentConstructor } from "./ConditionalComment";
 
 export const MSO_OR_IE = "mso | IE";
 export const NOT_MSO_OR_IE = "!mso | IE";

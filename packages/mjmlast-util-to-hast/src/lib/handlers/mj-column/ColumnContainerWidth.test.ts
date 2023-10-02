@@ -1,7 +1,7 @@
-import { MjSection } from "mjmlast";
+import type { MjSection } from "mjmlast";
 import { Attributes } from "../../helpers/Attributes";
 import { ColumnContainerWidth } from "./ColumnContainerWidth";
-import { Node } from "unist";
+import type { Node } from "unist";
 
 it("computes the correct width", () => {
   const child1: Node = { type: "element" };

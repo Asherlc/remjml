@@ -1,7 +1,7 @@
-import { ParentComponent } from "./ParentComponent";
-import { BodyComponent } from "./BodyComponent";
-import { MjAccordionElement } from "./mj-accordion-element";
-import { MjRaw } from "./mj-raw";
+import type { ParentComponent } from "./ParentComponent";
+import type { BodyComponent } from "./BodyComponent";
+import type { MjAccordionElement } from "./mj-accordion-element";
+import type { MjRaw } from "./mj-raw";
 
 type Attributes = {
   "container-background-color": string;

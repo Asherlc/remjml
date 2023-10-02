@@ -15,7 +15,8 @@ import type {
   MjmlNode,
 } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Options } from "../..";
+import type { Options } from "../..";
+import { addPosition } from "../..";
 import type { Context } from "../../types";
 import type { Element as HElement } from "hast";
 import classNames from "classnames";

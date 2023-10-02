@@ -1,7 +1,7 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjHead } from "./mj-head";
-import { MjRaw } from "./mj-raw";
-import { MjBody } from "./mj-body";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjHead } from "./mj-head";
+import type { MjRaw } from "./mj-raw";
+import type { MjBody } from "./mj-body";
 
 export type Attributes = Partial<{
   lang: string;

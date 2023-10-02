@@ -17,7 +17,8 @@
   "ignorePatterns": ["dist", "node_modules" ],
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-non-null-assertion": "error"
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "@typescript-eslint/consistent-type-imports": "error"
   },
   "overrides": [{
     "files": [ "*.test.ts" ],

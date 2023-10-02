@@ -1,4 +1,4 @@
-import { MjSection } from "./mj-section";
+import type { MjSection } from "./mj-section";
 
 export interface MjWrapper extends Omit<MjSection, "tagName"> {
   tagName: "mj-wrapper";

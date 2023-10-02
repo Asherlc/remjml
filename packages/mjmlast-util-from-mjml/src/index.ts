@@ -1,8 +1,10 @@
 import { location } from "vfile-location";
-import { parse, HTMLElement, NodeType, Node, TextNode } from "node-html-parser";
+import type { HTMLElement, Node, TextNode } from "node-html-parser";
+import { parse, NodeType } from "node-html-parser";
 import type { Element as HElement } from "hast";
 
-import { MjmlNode, MjmlRoot, nodeTypes, Text } from "mjmlast";
+import type { MjmlNode, MjmlRoot, Text } from "mjmlast";
+import { nodeTypes } from "mjmlast";
 
 type State = {
   location: ReturnType<typeof location>;

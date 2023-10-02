@@ -1,5 +1,5 @@
 export default {
-    modulePathIgnorePatterns: ['<rootDir>/build/'],
+    modulePathIgnorePatterns: ['<rootDir>/dist/'],
     extensionsToTreatAsEsm: [".ts"],
     moduleNameMapper: {
         "^(\\.{1,2}/.*)\\.js$": "$1",

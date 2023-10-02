@@ -25,7 +25,7 @@ import { applyInlineStyles, removeInlineStyles } from "./helpers/inline-styles";
 import { toString } from "mjmlast-util-to-string";
 import { h } from "hastscript";
 import { applyGlobalAttributes } from "./helpers/global-attributes";
-import { Node as UnistNode } from "unist";
+import type { Node as UnistNode } from "unist";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -133,6 +133,8 @@ export function toHast(
   }
 
   applyInlineStyles(hast, inlineStyles);
+
+  hast.type = "root";
 
   return hast;
 }

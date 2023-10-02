@@ -1,4 +1,4 @@
-import { MjImageAttributes } from "mjmlast";
+import type { MjImageAttributes } from "mjmlast";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjImageAttributes,

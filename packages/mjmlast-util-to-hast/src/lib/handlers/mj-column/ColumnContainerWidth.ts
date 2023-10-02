@@ -1,5 +1,5 @@
 import units from "units-css";
-import { Attributes } from "../../helpers/Attributes";
+import type { Attributes } from "../../helpers/Attributes";
 import type { MjColumnAttributes, MjGroup, MjSection } from "mjmlast";
 import { ContainerWidth } from "../../helpers/ContainerWidth";
 import type { Node } from "unist";

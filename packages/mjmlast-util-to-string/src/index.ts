@@ -1,5 +1,5 @@
-import { Text } from "mjmlast";
-import { Node, Parent } from "unist";
+import type { Text } from "mjmlast";
+import type { Node, Parent } from "unist";
 
 export function toString(value: unknown): string {
   return one(value);

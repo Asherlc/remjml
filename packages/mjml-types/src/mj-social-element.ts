@@ -1,4 +1,4 @@
-import { EndComponent } from "./EndComponent";
+import type { EndComponent } from "./EndComponent";
 
 type Attributes = {
   align: "left" | "right" | "center" | "justify";

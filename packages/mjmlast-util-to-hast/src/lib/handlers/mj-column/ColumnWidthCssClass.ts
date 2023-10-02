@@ -1,7 +1,8 @@
-import units, { Parts } from "units-css";
+import type { Parts } from "units-css";
+import units from "units-css";
 import type { Node } from "unist";
 import { is } from "unist-util-is";
-import { ColumnParent } from "./types";
+import type { ColumnParent } from "./types";
 import { whitespace } from "hast-util-whitespace";
 import { isText } from "mjmlast";
 

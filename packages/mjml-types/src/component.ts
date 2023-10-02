@@ -1,4 +1,4 @@
-import { UniversalAttributes } from "mjmlast";
+import type { UniversalAttributes } from "mjmlast";
 
 export interface Component {
   readonly tagName: string;

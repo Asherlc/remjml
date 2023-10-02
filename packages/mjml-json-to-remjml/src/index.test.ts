@@ -1,4 +1,4 @@
-import { Mjml } from "mjml-types";
+import type { Mjml } from "mjml-types";
 import type { MjmlNode as MjmlAstNode } from "mjmlast";
 import mjmlJsonToRemjml from ".";
 

@@ -1,4 +1,4 @@
-import { BodyComponent } from "./BodyComponent";
+import type { BodyComponent } from "./BodyComponent";
 
 export interface MjDivider extends BodyComponent {
   tagName: "mj-divider";

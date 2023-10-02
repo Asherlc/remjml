@@ -1,6 +1,6 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjCarouselImage } from "./mj-carousel-image";
-import { BodyComponent } from "./BodyComponent";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjCarouselImage } from "./mj-carousel-image";
+import type { BodyComponent } from "./BodyComponent";
 
 type Attributes = {
   align: "left" | "right" | "center" | "justify";

@@ -1,8 +1,9 @@
 import { isUndefined, omitBy } from "lodash-es";
-import {
+import type {
   Component,
   EndComponent,
-  ParentComponent,
+  ParentComponent} from "mjml-types";
+import {
   isEndComponent,
   isParentComponent,
 } from "mjml-types";

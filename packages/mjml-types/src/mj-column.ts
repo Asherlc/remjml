@@ -1,16 +1,16 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjImage } from "./mj-image";
-import { MjSpacer } from "./mj-spacer";
-import { MjTable } from "./mj-table";
-import { MjRaw } from "./mj-raw";
-import { MjSocial } from "./mj-social";
-import { MjNavbar } from "./mj-navbar";
-import { MjDivider } from "./mj-divider";
-import { MjCarousel } from "./mj-carousel";
-import { BodyComponent } from "./BodyComponent";
-import { MjText } from "./mj-text";
-import { MjButton } from "./mj-button";
-import { MjAccordion } from "./mj-accordion";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjImage } from "./mj-image";
+import type { MjSpacer } from "./mj-spacer";
+import type { MjTable } from "./mj-table";
+import type { MjRaw } from "./mj-raw";
+import type { MjSocial } from "./mj-social";
+import type { MjNavbar } from "./mj-navbar";
+import type { MjDivider } from "./mj-divider";
+import type { MjCarousel } from "./mj-carousel";
+import type { BodyComponent } from "./BodyComponent";
+import type { MjText } from "./mj-text";
+import type { MjButton } from "./mj-button";
+import type { MjAccordion } from "./mj-accordion";
 
 export type MjColumnAttributes = Partial<{
   "background-color": string;

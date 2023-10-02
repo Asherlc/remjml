@@ -1,6 +1,6 @@
-import { MjImage } from "mjmlast";
+import type { MjImage } from "mjmlast";
 import { mjImage } from "./mj-image";
-import { Element as HElement } from "hast";
+import type { Element as HElement } from "hast";
 
 it("computes the correct width based on a set width", () => {
   const image: MjImage = {

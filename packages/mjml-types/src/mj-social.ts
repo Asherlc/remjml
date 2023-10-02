@@ -1,6 +1,6 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjSocialElement } from "./mj-social-element";
-import { MjRaw } from "./mj-raw";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjSocialElement } from "./mj-social-element";
+import type { MjRaw } from "./mj-raw";
 
 export type Attributes = {
   align: "left" | "right" | "center" | "justify";

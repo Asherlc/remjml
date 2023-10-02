@@ -1,9 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
-import units, { Parts } from "units-css";
+import type { Parts } from "units-css";
+import units from "units-css";
 import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition, Options } from "..";
+import type { Options } from "..";
+import { addPosition } from "..";
 import type { Context } from "../types";
 import type { Node } from "unist";
 import { all } from "../traverse";

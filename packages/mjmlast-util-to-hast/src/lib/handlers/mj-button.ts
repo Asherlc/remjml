@@ -1,15 +1,18 @@
 import type { MjButton, MjButtonAttributes } from "mjmlast";
 import { h } from "hastscript";
-import { Options, addPosition } from "..";
+import type { Options} from "..";
+import { addPosition } from "..";
 import type { Element as HElement, Text as HText } from "hast";
 import { Attributes } from "../helpers/Attributes";
-import { Context } from "../types";
+import type { Context } from "../types";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Property } from "csstype";
-import units, { Parts } from "units-css";
+import type { Property } from "csstype";
+import type { Parts } from "units-css";
+import units from "units-css";
 import { BoxWidth } from "../helpers/BoxWidth";
+import type {
+  PaddingValue} from "../helpers/ShorthandCssProperties";
 import {
-  PaddingValue,
   ShorthandCssProperties,
 } from "../helpers/ShorthandCssProperties";
 import { text } from "./text";

@@ -1,6 +1,6 @@
-import { ParentComponent } from "./ParentComponent";
-import { MjNavbarLink } from "./mj-navbar-link";
-import { MjRaw } from "./mj-raw";
+import type { ParentComponent } from "./ParentComponent";
+import type { MjNavbarLink } from "./mj-navbar-link";
+import type { MjRaw } from "./mj-raw";
 
 type Attributes = {
   align: "left" | "right" | "center" | "justify";

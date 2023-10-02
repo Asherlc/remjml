@@ -1,5 +1,5 @@
-import { ParentComponent } from "./ParentComponent";
-import { EndComponent } from "./EndComponent";
+import type { ParentComponent } from "./ParentComponent";
+import type { EndComponent } from "./EndComponent";
 
 type Attributes = {
   align: "left" | "right" | "center" | "justify";

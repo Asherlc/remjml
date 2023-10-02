@@ -1,10 +1,11 @@
 import type { ElementContent as HContent } from "hast";
 import type { MjmlNode, Parent as MjmlParent } from "mjmlast";
 import { u } from "unist-builder";
-import { addPosition, Handler, Options } from ".";
+import type { Handler, Options } from ".";
+import { addPosition } from ".";
 import { h as hastH } from "hastscript";
 import type { Context } from "./types";
-import { Node as UnistNode } from "unist";
+import type { Node as UnistNode } from "unist";
 
 function unknown(
   node: MjmlNode,

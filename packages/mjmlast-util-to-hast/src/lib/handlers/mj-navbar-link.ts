@@ -8,14 +8,11 @@ import type { Options } from "..";
 import type { Element as HElement } from "hast";
 import { CssPropertiesWithWeirdEmail, jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
-import {
-  beginConditionalComment,
-  endConditionalComment,
-  MSO_OR_IE,
-} from "../helpers/conditional-comments/conditional-comment";
+import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
 import classnames from "classnames";
 import type { MjNavbarContext } from "./mj-navbar";
 import type { Property } from "csstype";
+import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjNavbarLinkAttributes,
@@ -99,11 +96,10 @@ export function mjNavbarLink(
 
   const anchorClassnames = classnames(`mj-link`, attributes.get("css-class"));
 
+  const conditional: DownlevelHidden = new DownlevelHidden(MSO_OR_IE);
+
   return [
-    beginConditionalComment({
-      type: "downlevel-hidden",
-      expression: MSO_OR_IE,
-    }),
+    conditional.begin,
     h(
       "td",
       {
@@ -117,9 +113,7 @@ export function mjNavbarLink(
         class: `${attributes.get("css-class")}-outlook`,
       },
       [
-        endConditionalComment({
-          type: "downlevel-hidden",
-        }),
+        conditional.end,
         h(
           "a",
           {
@@ -129,16 +123,11 @@ export function mjNavbarLink(
             name: attributes.get("name"),
             style: jsonToCss(anchorStyleProperties),
           },
-          node.children as any
+          node.children
         ),
-        beginConditionalComment({
-          type: "downlevel-hidden",
-          expression: MSO_OR_IE,
-        }),
+        conditional.begin,
       ]
     ),
-    endConditionalComment({
-      type: "downlevel-hidden",
-    }),
+    conditional.end,
   ];
 }

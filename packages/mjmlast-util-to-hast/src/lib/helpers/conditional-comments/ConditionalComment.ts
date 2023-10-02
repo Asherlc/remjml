@@ -17,11 +17,11 @@ export type ConditionalCommentConstructor = new (
 export abstract class ConditionalComment implements IConditionalComment {
   protected expression: string;
   protected display?: DisplayType;
-  #childOrChildren: HElement | HElement[];
+  #childOrChildren?: HElement | HElement[];
 
   constructor(
     expression: string,
-    childOrChildren: HElement | HElement[],
+    childOrChildren?: HElement | HElement[],
     display?: DisplayType
   ) {
     this.expression = expression;
@@ -30,13 +30,13 @@ export abstract class ConditionalComment implements IConditionalComment {
   }
 
   protected abstract beginString: string;
-  protected abstract end: HElement;
+  abstract end: HElement;
 
   get #children(): HElement[] {
     return this.#childOrChildren ? castArray(this.#childOrChildren) : [];
   }
 
-  get #begin(): HElement {
+  get begin(): HElement {
     let beginString: string = this.beginString;
 
     if (this.display === "non-ie") {
@@ -47,6 +47,6 @@ export abstract class ConditionalComment implements IConditionalComment {
   }
 
   toAst(): HElement[] {
-    return [this.#begin, ...this.#children, this.end];
+    return [this.begin, ...this.#children, this.end];
   }
 }

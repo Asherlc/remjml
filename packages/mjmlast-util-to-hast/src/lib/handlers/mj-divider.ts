@@ -7,13 +7,10 @@ import { h } from "hastscript";
 import type { Options } from "..";
 import type { Context } from "../types";
 import type { Element as HElement } from "hast";
-import {
-  beginConditionalComment,
-  endConditionalComment,
-  MSO_OR_IE,
-} from "../helpers/conditional-comments/conditional-comment";
+import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
 import { Attributes } from "../helpers/Attributes";
 import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
+import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjDividerAttributes,
@@ -133,13 +130,7 @@ export function mjDivider(
     hTr
   );
 
-  const openConditional = beginConditionalComment({
-    expression: MSO_OR_IE,
-    type: "downlevel-hidden",
-  });
-  const endConditional = endConditionalComment({
-    type: "downlevel-hidden",
-  });
+  const conditional = new DownlevelHidden(MSO_OR_IE);
 
-  return [hP, openConditional, hTable, endConditional];
+  return [hP, conditional.begin, hTable, conditional.end];
 }

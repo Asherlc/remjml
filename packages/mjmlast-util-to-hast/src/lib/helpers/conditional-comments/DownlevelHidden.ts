@@ -16,7 +16,7 @@ export class DownlevelHidden extends ConditionalComment {
     return conditionalComment;
   }
 
-  protected get end(): HElement {
+  get end(): HElement {
     return u("raw", END_STRING) as unknown as HElement;
   }
 }

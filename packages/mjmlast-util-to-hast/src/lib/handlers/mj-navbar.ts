@@ -7,14 +7,13 @@ import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
 import {
-  beginConditionalComment,
   conditionalComment,
-  endConditionalComment,
   MSO_OR_IE,
   NOT_MSO_OR_IE,
 } from "../helpers/conditional-comments/conditional-comment";
 import { uniqueId } from "lodash-es";
 import type { Property } from "csstype";
+import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
 
 export type MjNavbarContext = Context & {
   navbarBaseUrl: string | undefined;
@@ -64,6 +63,7 @@ export function mjNavbar(
   });
 
   const inputId = `mj-navbar-hamburger-input-${uniqueId()}`;
+
   const hamburger: HElement[] = [
     ...conditionalComment(
       {
@@ -145,6 +145,10 @@ export function mjNavbar(
     ),
   ];
 
+  const hiddenOnMsoOrIeConditional: DownlevelHidden = new DownlevelHidden(
+    MSO_OR_IE
+  );
+
   return [
     ...(attributes.get("hamburger") === "hamburger" ? hamburger : []),
     h(
@@ -157,10 +161,7 @@ export function mjNavbar(
         }),
       },
       [
-        beginConditionalComment({
-          type: "downlevel-hidden",
-          expression: MSO_OR_IE,
-        }),
+        hiddenOnMsoOrIeConditional.begin,
         h(
           "table",
           {
@@ -171,19 +172,12 @@ export function mjNavbar(
             align: attributes.get("align"),
           },
           h("tr", [
-            endConditionalComment({
-              type: "downlevel-hidden",
-            }),
+            hiddenOnMsoOrIeConditional.end,
             ...children,
-            beginConditionalComment({
-              expression: MSO_OR_IE,
-              type: "downlevel-hidden",
-            }),
+            hiddenOnMsoOrIeConditional.begin,
           ])
         ),
-        endConditionalComment({
-          type: "downlevel-hidden",
-        }),
+        hiddenOnMsoOrIeConditional.end,
       ]
     ),
   ];

@@ -1,3 +1,4 @@
+import { whitespace } from "hast-util-whitespace";
 import { location } from "vfile-location";
 import type { HTMLElement, Node, TextNode } from "node-html-parser";
 import { parse, NodeType } from "node-html-parser";
@@ -60,7 +61,9 @@ function transformChildren(children: Node[], state: State): Content[] {
     const from = children[index];
     let to: Content;
 
-    if (isTextNode(from)) {
+    if (isTextNode(from) && whitespace(from.textContent)) {
+      continue;
+    } else if (isTextNode(from)) {
       to = transformText(from);
     } else if (isHtmlElement(from) && isMjmlNode(from)) {
       to = transformMjmlNode(from, state);

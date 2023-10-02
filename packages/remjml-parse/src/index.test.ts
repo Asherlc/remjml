@@ -21,82 +21,14 @@ it("parses mjml", () => {
       "attributes": {},
       "children": [
         {
-          "position": {
-            "end": {
-              "column": 3,
-              "line": 2,
-              "offset": 9,
-            },
-            "start": {
-              "column": 7,
-              "line": 1,
-              "offset": 6,
-            },
-          },
-          "type": "text",
-          "value": "
-      ",
-        },
-        {
           "attributes": {},
           "children": [
-            {
-              "position": {
-                "end": {
-                  "column": 5,
-                  "line": 3,
-                  "offset": 23,
-                },
-                "start": {
-                  "column": 12,
-                  "line": 2,
-                  "offset": 18,
-                },
-              },
-              "type": "text",
-              "value": "
-        ",
-            },
             {
               "attributes": {},
               "children": [
                 {
-                  "position": {
-                    "end": {
-                      "column": 7,
-                      "line": 4,
-                      "offset": 42,
-                    },
-                    "start": {
-                      "column": 17,
-                      "line": 3,
-                      "offset": 35,
-                    },
-                  },
-                  "type": "text",
-                  "value": "
-          ",
-                },
-                {
                   "attributes": {},
                   "children": [
-                    {
-                      "position": {
-                        "end": {
-                          "column": 9,
-                          "line": 5,
-                          "offset": 62,
-                        },
-                        "start": {
-                          "column": 18,
-                          "line": 4,
-                          "offset": 53,
-                        },
-                      },
-                      "type": "text",
-                      "value": "
-            ",
-                    },
                     {
                       "attributes": {
                         "background-color": "#f45e43",
@@ -137,23 +69,6 @@ it("parses mjml", () => {
                       },
                       "type": "mj-button",
                     },
-                    {
-                      "position": {
-                        "end": {
-                          "column": 7,
-                          "line": 8,
-                          "offset": 193,
-                        },
-                        "start": {
-                          "column": 22,
-                          "line": 7,
-                          "offset": 186,
-                        },
-                      },
-                      "type": "text",
-                      "value": "
-          ",
-                    },
                   ],
                   "position": {
                     "end": {
@@ -168,23 +83,6 @@ it("parses mjml", () => {
                     },
                   },
                   "type": "mj-column",
-                },
-                {
-                  "position": {
-                    "end": {
-                      "column": 5,
-                      "line": 9,
-                      "offset": 210,
-                    },
-                    "start": {
-                      "column": 19,
-                      "line": 8,
-                      "offset": 205,
-                    },
-                  },
-                  "type": "text",
-                  "value": "
-        ",
                 },
               ],
               "position": {
@@ -201,23 +99,6 @@ it("parses mjml", () => {
               },
               "type": "mj-section",
             },
-            {
-              "position": {
-                "end": {
-                  "column": 3,
-                  "line": 10,
-                  "offset": 226,
-                },
-                "start": {
-                  "column": 18,
-                  "line": 9,
-                  "offset": 223,
-                },
-              },
-              "type": "text",
-              "value": "
-      ",
-            },
           ],
           "position": {
             "end": {
@@ -232,23 +113,6 @@ it("parses mjml", () => {
             },
           },
           "type": "mj-body",
-        },
-        {
-          "position": {
-            "end": {
-              "column": 1,
-              "line": 11,
-              "offset": 237,
-            },
-            "start": {
-              "column": 13,
-              "line": 10,
-              "offset": 236,
-            },
-          },
-          "type": "text",
-          "value": "
-    ",
         },
       ],
       "type": "mjml",

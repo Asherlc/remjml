@@ -28,7 +28,7 @@ import { MjWrapper } from "./mj-wrapper";
 import { MjHero } from "./mj-hero";
 import { Mjml } from "./mjml";
 import { MjAccordion } from "./mj-accordion";
-import { Component } from "./component";
+import type { Component } from "./component";
 import { ParentComponent, isParentComponent } from "./ParentComponent";
 import { EndComponent, isEndComponent } from "./EndComponent";
 

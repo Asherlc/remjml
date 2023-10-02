@@ -93,6 +93,6 @@ function patch(from: Node, to: Content, state: State): void {
   const end = state.location.toPoint(from.range[1]);
 
   if (start && end) {
-    to.position = { start, end } as any;
+    to.position = { start, end };
   }
 }

@@ -766,8 +766,8 @@ export type MjmlNode =
   | MjmlRoot;
 
 export interface MJMLJsonObject<
-  A extends object = Record<string, any>,
-  Children extends MJMLJsonObject[] = any[],
+  A extends object = Record<string, unknown>,
+  Children extends MJMLJsonObject[] | undefined = undefined,
 > {
   readonly tagName: string;
   readonly attributes: A;

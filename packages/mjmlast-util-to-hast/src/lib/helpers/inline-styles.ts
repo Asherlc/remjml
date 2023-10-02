@@ -11,7 +11,7 @@ export function removeInlineStyles(tree: MjmlNode): string {
   const mjStyleElements = (uSelectAll("mj-style", tree) as MjStyle[]).filter(
     (node: MjStyle) => {
       if (node.attributes?.inline) {
-        remove(tree, node as any);
+        remove(tree, node);
         return true;
       }
 

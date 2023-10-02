@@ -7,7 +7,7 @@ import type { Context } from "./types";
 
 function unknown(
   node: MjmlNode,
-  parent: MjmlParent<any, any> | null,
+  parent: MjmlParent | null,
   options: Options,
   context: Context
 ) {
@@ -21,9 +21,9 @@ function unknown(
   return hastH("div", nodes);
 }
 
-export function one<ContextType = Context>(
-  node: MjmlNode,
-  parent: MjmlParent<any, any> | null,
+export function one<ContextType = Context, Node extends MjmlNode = MjmlNode>(
+  node: Node,
+  parent: MjmlParent | null,
   options: Options,
   context: ContextType
 ): HContent | Array<HContent> {
@@ -54,7 +54,7 @@ export function all<ContextType = Context>(
 
     while (++index < nodes.length) {
       const node = nodes[index];
-      const result = one(node as any, parent, options, context);
+      const result = one(node, parent, options, context);
 
       if (!result) {
         continue;

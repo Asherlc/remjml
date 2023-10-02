@@ -7,9 +7,9 @@
   "main": "./src/index.ts",
   "dependencies": {
     "mjmlast": "*",
-    "unist-builder": "^3.0.1",
-    "hast": "^1.0.0",
-    "node-html-parser": "6.1.5"
+    "unist-builder": "4.0.0",
+    "hast": "1.0.0",
+    "node-html-parser": "6.1.10"
   },
   "scripts": {
     "clean": "tsc --build --clean",

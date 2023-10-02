@@ -8,7 +8,7 @@
   "dependencies": {
     "mjmlast": "*",
     "vfile": "5.3.7",
-    "unified": "10.1.2"
+    "unified": "11.0.3"
   },
   "devDependencies": {
     "jest-serializer-html": "7.1.0"

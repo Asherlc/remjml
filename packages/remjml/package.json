@@ -8,7 +8,7 @@
   "main": "./src/index.ts",
   "dependencies": {
     "remjml-rehype": "*",
-    "rehype-stringify": "9.0.3",
+    "rehype-stringify": "10.0.0",
     "remjml-parse": "*"
   },
   "scripts": {

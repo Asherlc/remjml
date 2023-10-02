@@ -5,11 +5,11 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@types/unist": "^2.0.6",
-    "@types/lodash-es": "^4.17.7",
-    "lodash-es": "^4.17.21",
-    "mjml": "^4.13.0",
-    "unified": "^10.1.2",
+    "@types/unist": "3.0.0",
+    "@types/lodash-es": "4.17.9",
+    "lodash-es": "4.17.21",
+    "mjml": "4.14.1",
+    "unified": "11.0.3",
     "mjmlast": "*"
   },
   "scripts": {

@@ -1,4 +1,4 @@
-import type { Component } from "./Component";
+import type { Component } from "./component";
 
 export interface ParentComponent extends Component {
   children: Component[];

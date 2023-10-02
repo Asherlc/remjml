@@ -1,5 +1,5 @@
 import type { BodyComponent } from "./BodyComponent";
-import type { Component } from "./Component";
+import type { Component } from "./component";
 import {} from "./UniversalAttributes";
 
 export interface MjCarouselImage extends BodyComponent, Component {

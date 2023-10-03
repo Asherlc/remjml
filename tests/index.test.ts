@@ -15,7 +15,7 @@ declare global {
       toMatchHTMLPrettier(expectedHtml: string): Promise<T>;
     }
     interface ExpectExtendMap {
-      toMatchHTMLPrettier: CustomMatcher;
+      toMatchHTMLPrettier?: CustomMatcher;
     }
   }
 }

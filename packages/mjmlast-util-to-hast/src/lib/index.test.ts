@@ -339,8 +339,7 @@ it("converts to mjmlast to hast", () => {
                                                             },
                                                           ],
                                                           "properties": {
-                                                            "align": "center",
-                                                            "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                            "style": "font-size:0px;word-break:break-word",
                                                           },
                                                           "tagName": "td",
                                                           "type": "element",
@@ -405,8 +404,7 @@ it("converts to mjmlast to hast", () => {
                                                             },
                                                           ],
                                                           "properties": {
-                                                            "align": "center",
-                                                            "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                            "style": "font-size:0px;word-break:break-word",
                                                           },
                                                           "tagName": "td",
                                                           "type": "element",
@@ -435,8 +433,7 @@ it("converts to mjmlast to hast", () => {
                                                             },
                                                           ],
                                                           "properties": {
-                                                            "align": "left",
-                                                            "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                            "style": "font-size:0px;word-break:break-word",
                                                           },
                                                           "tagName": "td",
                                                           "type": "element",
@@ -618,9 +615,7 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                       >
                         <tbody>
                           <tr>
-                            <td align="center"
-                                style="font-size:0px;padding:10px 25px;word-break:break-word"
-                            >
+                            <td style="font-size:0px;word-break:break-word">
                               <table border="0"
                                      cellpadding="0"
                                      cellspacing="0"
@@ -643,9 +638,7 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                             </td>
                           </tr>
                           <tr>
-                            <td align="center"
-                                style="font-size:0px;padding:10px 25px;word-break:break-word"
-                            >
+                            <td style="font-size:0px;word-break:break-word">
                               <p style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:100%">
                               </p>
                               <!--[if !mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:550px" role="presentation" width="550px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
@@ -653,9 +646,7 @@ it("returns a hast that can `hast-util-from-html` can stringify", () => {
                             </td>
                           </tr>
                           <tr>
-                            <td align="left"
-                                style="font-size:0px;padding:10px 25px;word-break:break-word"
-                            >
+                            <td style="font-size:0px;word-break:break-word">
                               <div style="font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43">
                                 Hello World
                               </div>

@@ -1,4 +1,4 @@
-type UniversalAttributes = Partial<{
+export type UniversalAttributes = Partial<{
   "css-class": string;
   "mj-class": string;
 }>;

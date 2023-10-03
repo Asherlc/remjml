@@ -70,11 +70,6 @@ export type MjmlComponent =
   | MjSelector
   | Mjml;
 
-export {
-  Mjml,
-  Component,
-  ParentComponent,
-  EndComponent,
-  isParentComponent,
-  isEndComponent,
-};
+export type { Mjml, Component, ParentComponent, EndComponent };
+
+export { isParentComponent, isEndComponent };

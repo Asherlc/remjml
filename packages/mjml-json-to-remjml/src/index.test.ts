@@ -50,50 +50,50 @@ it("converts mjml json to remjml", () => {
     ],
   };
   const remjml: MjmlAstNode = mjmlJsonToRemjml(mjml);
-  // expect(remjml).toEqual({
-  //   attributes: {},
-  //   children: [
-  //     {
-  //       attributes: {},
-  //       children: [
-  //         {
-  //           attributes: {},
-  //           children: [
-  //             {
-  //               attributes: {},
-  //               children: [
-  //                 {
-  //                   attributes: {
-  //                     src: "/assets/img/logo-small.png",
-  //                     width: "100px",
-  //                   },
-  //                   type: "mj-image",
-  //                 },
-  //                 {
-  //                   attributes: {
-  //                     "border-color": "#F46E43",
-  //                   },
-  //                   type: "mj-divider",
-  //                 },
-  //                 {
-  //                   attributes: {
-  //                     color: "#F45E43",
-  //                     "font-family": "Helvetica",
-  //                     "font-size": "20px",
-  //                   },
-  //                   content: "Hello World",
-  //                   type: "mj-text",
-  //                 },
-  //               ],
-  //               type: "mj-column",
-  //             },
-  //           ],
-  //           type: "mj-section",
-  //         },
-  //       ],
-  //       type: "mj-body",
-  //     },
-  //   ],
-  //   type: "mjml",
-  // });
+  expect(remjml).toEqual({
+    attributes: {},
+    children: [
+      {
+        attributes: {},
+        children: [
+          {
+            attributes: {},
+            children: [
+              {
+                attributes: {},
+                children: [
+                  {
+                    attributes: {
+                      src: "/assets/img/logo-small.png",
+                      width: "100px",
+                    },
+                    type: "mj-image",
+                  },
+                  {
+                    attributes: {
+                      "border-color": "#F46E43",
+                    },
+                    type: "mj-divider",
+                  },
+                  {
+                    attributes: {
+                      color: "#F45E43",
+                      "font-family": "Helvetica",
+                      "font-size": "20px",
+                    },
+                    content: "Hello World",
+                    type: "mj-text",
+                  },
+                ],
+                type: "mj-column",
+              },
+            ],
+            type: "mj-section",
+          },
+        ],
+        type: "mj-body",
+      },
+    ],
+    type: "mjml",
+  });
 });

@@ -5,6 +5,43 @@ import rehypeStringify from "rehype-stringify";
 import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
 import prettier from "prettier";
+import { diff } from "jest-diff";
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace jest {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    interface Matchers<R, T> {
+      toMatchHTMLPrettier(expectedHtml: string): Promise<T>;
+    }
+    interface ExpectExtendMap {
+      toMatchHTMLPrettier: CustomMatcher;
+    }
+  }
+}
+
+expect.extend({
+  async toMatchHTMLPrettier(
+    actualHtml: string,
+    expectedHtml: string
+  ): Promise<jest.CustomMatcherResult> {
+    const actualPrettifiedHtml: string = await prettier.format(actualHtml, {
+      parser: "html",
+      htmlWhitespaceSensitivity: "ignore",
+    });
+
+    const expectedPrettifiedHtml: string = await prettier.format(expectedHtml, {
+      parser: "html",
+    });
+
+    const pass = actualPrettifiedHtml === expectedPrettifiedHtml;
+
+    return {
+      pass,
+      message: () => diff(expectedPrettifiedHtml, actualPrettifiedHtml),
+    };
+  },
+});
 
 it("transforms mjml to html", async () => {
   const mjml = `<mjml>
@@ -146,7 +183,7 @@ it("transforms mjml to html", async () => {
 });
 
 describe("with no content", () => {
-  fit("outputs the same html as the original mjml library (xml compare)", async () => {
+  it("outputs the same html as the original mjml library (xml compare)", async () => {
     const mjml = `<mjml>
   <mj-body>
   </mj-body>
@@ -164,8 +201,30 @@ describe("with no content", () => {
 
     const theirHtml = originalMjml(mjml).html;
 
-    console.log(ourHtml);
     expect(ourHtml).toEqualXML(theirHtml);
+  });
+
+  fit("outputs the same html as the original mjml library (prettier compare)", async () => {
+    const mjml = `<mjml>
+  <mj-body>
+  </mj-body>
+</mjml>`;
+
+    const ourHtml = (
+      await unified()
+        .use(remjmlParse)
+        .use(remjmlRehype as any)
+        .use(rehypeStringify, {
+          allowDangerousHtml: true,
+        })
+        .process(mjml)
+    ).value;
+
+    console.log("ours", ourHtml);
+    const theirHtml = originalMjml(mjml).html;
+    console.log("theirs", theirHtml);
+
+    await expect(ourHtml).toMatchHTMLPrettier(theirHtml);
   });
 });
 
@@ -222,9 +281,7 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
 
   const theirHtml: string = originalMjml(mjml).html;
 
-  expect(await prettier.format(ourHtml, { parser: "html" })).toEqualXML(
-    await prettier.format(theirHtml, { parser: "html" })
-  );
+  await expect(ourHtml).toMatchHTMLPrettier(theirHtml);
 });
 
 it("transforms mjml to html", async () => {

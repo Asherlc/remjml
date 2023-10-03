@@ -27,7 +27,7 @@ export function mjml(
       "xmlns:v": "urn:schemas-microsoft-com:vml",
       "xmlns:o": "urn:schemas-microsoft-com:office:office",
     },
-    [head, ...children]
+    [head(node), ...children]
   );
 
   const hDoctype: HDoctype = { type: "doctype" };

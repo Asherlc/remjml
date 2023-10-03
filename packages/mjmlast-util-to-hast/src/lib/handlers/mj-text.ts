@@ -26,7 +26,6 @@ export const DEFAULT_ATTRIBUTES: Pick<
 };
 
 export function mjText(node: MjText): HElement {
-  console.log(node);
   const attributes = new Attributes<MjTextAttributes>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES

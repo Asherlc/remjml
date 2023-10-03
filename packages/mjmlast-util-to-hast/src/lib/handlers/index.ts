@@ -46,7 +46,7 @@ export const handlers = {
 function isTypeWithDefaultAttributes(
   type: string
 ): type is keyof typeof defaultAttributes {
-  return type in Object.keys(defaultAttributes);
+  return type in defaultAttributes;
 }
 
 export function getDefaultAttributes(type: string): Record<string, string> {

@@ -93,7 +93,6 @@ function column(
       ...defaultChildAttributes,
       ...(child.attributes || {}),
     };
-    console.log(childAttributes);
 
     const hChild = one(child as MjmlNode, node, options, {
       ...context,

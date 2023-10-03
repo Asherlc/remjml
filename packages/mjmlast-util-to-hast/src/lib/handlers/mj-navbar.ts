@@ -15,6 +15,8 @@ import { uniqueId } from "lodash-es";
 import type { Property } from "csstype";
 import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
 
+import { Breakpoint } from "../helpers/BreakPoint";
+
 export type MjNavbarContext = Context & {
   navbarBaseUrl: string | undefined;
 };
@@ -45,6 +47,26 @@ const DEFAULT_ATTRIBUTES: Pick<
   "ico-text-decoration": "none",
   "ico-line-height": "30px",
 };
+
+const DEFAULT_BREAKPOINT_PX = "480px" as const;
+const BREAKPOINT_PARTS = new Breakpoint(DEFAULT_BREAKPOINT_PX).lower;
+
+export const styles = h(
+  "style",
+  {
+    type: "text/css",
+  },
+  `
+          noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
+          @media only screen and (max-width:${BREAKPOINT_PARTS.value}${BREAKPOINT_PARTS.unit}) {
+            .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
+            .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
+            .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
+            .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
+            .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
+            .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
+          }`
+);
 
 export function mjNavbar(
   node: MjNavbar,

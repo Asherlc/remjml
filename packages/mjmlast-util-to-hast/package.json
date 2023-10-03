@@ -13,6 +13,7 @@
     "prettier-2": "npm:prettier@^2"
   },
   "dependencies": {
+    "unist-util-find": "3.0.0",
     "@types/classnames": "2.3.1",
     "@types/lodash-es": "4.17.9",
     "@types/unist": "3.0.0",

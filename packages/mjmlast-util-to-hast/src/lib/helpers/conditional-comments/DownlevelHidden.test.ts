@@ -11,15 +11,15 @@ describe("when displaying not on IE", () => {
       });
     });
   });
-});
 
-describe("end", () => {
-  it("returns a node", () => {
-    const conditional = new DownlevelHidden("true", [], "non-ie");
+  describe("end", () => {
+    it("returns a node", () => {
+      const conditional = new DownlevelHidden("true", [], "non-ie");
 
-    expect(conditional.end).toEqual({
-      type: "raw",
-      value: "<![endif]-->",
+      expect(conditional.end).toEqual({
+        type: "raw",
+        value: "<!--<![endif]-->",
+      });
     });
   });
 });

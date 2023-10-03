@@ -21,7 +21,7 @@ describe("with children", () => {
         tagName: "meta",
         type: "element",
       },
-      { type: "raw", value: "<![endif]-->" },
+      { type: "raw", value: "<!--<![endif]-->" },
     ]);
   });
 
@@ -41,7 +41,7 @@ describe("with children", () => {
         allowDangerousHtml: true,
       })
     ).toEqual(
-      '<!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->'
+      '<!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->'
     );
   });
 });

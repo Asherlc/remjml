@@ -12,7 +12,6 @@ it("serializes to HTML", () => {
       <meta http-equiv="X-UA-Compatible"
             content="IE=edge"
       >
-      <![endif]-->
       <meta http-equiv="Content-Type"
             content="text/html; charset=UTF-8"
       >
@@ -27,7 +26,7 @@ it("serializes to HTML", () => {
     p { display:block;margin:13px 0; }
       </style>
       <!--[if !mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-      <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]>;<style type="text/css">
+      <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]><style type="text/css">
               noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
               @media only screen and (max-width:479px) {
                 .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }

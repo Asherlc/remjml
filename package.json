@@ -20,6 +20,7 @@
     "debug-fixture": "./scripts/debug-fixture.ts"
   },
   "devDependencies": {
+    "lodash-es": "4.17.21",
     "vite-node": "0.34.6",
     "@types/jest": "29.5.5",
     "@typescript-eslint/eslint-plugin": "6.7.3",

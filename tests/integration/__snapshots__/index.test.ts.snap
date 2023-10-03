@@ -68,8 +68,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -126,8 +126,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:none;line-height:120%;text-align:left;text-decoration:underline;color:#000000">
                             NEWS
@@ -167,7 +167,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding-top:0px;padding-bottom:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#FFFFFE">
                             Dear {firstname},
                             <br>
@@ -211,7 +213,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -239,7 +243,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-top:25px;padding-bottom:25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             iSpark is a powerful mobile production tool allowing you to create
           and play rhythmic tracks, complex grooves and even complete songs. Its
@@ -279,7 +285,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -307,7 +315,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-top:25px;padding-bottom:25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             Check out the iSpark introduction movie shot during the Arturia
           Experience event at the ADE featuring the Dutch beatmaker
@@ -346,7 +356,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -374,7 +386,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-top:25px;padding-bottom:25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             Follow Mauricio Garcia, Arturia Product Specialist, presenting you
           the many clever features of iSpark in this series of
@@ -413,7 +427,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -441,7 +457,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-top:25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             iSpark includes a tremendous collection of factory kits and
           individual instruments covering most of the field of application of
@@ -451,7 +469,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-bottom:25px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;padding-bottom:25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -509,7 +530,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:1;text-align:left;color:#FFFFFE">
                             Musically yours,
                             <br>
@@ -548,7 +571,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -590,7 +615,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -632,7 +659,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -674,7 +703,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -732,8 +763,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding-top:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
                             See this email in your browser
@@ -746,7 +777,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-right:0px;padding-left:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-right:0px;padding-left:0px;word-break:break-word"
+                        >
                           <p style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:100%">
                           </p>
                           <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:600px" role="presentation" width="600px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
@@ -783,7 +816,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding-top:0px;padding-bottom:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:none;line-height:12px;text-align:left;color:#000000">
                             Your email address is on this list as a result of a subscription,
           information request, competition, or other correspondence you may have
@@ -806,7 +841,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-bottom:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-bottom:0px;word-break:break-word"
+                        >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:none;line-height:12px;text-align:left;color:#000000">
                             ARTURIA:
                             <a href="https://www.arturia.com"
@@ -829,7 +866,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding-right:0px;padding-left:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-right:0px;padding-left:0px;word-break:break-word"
+                        >
                           <p style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:100%">
                           </p>
                           <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:600px" role="presentation" width="600px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
@@ -912,7 +951,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word"
                         >
                           <table border="0"
@@ -938,7 +977,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
@@ -987,7 +1026,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0px 25px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
@@ -1043,7 +1082,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="left"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:5px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
@@ -1063,7 +1102,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:20px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
@@ -1121,7 +1160,10 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -1146,7 +1188,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;padding-top:5px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:left;color:#55575d">
@@ -1249,7 +1291,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
@@ -1304,7 +1346,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
@@ -1329,7 +1371,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="background:#ffffff;font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
@@ -1385,7 +1427,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0px 25px 0px 25px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:14px;letter-spacing:none;line-height:28px;text-align:center;color:#55575d">
@@ -1395,7 +1437,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
@@ -1451,7 +1493,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:22px;text-align:center;color:#ffffff">
@@ -1497,7 +1539,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0px 20px;word-break:break-word"
                         >
                           <div style="font-family:Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:22px;text-align:center;color:#55575d">
@@ -1586,8 +1628,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td class="mj-image"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            class="mj-image"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -1611,15 +1654,18 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <p style="border-top:solid 4px #F45E43;font-size:1px;margin:0px auto;width:100%">
                           </p>
                           <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #F45E43;font-size:1px;margin:0px auto;width:550px" role="presentation" width="550px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
                         </td>
                       </tr>
                       <tr>
-                        <td class="mj-text"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            class="mj-text"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43">
                             Hello World
@@ -1707,7 +1753,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -1760,7 +1808,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -1797,8 +1847,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="justify"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:24px;font-weight:bold;letter-spacing:none;line-height:1;text-align:justify;color:#000">
                             Article Title
@@ -1806,8 +1856,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="justify"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:15px;letter-spacing:none;line-height:1;text-align:justify;color:#000">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
@@ -1816,8 +1866,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -1873,7 +1924,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -1896,8 +1949,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:16px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000">
                             Article Title
@@ -1905,8 +1958,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="justify"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:13px;letter-spacing:none;line-height:1;text-align:justify;color:#000">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -1914,7 +1967,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -1953,7 +2009,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -1976,8 +2034,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:16px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000">
                             Article Title
@@ -1985,8 +2043,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="justify"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:13px;letter-spacing:none;line-height:1;text-align:justify;color:#000">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -1994,7 +2052,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2033,7 +2094,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2056,8 +2119,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:16px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000">
                             Article Title
@@ -2065,8 +2128,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="justify"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:helvetica;font-size:13px;letter-spacing:none;line-height:1;text-align:justify;color:#000">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -2074,7 +2137,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2175,8 +2241,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -2231,8 +2297,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:45px;font-weight:bold;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             Welcome aboard
@@ -2270,8 +2336,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             <span style="color: #feeb35">
@@ -2284,8 +2350,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             We're really excited you've decided to give us a try. In
@@ -2296,8 +2362,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -2323,8 +2390,8 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             Thanks,
@@ -2430,7 +2497,9 @@ p { display:block;margin:13px 0; }
                     >
                       <tbody>
                         <tr>
-                          <td style="font-size:0px;padding:0 20px;word-break:break-word">
+                          <td align="foo"
+                              style="font-size:0px;padding:0 20px;word-break:break-word"
+                          >
                             <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
                               <a href="https://mjml.io"
                                  style="text-decoration:none;color:inherit;"
@@ -2455,7 +2524,7 @@ p { display:block;margin:13px 0; }
                     >
                       <tbody>
                         <tr>
-                          <td align="right"
+                          <td align="foo"
                               style="font-size:0px;padding:0 20px;word-break:break-word"
                           >
                             <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
@@ -2501,7 +2570,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 0;word-break:break-word"
                         >
                           <table border="0"
@@ -2559,7 +2628,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;word-break:break-word"
+                        >
                           <!--[if !mso | IE]><input type="checkbox" id="mj-navbar-hamburger-input-2" class="mj-menu-checkbox" style="display:none !important;visibility:hidden"><![endif]-->
                           <div class="mj-menu-trigger"
                                style="display:none;max-height:0px;max-width:0px;font-size:0px;overflow:hidden"
@@ -2661,7 +2732,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
@@ -2686,8 +2757,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding-top:180px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;padding-top:180px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
                             OR
@@ -2729,7 +2800,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
@@ -2740,7 +2811,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2764,7 +2837,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding:20px 25px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:20px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2793,7 +2869,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2817,7 +2895,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding:20px 25px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:20px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2860,7 +2941,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
@@ -2871,7 +2952,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2895,7 +2978,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding:20px 25px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:20px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2924,7 +3010,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -2948,7 +3036,10 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;padding:20px 25px;word-break:break-word">
+                        <td align="foo"
+                            vertical-align="middle"
+                            style="font-size:0px;padding:20px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3007,7 +3098,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:0 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:0 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3050,7 +3143,7 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000000">
@@ -3061,7 +3154,9 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3120,7 +3215,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3144,7 +3241,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
@@ -3169,7 +3266,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3193,7 +3292,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
@@ -3218,7 +3317,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3242,7 +3343,7 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="center"
+                        <td align="foo"
                             style="font-size:0px;padding:0 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
@@ -3283,7 +3384,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3321,7 +3424,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3364,7 +3469,9 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;padding:10px 25px;word-break:break-word">
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        >
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
@@ -3423,8 +3530,8 @@ p { display:block;margin:13px 0; }
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;word-break:break-word"
+                        <td align="foo"
+                            style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
                             [[DELIVERY_INFO]]

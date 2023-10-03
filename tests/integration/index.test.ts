@@ -1,3 +1,4 @@
+import { kebabCase } from "lodash-es";
 import "jest-puppeteer";
 import sharp from "sharp";
 import "expect-puppeteer";
@@ -66,8 +67,8 @@ async function toMatchImage(
     maximumHeight
   );
 
-  const fileName = `${expect.getState().currentTestName}.png`;
-  const filePath = `tmp/${fileName}`;
+  const fileName = `${kebabCase(expect.getState().currentTestName)}.png`;
+  const filePath = `./tmp/${fileName}`;
   await fsPromise.writeFile(filePath, PNG.sync.write(diff));
 
   const pass = numDiffPixels <= limit;
@@ -77,7 +78,7 @@ async function toMatchImage(
       numDiffPixels
     )} to be less than ${this.utils.printExpected(
       limit
-    )}, diff saved at ${filePath}`;
+    )}, diff saved at "${filePath}"`;
 
   if (pass) {
     return {

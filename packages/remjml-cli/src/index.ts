@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node --esm --experimentalSpecifierResolution node
+#!/usr/bin/env ts-node --esm --experimentalSpecifierResolution node --experimental-import-meta-resolve
 import { args } from "unified-args";
 import { remjml } from "remjml";
 import type { Processor } from "unified";

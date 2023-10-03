@@ -164,6 +164,7 @@ describe("with no content", () => {
 
     const theirHtml = originalMjml(mjml).html;
 
+    console.log(ourHtml);
     expect(ourHtml).toEqualXML(theirHtml);
   });
 });

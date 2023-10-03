@@ -2,7 +2,8 @@
   "name": "mjmlast",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./src/type-checks": "./src/type-checks.ts"
   },
   "main": "./src/index.ts",
   "dependencies": {

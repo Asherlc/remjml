@@ -12,5 +12,5 @@
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true
   },
-  "references": [{ "path": "../mjml-ast" }]
+  "references": [{ "path": "../mjmlast" }]
 }

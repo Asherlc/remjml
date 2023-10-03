@@ -23,10 +23,13 @@ async function toMatchImage(
   const expectedSharp = sharp(expectedImage);
   const receivedMetada = await receivedSharp.metadata();
   const expectedMetadata = await expectedSharp.metadata();
-  const maximumWidth = Math.max(receivedMetada.width, expectedMetadata.width);
+  const maximumWidth = Math.max(
+    receivedMetada.width || 0,
+    expectedMetadata.width || 0
+  );
   const maximumHeight = Math.max(
-    receivedMetada.height,
-    expectedMetadata.height
+    receivedMetada.height || 0,
+    expectedMetadata.height || 0
   );
 
   // derive a new version "boxedBuffer1" of "img1.png", conceptually placing "img1.png" in the upper-left corner of a bounding box canvas
@@ -144,7 +147,7 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
       html = (
         await unified()
           .use(remjmlParse)
-          .use(remjmlRehype as any)
+          .use(remjmlRehype)
           .use(rehypeStringify, {
             allowDangerousHtml: true,
           })

@@ -13,9 +13,14 @@
     "test:unit": "node --experimental-vm-modules --experimental-import-meta-resolve node_modules/jest/bin/jest.js -u",
     "test:integration": "node --experimental-vm-modules --experimental-import-meta-resolve node_modules/jest/bin/jest.js --config=jest-integration.config.js -u",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "debug-fixture": "vite-node ./scripts/debug-fixture.ts"
+  },
+  "bin": {
+    "debug-fixture": "./scripts/debug-fixture.ts"
   },
   "devDependencies": {
+    "vite-node": "0.34.6",
     "@types/jest": "29.5.5",
     "@typescript-eslint/eslint-plugin": "6.7.3",
     "@typescript-eslint/parser": "6.7.3",
@@ -39,7 +44,8 @@
     "pngjs": "7.0.0",
     "prettier": "3.0.3",
     "puppeteer": "21.3.6",
-    "sharp": "0.32.6"
+    "sharp": "0.32.6",
+    "commander": "11.0.0"
   },
   
   "dependencies": {

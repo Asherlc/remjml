@@ -1,4 +1,3 @@
-import type { Attributes } from "mjml-types";
 import { mjml } from "./mjml";
 import {
   mjDivider,
@@ -18,29 +17,42 @@ import {
   mjText,
   DEFAULT_ATTRIBUTES as MJ_TEXT_DEFAULT_ATTRIBUTES,
 } from "./mj-text";
-import type { Handler, Handlers } from "..";
 import {
   mjButton,
   DEFAULT_ATTRIBUTES as MJ_BUTTON_DEFAULT_ATTRIBUTES,
 } from "./mj-button";
 
-export const defaultAttributes: Record<string, Attributes> = {
+export const defaultAttributes = {
   "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,
   "mj-image": MJ_IMAGE_DEFAULT_ATTRIBUTES,
   "mj-divider": MJ_DIVIDER_DEFAULT_ATTRIBUTES,
   "mj-button": MJ_BUTTON_DEFAULT_ATTRIBUTES,
-};
+} as const;
 
-export const handlers: Handlers = {
-  text: text as unknown as Handler,
-  "mj-body": mjBody as unknown as Handler,
-  "mj-section": mjSection as unknown as Handler,
-  "mj-column": mjColumn as unknown as Handler,
-  "mj-image": mjImage as unknown as Handler,
-  "mj-text": mjText as unknown as Handler,
-  "mj-divider": mjDivider as unknown as Handler,
-  "mj-navbar": mjNavbar as unknown as Handler,
-  "mj-navbar-link": mjNavbarLink as unknown as Handler,
-  "mj-button": mjButton as unknown as Handler,
-  mjml: mjml as unknown as Handler,
-};
+export const handlers = {
+  text: text,
+  "mj-body": mjBody,
+  "mj-section": mjSection,
+  "mj-column": mjColumn,
+  "mj-image": mjImage,
+  "mj-text": mjText,
+  "mj-divider": mjDivider,
+  "mj-navbar": mjNavbar,
+  "mj-navbar-link": mjNavbarLink,
+  "mj-button": mjButton,
+  mjml: mjml,
+} as const;
+
+function isTypeWithDefaultAttributes(
+  type: string
+): type is keyof typeof defaultAttributes {
+  return type in Object.keys(defaultAttributes);
+}
+
+export function getDefaultAttributes(type: string): Record<string, string> {
+  if (isTypeWithDefaultAttributes(type)) {
+    return defaultAttributes[type];
+  }
+
+  return {};
+}

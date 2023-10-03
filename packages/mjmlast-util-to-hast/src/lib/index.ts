@@ -35,11 +35,11 @@ export type Options = {
   handlers?: Handlers;
 };
 
-export type Handler<ContextType = Context> = (
+export type Handler = (
   node: UnistNode,
   parent: Parent | null,
   options: Options,
-  context: ContextType
+  context: Context
 ) => HContent | Array<HContent>;
 
 export type Handlers = Record<string, Handler>;

@@ -11,7 +11,6 @@ import type {
   MjColumn,
   MjColumnAttributes,
   MjColumnChild,
-  MjColumnChildAttributes,
   MjmlNode,
 } from "mjmlast";
 import { h } from "hastscript";
@@ -21,7 +20,7 @@ import type { Context } from "../../types";
 import type { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../../traverse";
-import { defaultAttributes } from "..";
+import { getDefaultAttributes } from "..";
 import { Attributes } from "../../helpers/Attributes";
 
 const DEFAULT_ATTRIBUTES: Pick<
@@ -63,6 +62,19 @@ function getMobileWidth(
   return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
 }
 
+type MjColumnChildAttributes = Partial<{
+  "container-background-color": string;
+  align: "left" | "right" | "center" | "justify";
+  "vertical-align": "top" | "middle" | "bottom";
+  "css-class": string;
+  background: string;
+  padding: string;
+  "padding-top": string;
+  "padding-right": string;
+  "padding-bottom": string;
+  "padding-left": string;
+}>;
+
 function column(
   node: MjColumn,
   parent: ColumnParent,
@@ -76,7 +88,7 @@ function column(
 
   const children = node.children.map((child: MjColumnChild) => {
     const defaultChildAttributes: MjColumnChildAttributes =
-      defaultAttributes[child.type] || {};
+      getDefaultAttributes(child.type);
     const childAttributes: MjColumnChildAttributes = {
       ...defaultChildAttributes,
       ...(child.attributes || {}),

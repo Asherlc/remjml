@@ -74,7 +74,7 @@ p { display:block;margin:13px 0; }",
             },
             {
               "type": "raw",
-              "value": <!--[if !mso]>-->,
+              "value": <!--[if mso]>-->,
             },
             {
               "children": [
@@ -137,7 +137,7 @@ p { display:block;margin:13px 0; }",
             },
             {
               "type": "raw",
-              "value": <![endif]>,
+              "value": <![endif]-->,
             },
             {
               "children": [
@@ -284,7 +284,7 @@ p { display:block;margin:13px 0; }",
                                                         },
                                                         {
                                                           "type": "raw",
-                                                          "value": <!--[if !mso | IE]>-->,
+                                                          "value": <!--[if mso | IE]>-->,
                                                         },
                                                         {
                                                           "children": [
@@ -482,20 +482,90 @@ table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; 
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }
     </style>
-    <!--[if !mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-    <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]><style type="text/css">
-    @media only screen and (min-width:480px) {
+    <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
+    <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+    <style type="text/css">
+      @media only screen and (min-width:480px) {
       .mj-column-per-100 { width:100% !important; max-width: 100%; }
     }
-    </style><style media="screen and (min-width:480px)">.moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }</style><style type="text/css"></style></head><body style="word-spacing:normal"><div style=""><div style="margin:0px auto;max-width:600px"><table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%"><tbody><tr><td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center"><div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top" width="100%"><tbody><tr><td style="font-size:0px;word-break:break-word"><table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px"><tbody><tr><td style="width:100px"><image height="auto" src="/assets/img/logo-small.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px" width="100%"></td></tr></tbody></table></td></tr><tr><td style="font-size:0px;word-break:break-word"><p style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:100%"></p><!--[if !mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:550px" role="presentation" width="550px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
-    <tr>
-      <td style="font-size:0px;word-break:break-word">
-        <div style="font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43">
-          Hello World
-        </div>
-      </td>
-    </tr>
+    </style>
+    <style media="screen and (min-width:480px)">
+      .moz-text-html .mj-column-per-100 { width:100% !important; max-width: 100%; }
+    </style>
+    <style type="text/css">
+    </style>
   </head>
+  <body style="word-spacing:normal">
+    <div style>
+      <div style="margin:0px auto;max-width:600px">
+        <table align="center"
+               border="0"
+               cellpadding="0"
+               cellspacing="0"
+               role="presentation"
+               style="width:100%"
+        >
+          <tbody>
+            <tr>
+              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+                <div class="mj-column-per-100 mj-outlook-group-fix"
+                     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
+                >
+                  <table border="0"
+                         cellpadding="0"
+                         cellspacing="0"
+                         role="presentation"
+                         style="vertical-align:top"
+                         width="100%"
+                  >
+                    <tbody>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="border-collapse:collapse;border-spacing:0px"
+                          >
+                            <tbody>
+                              <tr>
+                                <td style="width:100px">
+                                  <image height="auto"
+                                         src="/assets/img/logo-small.png"
+                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                         width="100%"
+                                  >
+                                  </image>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                          <p style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:100%">
+                          </p>
+                          <!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 4px #F46E43;font-size:1px;margin:0px auto;width:550px" role="presentation" width="550px"><tr><td>&#x26;nbsp;</td></tr></table><![endif]-->
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:0px;word-break:break-word">
+                          <div style="font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43">
+                            Hello World
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>
 `;
 

@@ -38,7 +38,12 @@ expect.extend({
 
     return {
       pass,
-      message: () => diff(expectedPrettifiedHtml, actualPrettifiedHtml),
+      message: () => `
+      Expected: ${expectedHtml}
+
+      Received: ${actualHtml}
+
+      ${diff(expectedPrettifiedHtml, actualPrettifiedHtml)}`,
     };
   },
 });
@@ -73,6 +78,10 @@ it("transforms mjml to html", async () => {
       <head>
         <title>
         </title>
+        <!--[if !mso]><!-->
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge"
+        >
         <meta http-equiv="Content-Type"
               content="text/html; charset=UTF-8"
         >
@@ -86,17 +95,8 @@ it("transforms mjml to html", async () => {
     img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
     p { display:block;margin:13px 0; }
         </style>
-        <style type="text/css">
-          noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-                @media only screen and (max-width:479px) {
-                  .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-                  .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-                  .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-                }
-        </style>
+        <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
+        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
         <style type="text/css">
           @media only screen and (min-width:480px) {
           .mj-column-per-100 { width:100% !important; max-width: 100%; }
@@ -134,13 +134,6 @@ it("transforms mjml to html", async () => {
                         <tbody>
                           <tr>
                             <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td align="center"
-                                vertical-align="middle"
-                                style="font-size:0px;padding:10px 25px;word-break:break-word"
-                            >
                               <table border="0"
                                      cellpadding="0"
                                      cellspacing="0"
@@ -162,10 +155,6 @@ it("transforms mjml to html", async () => {
                                   </tr>
                                 </tbody>
                               </table>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="font-size:0px;word-break:break-word">
                             </td>
                           </tr>
                         </tbody>
@@ -204,7 +193,7 @@ describe("with no content", () => {
     expect(ourHtml).toEqualXML(theirHtml);
   });
 
-  fit("outputs the same html as the original mjml library (prettier compare)", async () => {
+  it("outputs the same html as the original mjml library (prettier compare)", async () => {
     const mjml = `<mjml>
   <mj-body>
   </mj-body>
@@ -216,15 +205,17 @@ describe("with no content", () => {
         .use(remjmlRehype as any)
         .use(rehypeStringify, {
           allowDangerousHtml: true,
+          closeSelfClosing: true,
+          closeEmptyElements: true,
         })
         .process(mjml)
-    ).value;
+    ).value.toString();
 
-    console.log("ours", ourHtml);
-    const theirHtml = originalMjml(mjml).html;
-    console.log("theirs", theirHtml);
+    const theirHtml: string = originalMjml(mjml).html;
 
-    await expect(ourHtml).toMatchHTMLPrettier(theirHtml);
+    await expect(ourHtml.toLowerCase()).toMatchHTMLPrettier(
+      theirHtml.toLowerCase()
+    );
   });
 });
 
@@ -394,6 +385,10 @@ it("transforms mjml to html", async () => {
       <head>
         <title>
         </title>
+        <!--[if !mso]><!-->
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge"
+        >
         <meta http-equiv="Content-Type"
               content="text/html; charset=UTF-8"
         >
@@ -407,17 +402,8 @@ it("transforms mjml to html", async () => {
     img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
     p { display:block;margin:13px 0; }
         </style>
-        <style type="text/css">
-          noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
-                @media only screen and (max-width:479px) {
-                  .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
-                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-inline-links,
-                  .mj-menu-checkbox[type="checkbox"] ~ .mj-menu-trigger { display:block!important; max-width:none!important; max-height:none!important; font-size:inherit!important; }
-                  .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links > a { display:block!important; }
-                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
-                  .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
-                }
-        </style>
+        <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
+        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
         <style type="text/css">
           @media only screen and (min-width:480px) {
           .mj-column-per-100 { width:100% !important; max-width: 100%; }
@@ -454,12 +440,8 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
                             <td align="center"
-                                style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                                style="font-size:0px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                             >
                               <table border="0"
                                      cellpadding="0"
@@ -481,10 +463,6 @@ it("transforms mjml to html", async () => {
                                   </tr>
                                 </tbody>
                               </table>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="font-size:0px;word-break:break-word">
                             </td>
                           </tr>
                         </tbody>
@@ -518,20 +496,12 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
                             <td align="left"
-                                style="font-size:0px;padding:10px 25px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
+                                style="font-size:0px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:45px;font-weight:bold;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                                 Welcome aboard
                               </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="font-size:0px;word-break:break-word">
                             </td>
                           </tr>
                         </tbody>
@@ -565,12 +535,8 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
                             <td align="left"
-                                style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
+                                style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                                 <span style="color: #feeb35">
@@ -583,12 +549,8 @@ it("transforms mjml to html", async () => {
                             </td>
                           </tr>
                           <tr>
-                            <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
                             <td align="left"
-                                style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
+                                style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                                 We're really excited you've decided to give us a try. In
@@ -599,13 +561,8 @@ it("transforms mjml to html", async () => {
                             </td>
                           </tr>
                           <tr>
-                            <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
                             <td align="left"
-                                vertical-align="middle"
-                                style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                style="font-size:0px;word-break:break-word"
                             >
                               <table border="0"
                                      cellpadding="0"
@@ -631,22 +588,14 @@ it("transforms mjml to html", async () => {
                             </td>
                           </tr>
                           <tr>
-                            <td style="font-size:0px;word-break:break-word">
-                            </td>
-                          </tr>
-                          <tr>
                             <td align="left"
-                                style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
+                                style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                                 Thanks,
                                 <br>
                                 The [[CompanyName]] Team
                               </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td style="font-size:0px;word-break:break-word">
                             </td>
                           </tr>
                         </tbody>

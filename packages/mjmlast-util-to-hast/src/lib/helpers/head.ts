@@ -13,7 +13,7 @@ export const head = (tree: UnistNode): HElement => {
     h("title"),
     conditionalComment(
       {
-        expression: "mso",
+        expression: "!mso",
         type: "downlevel-hidden",
         display: "non-ie",
       },
@@ -59,7 +59,7 @@ p { display:block;margin:13px 0; }`
     conditionalComment(
       {
         expression: "lte mso 11",
-        type: "downlevel-revealed",
+        type: "downlevel-hidden",
       },
       [
         h(

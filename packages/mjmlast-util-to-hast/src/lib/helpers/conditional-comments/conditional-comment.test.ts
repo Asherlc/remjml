@@ -14,7 +14,7 @@ describe("with children", () => {
     );
 
     expect(nodes).toEqual([
-      { type: "raw", value: "<!--[if !mso]><!-->" },
+      { type: "raw", value: "<!--[if mso]><!-->" },
       {
         children: [],
         properties: { content: "IE=edge", httpEquiv: ["X-UA-Compatible"] },
@@ -41,7 +41,7 @@ describe("with children", () => {
         allowDangerousHtml: true,
       })
     ).toEqual(
-      '<!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->'
+      '<!--[if mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->'
     );
   });
 });

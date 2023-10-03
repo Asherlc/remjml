@@ -69,7 +69,7 @@ it("returns a HAST", () => {
         },
         {
           "type": "raw",
-          "value": <!--[if !mso]>-->,
+          "value": <!--[if mso]>-->,
         },
         {
           "children": [
@@ -115,10 +115,7 @@ it("returns a HAST", () => {
         },
         {
           "type": "raw",
-          "value": <![if lte
-          mso
-          11]
-    >,
+          "value": <!--[if lte mso 11]>-->,
         },
         {
           "children": [
@@ -135,7 +132,7 @@ it("returns a HAST", () => {
         },
         {
           "type": "raw",
-          "value": <![endif]>,
+          "value": <![endif]-->,
         },
       ],
       "properties": {},
@@ -172,15 +169,8 @@ it("serializes to HTML", () => {
     img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
     p { display:block;margin:13px 0; }
       </style>
-      <!--[if !mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-      <![if lte
-            mso
-            11]
-      >
-      <style type="text/css">
-        .mj-outlook-group-fix { width:100% !important; }
-      </style>
-      <![endif]>
+      <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
+      <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
     </head>
   `);
 });
@@ -222,15 +212,8 @@ describe("when the tree has an mjml navbar", () => {
       img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
       p { display:block;margin:13px 0; }
         </style>
-        <!--[if !mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-        <![if lte
-              mso
-              11]
-        >
-        <style type="text/css">
-          .mj-outlook-group-fix { width:100% !important; }
-        </style>
-        <![endif]>
+        <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
+        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
         <style type="text/css">
           noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
                 @media only screen and (max-width:479px) {

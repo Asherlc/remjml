@@ -7,7 +7,7 @@ describe("when displaying not on IE", () => {
 
       expect(conditional.begin).toEqual({
         type: "raw",
-        value: "<!--[if !true]><!-->",
+        value: "<!--[if true]><!-->",
       });
     });
   });

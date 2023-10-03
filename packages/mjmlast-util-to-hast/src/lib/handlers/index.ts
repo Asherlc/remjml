@@ -30,7 +30,7 @@ export const defaultAttributes = {
 } as const;
 
 export const handlers = {
-  text: text,
+  text,
   "mj-body": mjBody,
   "mj-section": mjSection,
   "mj-column": mjColumn,
@@ -40,7 +40,7 @@ export const handlers = {
   "mj-navbar": mjNavbar,
   "mj-navbar-link": mjNavbarLink,
   "mj-button": mjButton,
-  mjml: mjml,
+  mjml,
 } as const;
 
 function isTypeWithDefaultAttributes(

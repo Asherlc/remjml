@@ -9,6 +9,12 @@
     "moduleResolution": "Node",
     "strict": true,
     "noImplicitOverride": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "../remjml"
+    }
+  ]
 }

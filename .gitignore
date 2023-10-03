@@ -1,4 +1,5 @@
 node_modules
 **/dist/**
-**/tsconfig.ref.tsbuildinfo
+**/*/tsconfig.ref.tsbuildinfo
 tmp
+packages/**/tsconfig.tsbuildinfo

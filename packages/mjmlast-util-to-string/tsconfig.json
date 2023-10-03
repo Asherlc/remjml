@@ -1,8 +1,7 @@
 {
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "compilerOptions": {
+    "composite": true,
     "rootDir": "src",
     "outDir": "dist",
     "target": "es2021",
@@ -12,5 +11,6 @@
     "strict": true,
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "references": [{ "path": "../mjml-ast" }]
 }

@@ -1,33 +1,33 @@
 {
   "extends": "./tsconfig.base.json",
-  "exclude": ["node_modules", "**/*/dist"],
+  "exclude": ["**/node_modules", "**/dist"],
   "references": [
     {
-      "path": "./packages/mjml-types/tsconfig.ref.json"
+      "path": "./packages/mjml-types"
     },
     {
-      "path": "./packages/mjml-json-to-remjml/tsconfig.ref.json"
+      "path": "./packages/mjml-json-to-remjml"
     },
     {
-      "path": "./packages/mjmlast/tsconfig.ref.json"
+      "path": "./packages/mjmlast"
     },
     {
-      "path": "./packages/mjmlast-util-from-mjml/tsconfig.ref.json"
+      "path": "./packages/mjmlast-util-from-mjml"
     },
     {
-      "path": "./packages/mjmlast-util-to-hast/tsconfig.ref.json"
+      "path": "./packages/mjmlast-util-to-hast"
     },
     {
-      "path": "./packages/remjml/tsconfig.ref.json"
+      "path": "./packages/remjml"
     },
     {
-      "path": "./packages/remjml-cli/tsconfig.ref.json"
+      "path": "./packages/remjml-cli"
     },
     {
-      "path": "./packages/remjml-parse/tsconfig.ref.json"
+      "path": "./packages/remjml-parse"
     },
     {
-      "path": "./packages/remjml-rehype/tsconfig.ref.json"
+      "path": "./packages/remjml-rehype"
     }
   ],
 }

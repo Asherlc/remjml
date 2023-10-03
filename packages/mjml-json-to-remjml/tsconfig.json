@@ -1,6 +1,7 @@
 {
   "files": ["src/index.ts"],
   "compilerOptions": {
+    "composite": true,
     "rootDir": "src",
     "outDir": "dist",
     "target": "es2021",
@@ -10,5 +11,6 @@
     "strict": true,
     "noImplicitOverride": true,
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "references": [{ "path": "../mjml-types" }, { "path": "../mjmlast" }]
 }

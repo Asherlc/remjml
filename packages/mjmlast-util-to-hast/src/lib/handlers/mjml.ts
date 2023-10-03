@@ -4,10 +4,10 @@ import type { Parts } from "units-css";
 import units from "units-css";
 import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
+import type { Element as HElement, Doctype as HDoctype } from "hast";
 import type { Options } from "..";
 import { addPosition } from "..";
 import type { Context } from "../types";
-import type { Node } from "unist";
 import { all } from "../traverse";
 import { conditionalComment } from "../helpers/conditional-comments/conditional-comment";
 
@@ -30,10 +30,11 @@ const DEFAULT_BREAKPOINT = "480px";
 
 export function mjml(
   node: MjmlRoot,
-  parent: never,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  parent: any,
   options: Options,
   context: Context
-): Node[] {
+): [HDoctype, ...HElement[]] {
   const attributes = node.attributes || {};
 
   const children = all(node, options, context);
@@ -134,7 +135,7 @@ p { display:block;margin:13px 0; }`
     ]
   );
 
-  const hDoctype = { type: "doctype" };
+  const hDoctype: HDoctype = { type: "doctype" };
 
   return [hDoctype, addPosition(node, hDoc)];
 }

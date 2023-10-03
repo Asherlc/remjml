@@ -12,7 +12,7 @@ import type {
 import { h } from "hastscript";
 import type { Options } from "..";
 import type { Context } from "../types";
-import type { Element as HElement, ElementContent } from "hast";
+import type { Element as HElement, RootContent } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";
@@ -48,7 +48,7 @@ function isFullWidth(fullWidthAttribute: string | undefined): boolean {
 function section(
   node: MjSection,
   context: Context,
-  children: ElementContent[]
+  children: RootContent[]
 ): HElement {
   const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
     node.attributes || {},

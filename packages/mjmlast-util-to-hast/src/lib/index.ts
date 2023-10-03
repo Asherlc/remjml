@@ -14,7 +14,6 @@ import type {
   MjStyle,
   MjmlNode,
   MjmlRoot,
-  Parent,
 } from "mjmlast";
 import { u } from "unist-builder";
 import type { Context, HastNode } from "./types";
@@ -25,24 +24,16 @@ import { applyInlineStyles, removeInlineStyles } from "./helpers/inline-styles";
 import { toString } from "mjmlast-util-to-string";
 import { h } from "hastscript";
 import { applyGlobalAttributes } from "./helpers/global-attributes";
-import type { Node as UnistNode } from "unist";
+import type { Handler } from "./Handler";
+
+export type Handlers = Record<string, Handler>;
 
 export type Options = {
   allowDangerousHtml?: boolean;
-  // eslint-disable-next-line no-use-before-define
+  // eslint-disable-next-
   unknownHandler?: Handler;
-  // eslint-disable-next-line no-use-before-define
   handlers?: Handlers;
 };
-
-export type Handler = (
-  node: UnistNode,
-  parent: Parent | null,
-  options: Options,
-  context: Context
-) => HContent | Array<HContent>;
-
-export type Handlers = Record<string, Handler>;
 
 export function addPosition<Right extends HContent>(
   left: MjmlNode | undefined | null,
@@ -104,6 +95,7 @@ export function toHast(
 
   const context: Context = {
     mjHead,
+    navbarBaseUrl: undefined,
     mediaQueries: {},
   };
 

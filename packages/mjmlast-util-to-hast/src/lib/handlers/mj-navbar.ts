@@ -57,7 +57,7 @@ export function mjNavbar(
     DEFAULT_ATTRIBUTES
   );
 
-  const children = all<MjNavbarContext>(node, options, {
+  const children = all(node, options, {
     ...context,
     navbarBaseUrl: attributes.get("base-url"),
   });

@@ -13,4 +13,5 @@ export type Context = {
   mjHead: MjHead;
   mediaQueries: MediaQueries;
   fullWidth?: boolean;
+  navbarBaseUrl: string | undefined;
 };

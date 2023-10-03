@@ -25,7 +25,7 @@ describe("with children", () => {
     ]);
   });
 
-  it("serlializes to html", () => {
+  it("serializes to html", () => {
     const nodes = conditionalComment(
       {
         expression: "mso",

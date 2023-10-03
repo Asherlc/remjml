@@ -93,6 +93,7 @@ function column(
       ...defaultChildAttributes,
       ...(child.attributes || {}),
     };
+    console.log(childAttributes);
 
     const hChild = one(child as MjmlNode, node, options, {
       ...context,
@@ -103,7 +104,7 @@ function column(
       h(
         "td",
         {
-          align: childAttributes.align,
+          align: "foo" || childAttributes.align,
           "vertical-align": childAttributes["vertical-align"],
           class: childAttributes["css-class"],
           style: jsonToCss({

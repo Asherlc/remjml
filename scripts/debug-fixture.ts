@@ -1,6 +1,6 @@
 import { program, Option } from "commander";
 import path from "node:path";
-import { readFile, watch } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 
 import type { Browser, Page } from "puppeteer";
 import puppeteer from "puppeteer";
@@ -74,10 +74,3 @@ const browser: Browser = await puppeteer.launch({
 });
 const page: Page = await browser.newPage();
 page.goto(base64Url);
-
-const watcher = watch(".", { recursive: true });
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-for await (const event of watcher) {
-  page.goto(await mjmlToBase64UrlForFixtureName(emailFixtureName));
-}

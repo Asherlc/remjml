@@ -14,7 +14,7 @@
     "test:integration": "node --experimental-vm-modules --experimental-import-meta-resolve node_modules/jest/bin/jest.js --config=jest-integration.config.js -u",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "debug-fixture": "vite-node ./scripts/debug-fixture.ts"
+    "debug-fixture": "nodemon ./scripts/debug-fixture.ts"
   },
   "bin": {
     "debug-fixture": "./scripts/debug-fixture.ts"
@@ -45,7 +45,8 @@
     "prettier": "3.0.3",
     "puppeteer": "21.3.6",
     "sharp": "0.32.6",
-    "commander": "11.0.0"
+    "commander": "11.0.0",
+    "nodemon": "3.0.1"
   },
   
   "dependencies": {

@@ -1,3 +1,7 @@
+const prettier2Url = await import.meta.resolve('prettier-2')
+const prettier2Path = new URL(prettier2Url).pathname;
+
+
 /** @type {import('jest').Config} */
 export default {
     modulePathIgnorePatterns: ['<rootDir>/dist/'],
@@ -19,5 +23,5 @@ export default {
     testEnvironment: "node",
     snapshotSerializers: ["jest-serializer-html"],
     // https://jestjs.io/docs/configuration/#prettierpath-string
-    prettierPath: new URL(import.meta.resolve('prettier-2')).pathname
+    prettierPath: prettier2Path
 };

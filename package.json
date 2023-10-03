@@ -10,8 +10,8 @@
     "build": "tsc --build",
     "watch": "tsc --build --watch",
     "test": "run-s test:*",
-    "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js -u",
-    "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest-integration.config.js -u",
+    "test:unit": "node --experimental-vm-modules --experimental-import-meta-resolve node_modules/jest/bin/jest.js -u",
+    "test:integration": "node --experimental-vm-modules --experimental-import-meta-resolve node_modules/jest/bin/jest.js --config=jest-integration.config.js -u",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },

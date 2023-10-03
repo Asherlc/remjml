@@ -2,7 +2,7 @@ import type { Element as HElement } from "hast";
 import { u } from "unist-builder";
 import { ConditionalComment } from "./ConditionalComment";
 
-const END_STRING: string = "<![endif]-->;";
+const END_STRING: string = "<![endif]-->";
 
 export class DownlevelHidden extends ConditionalComment {
   protected get beginString(): string {

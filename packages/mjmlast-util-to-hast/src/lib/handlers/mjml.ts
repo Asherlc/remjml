@@ -41,85 +41,75 @@ export function mjml(
 
   const breakpoint = new Breakpoint(DEFAULT_BREAKPOINT).lower;
 
-  const hDoc = h(
-    "html",
-    {
-      lang: attributes.lang,
-      dir: attributes.dir,
-      xmlns: "http://www.w3.org/1999/xhtml",
-      "xmlns:v": "urn:schemas-microsoft-com:vml",
-      "xmlns:o": "urn:schemas-microsoft-com:office:office",
-    },
-    [
-      h("head", [
-        h("title"),
-        conditionalComment(
-          {
-            expression: "mso",
-            type: "downlevel-hidden",
-            display: "non-ie",
-          },
-          [h("meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" })]
-        ),
-        h("meta", {
-          "http-equiv": "Content-Type",
-          content: "text/html; charset=UTF-8",
-        }),
-        h("meta", {
-          name: "viewport",
-          content: "width=device-width, initial-scale=1",
-        }),
-        h(
-          "style",
-          {
-            type: "text/css",
-          },
-          `#outlook a { padding:0; }
+  const head = h("head", [
+    h("title"),
+    conditionalComment(
+      {
+        expression: "mso",
+        type: "downlevel-hidden",
+        display: "non-ie",
+      },
+      [h("meta", { "http-equiv": "X-UA-Compatible", content: "IE=edge" })]
+    ),
+    h("meta", {
+      "http-equiv": "Content-Type",
+      content: "text/html; charset=UTF-8",
+    }),
+    h("meta", {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1",
+    }),
+    h(
+      "style",
+      {
+        type: "text/css",
+      },
+      `#outlook a { padding:0; }
 body { margin:0;padding:0;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%; }
 table, td { border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
 img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-ms-interpolation-mode:bicubic; }
 p { display:block;margin:13px 0; }`
+    ),
+    conditionalComment(
+      {
+        expression: "mso",
+        type: "downlevel-hidden",
+      },
+      [
+        h(
+          "noscript",
+          h(
+            "xml",
+            h("o:OfficeDocumentSettings", [
+              h("o:AllowPNG"),
+              h("o:PixelsPerInch", 96),
+            ])
+          )
         ),
-        conditionalComment(
-          {
-            expression: "mso",
-            type: "downlevel-hidden",
-          },
-          [
-            h(
-              "noscript",
-              h(
-                "xml",
-                h("o:OfficeDocumentSettings", [
-                  h("o:AllowPNG"),
-                  h("o:PixelsPerInch", 96),
-                ])
-              )
-            ),
-          ]
-        ),
-        conditionalComment(
-          {
-            expression: "lte mso 11",
-            type: "downlevel-hidden",
-          },
-          [
-            h(
-              "style",
-              {
-                type: "text/css",
-              },
-              ".mj-outlook-group-fix { width:100% !important; }"
-            ),
-          ]
-        ),
-        // mj-navbar styles
+      ]
+    ),
+    conditionalComment(
+      {
+        expression: "lte mso 11",
+        type: "downlevel-revealed",
+      },
+      [
         h(
           "style",
           {
             type: "text/css",
           },
-          `
+          ".mj-outlook-group-fix { width:100% !important; }"
+        ),
+      ]
+    ),
+    // mj-navbar styles
+    h(
+      "style",
+      {
+        type: "text/css",
+      },
+      `
             noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
             @media only screen and (max-width:${breakpoint.value}${breakpoint.unit}) {
               .mj-menu-checkbox[type="checkbox"] ~ .mj-inline-links { display:none!important; }
@@ -129,10 +119,19 @@ p { display:block;margin:13px 0; }`
               .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-close { display:block!important; }
               .mj-menu-checkbox[type="checkbox"]:checked ~ .mj-menu-trigger .mj-menu-icon-open { display:none!important; }
             }`
-        ),
-      ]),
-      ...children,
-    ]
+    ),
+  ]);
+
+  const hDoc = h(
+    "html",
+    {
+      lang: attributes.lang,
+      dir: attributes.dir,
+      xmlns: "http://www.w3.org/1999/xhtml",
+      "xmlns:v": "urn:schemas-microsoft-com:vml",
+      "xmlns:o": "urn:schemas-microsoft-com:office:office",
+    },
+    [head, ...children]
   );
 
   const hDoctype: HDoctype = { type: "doctype" };

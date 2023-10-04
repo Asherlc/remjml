@@ -22,6 +22,7 @@ import classNames from "classnames";
 import { one } from "../../traverse";
 import { getDefaultAttributes } from "..";
 import { Attributes } from "../../helpers/Attributes";
+import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
 
 const DEFAULT_ATTRIBUTES: Pick<
   MjColumnAttributes,
@@ -210,7 +211,7 @@ export function mjColumn(
 
   const classesName = classNames(
     widthCssClass.toString(),
-    "mj-outlook-group-fix",
+    MJ_OUTLOOK_GROUP_FIX_CLASSNAME,
     cssClass
   );
 

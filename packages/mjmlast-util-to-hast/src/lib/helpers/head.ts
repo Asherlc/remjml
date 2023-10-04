@@ -6,6 +6,8 @@ import { styles as mjNavbarStyles } from "../handlers/mj-navbar";
 import type { Node as UnistNode } from "unist";
 import { compact } from "lodash-es";
 
+export const MJ_OUTLOOK_GROUP_FIX_CLASSNAME = "mj-outlook-group-fix";
+
 export const head = (tree: UnistNode): HElement => {
   const hasNavbar: boolean = Boolean(find(tree, { type: "mj-navbar" }));
 
@@ -67,7 +69,7 @@ p { display:block;margin:13px 0; }`
           {
             type: "text/css",
           },
-          ".mj-outlook-group-fix { width:100% !important; }"
+          `.${MJ_OUTLOOK_GROUP_FIX_CLASSNAME}{ width:100% !important; }`
         ),
       ]
     ),

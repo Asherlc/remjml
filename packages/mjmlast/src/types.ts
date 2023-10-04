@@ -577,7 +577,7 @@ export interface MjColumn extends Parent<MjColumnAttributes> {
   children: MjColumnChild[];
 }
 
-type MjGroupAttributes = {
+export type MjGroupAttributes = {
   "background-color": string;
   direction: "ltr" | "rtl";
   "vertical-align": "top" | "middle" | "bottom";

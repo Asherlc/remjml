@@ -30,7 +30,7 @@ export type Attributes = Partial<{
 }>;
 
 export interface MjSection extends ParentComponent, BodyComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   type: "mj-section";
   children: (MjColumn | MjGroup | MjRaw)[];
 }

@@ -1,4 +1,4 @@
-import type { MjText, MjTextAttributes } from "mjmlast";
+import type { MjText } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition } from "..";
 import type { Element as HElement } from "hast";
@@ -7,7 +7,7 @@ import type { Property } from "csstype";
 import { Attributes } from "../helpers/Attributes";
 
 export const DEFAULT_ATTRIBUTES: Pick<
-  MjTextAttributes,
+  MjText["attributes"],
   | "color"
   | "font-family"
   | "font-size"
@@ -26,7 +26,7 @@ export const DEFAULT_ATTRIBUTES: Pick<
 };
 
 export function mjText(node: MjText): HElement {
-  const attributes = new Attributes<MjTextAttributes>(
+  const attributes = new Attributes<MjText["attributes"]>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
   );

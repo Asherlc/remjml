@@ -70,7 +70,7 @@ export const styles = h(
 
 export function mjNavbar(
   node: MjNavbar,
-  parent: null,
+  _parent: null,
   options: Options,
   context: Context
 ): HElement[] {

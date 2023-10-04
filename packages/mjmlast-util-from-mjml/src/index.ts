@@ -61,7 +61,7 @@ function transformChildren(children: Node[], state: State): Content[] {
     const from = children[index];
     let to: Content;
 
-    if (isTextNode(from) && whitespace(from.textContent)) {
+    if (!from || (isTextNode(from) && whitespace(from.textContent))) {
       continue;
     } else if (isTextNode(from)) {
       to = transformText(from);

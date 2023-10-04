@@ -20,6 +20,13 @@ interface IDirectionalCssProperty<ValueType> {
   bottom: ValueType | undefined;
 }
 
+class NoPropertyError extends Error {
+  constructor(propertyName: string) {
+    const message: string = `No property ${propertyName} found in CSS`;
+    super(message);
+  }
+}
+
 export class ShorthandCssProperties<ValueType extends Value>
   implements IDirectionalCssProperty<ValueType>
 {
@@ -123,6 +130,10 @@ class PaddingShorthandProperty implements ShorthandProperty<PaddingValue> {
 
     const expandedProperty = properties[expandedPropertyName];
 
+    if (!expandedProperty) {
+      throw new NoPropertyError(expandedPropertyName);
+    }
+
     return units.parse(expandedProperty);
   }
 }
@@ -151,6 +162,10 @@ class BorderShorthandProperty implements ShorthandProperty<BorderValue> {
     const expandedPropertyName = `border-${direction}`;
 
     const expandedProperty = properties[expandedPropertyName];
+
+    if (!expandedProperty) {
+      throw new NoPropertyError(expandedPropertyName);
+    }
 
     return units.parse(expandedProperty);
   }

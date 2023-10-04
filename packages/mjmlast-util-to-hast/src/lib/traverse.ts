@@ -38,6 +38,11 @@ export function all(
 
     while (++index < nodes.length) {
       const node = nodes[index];
+
+      if (!node) {
+        throw new Error(`No node with index ${index}`);
+      }
+
       const result = one(node, parent, options, context);
 
       if (!result) {

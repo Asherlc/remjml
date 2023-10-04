@@ -16,8 +16,8 @@ type ImageParent = MjHero | MjColumn;
 
 export function mjImage(
   node: MjImage,
-  parent: ImageParent,
-  options: Options,
+  _parent: ImageParent,
+  _options: Options,
   context: Context
 ): HElement {
   if (!context.containerWidth) {

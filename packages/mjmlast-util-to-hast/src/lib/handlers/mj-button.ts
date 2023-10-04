@@ -1,4 +1,4 @@
-import type { MjButton, MjButtonAttributes } from "mjmlast";
+import type { MjButton } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "..";
 import { addPosition } from "..";
@@ -15,7 +15,7 @@ import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
 import { one } from "../traverse";
 
 export const DEFAULT_ATTRIBUTES: Pick<
-  MjButtonAttributes,
+  MjButton["attributes"],
   | "align"
   | "background-color"
   | "border"
@@ -50,11 +50,11 @@ export const DEFAULT_ATTRIBUTES: Pick<
 };
 
 class AWidth {
-  #attributes: Attributes<MjButtonAttributes>;
+  #attributes: Attributes<MjButton["attributes"]>;
   #containerWidth: Parts;
 
   constructor(
-    attributes: Attributes<MjButtonAttributes>,
+    attributes: Attributes<MjButton["attributes"]>,
     containerWidth: Parts
   ) {
     this.#attributes = attributes;
@@ -102,11 +102,11 @@ class AWidth {
 
 export function mjButton(
   node: MjButton,
-  parent: null,
+  _parent: null,
   options: Options,
   context: Context
 ): HElement {
-  const attributes = new Attributes<MjButtonAttributes>(
+  const attributes = new Attributes<MjButton["attributes"]>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
   );

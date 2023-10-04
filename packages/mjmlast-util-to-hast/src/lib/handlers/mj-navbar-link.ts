@@ -58,8 +58,8 @@ class Link {
 
 export function mjNavbarLink(
   node: MjNavbarLink,
-  parent: null,
-  options: Options,
+  _parent: null,
+  _options: Options,
   context: MjNavbarContext
 ): HElement[] {
   const attributes = new Attributes<MjNavbarLink["attributes"]>(

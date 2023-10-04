@@ -13,7 +13,7 @@ const DEFAULT_ATTRIBUTES: Pick<MjBodyAttributes, "width"> = {
 
 export function mjBody(
   node: MjBody,
-  parent: null,
+  _parent: null,
   options: Options,
   context: Context
 ): HElement {

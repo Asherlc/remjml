@@ -10,7 +10,7 @@ import { head } from "../helpers/head";
 export function mjml(
   node: MjmlRoot,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  parent: any,
+  _parent: any,
   options: Options,
   context: Context
 ): [HDoctype, ...HElement[]] {

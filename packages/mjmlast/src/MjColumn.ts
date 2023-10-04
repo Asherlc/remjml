@@ -52,7 +52,7 @@ export type Child =
   | MjNavbar;
 
 export interface MjColumn extends ParentComponent, BodyComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   type: "mj-column";
   children: Child[];
 }

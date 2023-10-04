@@ -79,8 +79,8 @@ function getOutlookWidth(
 
 export function mjDivider(
   node: MjDivider,
-  parent: DividerParent,
-  options: Options,
+  _parent: DividerParent,
+  _options: Options,
   context: Context
 ): HElement[] {
   if (!context.containerWidth) {

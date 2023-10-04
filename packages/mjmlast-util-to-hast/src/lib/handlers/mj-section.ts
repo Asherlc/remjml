@@ -2,13 +2,7 @@
 /// <reference path="../../../../../types/units-css.d.ts" />
 import type { Parts } from "units-css";
 import units from "units-css";
-import type {
-  MjBody,
-  MjSection,
-  MjSectionAttributes,
-  MjWrapper,
-  UniversalAttributes,
-} from "mjmlast";
+import type { MjBody, MjSection, MjWrapper } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "..";
 import type { Context } from "../types";
@@ -23,7 +17,7 @@ import { Attributes } from "../helpers/Attributes";
 type SectionParent = MjBody | MjWrapper;
 
 const DEFAULT_ATTRIBUTES: Pick<
-  MjSectionAttributes,
+  MjSection["attributes"],
   | "background-repeat"
   | "background-size"
   | "background-position"
@@ -50,7 +44,7 @@ function section(
   context: Context,
   children: RootContent[]
 ): HElement {
-  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+  const attributes = new Attributes<MjSection["attributes"]>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
   );
@@ -134,7 +128,7 @@ function section(
 }
 
 function fullWidthWrapper(node: MjSection, children: HElement[]): HElement {
-  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+  const attributes = new Attributes<MjSection["attributes"]>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
   );
@@ -173,11 +167,11 @@ function fullWidthWrapper(node: MjSection, children: HElement[]): HElement {
 
 export function mjSection(
   node: MjSection,
-  parent: SectionParent | null,
+  _parent: SectionParent | null,
   options: Options,
   context: Context
 ): HElement | HElement[] {
-  const attributes = new Attributes<MjSectionAttributes & UniversalAttributes>(
+  const attributes = new Attributes<MjSection["attributes"]>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
   );

@@ -191,7 +191,10 @@ export function mjColumn(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = new Attributes(node.attributes || {}, DEFAULT_ATTRIBUTES);
+  const attributes = new Attributes<MjColumn["attributes"]>(
+    node.attributes || {},
+    DEFAULT_ATTRIBUTES
+  );
   const cssClass = attributes.get("css-class");
   const width = attributes.get("width");
   const widthCssClass = new ColumnWidthCssClass(width, parent);

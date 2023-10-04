@@ -1,7 +1,7 @@
-import type { MjImageAttributes } from "mjmlast";
+import type { MjImage } from "mjmlast";
 
 export const DEFAULT_ATTRIBUTES: Pick<
-  MjImageAttributes,
+  MjImage["attributes"],
   "align" | "border" | "height" | "padding" | "target" | "font-size"
 > = {
   align: "center",

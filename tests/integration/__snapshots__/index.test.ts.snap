@@ -2504,7 +2504,7 @@ p { display:block;margin:13px 0; }
                           <td align="left"
                               style="font-size:0px;padding:10px 25px;word-break:break-word"
                           >
-                            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
                               <a href="https://mjml.io"
                                  style="text-decoration:none;color:inherit;"
                               >
@@ -2531,7 +2531,7 @@ p { display:block;margin:13px 0; }
                           <td align="right"
                               style="font-size:0px;padding:10px 25px;word-break:break-word"
                           >
-                            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
+                            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
                               <a href="https://mjml.io"
                                  style="text-decoration:none;color:inherit;"
                               >
@@ -2857,9 +2857,12 @@ p { display:block;margin:13px 0; }
                                     style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#bd8714"
                                     valign="middle"
                                 >
-                                  <p style="display:inline-block;background:#bd8714;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px">
+                                  <a href="https://mjml.io"
+                                     style="display:inline-block;background:#bd8714;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     target="_blank"
+                                  >
                                     BOOK NOW
-                                  </p>
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -2911,9 +2914,12 @@ p { display:block;margin:13px 0; }
                                     style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#bd8714"
                                     valign="middle"
                                 >
-                                  <p style="display:inline-block;background:#bd8714;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px">
+                                  <a href="https://mjml.io"
+                                     style="display:inline-block;background:#bd8714;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     target="_blank"
+                                  >
                                     BOOK NOW
-                                  </p>
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -2990,9 +2996,12 @@ p { display:block;margin:13px 0; }
                                     style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#48b6bf"
                                     valign="middle"
                                 >
-                                  <p style="display:inline-block;background:#48b6bf;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px">
+                                  <a href="https://mjml.io"
+                                     style="display:inline-block;background:#48b6bf;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     target="_blank"
+                                  >
                                     BOOK NOW
-                                  </p>
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -3044,9 +3053,12 @@ p { display:block;margin:13px 0; }
                                     style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#48b6bf"
                                     valign="middle"
                                 >
-                                  <p style="display:inline-block;background:#48b6bf;color:#ffffff;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px">
+                                  <a href="https://mjml.io"
+                                     style="display:inline-block;background:#48b6bf;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     target="_blank"
+                                  >
                                     BOOK NOW
-                                  </p>
+                                  </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -3230,7 +3242,7 @@ p { display:block;margin:13px 0; }
                         <td align="left"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
                             <p>
                               BEST COMPANIES FOR YOUR FLIGHTS
                             </p>
@@ -3281,7 +3293,7 @@ p { display:block;margin:13px 0; }
                         <td align="left"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
                             <p>
                               INSURANCES INCLUDED
                             </p>
@@ -3332,7 +3344,7 @@ p { display:block;margin:13px 0; }
                         <td align="left"
                             style="font-size:0px;padding:10px 25px;word-break:break-word"
                         >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
                             <p>
                               HOTELS BEST SELECTION
                             </p>

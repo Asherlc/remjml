@@ -16,6 +16,7 @@ import originalMjml from "mjml";
 expect.extend({ toMatchImageSnapshot });
 
 async function toMatchImage(
+  this: jest.MatcherContext,
   receivedImage: Buffer | Uint8Array | Uint8ClampedArray,
   expectedImage: Buffer | Uint8Array | Uint8ClampedArray,
   limit = 0
@@ -106,13 +107,6 @@ const emailFixtureNames = [
 ];
 
 const emailFixtureDirectoryPath = path.resolve("./tests/fixtures/mjml-emails/");
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const loggerPlugin = (...args: any[]) => {
-  return (tree, file) => {
-    console.log(...args, JSON.stringify(tree), file);
-  };
-};
 
 describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
   let mjml: string;

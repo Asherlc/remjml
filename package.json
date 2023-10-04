@@ -23,6 +23,7 @@
     "lodash-es": "4.17.21",
     "vite-node": "0.34.6",
     "@types/jest": "29.5.5",
+    "@types/mjml": "4.7.2",
     "@typescript-eslint/eslint-plugin": "6.7.3",
     "@typescript-eslint/parser": "6.7.3",
     "eslint-config-prettier": "9.0.0",

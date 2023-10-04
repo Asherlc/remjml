@@ -74,14 +74,16 @@ export function mjNavbar(
   options: Options,
   context: Context
 ): HElement[] {
-  const attributes = new Attributes<Partial<MjNavbarAttributes>>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
 
   const children = all(node, options, {
     ...context,
-    navbarBaseUrl: attributes.get("base-url"),
+    navbarBaseUrl: attributes.get("base-url")?.toString(),
   });
 
   const inputId = `mj-navbar-hamburger-input-${uniqueId()}`;
@@ -178,7 +180,7 @@ export function mjNavbar(
       {
         class: "mj-inline-links",
         style: jsonToCss({
-          align: attributes.get("align"),
+          align: attributes.get("align")?.toString(),
           width: "100%",
         }),
       },

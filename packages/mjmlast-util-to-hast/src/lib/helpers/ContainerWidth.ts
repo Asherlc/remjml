@@ -5,10 +5,9 @@ import units from "units-css";
 import { BoxWidth } from "./BoxWidth";
 import { ShorthandCssProperties } from "./ShorthandCssProperties";
 import type { Attributes } from "./Attributes";
-import type { MjColumn } from "mjmlast";
 
 export class ContainerWidth {
-  #attributes: Attributes<MjColumn["attributes"]>;
+  #attributes: Attributes;
   #parentWidth: Parts;
   #nonRawSiblingsCount: number;
 
@@ -17,7 +16,7 @@ export class ContainerWidth {
     parentWidth,
     nonRawSiblingCount: nonRawSiblingsCount,
   }: {
-    attributes: Attributes<MjColumn["attributes"]>;
+    attributes: Attributes;
     parentWidth: Parts;
     nonRawSiblingCount: number;
   }) {
@@ -46,11 +45,11 @@ export class ContainerWidth {
 
   get #innerBorders(): number {
     const border = new ShorthandCssProperties<Parts>({
-      top: this.#attributes.get("border-top"),
-      bottom: this.#attributes.get("border-bottom"),
-      left: this.#attributes.get("border-left"),
-      right: this.#attributes.get("border-right"),
-      full: this.#attributes.get("border"),
+      top: this.#attributes.get("border-top")?.toString(),
+      bottom: this.#attributes.get("border-bottom")?.toString(),
+      left: this.#attributes.get("border-left")?.toString(),
+      right: this.#attributes.get("border-right")?.toString(),
+      full: this.#attributes.get("border")?.toString(),
       name: "border",
     });
 

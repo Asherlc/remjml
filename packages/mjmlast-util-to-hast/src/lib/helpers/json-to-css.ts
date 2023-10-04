@@ -7,7 +7,9 @@ function jsonPropertyNameToCssPropertyName(jsonPropertyName: string): string {
   );
 }
 
-export type CssPropertiesWithWeirdEmail = Properties & {
+export type CssPropertiesWithWeirdEmail = Partial<
+  Record<keyof Properties, string | number | undefined>
+> & {
   msoPaddingAlt?: string;
   msoHide?: string;
   "-moz-user-select"?: string;

@@ -5,6 +5,7 @@ import type { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";
 import { Attributes } from "../helpers/Attributes";
+import type { Context } from "../types";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjText["attributes"],
@@ -25,11 +26,13 @@ export const DEFAULT_ATTRIBUTES: Pick<
   padding: "10px 25px",
 };
 
-export function mjText(node: MjText): HElement {
-  const attributes = new Attributes<MjText["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+export function mjText(node: MjText, context: Context): HElement {
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
 
   const hDiv: HElement = h(
     "div",

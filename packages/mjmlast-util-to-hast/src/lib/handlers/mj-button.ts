@@ -50,13 +50,10 @@ export const DEFAULT_ATTRIBUTES: Pick<
 };
 
 class AWidth {
-  #attributes: Attributes<MjButton["attributes"]>;
+  #attributes: Attributes;
   #containerWidth: Parts;
 
-  constructor(
-    attributes: Attributes<MjButton["attributes"]>,
-    containerWidth: Parts
-  ) {
+  constructor(attributes: Attributes, containerWidth: Parts) {
     this.#attributes = attributes;
     this.#containerWidth = containerWidth;
   }
@@ -67,7 +64,7 @@ class AWidth {
       bottom: undefined,
       right: undefined,
       left: undefined,
-      full: this.#attributes.get("inner-padding"),
+      full: this.#attributes.get("inner-padding")?.toString(),
       name: "padding",
     });
 
@@ -106,10 +103,12 @@ export function mjButton(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = new Attributes<MjButton["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
 
   if (!context.containerWidth) {
     throw new Error(`Context must have container width`);
@@ -158,7 +157,7 @@ export function mjButton(
               cursor: "auto",
               fontStyle: attributes.get("font-style"),
               height: attributes.get("height"),
-              msoPaddingAlt: attributes.get("inner-padding"),
+              msoPaddingAlt: attributes.get("inner-padding")?.toString(),
               textAlign: attributes.get("text-align"),
               background: attributes.get("background-color"),
             }),

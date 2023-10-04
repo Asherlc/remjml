@@ -24,9 +24,14 @@ export function mjImage(
     throw new Error(`No containerWidth`);
   }
 
-  const attributes = new Attributes(node.attributes || {}, DEFAULT_ATTRIBUTES);
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
 
-  const height: string | undefined = attributes.get("height");
+  const height: string | undefined = attributes.get("height")?.toString();
   const contentWidth: ContentWidth = new ContentWidth(
     units.parse(context.containerWidth),
     attributes.toHash()

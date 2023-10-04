@@ -1,7 +1,7 @@
 import type { Element as HElement, Root as HRoot } from "hast";
 import { remove } from "unist-util-remove";
 import { one } from "./traverse";
-import { defaultHandlers as defaultHandlers } from "./handlers/defaultHandlers";
+import { defaultHandlers } from "./handlers/defaultHandlers";
 import type {
   MjAttributes,
   MjBody,

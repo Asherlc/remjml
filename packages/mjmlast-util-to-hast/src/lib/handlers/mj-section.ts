@@ -44,21 +44,23 @@ function section(
   context: Context,
   children: RootContent[]
 ): HElement {
-  const attributes = new Attributes<MjSection["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
   const { containerWidth } = context;
   const background = new Background({
-    url: attributes.get("background-url"),
-    size: attributes.get("background-size"),
-    repeat: attributes.get("background-repeat"),
-    color: attributes.get("background-color"),
-    position: attributes.get("background-position"),
-    positionY: attributes.get("background-position-y"),
-    positionX: attributes.get("background-position-x"),
+    url: attributes.get("background-url")?.toString(),
+    size: attributes.get("background-size")?.toString(),
+    repeat: attributes.get("background-repeat")?.toString(),
+    color: attributes.get("background-color")?.toString(),
+    position: attributes.get("background-position")?.toString(),
+    positionY: attributes.get("background-position-y")?.toString(),
+    positionX: attributes.get("background-position-x")?.toString(),
   });
-  const fullWidth = isFullWidth(attributes.get("full-width"));
+  const fullWidth = isFullWidth(attributes.get("full-width")?.toString());
 
   return h(
     "div",
@@ -127,20 +129,26 @@ function section(
   );
 }
 
-function fullWidthWrapper(node: MjSection, children: HElement[]): HElement {
-  const attributes = new Attributes<MjSection["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
-  const fullWidth = isFullWidth(attributes.get("full-width"));
+function fullWidthWrapper(
+  node: MjSection,
+  context: Context,
+  children: HElement[]
+): HElement {
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
+  const fullWidth = isFullWidth(attributes.get("full-width")?.toString());
   const background = new Background({
-    url: attributes.get("background-url"),
-    size: attributes.get("background-size"),
-    repeat: attributes.get("background-repeat"),
-    color: attributes.get("background-color"),
-    position: attributes.get("background-position"),
-    positionY: attributes.get("background-position-y"),
-    positionX: attributes.get("background-position-x"),
+    url: attributes.get("background-url")?.toString(),
+    size: attributes.get("background-size")?.toString(),
+    repeat: attributes.get("background-repeat")?.toString(),
+    color: attributes.get("background-color")?.toString(),
+    position: attributes.get("background-position")?.toString(),
+    positionY: attributes.get("background-position-y")?.toString(),
+    positionX: attributes.get("background-position-x")?.toString(),
   });
 
   const tr = h("td", children);
@@ -171,11 +179,13 @@ export function mjSection(
   options: Options,
   context: Context
 ): HElement | HElement[] {
-  const attributes = new Attributes<MjSection["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
-  const fullWidth = isFullWidth(attributes.get("full-width"));
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
+  const fullWidth = isFullWidth(attributes.get("full-width")?.toString());
   const containerWidth: Parts | undefined = context.containerWidth
     ? units.parse(context.containerWidth)
     : undefined;
@@ -206,7 +216,7 @@ export function mjSection(
   const content = section(node, context, children);
 
   if (fullWidth) {
-    return fullWidthWrapper(node, [content]);
+    return fullWidthWrapper(node, context, [content]);
   }
 
   return content;

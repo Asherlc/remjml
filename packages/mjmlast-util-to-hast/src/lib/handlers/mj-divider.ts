@@ -32,7 +32,7 @@ export const DEFAULT_ATTRIBUTES: Pick<
 
 type DividerParent = MjColumn;
 
-function getMargin(alignAttribute: MjDividerAttributes["align"] | undefined) {
+function getMargin(alignAttribute: string | undefined) {
   if (alignAttribute === "left") {
     return "0px";
   } else if (alignAttribute === "right") {
@@ -44,15 +44,15 @@ function getMargin(alignAttribute: MjDividerAttributes["align"] | undefined) {
 
 function getOutlookWidth(
   containerWidth: Parts,
-  attributes: Attributes<MjDividerAttributes>
+  attributes: Attributes
 ): string {
   const padding = new ShorthandCssProperties<Parts>({
     name: "padding",
-    top: attributes.get("padding-top"),
-    bottom: attributes.get("padding-bottom"),
-    left: attributes.get("padding-left"),
-    right: attributes.get("padding-right"),
-    full: attributes.get("padding"),
+    top: attributes.get("padding-top")?.toString(),
+    bottom: attributes.get("padding-bottom")?.toString(),
+    left: attributes.get("padding-left")?.toString(),
+    right: attributes.get("padding-right")?.toString(),
+    full: attributes.get("padding")?.toString(),
   });
   const paddingSize = (padding.left?.value || 0) + (padding.right?.value || 0);
 
@@ -87,10 +87,12 @@ export function mjDivider(
     throw new Error(`Context must have container width`);
   }
 
-  const attributes = new Attributes<MjDividerAttributes>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
   const styles = {
     borderTop: ["style", "width", "color"]
       .map((attr) =>
@@ -98,7 +100,7 @@ export function mjDivider(
       )
       .join(" "),
     fontSize: "1px",
-    margin: getMargin(attributes.get("align")),
+    margin: getMargin(attributes.get("align")?.toString()),
     width: attributes.get("width"),
   };
 

@@ -2,13 +2,13 @@ import type { Parts } from "units-css";
 import units from "units-css";
 import { BoxWidth } from "../../helpers/BoxWidth";
 import { minBy } from "lodash-es";
-import type { MjImage } from "mjmlast";
+import type { BaseAttributes } from "mjmlast";
 
 export class ContentWidth {
   #containerWidth: Parts;
-  #attributes: MjImage["attributes"];
+  #attributes: BaseAttributes;
 
-  constructor(containerWidth: Parts, attributes: Record<string, string>) {
+  constructor(containerWidth: Parts, attributes: BaseAttributes) {
     this.#containerWidth = containerWidth;
     this.#attributes = attributes;
   }

@@ -24,6 +24,6 @@ export type Attributes = {
 };
 
 export interface MjText extends EndComponent, BodyComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   type: "mj-text";
 }

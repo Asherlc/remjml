@@ -38,6 +38,6 @@ export type Attributes = {
 };
 
 export interface MjButton extends BodyComponent, EndComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   type: "mj-button";
 }

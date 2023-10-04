@@ -31,12 +31,14 @@ export function mjGroup(
   options: Options,
   context: Context
 ): HElement | HElement[] {
-  const attributes = new Attributes<MjGroup["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
   const width = attributes.get("width");
-  const widthCssClass = new ColumnWidthCssClass(width, parent);
+  const widthCssClass = new ColumnWidthCssClass(width?.toString(), parent);
 
   const children: HRootContent[] = node.children.flatMap(
     (child: MjGroupChild): HRootContent | HRootContent[] => {

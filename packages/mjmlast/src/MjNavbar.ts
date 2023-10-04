@@ -29,7 +29,7 @@ export type Attributes = {
 };
 
 export interface MjNavbar extends ParentComponent, BodyComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   children: (MjNavbarLink | MjRaw)[];
   type: "mj-navbar";
 }

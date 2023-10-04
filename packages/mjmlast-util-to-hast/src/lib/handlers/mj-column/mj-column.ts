@@ -77,7 +77,12 @@ function column(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = new Attributes(node.attributes || {}, DEFAULT_ATTRIBUTES);
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
   const containerWidth = context.containerWidth
     ? new ColumnContainerWidth(context.containerWidth, parent, attributes)
     : null;
@@ -132,7 +137,7 @@ function column(
   );
 }
 
-function hasGutter(attributes: Attributes<MjColumn["attributes"]>): boolean {
+function hasGutter(attributes: Attributes): boolean {
   const gutterAttributes = new Set<keyof MjColumn["attributes"]>([
     "padding",
     "padding-bottom",
@@ -146,7 +151,7 @@ function hasGutter(attributes: Attributes<MjColumn["attributes"]>): boolean {
   );
 }
 
-function tableStyles(attributes: Attributes<MjColumn["attributes"]>) {
+function tableStyles(attributes: Attributes) {
   return {
     backgroundColor: attributes.get("background-color"),
     border: attributes.get("border"),
@@ -159,10 +164,7 @@ function tableStyles(attributes: Attributes<MjColumn["attributes"]>) {
   };
 }
 
-function gutter(
-  attributes: Attributes<MjColumn["attributes"]>,
-  hColumn: HElement
-): HElement {
+function gutter(attributes: Attributes, hColumn: HElement): HElement {
   const style = jsonToCss({
     padding: attributes.get("padding"),
     paddingTop: attributes.get("padding-top"),
@@ -191,13 +193,15 @@ export function mjColumn(
   options: Options,
   context: Context
 ): HElement {
-  const attributes = new Attributes<MjColumn["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES,
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
   const cssClass = attributes.get("css-class");
   const width = attributes.get("width");
-  const widthCssClass = new ColumnWidthCssClass(width, parent);
+  const widthCssClass = new ColumnWidthCssClass(width?.toString(), parent);
 
   // Add className to media queries
   if (context.mediaQueries) {
@@ -228,7 +232,7 @@ export function mjColumn(
         direction: attributes.get("direction"),
         display: "inline-block",
         verticalAlign: attributes.get("vertical-align"),
-        width: getMobileWidth(width, parent, context),
+        width: getMobileWidth(width?.toString(), parent, context),
       }),
     },
     columnWithGutter

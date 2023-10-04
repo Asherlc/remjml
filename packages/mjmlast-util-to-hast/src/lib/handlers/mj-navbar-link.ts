@@ -62,10 +62,12 @@ export function mjNavbarLink(
   _options: Options,
   context: MjNavbarContext
 ): HElement[] {
-  const attributes = new Attributes<MjNavbarLink["attributes"]>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES || {}
-  );
+  const attributes = new Attributes({
+    attributes: node.attributes || {},
+    defaultAttributes: DEFAULT_ATTRIBUTES || {},
+    mjClass: node.attributes["mj-class"],
+    mjClassesAttributes: context.mjClasses,
+  });
 
   const href = attributes.get("href");
 
@@ -91,7 +93,7 @@ export function mjNavbarLink(
     paddingBottom: attributes.get("padding-bottom"),
   };
 
-  const url = new Link(context.navbarBaseUrl, href).url.toString();
+  const url = new Link(context.navbarBaseUrl, href.toString()).url.toString();
 
   const anchorClassnames = classnames(`mj-link`, attributes.get("css-class"));
 

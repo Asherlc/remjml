@@ -133,7 +133,7 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td align="foo"
+                            <td align="center"
                                 vertical-align="middle"
                                 style="font-size:0px;padding:10px 25px;word-break:break-word"
                             >
@@ -443,7 +443,7 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td align="foo"
+                            <td align="center"
                                 style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                             >
                               <table border="0"
@@ -499,7 +499,7 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td align="foo"
+                            <td align="left"
                                 style="font-size:0px;padding:10px 25px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:45px;font-weight:bold;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
@@ -538,7 +538,7 @@ it("transforms mjml to html", async () => {
                       >
                         <tbody>
                           <tr>
-                            <td align="foo"
+                            <td align="left"
                                 style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
@@ -552,7 +552,7 @@ it("transforms mjml to html", async () => {
                             </td>
                           </tr>
                           <tr>
-                            <td align="foo"
+                            <td align="left"
                                 style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
@@ -564,7 +564,7 @@ it("transforms mjml to html", async () => {
                             </td>
                           </tr>
                           <tr>
-                            <td align="foo"
+                            <td align="left"
                                 vertical-align="middle"
                                 style="font-size:0px;padding:10px 25px;word-break:break-word"
                             >
@@ -592,7 +592,7 @@ it("transforms mjml to html", async () => {
                             </td>
                           </tr>
                           <tr>
-                            <td align="foo"
+                            <td align="left"
                                 style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                             >
                               <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">

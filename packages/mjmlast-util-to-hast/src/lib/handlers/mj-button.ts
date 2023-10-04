@@ -1,8 +1,8 @@
 import type { MjButton, MjButtonAttributes } from "mjmlast";
 import { h } from "hastscript";
-import type { Options} from "..";
+import type { Options } from "..";
 import { addPosition } from "..";
-import type { Element as HElement, Text as HText } from "hast";
+import type { Element as HElement, RootContent as HRootContent } from "hast";
 import { Attributes } from "../helpers/Attributes";
 import type { Context } from "../types";
 import { jsonToCss } from "../helpers/json-to-css";
@@ -10,12 +10,9 @@ import type { Property } from "csstype";
 import type { Parts } from "units-css";
 import units from "units-css";
 import { BoxWidth } from "../helpers/BoxWidth";
-import type {
-  PaddingValue} from "../helpers/ShorthandCssProperties";
-import {
-  ShorthandCssProperties,
-} from "../helpers/ShorthandCssProperties";
-import { text } from "./text";
+import type { PaddingValue } from "../helpers/ShorthandCssProperties";
+import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
+import { one } from "../traverse";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjButtonAttributes,
@@ -120,9 +117,12 @@ export function mjButton(
 
   const tag = attributes.get("href") ? "a" : "p";
 
-  const children: HText[] = node.children.map((textChild) => {
-    return text(textChild);
-  });
+  const children: (HRootContent | HRootContent[])[] = node.children.map(
+    (textChild) => {
+      const hChild = one(textChild, node, options, context);
+      return hChild;
+    }
+  );
 
   const tableNode = h(
     "table",

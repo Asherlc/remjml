@@ -1179,7 +1179,9 @@ p { display:block;margin:13px 0; }
                                     valign="middle"
                                 >
                                   <p style="display:inline-block;background:#ffffff;color:#ffffff;font-family:Times New Roman, Helvetica, Arial, sans-serif;font-size:18px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px">
-                                    undefined
+                                    <span style="color: #212020">
+                                      Shop Now
+                                    </span>
                                   </p>
                                 </td>
                               </tr>

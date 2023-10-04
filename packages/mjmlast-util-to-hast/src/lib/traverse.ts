@@ -1,28 +1,9 @@
 import type { RootContent as HRootContent } from "hast";
 import type { MjmlNode, Parent as MjmlParent } from "mjmlast";
-import { u } from "unist-builder";
 import type { Options } from ".";
 import type { Handler } from "./Handler";
-import { addPosition } from ".";
-import { h as hastH } from "hastscript";
 import type { Context } from "./types";
 import type { Node as UnistNode } from "unist";
-
-function unknown(
-  node: MjmlNode,
-  parent: MjmlParent | null,
-  options: Options,
-  context: Context
-) {
-  if ("value" in node && typeof node.value === "string") {
-    const value = node.value;
-
-    return addPosition(node, u("text", value));
-  }
-
-  const nodes = all(node, options, context);
-  return hastH("div", nodes);
-}
 
 export function one(
   node: UnistNode,
@@ -38,8 +19,8 @@ export function one(
   }
 
   const handler: Handler = (options.handlers?.[type] ||
-    options.unknownHandler ||
-    unknown) as Handler;
+    options.unknownHandler) as Handler;
+  console.log(type, handler);
 
   return handler(node, parent, options, context);
 }

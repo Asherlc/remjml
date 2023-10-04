@@ -126,7 +126,7 @@ p { display:block;margin:13px 0; }",
               "children": [
                 {
                   "type": "text",
-                  "value": ".mj-outlook-group-fix { width:100% !important; }",
+                  "value": ".mj-outlook-group-fix{ width:100% !important; }",
                 },
               ],
               "properties": {
@@ -349,15 +349,16 @@ p { display:block;margin:13px 0; }",
                                                             },
                                                           ],
                                                           "properties": {
-                                                            "style": "font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43",
+                                                            "style": "font-family:Helvetica;font-size:20px;text-align:center;color:#F45E43",
                                                           },
                                                           "tagName": "div",
                                                           "type": "element",
                                                         },
                                                       ],
                                                       "properties": {
-                                                        "align": "left",
-                                                        "style": "font-size:0px;padding:10px 25px;word-break:break-word",
+                                                        "align": "center",
+                                                        "style": "font-size:0px;word-break:break-word",
+                                                        "vertical-align": "middle",
                                                       },
                                                       "tagName": "td",
                                                       "type": "element",
@@ -486,7 +487,7 @@ img { border:0;height:auto;line-height:100%; outline:none;text-decoration:none;-
 p { display:block;margin:13px 0; }
     </style>
     <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-    <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+    <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix{ width:100% !important; }</style><![endif]-->
     <style type="text/css">
       @media only screen and (min-width:480px) {
       .mj-column-per-100 { width:100% !important; max-width: 100%; }
@@ -557,10 +558,11 @@ p { display:block;margin:13px 0; }
                         </td>
                       </tr>
                       <tr>
-                        <td align="left"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
+                        <td align="center"
+                            vertical-align="middle"
+                            style="font-size:0px;word-break:break-word"
                         >
-                          <div style="font-family:Helvetica;font-size:20px;letter-spacing:none;line-height:1;text-align:left;color:#F45E43">
+                          <div style="font-family:Helvetica;font-size:20px;text-align:center;color:#F45E43">
                             Hello World
                           </div>
                         </td>

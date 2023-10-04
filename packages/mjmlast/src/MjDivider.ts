@@ -1,7 +1,7 @@
 import type { BodyComponent } from "./BodyComponent";
 import type { Component } from "./Component";
 
-export type Attributes = {
+export type Attributes = Partial<{
   "border-color": string;
   "border-style": string;
   "border-width": string;
@@ -13,7 +13,7 @@ export type Attributes = {
   "padding-top": string;
   width: string;
   align: "left" | "right" | "center" | "justify";
-};
+}>;
 
 export interface MjDivider extends Component, BodyComponent {
   attributes: Attributes;

@@ -24,15 +24,6 @@ const mjmlAst: MjmlRoot = {
                 {
                   attributes: {
                     "border-color": "#F46E43",
-                    "border-style": "",
-                    "border-width": "",
-                    "container-background-color": "",
-                    padding: "",
-                    "padding-bottom": "",
-                    "padding-left": "",
-                    "padding-right": "",
-                    "padding-top": "",
-                    width: "",
                     align: "center",
                   },
                   type: "mj-divider",

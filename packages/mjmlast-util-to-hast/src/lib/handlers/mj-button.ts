@@ -1,7 +1,7 @@
 import type { MjButton } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "..";
-import { addPosition } from "..";
+import { addPosition } from "../addPosition";
 import type { Element as HElement, RootContent as HRootContent } from "hast";
 import { Attributes } from "../helpers/Attributes";
 import type { Context } from "../types";

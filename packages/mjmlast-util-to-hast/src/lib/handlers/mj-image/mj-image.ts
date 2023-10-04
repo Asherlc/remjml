@@ -4,7 +4,7 @@ import units from "units-css";
 import type { MjImage, MjHero, MjColumn } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "../..";
-import { addPosition } from "../..";
+import { addPosition } from "../../addPosition";
 import type { Context } from "../../types";
 import type { Element as HElement } from "hast";
 import { jsonToCss } from "../../helpers/json-to-css";

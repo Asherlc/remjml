@@ -1,6 +1,6 @@
 import type { Text } from "mjmlast";
 import { u } from "unist-builder";
-import { addPosition } from "..";
+import { addPosition } from "../addPosition";
 import type { Text as HText } from "hast";
 
 export const text = function (node: Text): HText {

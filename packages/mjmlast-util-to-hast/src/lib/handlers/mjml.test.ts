@@ -10,6 +10,7 @@ it("returns a hast", () => {
         mjHead: { type: "mj-head", children: [] },
         mediaQueries: {},
         navbarBaseUrl: undefined,
+        mjClasses: {},
       }
     )
   ).toMatchInlineSnapshot(`

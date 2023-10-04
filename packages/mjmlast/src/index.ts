@@ -1,6 +1,7 @@
 export * from "./type-checks";
 
 export { nodeTypes } from "./nodeTypes";
+export type { BaseAttributes } from "./BaseAttributes";
 export type { MjmlNode } from "./MjmlNode";
 export type { ParentComponent } from "./ParentComponent";
 export type { Text } from "./Text";

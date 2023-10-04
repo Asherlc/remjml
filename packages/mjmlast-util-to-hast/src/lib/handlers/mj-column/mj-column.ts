@@ -10,7 +10,7 @@ import { ColumnContainerWidth } from "./ColumnContainerWidth";
 import type { MjColumn, MjColumnChild } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "../..";
-import { addPosition } from "../..";
+import { addPosition } from "../../addPosition";
 import type { Context } from "../../types";
 import type { Element as HElement } from "hast";
 import classNames from "classnames";

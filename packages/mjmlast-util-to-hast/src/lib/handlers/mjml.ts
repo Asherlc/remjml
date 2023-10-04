@@ -2,7 +2,7 @@ import type { MjmlRoot } from "mjmlast";
 import { h } from "hastscript";
 import type { Element as HElement, Doctype as HDoctype } from "hast";
 import type { Options } from "..";
-import { addPosition } from "..";
+import { addPosition } from "../addPosition";
 import type { Context } from "../types";
 import { all } from "../traverse";
 import { head } from "../helpers/head";

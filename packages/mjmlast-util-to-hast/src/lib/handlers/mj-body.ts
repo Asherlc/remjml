@@ -1,7 +1,7 @@
 import type { MjBody, MjBodyAttributes } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "..";
-import { addPosition } from "..";
+import { addPosition } from "../addPosition";
 import type { Context } from "../types";
 import type { Element as HElement } from "hast";
 import { all } from "../traverse";

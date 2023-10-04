@@ -8,8 +8,10 @@ import { mjImage } from "./mj-image";
 import { mjText } from "./mj-text";
 import { mjButton } from "./mj-button";
 import { mjGroup } from "./mj-group/mj-group";
+import { text } from "./text";
+import { mjml } from "./mjml";
 
-export const handlers = {
+export const defaultHandlers = {
   text,
   "mj-body": mjBody,
   "mj-section": mjSection,

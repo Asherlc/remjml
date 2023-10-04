@@ -1,22 +1,18 @@
-import type {
-  ElementContent as HContent,
-  Element as HElement,
-  Root as HRoot,
-} from "hast";
+import type { Element as HElement, Root as HRoot } from "hast";
 import { remove } from "unist-util-remove";
-import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
-import { handlers as defaultHandlers } from "./handlers/handlers";
+import { defaultHandlers as defaultHandlers } from "./handlers/defaultHandlers";
 import type {
   MjAttributes,
   MjBody,
+  MjClass,
   MjHead,
   MjStyle,
   MjmlNode,
   MjmlRoot,
 } from "mjmlast";
 import { u } from "unist-builder";
-import type { Context, HastNode } from "./types";
+import type { Context, HastNode, MjClassesAttributes } from "./types";
 import { mediaQueries } from "./helpers/media-queries";
 import { select as uSelect, selectAll as uSelectAll } from "unist-util-select";
 import { select as hSelect } from "hast-util-select";
@@ -25,8 +21,7 @@ import { toString } from "mjmlast-util-to-string";
 import { h } from "hastscript";
 import { applyGlobalAttributes } from "./helpers/global-attributes";
 import type { Handler } from "./Handler";
-
-export type Handlers = Record<string, Handler>;
+import type { Handlers } from "./Handlers";
 
 export type Options = {
   allowDangerousHtml?: boolean;
@@ -35,27 +30,13 @@ export type Options = {
   handlers?: Handlers;
 };
 
-export function addPosition<Right extends HContent>(
-  left: MjmlNode | undefined | null,
-  right: Right
-): Right {
-  if (left && "position" in left) {
-    return {
-      ...right,
-      position: { start: pointStart(left), end: pointEnd(left) },
-    };
-  }
-
-  return right;
-}
-
 function findOrBuildMjHead(tree: MjmlNode): MjHead {
   const mjHead = uSelect("mj-head", tree) as MjHead | undefined;
 
   return mjHead || u("mj-head", { children: [] });
 }
 
-export function removeGlobalStyles(tree: MjmlNode): string {
+function removeGlobalStyles(tree: MjmlNode): string {
   const mjStyleElements = (uSelectAll("mj-style", tree) as MjStyle[]).filter(
     (node: MjStyle) => {
       if (!node.attributes?.inline) {
@@ -82,6 +63,7 @@ export function toHast(
   const inlineStyles = removeInlineStyles(tree);
   const globalStyles = removeGlobalStyles(tree);
   const mjHead = findOrBuildMjHead(tree);
+  const mjClasses = uSelectAll("mj-class", tree) as MjClass[];
   const mjmlDoc = uSelect("mjml", tree) as MjmlRoot | undefined;
   const mjAttributes = uSelect("mj-attributes", tree) as
     | MjAttributes
@@ -97,6 +79,20 @@ export function toHast(
     mjHead,
     navbarBaseUrl: undefined,
     mediaQueries: {},
+    mjClasses: mjClasses.reduce(
+      (
+        accumulator: MjClassesAttributes,
+        mjClass: MjClass
+      ): MjClassesAttributes => {
+        const { name, ...attributes } = mjClass.attributes;
+
+        return {
+          [name]: attributes,
+          ...accumulator,
+        };
+      },
+      {}
+    ),
   };
 
   const node = one(tree, null, { ...options, handlers }, context) as HElement[];
@@ -123,5 +119,3 @@ export function toHast(
 
   return hast;
 }
-
-export { handlers as defaultHandlers } from "./handlers";

@@ -19,6 +19,7 @@ it("transforms a mjmlast section to hast", () => {
       },
       mediaQueries: {},
       navbarBaseUrl: undefined,
+      mjClasses: {},
     }
   );
 

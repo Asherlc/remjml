@@ -1,6 +1,6 @@
 import type { MjText } from "mjmlast";
 import { h } from "hastscript";
-import { addPosition } from "..";
+import { addPosition } from "../addPosition";
 import type { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";

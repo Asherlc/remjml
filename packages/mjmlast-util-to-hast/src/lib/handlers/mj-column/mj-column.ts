@@ -103,7 +103,7 @@ function column(
       h(
         "td",
         {
-          align: "foo" || childAttributes.align,
+          align: childAttributes.align,
           "vertical-align": childAttributes["vertical-align"],
           class: childAttributes["css-class"],
           style: jsonToCss({

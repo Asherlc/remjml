@@ -1,5 +1,5 @@
 {
-  "files": ["src/index.ts", "./src/BodyComponent.ts", "./src/ParentComponent.ts", "./src/Component.ts", "./src/Text.ts", "./src/EndComponent.ts", "./src/EmptyAttributes.ts", "./src/MjPreview.ts", "./src/MjImage.ts", "./src/MjStyle.ts", "./src/MjHead.ts", "./src/MjTitle.ts", "./src/MjNavbarLink.ts", "./src/MjSocialElement.ts", "./src/MjSpacer.ts", "./src/MjTable.ts", "./src/componentTypes.ts", "./src/MjRaw.ts", "./src/MjSocial.ts", "./src/MjNavbar.ts", "./src/MjSelector.ts", "./src/MjHtmlAttributes.ts", "./src/MjFont.ts", "./src/MjBreakpoint.ts", "./src/MjDividerAttributes.ts", "./src/MjDivider.ts", "./src/MjCarouselImage.ts", "./src/MjCarousel.ts", "./src/MjBody.ts", "./src/MjAccordionText.ts", "./src/MjAccordionTitle.ts", "./src/MjAccordionElement.ts", "./src/MjAccordion.ts", "./src/MjButton.ts", "./src/MjText.ts", "./src/MjColumn.ts", "./src/MjGroup.ts", "./src/MjSection.ts", "./src/MjWrapper.ts", "./src/MjHero.ts", "./src/MjClass.ts", "./src/MjAll.ts", "./src/MjmlRoot.ts", "./src/MjAttributes.ts"],
+  "files": ["src/index.ts", "./src/nodeTypes.ts"],
   "include": ["src/**/*"],
   "exclude": ["dist/**/*"],
   "compilerOptions": {

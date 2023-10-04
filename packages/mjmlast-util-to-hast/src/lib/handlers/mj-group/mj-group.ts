@@ -1,22 +1,23 @@
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference
-/// <reference path="../../../../../types/units-css.d.ts" />
-import type { Parts } from "units-css";
-import units from "units-css";
+import { isMjRaw, isMjColumn } from "mjmlast";
 import type {
+  MjColumn,
   MjBody,
   MjGroup,
   MjGroupAttributes,
+  MjGroupChild,
   MjWrapper,
-  UniversalAttributes,
 } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "../..";
 import type { Context } from "../../types";
-import type { Element as HElement, RootContent } from "hast";
-import { all } from "../../traverse";
+import type { Element as HElement, RootContent as HRootContent } from "hast";
+import { one } from "../../traverse";
 import { Attributes } from "../../helpers/Attributes";
 import classNames from "classnames";
 import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
+import { ColumnWidthCssClass } from "../mj-column/ColumnWidthCssClass";
+import { jsonToCss } from "../../helpers/json-to-css";
+import { getDefaultAttributes } from "..";
 
 type GroupParent = MjBody | MjWrapper;
 
@@ -24,42 +25,69 @@ const DEFAULT_ATTRIBUTES: Pick<MjGroupAttributes, "direction"> = {
   direction: "ltr",
 };
 
-function group(
-  node: MjGroup,
-  context: Context,
-  children: RootContent[]
-): HElement {
-  const attributes = new Attributes<MjGroupAttributes & UniversalAttributes>(
-    node.attributes || {},
-    DEFAULT_ATTRIBUTES
-  );
-  const { containerWidth } = context;
-
-  return h("div", {
-    class: classNames(MJ_OUTLOOK_GROUP_FIX_CLASSNAME),
-  });
-}
-
 export function mjGroup(
   node: MjGroup,
-  parent: GroupParent | null,
+  parent: GroupParent,
   options: Options,
   context: Context
 ): HElement | HElement[] {
-  const attributes = new Attributes<MjGroupAttributes & UniversalAttributes>(
+  const attributes = new Attributes<MjGroup["attributes"]>(
     node.attributes || {},
     DEFAULT_ATTRIBUTES
   );
-  const containerWidth: Parts | undefined = context.containerWidth
-    ? units.parse(context.containerWidth)
-    : undefined;
+  const width = attributes.get("width");
+  const widthCssClass = new ColumnWidthCssClass(width, parent);
 
-  const children = all(node, options, {
-    ...context,
-    containerWidth: boxWidths?.box?.toString(),
-  });
+  const children: HRootContent[] = node.children.flatMap(
+    (child: MjGroupChild): HRootContent | HRootContent[] => {
+      if (isMjRaw(child)) {
+        return one(child, node, options, context);
+      }
 
-  const content = group(node, context, children);
+      if (!isMjColumn(child)) {
+        throw new Error(`mj-group can only accept raw or columns as children`);
+      }
 
-  return content;
+      const defaultChildAttributes = getDefaultAttributes(child.type);
+      const childAttributes: MjColumn["attributes"] = {
+        ...defaultChildAttributes,
+        ...(child.attributes || {}, { mobileWidth: "100%" }),
+      };
+      const childWithAttributes: MjColumn = {
+        ...child,
+        attributes: childAttributes,
+      };
+
+      const hChild: HRootContent | HRootContent[] = one(
+        childWithAttributes,
+        node,
+        options,
+        context
+      );
+
+      return hChild;
+    }
+  );
+
+  return h(
+    "div",
+    {
+      class: classNames(
+        MJ_OUTLOOK_GROUP_FIX_CLASSNAME,
+        widthCssClass.toString(),
+        attributes.get("css-class")
+      ),
+      style: jsonToCss({
+        fontSize: "0",
+        lineHeight: "0",
+        textAlign: "left",
+        display: "inline-block",
+        width: "100%",
+        direction: attributes.get("direction"),
+        verticalAlign: attributes.get("vertical-align"),
+        backgroundColor: attributes.get("background-color"),
+      }),
+    },
+    children
+  );
 }

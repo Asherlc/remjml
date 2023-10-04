@@ -3,7 +3,7 @@ import units from "units-css";
 import type { Node } from "unist";
 import { is } from "unist-util-is";
 import { whitespace } from "hast-util-whitespace";
-import type { Parent } from "mjmlast";
+import type { ParentComponent } from "mjmlast";
 import { isText } from "mjmlast";
 
 const PREFIX_PIXEL = "mj-column-px";
@@ -16,9 +16,12 @@ const UNIT_TO_PREFIX_MAP: Record<string, string> = {
 
 export class ColumnWidthCssClass {
   #widthAttributeValue?: string;
-  #parent: Parent;
+  #parent: ParentComponent;
 
-  constructor(widthAttributeValue: string | undefined, parent: Parent) {
+  constructor(
+    widthAttributeValue: string | undefined,
+    parent: ParentComponent
+  ) {
     this.#widthAttributeValue = widthAttributeValue;
     this.#parent = parent;
   }

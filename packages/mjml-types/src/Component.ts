@@ -1,7 +1,4 @@
-export type UniversalAttributes = Partial<{
-  "css-class": string;
-  "mj-class": string;
-}>;
+import type { UniversalAttributes } from "./UniversalAttributes";
 
 export interface Component {
   readonly tagName: string;

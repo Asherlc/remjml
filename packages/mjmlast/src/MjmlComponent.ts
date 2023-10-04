@@ -1,4 +1,3 @@
-import type { Text } from "./Text";
 import type { MjPreview } from "./MjPreview";
 import type { MjImage } from "./MjImage";
 import type { MjStyle } from "./MjStyle";
@@ -72,5 +71,3 @@ export type MjmlComponent =
   | MjTitle
   | MjSelector
   | MjmlRoot;
-
-export type MjmlNode = MjmlComponent | Text;

@@ -117,12 +117,10 @@ export function mjButton(
 
   const tag = attributes.get("href") ? "a" : "p";
 
-  const children: (HRootContent | HRootContent[])[] = node.children.map(
-    (textChild) => {
-      const hChild = one(textChild, node, options, context);
-      return hChild;
-    }
-  );
+  const children: HRootContent[] = node.children.flatMap((textChild) => {
+    const hChild = one(textChild, node, options, context);
+    return hChild;
+  });
 
   const tableNode = h(
     "table",

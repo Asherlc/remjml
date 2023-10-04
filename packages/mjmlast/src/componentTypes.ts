@@ -30,5 +30,3 @@ export const componentTypes = new Set([
   "mj-text",
   "mj-wrapper",
 ]);
-
-export const nodeTypes = new Set([...Array.from(componentTypes), "text"]);

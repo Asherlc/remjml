@@ -1,5 +1,5 @@
 import type { RootContent as HRootContent } from "hast";
-import type { MjmlNode, Parent as MjmlParent } from "mjmlast";
+import type { MjmlNode, ParentComponent as MjmlParent } from "mjmlast";
 import type { Options } from ".";
 import type { Handler } from "./Handler";
 import type { Context } from "./types";

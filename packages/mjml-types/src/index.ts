@@ -26,11 +26,13 @@ import type { MjText } from "./mj-text";
 import type { MjGroup } from "./mj-group";
 import type { MjWrapper } from "./mj-wrapper";
 import type { MjHero } from "./mj-hero";
-import { Mjml } from "./mjml";
+import type { Mjml } from "./mjml";
 import type { MjAccordion } from "./mj-accordion";
 import type { Component } from "./Component";
-import { ParentComponent, isParentComponent } from "./ParentComponent";
-import { EndComponent, isEndComponent } from "./EndComponent";
+import type { ParentComponent} from "./ParentComponent";
+import { isParentComponent } from "./ParentComponent";
+import type { EndComponent} from "./EndComponent";
+import { isEndComponent } from "./EndComponent";
 
 export type MjmlComponent =
   | MjColumn

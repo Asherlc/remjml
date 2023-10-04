@@ -35,6 +35,7 @@ export type Attributes = Partial<{
   padding: string;
   "vertical-align": "top" | "middle" | "bottom";
   width: string;
+  mobileWidth?: string;
 }>;
 
 export type Child =

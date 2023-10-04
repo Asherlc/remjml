@@ -21,6 +21,7 @@ import {
   mjButton,
   DEFAULT_ATTRIBUTES as MJ_BUTTON_DEFAULT_ATTRIBUTES,
 } from "./mj-button";
+import { mjGroup } from "./mj-group/mj-group";
 
 export const defaultAttributes = {
   "mj-text": MJ_TEXT_DEFAULT_ATTRIBUTES,
@@ -40,6 +41,7 @@ export const handlers = {
   "mj-navbar": mjNavbar,
   "mj-navbar-link": mjNavbarLink,
   "mj-button": mjButton,
+  "mj-group": mjGroup,
   mjml,
 } as const;
 

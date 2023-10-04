@@ -1,4 +1,4 @@
-import type { Text } from "./Text";
+import type { ParentComponent } from "./ParentComponent";
 import type { MjPreview } from "./MjPreview";
 import type { MjImage } from "./MjImage";
 import type { MjStyle } from "./MjStyle";
@@ -30,10 +30,8 @@ import type { MjWrapper } from "./MjWrapper";
 import type { MjHero } from "./MjHero";
 import type { MjClass } from "./MjClass";
 import type { MjAll } from "./MjAll";
-import type { MjmlRoot } from "./MjmlRoot";
-import type { MjAttributes } from "./MjAttributes";
 
-export type MjmlComponent =
+type Child =
   | MjClass
   | MjAll
   | MjColumn
@@ -45,7 +43,6 @@ export type MjmlComponent =
   | MjAccordionElement
   | MjAccordionTitle
   | MjAccordionText
-  | MjAttributes
   | MjBody
   | MjButton
   | MjCarousel
@@ -70,7 +67,10 @@ export type MjmlComponent =
   | MjPreview
   | MjStyle
   | MjTitle
-  | MjSelector
-  | MjmlRoot;
+  | MjSelector;
 
-export type MjmlNode = MjmlComponent | Text;
+export interface MjAttributes extends ParentComponent {
+  attributes: never;
+  children: Child[];
+  type: "mj-attributes";
+}

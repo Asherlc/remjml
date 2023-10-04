@@ -1,6 +1,8 @@
 import type { Node } from "unist";
-import type { MjClass, MjmlComponent, Text} from "./types";
-import { componentTypes } from "./types";
+import type { MjmlComponent } from "./types";
+import type { MjClass } from "./MjClass";
+import type { Text } from "./Text";
+import { componentTypes } from "./componentTypes";
 
 export function isComponent(node: Node): node is MjmlComponent {
   return componentTypes.has(node.type);

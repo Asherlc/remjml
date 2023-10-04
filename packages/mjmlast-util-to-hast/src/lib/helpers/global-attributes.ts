@@ -1,6 +1,6 @@
 import type { Node } from "unist";
-import type { MjAttributes, MjBody} from "mjmlast";
-import { isComponent, isMjClass } from "mjmlast";
+import type { MjAttributes, MjBody } from "mjmlast";
+import { isBodyComponent, isComponent, isMjClass } from "mjmlast";
 import { visit } from "unist-util-visit";
 import type { TestFunction } from "unist-util-is";
 import { omit } from "lodash-es";
@@ -11,9 +11,9 @@ function createTestFunction(mjAttributesChild: Node): TestFunction {
       return false;
     }
 
-    if (isMjClass(mjAttributesChild)) {
+    if (isBodyComponent(node) && isMjClass(mjAttributesChild)) {
       return (
-        node.attributes?.["mj-class"] === mjAttributesChild?.attributes?.name
+        node.attributes["mj-class"] === mjAttributesChild?.attributes?.name
       );
     }
 

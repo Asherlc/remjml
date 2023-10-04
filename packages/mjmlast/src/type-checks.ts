@@ -5,6 +5,7 @@ import type { Text } from "./Text";
 import { componentTypes } from "./componentTypes";
 import type { MjRaw } from "./MjRaw";
 import type { MjColumn } from "./MjColumn";
+import type { BodyComponent } from "./BodyComponent";
 
 export function isComponent(node: Node): node is MjmlComponent {
   return componentTypes.has(node.type);
@@ -23,5 +24,9 @@ export function isMjRaw(node: Node): node is MjRaw {
 }
 
 export function isMjColumn(node: Node): node is MjColumn {
+  return node.type === "mj-column";
+}
+
+export function isBodyComponent(node: Node): node is BodyComponent {
   return node.type === "mj-column";
 }

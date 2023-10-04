@@ -10,7 +10,7 @@ import remjmlParse from "remjml-parse";
 import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
 
-async function mjmlToBase64UrlForFixtureName(emailFixtureName) {
+async function mjmlToBase64UrlForFixtureName(emailFixtureName: string) {
   const emailFixtureDirectoryPath: string = path.resolve(
     "./tests/fixtures/mjml-emails/"
   );

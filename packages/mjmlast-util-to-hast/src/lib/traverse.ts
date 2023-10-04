@@ -1,9 +1,14 @@
 import type { RootContent as HRootContent } from "hast";
-import type { MjmlNode, ParentComponent as MjmlParent } from "mjmlast";
+import {
+  isText,
+  type MjmlNode,
+  type ParentComponent as MjmlParent,
+} from "mjmlast";
 import type { Options } from ".";
 import type { Handler } from "./Handler";
 import type { Context } from "./types";
 import type { Node as UnistNode } from "unist";
+import { isElement } from "hast-util-is-element";
 
 export function one(
   node: UnistNode,
@@ -18,10 +23,18 @@ export function one(
     throw new Error("Expected node, got `" + node + "`");
   }
 
-  const handler: Handler = (options.handlers?.[type] ||
-    options.unknownHandler) as Handler;
+  const handler: Handler | undefined =
+    options.handlers?.[type] || options.unknownHandler;
 
-  return handler(node, parent, options, context);
+  if (handler) {
+    return handler(node, parent, options, context);
+  }
+
+  if (isElement(node) || isText(node)) {
+    return node;
+  }
+
+  throw new Error(`Cannot process node type ${node.type}`);
 }
 
 export function all(

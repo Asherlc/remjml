@@ -1,5 +1,5 @@
 import { toHtml } from "hast-util-to-html";
-import type { MjmlRoot, MjSection } from "mjmlast";
+import type { MjAttributes, MjmlRoot, MjSection } from "mjmlast";
 import { toHast } from ".";
 
 const mjmlAst: MjmlRoot = {
@@ -71,10 +71,66 @@ const mjmlAst: MjmlRoot = {
   type: "mjml",
 };
 
+const mjAttributes: MjAttributes = {
+  type: "mj-attributes",
+  children: [
+    {
+      type: "mj-class",
+      attributes: {
+        name: "foo",
+        align: "up",
+      },
+    },
+  ],
+};
+const mjmlAstWithMjClass: MjmlRoot = {
+  attributes: {},
+  children: [
+    {
+      attributes: {},
+      children: [
+        {
+          attributes: {},
+          children: [
+            {
+              attributes: {},
+              children: [
+                {
+                  attributes: {
+                    "mj-class": "foo",
+                  },
+                  type: "mj-text",
+                  children: [],
+                },
+              ],
+              type: "mj-column",
+            },
+          ],
+          type: "mj-section",
+        },
+      ],
+      type: "mj-body",
+    },
+    {
+      type: "mj-head",
+      children: [mjAttributes],
+    },
+  ],
+  type: "mjml",
+};
+
 it("converts to mjmlast to hast", () => {
   const hast = toHast(mjmlAst);
 
   expect(hast).toMatchSnapshot();
+});
+
+describe("with mj-classes", () => {
+  fit("converts mjmlast to hast", () => {
+    const hast = toHast(mjmlAstWithMjClass);
+
+    expect(hast).toMatchSnapshot();
+  });
 });
 
 it("returns a hast that can `hast-util-from-html` can stringify", () => {

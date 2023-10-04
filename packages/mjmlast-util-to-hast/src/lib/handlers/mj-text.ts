@@ -1,4 +1,4 @@
-import type { MjText } from "mjmlast";
+import type { MjText, ParentComponent } from "mjmlast";
 import { h } from "hastscript";
 import { addPosition } from "../addPosition";
 import type { Element as HElement } from "hast";
@@ -6,6 +6,7 @@ import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";
 import { Attributes } from "../helpers/Attributes";
 import type { Context } from "../types";
+import type { Options } from "..";
 
 export const DEFAULT_ATTRIBUTES: Pick<
   MjText["attributes"],
@@ -26,7 +27,12 @@ export const DEFAULT_ATTRIBUTES: Pick<
   padding: "10px 25px",
 };
 
-export function mjText(node: MjText, context: Context): HElement {
+export function mjText(
+  node: MjText,
+  _parent: ParentComponent,
+  _options: Options,
+  context: Context
+): HElement {
   const attributes = new Attributes({
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,

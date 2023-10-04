@@ -1,7 +1,7 @@
 import type { BodyComponent } from "./BodyComponent";
 import type { EndComponent } from "./EndComponent";
 
-export type Attributes = {
+export type Attributes = Partial<{
   align: "left" | "right" | "center" | "justify" | "justify";
   "background-color": string;
   color: string;
@@ -21,7 +21,7 @@ export type Attributes = {
   "text-decoration": string;
   "text-transform": string;
   "vertical-align": "top" | "bottom" | "middle";
-};
+}>;
 
 export interface MjText extends EndComponent, BodyComponent {
   attributes: Attributes & BodyComponent["attributes"];

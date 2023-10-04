@@ -68,7 +68,6 @@ type Child =
   | MjSelector;
 
 export interface MjAttributes extends ParentComponent {
-  attributes: never;
   children: Child[];
   type: "mj-attributes";
 }

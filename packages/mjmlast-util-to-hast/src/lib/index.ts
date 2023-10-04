@@ -60,10 +60,10 @@ export function toHast(
     ...defaultHandlers,
     ...(options?.handlers || {}),
   };
+  const mjClasses = uSelectAll("mj-class", tree) as MjClass[];
   const inlineStyles = removeInlineStyles(tree);
   const globalStyles = removeGlobalStyles(tree);
   const mjHead = findOrBuildMjHead(tree);
-  const mjClasses = uSelectAll("mj-class", tree) as MjClass[];
   const mjmlDoc = uSelect("mjml", tree) as MjmlRoot | undefined;
   const mjAttributes = uSelect("mj-attributes", tree) as
     | MjAttributes

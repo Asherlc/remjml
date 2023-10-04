@@ -1,21 +1,13 @@
 {
+  "extends": ["../../tsconfig.base.json"],
   "files": ["./src/index.ts"],
   "exclude": ["src/**/*.test.ts"],
-  "compilerOptions": {
-    "composite": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "target": "es2021",
-    "lib": ["es2021", "DOM"],
-    "module": "ES2020",
-    "moduleResolution": "Node",
-    "strict": true,
-    "noImplicitOverride": true,
-    "allowSyntheticDefaultImports": true
-  },
   "references": [
     {
       "path": "../mjmlast"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "outDir": "./dist"
+  }
 }

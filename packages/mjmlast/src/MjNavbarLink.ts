@@ -24,7 +24,7 @@ export type Attributes = {
 };
 
 export interface MjNavbarLink extends BodyComponent, EndComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   children: Text[];
   type: "mj-navbar-link";
 }

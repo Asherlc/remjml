@@ -1,12 +1,8 @@
-import type {
-  MjNavbarLink,
-  MjNavbarLinkAttributes,
-  UniversalAttributes,
-} from "mjmlast";
+import type { MjNavbarLink, MjNavbarLinkAttributes } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "..";
 import type { Element as HElement, Text as HText } from "hast";
-import type { CssPropertiesWithWeirdEmail} from "../helpers/json-to-css";
+import type { CssPropertiesWithWeirdEmail } from "../helpers/json-to-css";
 import { jsonToCss } from "../helpers/json-to-css";
 import { Attributes } from "../helpers/Attributes";
 import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
@@ -66,9 +62,10 @@ export function mjNavbarLink(
   options: Options,
   context: MjNavbarContext
 ): HElement[] {
-  const attributes = new Attributes<
-    Partial<MjNavbarLinkAttributes & UniversalAttributes>
-  >(node.attributes || {}, DEFAULT_ATTRIBUTES || {});
+  const attributes = new Attributes<MjNavbarLink["attributes"]>(
+    node.attributes || {},
+    DEFAULT_ATTRIBUTES || {}
+  );
 
   const href = attributes.get("href");
 

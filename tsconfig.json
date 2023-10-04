@@ -1,7 +1,9 @@
 {
+  "compilerOptions": {
+      "noEmit": true,
+  },
   "extends": "./tsconfig.base.json",
   "exclude": ["**/node_modules", "**/dist"],
-  "include": ["scripts/**/*"],
   "references": [
     {
       "path": "./packages/mjml-types"

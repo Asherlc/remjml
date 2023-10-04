@@ -2,13 +2,13 @@
 /// <reference path="../../../../../types/units-css.d.ts" />
 import type { Parts } from "units-css";
 import units from "units-css";
-import type { MjColumnAttributes } from "mjmlast";
 import { BoxWidth } from "./BoxWidth";
 import { ShorthandCssProperties } from "./ShorthandCssProperties";
 import type { Attributes } from "./Attributes";
+import { MjColumn } from "mjmlast";
 
 export class ContainerWidth {
-  #attributes: Attributes<MjColumnAttributes>;
+  #attributes: Attributes<MjColumn["attributes"]>;
   #parentWidth: Parts;
   #nonRawSiblingsCount: number;
 
@@ -17,7 +17,7 @@ export class ContainerWidth {
     parentWidth,
     nonRawSiblingCount: nonRawSiblingsCount,
   }: {
-    attributes: Attributes<MjColumnAttributes>;
+    attributes: Attributes<MjColumn["attributes"]>;
     parentWidth: Parts;
     nonRawSiblingCount: number;
   }) {

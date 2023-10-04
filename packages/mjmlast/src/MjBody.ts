@@ -11,7 +11,7 @@ export type Attributes = Partial<{
 }>;
 
 export interface MjBody extends ParentComponent, BodyComponent {
-  attributes: Attributes;
+  attributes: Attributes & BodyComponent["attributes"];
   type: "mj-body";
   /* eslint-disable-next-line no-use-before-define */
   children: (MjRaw | MjSection | MjWrapper | MjHero)[];

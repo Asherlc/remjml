@@ -15,6 +15,7 @@ it("computes the correct width based on a set width", () => {
     {
       type: "mj-column",
       children: [],
+      attributes: {},
     },
     {},
     {

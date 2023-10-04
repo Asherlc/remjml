@@ -2,7 +2,6 @@ import type { ParentComponent } from "./ParentComponent";
 import type { MjPreview } from "./MjPreview";
 import type { MjImage } from "./MjImage";
 import type { MjStyle } from "./MjStyle";
-import type { MjHead } from "./MjHead";
 import type { MjTitle } from "./MjTitle";
 import type { MjNavbarLink } from "./MjNavbarLink";
 import type { MjSocialElement } from "./MjSocialElement";
@@ -62,7 +61,6 @@ type Child =
   | MjTable
   | MjText
   | MjWrapper
-  | MjHead
   | MjHtmlAttributes
   | MjPreview
   | MjStyle

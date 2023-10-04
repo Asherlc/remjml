@@ -1,6 +1,6 @@
 import units from "units-css";
 import type { Attributes } from "../../helpers/Attributes";
-import type { MjColumnAttributes, MjGroup, MjSection } from "mjmlast";
+import type { MjColumn, MjGroup, MjSection } from "mjmlast";
 import { ContainerWidth } from "../../helpers/ContainerWidth";
 import type { Node } from "unist";
 import { is } from "unist-util-is";
@@ -10,12 +10,12 @@ type ColumnParent = MjGroup | MjSection;
 export class ColumnContainerWidth {
   #parentWidth: string;
   #parent: ColumnParent;
-  #attributes: Attributes<MjColumnAttributes>;
+  #attributes: Attributes<MjColumn["attributes"]>;
 
   constructor(
     parentWidth: string,
     parent: ColumnParent,
-    attributes: Attributes<MjColumnAttributes>
+    attributes: Attributes<MjColumn["attributes"]>
   ) {
     this.#parentWidth = parentWidth;
     this.#parent = parent;

@@ -7,7 +7,7 @@ import { generateMediaQuery } from "../../helpers/generate-media-query";
 import { jsonToCss } from "../../helpers/json-to-css";
 import type { ColumnParent } from "./types";
 import { ColumnContainerWidth } from "./ColumnContainerWidth";
-import type { MjColumn, MjColumnAttributes, MjColumnChild } from "mjmlast";
+import type { MjColumn, MjColumnChild } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "../..";
 import { addPosition } from "../..";
@@ -20,7 +20,7 @@ import { Attributes } from "../../helpers/Attributes";
 import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
 
 const DEFAULT_ATTRIBUTES: Pick<
-  MjColumnAttributes,
+  MjColumn["attributes"],
   "direction" | "vertical-align"
 > = {
   direction: "ltr",
@@ -132,8 +132,8 @@ function column(
   );
 }
 
-function hasGutter(attributes: Attributes<MjColumnAttributes>): boolean {
-  const gutterAttributes = new Set<keyof MjColumnAttributes>([
+function hasGutter(attributes: Attributes<MjColumn["attributes"]>): boolean {
+  const gutterAttributes = new Set<keyof MjColumn["attributes"]>([
     "padding",
     "padding-bottom",
     "padding-left",
@@ -146,7 +146,7 @@ function hasGutter(attributes: Attributes<MjColumnAttributes>): boolean {
   );
 }
 
-function tableStyles(attributes: Attributes<MjColumnAttributes>) {
+function tableStyles(attributes: Attributes<MjColumn["attributes"]>) {
   return {
     backgroundColor: attributes.get("background-color"),
     border: attributes.get("border"),
@@ -160,7 +160,7 @@ function tableStyles(attributes: Attributes<MjColumnAttributes>) {
 }
 
 function gutter(
-  attributes: Attributes<MjColumnAttributes>,
+  attributes: Attributes<MjColumn["attributes"]>,
   hColumn: HElement
 ): HElement {
   const style = jsonToCss({

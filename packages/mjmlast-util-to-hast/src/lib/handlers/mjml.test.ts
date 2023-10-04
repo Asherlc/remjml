@@ -3,7 +3,7 @@ import { mjml } from "./mjml";
 it("returns a hast", () => {
   expect(
     mjml(
-      { type: "mjml", children: [] },
+      { type: "mjml", children: [], attributes: {} },
       undefined,
       {},
       {

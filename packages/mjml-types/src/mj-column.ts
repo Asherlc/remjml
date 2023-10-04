@@ -12,7 +12,7 @@ import type { MjText } from "./mj-text";
 import type { MjButton } from "./mj-button";
 import type { MjAccordion } from "./mj-accordion";
 
-export type MjColumnAttributes = Partial<{
+export type Attributes = Partial<{
   "background-color": string;
   border: string;
   "border-bottom": string;
@@ -52,6 +52,6 @@ export type MjColumnChild =
 
 export interface MjColumn extends BodyComponent, ParentComponent {
   children: MjColumnChild[];
-  attributes: MjColumnAttributes;
+  attributes: Attributes & BodyComponent["attributes"];
   tagName: "mj-column";
 }

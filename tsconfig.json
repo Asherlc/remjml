@@ -3,7 +3,6 @@
       "noEmit": true,
   },
   "extends": "./tsconfig.base.json",
-  "exclude": ["**/node_modules", "**/dist"],
   "references": [
     {
       "path": "./packages/mjml-types"

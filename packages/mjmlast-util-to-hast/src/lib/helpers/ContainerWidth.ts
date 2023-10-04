@@ -5,7 +5,7 @@ import units from "units-css";
 import { BoxWidth } from "./BoxWidth";
 import { ShorthandCssProperties } from "./ShorthandCssProperties";
 import type { Attributes } from "./Attributes";
-import { MjColumn } from "mjmlast";
+import type { MjColumn } from "mjmlast";
 
 export class ContainerWidth {
   #attributes: Attributes<MjColumn["attributes"]>;

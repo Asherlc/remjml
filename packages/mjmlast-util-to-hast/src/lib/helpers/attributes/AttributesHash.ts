@@ -9,26 +9,10 @@ export class AttributesHash {
   }
 
   get hasPadding(): boolean {
-    return Boolean(
-      this.attributes.padding ||
-        this.attributes["padding-left"] ||
-        this.attributes["padding-right"] ||
-        this.attributes["padding-bottom"] ||
-        this.attributes["padding-top"] ||
-        this.attributes.padding
-    );
+    return Boolean(this.attributes.padding || this.attributes.padding);
   }
 
   get withoutPadding(): AttributesHash {
-    return new AttributesHash(
-      omit(
-        this.attributes,
-        "padding-left",
-        "padding-right",
-        "padding-top",
-        "padding-bottom",
-        "padding"
-      )
-    );
+    return new AttributesHash(omit(this.attributes, "padding"));
   }
 }

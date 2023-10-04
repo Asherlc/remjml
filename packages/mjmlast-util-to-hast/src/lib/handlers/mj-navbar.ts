@@ -5,7 +5,7 @@ import type { Context } from "../types";
 import type { Element as HElement } from "hast";
 import { all } from "../traverse";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Attributes } from "../helpers/Attributes";
+import { Attributes } from "../helpers/attributes/Attributes";
 import {
   conditionalComment,
   MSO_OR_IE,

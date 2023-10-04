@@ -12,7 +12,7 @@ import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";
 import { BoxWidth } from "../helpers/BoxWidth";
 import { Background } from "../helpers/Background";
-import { Attributes } from "../helpers/Attributes";
+import { Attributes } from "../helpers/attributes/Attributes";
 
 type SectionParent = MjBody | MjWrapper;
 

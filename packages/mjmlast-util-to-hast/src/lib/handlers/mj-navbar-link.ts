@@ -4,7 +4,7 @@ import type { Options } from "..";
 import type { Element as HElement, Text as HText } from "hast";
 import type { CssPropertiesWithWeirdEmail } from "../helpers/json-to-css";
 import { jsonToCss } from "../helpers/json-to-css";
-import { Attributes } from "../helpers/Attributes";
+import { Attributes } from "../helpers/attributes/Attributes";
 import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
 import classnames from "classnames";
 import type { MjNavbarContext } from "./mj-navbar";

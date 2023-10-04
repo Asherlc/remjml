@@ -10,7 +10,7 @@ import type { Element as HElement } from "hast";
 import { jsonToCss } from "../../helpers/json-to-css";
 import { DEFAULT_ATTRIBUTES } from "./default-attributes";
 import { ContentWidth } from "./ContentWidth";
-import { Attributes } from "../../helpers/Attributes";
+import { Attributes } from "../../helpers/attributes/Attributes";
 
 type ImageParent = MjHero | MjColumn;
 

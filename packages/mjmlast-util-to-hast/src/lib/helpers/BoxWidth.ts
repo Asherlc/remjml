@@ -1,12 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference path="../../../../../types/units-css.d.ts" />
 import type { Parts } from "units-css";
-import type {
-  BorderValue,
-  PaddingValue} from "./ShorthandCssProperties";
-import {
-  ShorthandCssProperties,
-} from "./ShorthandCssProperties";
+import type { BorderValue, PaddingValue } from "./shorthandCss/types";
+import { ShorthandCssProperties } from "./shorthandCss/ShorthandCssProperties";
 
 type BorderAttributes = {
   "border-top"?: string;

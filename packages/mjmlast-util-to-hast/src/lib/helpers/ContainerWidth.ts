@@ -3,8 +3,8 @@
 import type { Parts } from "units-css";
 import units from "units-css";
 import { BoxWidth } from "./BoxWidth";
-import { ShorthandCssProperties } from "./ShorthandCssProperties";
-import type { Attributes } from "./Attributes";
+import { ShorthandCssProperties } from "./shorthandCss/ShorthandCssProperties";
+import type { Attributes } from "./attributes/Attributes";
 
 export class ContainerWidth {
   #attributes: Attributes;

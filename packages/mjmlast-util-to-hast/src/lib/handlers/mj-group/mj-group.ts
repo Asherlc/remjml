@@ -12,7 +12,7 @@ import type { Options } from "../..";
 import type { Context } from "../../types";
 import type { Element as HElement, RootContent as HRootContent } from "hast";
 import { one } from "../../traverse";
-import { Attributes } from "../../helpers/Attributes";
+import { Attributes } from "../../helpers/attributes/Attributes";
 import classNames from "classnames";
 import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
 import { ColumnWidthCssClass } from "../mj-column/ColumnWidthCssClass";

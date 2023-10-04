@@ -1,5 +1,5 @@
 import type { MjSection } from "mjmlast";
-import { Attributes } from "../../helpers/Attributes";
+import { Attributes } from "../../helpers/attributes/Attributes";
 import { ColumnContainerWidth } from "./ColumnContainerWidth";
 import type { Node } from "unist";
 

@@ -3,15 +3,15 @@ import { h } from "hastscript";
 import type { Options } from "..";
 import { addPosition } from "../addPosition";
 import type { Element as HElement, RootContent as HRootContent } from "hast";
-import { Attributes } from "../helpers/Attributes";
+import { Attributes } from "../helpers/attributes/Attributes";
 import type { Context } from "../types";
 import { jsonToCss } from "../helpers/json-to-css";
 import type { Property } from "csstype";
 import type { Parts } from "units-css";
 import units from "units-css";
 import { BoxWidth } from "../helpers/BoxWidth";
-import type { PaddingValue } from "../helpers/ShorthandCssProperties";
-import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
+import type { PaddingValue } from "../helpers/shorthandCss/types";
+import { ShorthandCssProperties } from "../helpers/shorthandCss/ShorthandCssProperties";
 import { one } from "../traverse";
 
 export const DEFAULT_ATTRIBUTES: Pick<

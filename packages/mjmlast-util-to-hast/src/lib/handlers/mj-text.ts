@@ -3,8 +3,7 @@ import { h } from "hastscript";
 import { addPosition } from "../addPosition";
 import type { Element as HElement } from "hast";
 import { jsonToCss } from "../helpers/json-to-css";
-import type { Property } from "csstype";
-import { Attributes } from "../helpers/Attributes";
+import { Attributes } from "../helpers/attributes/Attributes";
 import type { Context } from "../types";
 import type { Options } from "..";
 
@@ -52,9 +51,7 @@ export function mjText(
         lineHeight: attributes.get("line-height"),
         textAlign: attributes.get("align"),
         textDecoration: attributes.get("text-decoration"),
-        textTransform: attributes.get(
-          "text-transform"
-        ) as Property.TextTransform,
+        textTransform: attributes.get("text-transform"),
         color: attributes.get("color"),
         height: attributes.get("height"),
       }),

@@ -9,8 +9,8 @@ import type { Options } from "..";
 import type { Context } from "../types";
 import type { Element as HElement } from "hast";
 import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
-import { Attributes } from "../helpers/Attributes";
-import { ShorthandCssProperties } from "../helpers/ShorthandCssProperties";
+import { Attributes } from "../helpers/attributes/Attributes";
+import { ShorthandCssProperties } from "../helpers/shorthandCss/ShorthandCssProperties";
 import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
 
 export const DEFAULT_ATTRIBUTES: Pick<

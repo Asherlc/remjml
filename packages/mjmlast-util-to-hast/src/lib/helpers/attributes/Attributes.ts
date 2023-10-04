@@ -1,11 +1,12 @@
 import { pick } from "lodash-es";
-import type { MjClassesAttributes } from "../types";
+import type { MjClassesAttributes } from "../../types";
 import type { BaseAttributes } from "mjmlast";
+import { AttributesHash } from "./AttributesHash";
 
 export class Attributes {
   #mjClass: string | undefined;
-  #attributes: BaseAttributes;
-  #defaultAttributes: BaseAttributes;
+  #attributes: AttributesHash;
+  #defaultAttributes: AttributesHash;
   #globalMjClassesAttributes: MjClassesAttributes;
 
   constructor({
@@ -19,8 +20,8 @@ export class Attributes {
     mjClassesAttributes: MjClassesAttributes;
     mjClass: string | undefined;
   }) {
-    this.#attributes = attributes;
-    this.#defaultAttributes = defaultAttributes;
+    this.#attributes = new AttributesHash(attributes);
+    this.#defaultAttributes = new AttributesHash(defaultAttributes);
     this.#globalMjClassesAttributes = mjClassesAttributes;
     this.#mjClass = mjClass;
   }
@@ -44,12 +45,14 @@ export class Attributes {
     );
   }
 
-  toHash() {
+  toHash(): BaseAttributes {
     return {
       // The order is critical!
-      ...this.#defaultAttributes,
+      ...(this.#attributes.hasPadding
+        ? this.#defaultAttributes.withoutPadding.attributes
+        : this.#defaultAttributes.attributes),
       ...this.#attributesFromMjClassesAttributes,
-      ...this.#attributes,
+      ...this.#attributes.attributes,
     };
   }
 

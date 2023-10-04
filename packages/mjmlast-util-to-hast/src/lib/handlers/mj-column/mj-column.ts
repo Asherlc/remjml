@@ -16,7 +16,7 @@ import type { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../../traverse";
 import { getDefaultAttributes } from "../getDefaultAttributes";
-import { Attributes } from "../../helpers/Attributes";
+import { Attributes } from "../../helpers/attributes/Attributes";
 import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
 
 const DEFAULT_ATTRIBUTES: Pick<
@@ -58,7 +58,7 @@ function getMobileWidth(
   return `${parsedWidth / parseInt(context.containerWidth, 10)}%`;
 }
 
-type MjColumnChildAttributes = Partial<{
+type MjColumnChildTdWrapperAttributes = Partial<{
   "container-background-color": string;
   align: "left" | "right" | "center" | "justify";
   "vertical-align": "top" | "middle" | "bottom";
@@ -88,12 +88,14 @@ function column(
     : null;
 
   const children = node.children.map((child: MjColumnChild) => {
-    const defaultChildAttributes: MjColumnChildAttributes =
+    const defaultChildAttributes: MjColumnChildTdWrapperAttributes =
       getDefaultAttributes(child.type);
-    const childAttributes: MjColumnChildAttributes = {
-      ...defaultChildAttributes,
-      ...(child.attributes || {}),
-    };
+    const childTdWrapperAttributes: Attributes = new Attributes({
+      defaultAttributes: defaultChildAttributes,
+      attributes: child.attributes || {},
+      mjClassesAttributes: {},
+      mjClass: undefined,
+    });
 
     const hChild = one(child, node, options, {
       ...context,
@@ -104,17 +106,19 @@ function column(
       h(
         "td",
         {
-          align: childAttributes.align,
-          "vertical-align": childAttributes["vertical-align"],
-          class: childAttributes["css-class"],
+          align: childTdWrapperAttributes.get("align"),
+          "vertical-align": childTdWrapperAttributes.get("vertical-align"),
+          class: childTdWrapperAttributes.get("css-class"),
           style: jsonToCss({
-            background: childAttributes["container-background-color"],
+            background: childTdWrapperAttributes.get(
+              "container-background-color"
+            ),
             fontSize: "0px",
-            padding: childAttributes.padding,
-            paddingTop: childAttributes["padding-top"],
-            paddingRight: childAttributes["padding-right"],
-            paddingBottom: childAttributes["padding-bottom"],
-            paddingLeft: childAttributes["padding-left"],
+            padding: childTdWrapperAttributes.get("padding"),
+            paddingTop: childTdWrapperAttributes.get("padding-top"),
+            paddingRight: childTdWrapperAttributes.get("padding-right"),
+            paddingBottom: childTdWrapperAttributes.get("padding-bottom"),
+            paddingLeft: childTdWrapperAttributes.get("padding-left"),
             wordBreak: "break-word",
           }),
         },

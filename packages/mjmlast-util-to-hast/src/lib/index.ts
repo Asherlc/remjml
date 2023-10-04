@@ -6,7 +6,7 @@ import type {
 import { remove } from "unist-util-remove";
 import { pointStart, pointEnd } from "unist-util-position";
 import { one } from "./traverse";
-import { handlers as defaultHandlers } from "./handlers";
+import { handlers as defaultHandlers } from "./handlers/handlers";
 import type {
   MjAttributes,
   MjBody,

@@ -15,7 +15,7 @@ import type { Context } from "../../types";
 import type { Element as HElement } from "hast";
 import classNames from "classnames";
 import { one } from "../../traverse";
-import { getDefaultAttributes } from "..";
+import { getDefaultAttributes } from "../getDefaultAttributes";
 import { Attributes } from "../../helpers/Attributes";
 import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
 

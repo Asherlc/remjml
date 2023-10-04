@@ -17,7 +17,7 @@ import classNames from "classnames";
 import { MJ_OUTLOOK_GROUP_FIX_CLASSNAME } from "../../helpers/head";
 import { ColumnWidthCssClass } from "../mj-column/ColumnWidthCssClass";
 import { jsonToCss } from "../../helpers/json-to-css";
-import { getDefaultAttributes } from "..";
+import { getDefaultAttributes } from "../getDefaultAttributes";
 
 type GroupParent = MjBody | MjWrapper;
 

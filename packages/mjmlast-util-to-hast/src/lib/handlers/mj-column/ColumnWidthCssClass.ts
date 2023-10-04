@@ -2,8 +2,8 @@ import type { Parts } from "units-css";
 import units from "units-css";
 import type { Node } from "unist";
 import { is } from "unist-util-is";
-import type { ColumnParent } from "./types";
 import { whitespace } from "hast-util-whitespace";
+import type { Parent } from "mjmlast";
 import { isText } from "mjmlast";
 
 const PREFIX_PIXEL = "mj-column-px";
@@ -16,9 +16,9 @@ const UNIT_TO_PREFIX_MAP: Record<string, string> = {
 
 export class ColumnWidthCssClass {
   #widthAttributeValue?: string;
-  #parent: ColumnParent;
+  #parent: Parent;
 
-  constructor(widthAttributeValue: string | undefined, parent: ColumnParent) {
+  constructor(widthAttributeValue: string | undefined, parent: Parent) {
     this.#widthAttributeValue = widthAttributeValue;
     this.#parent = parent;
   }

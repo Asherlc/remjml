@@ -7,12 +7,7 @@ import { generateMediaQuery } from "../../helpers/generate-media-query";
 import { jsonToCss } from "../../helpers/json-to-css";
 import type { ColumnParent } from "./types";
 import { ColumnContainerWidth } from "./ColumnContainerWidth";
-import type {
-  MjColumn,
-  MjColumnAttributes,
-  MjColumnChild,
-  MjmlNode,
-} from "mjmlast";
+import type { MjColumn, MjColumnAttributes, MjColumnChild } from "mjmlast";
 import { h } from "hastscript";
 import type { Options } from "../..";
 import { addPosition } from "../..";
@@ -95,7 +90,7 @@ function column(
       ...(child.attributes || {}),
     };
 
-    const hChild = one(child as MjmlNode, node, options, {
+    const hChild = one(child, node, options, {
       ...context,
       containerWidth: containerWidth?.toString(),
     });

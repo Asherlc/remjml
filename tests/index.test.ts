@@ -96,7 +96,7 @@ it("transforms mjml to html", async () => {
     p { display:block;margin:13px 0; }
         </style>
         <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix{ width:100% !important; }</style><![endif]-->
         <style type="text/css">
           @media only screen and (min-width:480px) {
           .mj-column-per-100 { width:100% !important; max-width: 100%; }
@@ -406,7 +406,7 @@ it("transforms mjml to html", async () => {
     p { display:block;margin:13px 0; }
         </style>
         <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix{ width:100% !important; }</style><![endif]-->
         <style type="text/css">
           @media only screen and (min-width:480px) {
           .mj-column-per-100 { width:100% !important; max-width: 100%; }

@@ -1,8 +1,8 @@
 export * from "./type-checks";
 
 export { nodeTypes } from "./nodeTypes";
-export { MjmlNode } from "./MjmlNode";
-export { ParentComponent } from "./ParentComponent";
+export type { MjmlNode } from "./MjmlNode";
+export type { ParentComponent } from "./ParentComponent";
 export type { Text } from "./Text";
 export type { MjPreview } from "./MjPreview";
 export type { MjImage } from "./MjImage";

@@ -3,3 +3,4 @@ node_modules
 **/*/tsconfig.ref.tsbuildinfo
 tmp
 packages/**/tsconfig.tsbuildinfo
+tsconfig.ref.tsbuildinfo

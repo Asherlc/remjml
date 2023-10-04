@@ -121,7 +121,7 @@ it("returns a HAST", () => {
           "children": [
             {
               "type": "text",
-              "value": ".mj-outlook-group-fix { width:100% !important; }",
+              "value": ".mj-outlook-group-fix{ width:100% !important; }",
             },
           ],
           "properties": {
@@ -170,7 +170,7 @@ it("serializes to HTML", () => {
     p { display:block;margin:13px 0; }
       </style>
       <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-      <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+      <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix{ width:100% !important; }</style><![endif]-->
     </head>
   `);
 });
@@ -213,7 +213,7 @@ describe("when the tree has an mjml navbar", () => {
       p { display:block;margin:13px 0; }
         </style>
         <!--[if mso]><noscript><xml><o:officedocumentsettings><o:allowpng></o:allowpng><o:pixelsperinch>96</o:pixelsperinch></o:officedocumentsettings></xml></noscript><![endif]-->
-        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix { width:100% !important; }</style><![endif]-->
+        <!--[if lte mso 11]><style type="text/css">.mj-outlook-group-fix{ width:100% !important; }</style><![endif]-->
         <style type="text/css">
           noinput.mj-menu-checkbox { display:block!important; max-height:none!important; visibility:visible!important; }
                 @media only screen and (max-width:479px) {

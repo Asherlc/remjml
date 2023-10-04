@@ -137,7 +137,7 @@ it("returns a hast", () => {
                 "children": [
                   {
                     "type": "text",
-                    "value": ".mj-outlook-group-fix { width:100% !important; }",
+                    "value": ".mj-outlook-group-fix{ width:100% !important; }",
                   },
                 ],
                 "properties": {

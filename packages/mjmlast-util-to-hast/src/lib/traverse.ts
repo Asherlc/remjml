@@ -20,7 +20,6 @@ export function one(
 
   const handler: Handler = (options.handlers?.[type] ||
     options.unknownHandler) as Handler;
-  console.log(type, handler);
 
   return handler(node, parent, options, context);
 }

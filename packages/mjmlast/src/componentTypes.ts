@@ -1,4 +1,5 @@
 export const componentTypes = new Set([
+  "mj-all",
   "mj-class",
   "mj-attributes",
   "mj-breakpoint",

@@ -126,7 +126,7 @@ it("converts to mjmlast to hast", () => {
 });
 
 describe("with mj-classes", () => {
-  fit("converts mjmlast to hast", () => {
+  it("converts mjmlast to hast", () => {
     const hast = toHast(mjmlAstWithMjClass);
 
     expect(hast).toMatchSnapshot();

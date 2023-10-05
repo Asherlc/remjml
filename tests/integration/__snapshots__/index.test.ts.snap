@@ -2485,7 +2485,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:20px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:0px;padding-bottom:20px;padding-top:20px;text-align:center">
                 <div class="mj-outlook-group-fix mj-column-per-100"
                      style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr"
                 >
@@ -2496,22 +2496,35 @@ p { display:block;margin:13px 0; }
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="vertical-align:top"
                            width="100%"
                     >
                       <tbody>
                         <tr>
-                          <td align="left"
-                              style="font-size:0px;padding:0 20px;word-break:break-word"
-                          >
-                            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
-                              <a href="https://mjml.io"
-                                 style="text-decoration:none;
+                          <td style="padding:0px;vertical-align:top">
+                            <table border="0"
+                                   cellpadding="0"
+                                   cellspacing="0"
+                                   role="presentation"
+                                   style="vertical-align:top"
+                                   width="100%"
+                            >
+                              <tbody>
+                                <tr>
+                                  <td align="left"
+                                      style="font-size:0px;padding:0 20px;word-break:break-word"
+                                  >
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
+                                      <a href="https://mjml.io"
+                                         style="text-decoration:none;
 color:inherit;"
-                              >
-                                [[HEADLINE]]
-                              </a>
-                            </div>
+                                      >
+                                        [[HEADLINE]]
+                                      </a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </td>
                         </tr>
                       </tbody>
@@ -2524,22 +2537,35 @@ color:inherit;"
                            cellpadding="0"
                            cellspacing="0"
                            role="presentation"
-                           style="vertical-align:top"
                            width="100%"
                     >
                       <tbody>
                         <tr>
-                          <td align="right"
-                              style="font-size:0px;padding:0 20px;word-break:break-word"
-                          >
-                            <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
-                              <a href="https://mjml.io"
-                                 style="text-decoration:none;
+                          <td style="padding:0px;vertical-align:top">
+                            <table border="0"
+                                   cellpadding="0"
+                                   cellspacing="0"
+                                   role="presentation"
+                                   style="vertical-align:top"
+                                   width="100%"
+                            >
+                              <tbody>
+                                <tr>
+                                  <td align="right"
+                                      style="font-size:0px;padding:0 20px;word-break:break-word"
+                                  >
+                                    <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
+                                      <a href="https://mjml.io"
+                                         style="text-decoration:none;
 color:inherit;"
-                              >
-                                [[PERMALINK_LABEL]]
-                              </a>
-                            </div>
+                                      >
+                                        [[PERMALINK_LABEL]]
+                                      </a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </td>
                         </tr>
                       </tbody>
@@ -2563,7 +2589,7 @@ color:inherit;"
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:0px;text-align:center">
                 <div class="mj-column-per-100 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -2571,30 +2597,43 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 0;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:105px">
-                                  <image alt="Worldly logo"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x0j.png"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 0;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                  </image>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:105px">
+                                          <image alt="Worldly logo"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x0j.png"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -2629,42 +2668,51 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td style="font-size:0px;word-break:break-word">
-                          <!--[if !mso | IE]><input type="checkbox" id="mj-navbar-hamburger-input-2" class="mj-menu-checkbox" style="display:none !important;visibility:hidden"><![endif]-->
-                          <div class="mj-menu-trigger"
-                               style="display:none;max-height:0px;max-width:0px;font-size:0px;overflow:hidden"
+                        <td style="padding:0px;vertical-align:top">
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
-                            <label for="mj-navbar-hamburger-input-2"
-                                   class="mj-menu-label"
-                                   style="display:block;cursor:pointer;mso-hide:all;-moz-user-select:none;user-select:none;color:#444;font-size:30px;font-family:Ubuntu, Helvetica, Arial, sans-serif;text-transform:uppercase;text-decoration:none;line-height:30px;padding:10px"
-                                   align="center"
-                            >
-                              <span class="mj-menu-icon-open"
-                                    style="mso-hide:all"
-                              >
-                                &#x26;#9776;
-                              </span>
-                              <span class="mj-menu-icon-close"
-                                    style="display:none;mso-hide:all"
-                              >
-                                &#x26;#8855;
-                              </span>
-                            </label>
-                          </div>
-                          <div class="mj-inline-links"
-                               style="align:center;width:100%"
-                          >
-                            <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center"><tr><![endif]-->
-                            <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
-                            <a class="mj-link"
-                               href="https://mjml.io/https://mjml.io"
-                               target="_blank"
-                               style="display:inline-block;
+                            <tbody>
+                              <tr>
+                                <td style="font-size:0px;padding:0px;word-break:break-word">
+                                  <!--[if !mso | IE]><input type="checkbox" id="mj-navbar-hamburger-input-2" class="mj-menu-checkbox" style="display:none !important;visibility:hidden"><![endif]-->
+                                  <div class="mj-menu-trigger"
+                                       style="display:none;max-height:0px;max-width:0px;font-size:0px;overflow:hidden"
+                                  >
+                                    <label for="mj-navbar-hamburger-input-2"
+                                           class="mj-menu-label"
+                                           style="display:block;cursor:pointer;mso-hide:all;-moz-user-select:none;user-select:none;color:#444;font-size:30px;font-family:Ubuntu, Helvetica, Arial, sans-serif;text-transform:uppercase;text-decoration:none;line-height:30px;padding:10px"
+                                           align="center"
+                                    >
+                                      <span class="mj-menu-icon-open"
+                                            style="mso-hide:all"
+                                      >
+                                        &#x26;#9776;
+                                      </span>
+                                      <span class="mj-menu-icon-close"
+                                            style="display:none;mso-hide:all"
+                                      >
+                                        &#x26;#8855;
+                                      </span>
+                                    </label>
+                                  </div>
+                                  <div class="mj-inline-links"
+                                       style="align:center;width:100%"
+                                  >
+                                    <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center"><tr><![endif]-->
+                                    <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
+                                    <a class="mj-link"
+                                       href="https://mjml.io/https://mjml.io"
+                                       target="_blank"
+                                       style="display:inline-block;
 color:#000000;
 font-family:Ubuntu, Helvetica, Arial, sans-serif;
 font-size:12px;
@@ -2673,16 +2721,16 @@ line-height:22px;
 text-decoration:none;
 text-transform:uppercase;
 padding:0 35px;"
-                               value
-                            >
-                              home
-                            </a>
-                            <!--[if mso | IE]></td><![endif]-->
-                            <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
-                            <a class="mj-link"
-                               href="https://mjml.io/https://mjml.io"
-                               target="_blank"
-                               style="display:inline-block;
+                                       value
+                                    >
+                                      home
+                                    </a>
+                                    <!--[if mso | IE]></td><![endif]-->
+                                    <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
+                                    <a class="mj-link"
+                                       href="https://mjml.io/https://mjml.io"
+                                       target="_blank"
+                                       style="display:inline-block;
 color:#000000;
 font-family:Ubuntu, Helvetica, Arial, sans-serif;
 font-size:12px;
@@ -2691,16 +2739,16 @@ line-height:22px;
 text-decoration:none;
 text-transform:uppercase;
 padding:0 35px;"
-                               value
-                            >
-                              Summer deals
-                            </a>
-                            <!--[if mso | IE]></td><![endif]-->
-                            <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
-                            <a class="mj-link"
-                               href="https://mjml.io/https://mjml.io"
-                               target="_blank"
-                               style="display:inline-block;
+                                       value
+                                    >
+                                      Summer deals
+                                    </a>
+                                    <!--[if mso | IE]></td><![endif]-->
+                                    <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
+                                    <a class="mj-link"
+                                       href="https://mjml.io/https://mjml.io"
+                                       target="_blank"
+                                       style="display:inline-block;
 color:#000000;
 font-family:Ubuntu, Helvetica, Arial, sans-serif;
 font-size:12px;
@@ -2709,16 +2757,16 @@ line-height:22px;
 text-decoration:none;
 text-transform:uppercase;
 padding:0 35px;"
-                               value
-                            >
-                              Our blog
-                            </a>
-                            <!--[if mso | IE]></td><![endif]-->
-                            <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
-                            <a class="mj-link"
-                               href="https://mjml.io/https://mjml.io"
-                               target="_blank"
-                               style="display:inline-block;
+                                       value
+                                    >
+                                      Our blog
+                                    </a>
+                                    <!--[if mso | IE]></td><![endif]-->
+                                    <!--[if mso | IE]><td style="padding:0 35px" class="undefined-outlook"><![endif]-->
+                                    <a class="mj-link"
+                                       href="https://mjml.io/https://mjml.io"
+                                       target="_blank"
+                                       style="display:inline-block;
 color:#000000;
 font-family:Ubuntu, Helvetica, Arial, sans-serif;
 font-size:12px;
@@ -2727,13 +2775,17 @@ line-height:22px;
 text-decoration:none;
 text-transform:uppercase;
 padding:0 35px;"
-                               value
-                            >
-                              Follow us
-                            </a>
-                            <!--[if mso | IE]></td><![endif]-->
-                            <!--[if mso | IE]></tr></table><![endif]-->
-                          </div>
+                                       value
+                                    >
+                                      Follow us
+                                    </a>
+                                    <!--[if mso | IE]></td><![endif]-->
+                                    <!--[if mso | IE]></tr></table><![endif]-->
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>
@@ -2763,19 +2815,32 @@ padding:0 35px;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
-                            ARE YOU
-                            <br>
-                            SEASCAPE?
-                          </div>
+                        <td style="padding:0px;vertical-align:top">
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="vertical-align:top"
+                                 width="100%"
+                          >
+                            <tbody>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:10px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
+                                    ARE YOU
+                                    <br>
+                                    SEASCAPE?
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>
@@ -2788,19 +2853,32 @@ padding:0 35px;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:bottom"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;padding-top:180px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
-                            OR
-                            <br>
-                            CITYSCAPE?
-                          </div>
+                        <td style="padding:0px;vertical-align:bottom">
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="vertical-align:bottom"
+                                 width="100%"
+                          >
+                            <tbody>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0px;padding-top:180px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
+                                    OR
+                                    <br>
+                                    CITYSCAPE?
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>
@@ -2831,68 +2909,77 @@ padding:0 35px;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
-                            <p>
-                              SUNNIEST DESTINATIONS
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
-                          >
-                            <tbody>
-                              <tr>
-                                <td style="width:240px">
-                                  <image alt="Maldives, Corse : -15%"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x2w.jpg"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
-                                  >
-                                  </image>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            vertical-align="middle"
-                            style="font-size:0px;padding:20px 25px;word-break:break-word"
-                        >
-                          <table border="0"
-                                 cellpadding="0"
-                                 cellspacing="0"
-                                 role="presentation"
-                                 style="border-collapse:separate;line-height:100%"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
                                 <td align="center"
-                                    bgcolor="#bd8714"
-                                    role="presentation"
-                                    style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#bd8714"
-                                    valign="middle"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
                                 >
-                                  <a href="https://mjml.io"
-                                     style="display:inline-block;
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
+                                    <p>
+                                      SUNNIEST DESTINATIONS
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:240px">
+                                          <image alt="Maldives, Corse : -15%"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x2w.jpg"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    vertical-align="middle"
+                                    style="font-size:0px;padding:20px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:separate;line-height:100%"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td align="center"
+                                            bgcolor="#bd8714"
+                                            role="presentation"
+                                            style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#bd8714"
+                                            valign="middle"
+                                        >
+                                          <a href="https://mjml.io"
+                                             style="display:inline-block;
 background:#bd8714;
 color:#FFFFFF;
 font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
@@ -2905,63 +2992,63 @@ text-transform:none;
 padding:10px 25px;
 mso-padding-alt:0px;
 border-radius:3px;"
-                                     target="_blank"
-                                  >
-                                    BOOK NOW
-                                  </a>
+                                             target="_blank"
+                                          >
+                                            BOOK NOW
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
-                          <table border="0"
-                                 cellpadding="0"
-                                 cellspacing="0"
-                                 role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
-                          >
-                            <tbody>
-                              <tr>
-                                <td style="width:240px">
-                                  <image alt="Tahiti, Bora Bora : -10 %"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x2x.jpg"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
-                                  >
-                                  </image>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            vertical-align="middle"
-                            style="font-size:0px;padding:20px 25px;word-break:break-word"
-                        >
-                          <table border="0"
-                                 cellpadding="0"
-                                 cellspacing="0"
-                                 role="presentation"
-                                 style="border-collapse:separate;line-height:100%"
-                          >
-                            <tbody>
                               <tr>
                                 <td align="center"
-                                    bgcolor="#bd8714"
-                                    role="presentation"
-                                    style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#bd8714"
-                                    valign="middle"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
                                 >
-                                  <a href="https://mjml.io"
-                                     style="display:inline-block;
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:240px">
+                                          <image alt="Tahiti, Bora Bora : -10 %"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x2x.jpg"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    vertical-align="middle"
+                                    style="font-size:0px;padding:20px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:separate;line-height:100%"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td align="center"
+                                            bgcolor="#bd8714"
+                                            role="presentation"
+                                            style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#bd8714"
+                                            valign="middle"
+                                        >
+                                          <a href="https://mjml.io"
+                                             style="display:inline-block;
 background:#bd8714;
 color:#FFFFFF;
 font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
@@ -2974,10 +3061,14 @@ text-transform:none;
 padding:10px 25px;
 mso-padding-alt:0px;
 border-radius:3px;"
-                                     target="_blank"
-                                  >
-                                    BOOK NOW
-                                  </a>
+                                             target="_blank"
+                                          >
+                                            BOOK NOW
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -2994,68 +3085,77 @@ border-radius:3px;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
-                            <p>
-                              CHEAP CITY TOUR
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
-                          >
-                            <tbody>
-                              <tr>
-                                <td style="width:240px">
-                                  <image alt="Stockholm, Rome : from 162 € / day"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x20.jpg"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
-                                  >
-                                  </image>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            vertical-align="middle"
-                            style="font-size:0px;padding:20px 25px;word-break:break-word"
-                        >
-                          <table border="0"
-                                 cellpadding="0"
-                                 cellspacing="0"
-                                 role="presentation"
-                                 style="border-collapse:separate;line-height:100%"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
                                 <td align="center"
-                                    bgcolor="#48b6bf"
-                                    role="presentation"
-                                    style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#48b6bf"
-                                    valign="middle"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
                                 >
-                                  <a href="https://mjml.io"
-                                     style="display:inline-block;
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#BD8714">
+                                    <p>
+                                      CHEAP CITY TOUR
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:240px">
+                                          <image alt="Stockholm, Rome : from 162 € / day"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x20.jpg"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    vertical-align="middle"
+                                    style="font-size:0px;padding:20px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:separate;line-height:100%"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td align="center"
+                                            bgcolor="#48b6bf"
+                                            role="presentation"
+                                            style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#48b6bf"
+                                            valign="middle"
+                                        >
+                                          <a href="https://mjml.io"
+                                             style="display:inline-block;
 background:#48b6bf;
 color:#FFFFFF;
 font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
@@ -3068,63 +3168,63 @@ text-transform:none;
 padding:10px 25px;
 mso-padding-alt:0px;
 border-radius:3px;"
-                                     target="_blank"
-                                  >
-                                    BOOK NOW
-                                  </a>
+                                             target="_blank"
+                                          >
+                                            BOOK NOW
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
-                          <table border="0"
-                                 cellpadding="0"
-                                 cellspacing="0"
-                                 role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
-                          >
-                            <tbody>
-                              <tr>
-                                <td style="width:240px">
-                                  <image alt="New York, London : -30 %"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x2s.jpg"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
-                                  >
-                                  </image>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            vertical-align="middle"
-                            style="font-size:0px;padding:20px 25px;word-break:break-word"
-                        >
-                          <table border="0"
-                                 cellpadding="0"
-                                 cellspacing="0"
-                                 role="presentation"
-                                 style="border-collapse:separate;line-height:100%"
-                          >
-                            <tbody>
                               <tr>
                                 <td align="center"
-                                    bgcolor="#48b6bf"
-                                    role="presentation"
-                                    style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#48b6bf"
-                                    valign="middle"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
                                 >
-                                  <a href="https://mjml.io"
-                                     style="display:inline-block;
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:240px">
+                                          <image alt="New York, London : -30 %"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x2s.jpg"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    vertical-align="middle"
+                                    style="font-size:0px;padding:20px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:separate;line-height:100%"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td align="center"
+                                            bgcolor="#48b6bf"
+                                            role="presentation"
+                                            style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#48b6bf"
+                                            valign="middle"
+                                        >
+                                          <a href="https://mjml.io"
+                                             style="display:inline-block;
 background:#48b6bf;
 color:#FFFFFF;
 font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
@@ -3137,10 +3237,14 @@ text-transform:none;
 padding:10px 25px;
 mso-padding-alt:0px;
 border-radius:3px;"
-                                     target="_blank"
-                                  >
-                                    BOOK NOW
-                                  </a>
+                                             target="_blank"
+                                          >
+                                            BOOK NOW
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -3173,36 +3277,49 @@ border-radius:3px;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:0 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:250px">
-                                  <a href="https://mjml.io"
-                                     target="_blank"
-                                     style="text-decoration:none;
-color:inherit;"
+                                <td align="center"
+                                    style="font-size:0px;padding:0 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                    <image alt="NEW : Donwload your city guide"
-                                           height="auto"
-                                           src="http://191n.mj.am/img/191n/3s/x21.jpg"
-                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                           width="100%"
-                                    >
-                                    </image>
-                                  </a>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:250px">
+                                          <a href="https://mjml.io"
+                                             target="_blank"
+                                             style="text-decoration:none;
+color:inherit;"
+                                          >
+                                            <image alt="NEW : Donwload your city guide"
+                                                   height="auto"
+                                                   src="http://191n.mj.am/img/191n/3s/x21.jpg"
+                                                   style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                   width="100%"
+                                            >
+                                            </image>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -3219,47 +3336,60 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:0 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000000">
-                            <p>
-                              RATE YOUR STAY !
-                            </p>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:131px">
-                                  <a href="https://mjml.io"
-                                     target="_blank"
-                                     style="text-decoration:none;
-color:inherit;"
+                                <td align="center"
+                                    style="font-size:0px;padding:0 25px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:bold;letter-spacing:none;line-height:1;text-align:center;color:#000000">
+                                    <p>
+                                      RATE YOUR STAY !
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                    <image alt="Book rate"
-                                           height="auto"
-                                           src="http://191n.mj.am/img/191n/3s/x2l.png"
-                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                           width="100%"
-                                    >
-                                    </image>
-                                  </a>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:131px">
+                                          <a href="https://mjml.io"
+                                             target="_blank"
+                                             style="text-decoration:none;
+color:inherit;"
+                                          >
+                                            <image alt="Book rate"
+                                                   height="auto"
+                                                   src="http://191n.mj.am/img/191n/3s/x2l.png"
+                                                   style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                   width="100%"
+                                            >
+                                            </image>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -3284,7 +3414,7 @@ color:inherit;"
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:0px;text-align:center">
                 <div class="mj-column-per-33 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -3292,45 +3422,58 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:30px">
-                                  <image alt="Best companies for your flights"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x09.png"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                  </image>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:30px">
+                                          <image alt="Best companies for your flights"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x09.png"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0 25px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
+                                    <p>
+                                      BEST COMPANIES FOR YOUR FLIGHTS
+                                    </p>
+                                  </div>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:0 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
-                            <p>
-                              BEST COMPANIES FOR YOUR FLIGHTS
-                            </p>
-                          </div>
                         </td>
                       </tr>
                     </tbody>
@@ -3343,45 +3486,58 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:29px">
-                                  <image alt="Insurances included"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/xsw.png"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                  </image>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:29px">
+                                          <image alt="Insurances included"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/xsw.png"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0 25px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
+                                    <p>
+                                      INSURANCES INCLUDED
+                                    </p>
+                                  </div>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:0 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
-                            <p>
-                              INSURANCES INCLUDED
-                            </p>
-                          </div>
                         </td>
                       </tr>
                     </tbody>
@@ -3394,45 +3550,58 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:31px">
-                                  <image alt="Hotels best selection"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/xsx.png"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                  </image>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:31px">
+                                          <image alt="Hotels best selection"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/xsx.png"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0 25px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
+                                    <p>
+                                      HOTELS BEST SELECTION
+                                    </p>
+                                  </div>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:0 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:center;color:#ffffff">
-                            <p>
-                              HOTELS BEST SELECTION
-                            </p>
-                          </div>
                         </td>
                       </tr>
                     </tbody>
@@ -3453,7 +3622,7 @@ color:inherit;"
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:0px;text-align:center">
                 <div class="mj-column-per-33-33333333333333 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -3461,30 +3630,43 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:97px">
-                                  <image alt="Call us : 0 800 123 456"
-                                         height="auto"
-                                         src="http://191n.mj.am/img/191n/3s/x1l.png"
-                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                         width="100%"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                  </image>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:97px">
+                                          <image alt="Call us : 0 800 123 456"
+                                                 height="auto"
+                                                 src="http://191n.mj.am/img/191n/3s/x1l.png"
+                                                 style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                 width="100%"
+                                          >
+                                          </image>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -3501,36 +3683,49 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:117px">
-                                  <a href="https://mjml.io"
-                                     target="_blank"
-                                     style="text-decoration:none;
-color:inherit;"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                    <image alt="Meet us : find an agency"
-                                           height="auto"
-                                           src="http://191n.mj.am/img/191n/3s/x1m.png"
-                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                           width="100%"
-                                    >
-                                    </image>
-                                  </a>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:117px">
+                                          <a href="https://mjml.io"
+                                             target="_blank"
+                                             style="text-decoration:none;
+color:inherit;"
+                                          >
+                                            <image alt="Meet us : find an agency"
+                                                   height="auto"
+                                                   src="http://191n.mj.am/img/191n/3s/x1m.png"
+                                                   style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                   width="100%"
+                                            >
+                                            </image>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -3547,36 +3742,49 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
+                        <td style="padding:0px;vertical-align:top">
                           <table border="0"
                                  cellpadding="0"
                                  cellspacing="0"
                                  role="presentation"
-                                 style="border-collapse:collapse;border-spacing:0px"
+                                 style="vertical-align:top"
+                                 width="100%"
                           >
                             <tbody>
                               <tr>
-                                <td style="width:110px">
-                                  <a href="https://mjml.io"
-                                     target="_blank"
-                                     style="text-decoration:none;
-color:inherit;"
+                                <td align="center"
+                                    style="font-size:0px;padding:10px 25px;word-break:break-word"
+                                >
+                                  <table border="0"
+                                         cellpadding="0"
+                                         cellspacing="0"
+                                         role="presentation"
+                                         style="border-collapse:collapse;border-spacing:0px"
                                   >
-                                    <image alt="ASK US : find an expert"
-                                           height="auto"
-                                           src="http://191n.mj.am/img/191n/3s/xs0.png"
-                                           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
-                                           width="100%"
-                                    >
-                                    </image>
-                                  </a>
+                                    <tbody>
+                                      <tr>
+                                        <td style="width:110px">
+                                          <a href="https://mjml.io"
+                                             target="_blank"
+                                             style="text-decoration:none;
+color:inherit;"
+                                          >
+                                            <image alt="ASK US : find an expert"
+                                                   height="auto"
+                                                   src="http://191n.mj.am/img/191n/3s/xs0.png"
+                                                   style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px"
+                                                   width="100%"
+                                            >
+                                            </image>
+                                          </a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
                                 </td>
                               </tr>
                             </tbody>
@@ -3609,20 +3817,33 @@ color:inherit;"
                          cellpadding="0"
                          cellspacing="0"
                          role="presentation"
-                         style="vertical-align:top"
                          width="100%"
                   >
                     <tbody>
                       <tr>
-                        <td align="center"
-                            style="font-size:0px;padding:10px 25px;word-break:break-word"
-                        >
-                          <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
-                            [[DELIVERY_INFO]]
-                            <p>
-                              [[POSTAL_ADDRESS]]
-                            </p>
-                          </div>
+                        <td style="padding:0px;vertical-align:top">
+                          <table border="0"
+                                 cellpadding="0"
+                                 cellspacing="0"
+                                 role="presentation"
+                                 style="vertical-align:top"
+                                 width="100%"
+                          >
+                            <tbody>
+                              <tr>
+                                <td align="center"
+                                    style="font-size:0px;padding:0px;word-break:break-word"
+                                >
+                                  <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
+                                    [[DELIVERY_INFO]]
+                                    <p>
+                                      [[POSTAL_ADDRESS]]
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
                     </tbody>

@@ -38,7 +38,7 @@ describe("when there is a style attribute on the element", () => {
 });
 
 describe("when there is a style attribute with the same property on the element", () => {
-  fit("appends the declaration", () => {
+  it("appends the declaration", () => {
     const declaration: css.Declaration = {
       property: "background-color",
       value: "black",

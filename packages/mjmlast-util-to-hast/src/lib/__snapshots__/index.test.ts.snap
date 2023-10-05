@@ -849,7 +849,7 @@ p { display:block;margin:13px 0; }",
                                                         },
                                                       ],
                                                       "properties": {
-                                                        "align": "left",
+                                                        "align": "up",
                                                         "style": "font-size:0px;padding:10px 25px;word-break:break-word",
                                                       },
                                                       "tagName": "td",

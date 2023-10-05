@@ -64,7 +64,6 @@ export function toHast(
     ...(options?.handlers || {}),
   };
   const mjClasses = uSelectAll("mj-class", tree) as MjClass[];
-  console.log(JSON.stringify(tree));
   const mjAlls = uSelectAll("mj-all", tree) as MjAll[];
   const inlineStyles = removeInlineStyles(tree);
   const globalStyles = removeGlobalStyles(tree);
@@ -108,8 +107,6 @@ export function toHast(
       {}
     ),
   };
-
-  console.log(mjAlls, context.mjAllAttributes);
 
   const node = one(tree, null, { ...options, handlers }, context) as HElement[];
 

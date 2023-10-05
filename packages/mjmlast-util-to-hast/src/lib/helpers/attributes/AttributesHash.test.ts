@@ -13,7 +13,7 @@ describe("without", () => {
 });
 
 describe("longhands", () => {
-  fit("returns the longhand attributes", () => {
+  it("returns the longhand attributes", () => {
     const attributesHash = new AttributesHash({
       "padding-top": "1px",
     });

@@ -3,7 +3,7 @@
 import type { Parts } from "units-css";
 import units from "units-css";
 import { BoxWidth } from "./BoxWidth";
-import { ShorthandCssProperties } from "./shorthandCss/ShorthandCssProperties";
+import { DirectionalShorthandCssProperties } from "./shorthandCss/DirectionalShorthandCssProperties";
 import type { Attributes } from "./attributes/Attributes";
 
 export class ContainerWidth {
@@ -44,7 +44,7 @@ export class ContainerWidth {
   }
 
   get #innerBorders(): number {
-    const border = new ShorthandCssProperties<Parts>({
+    const border = new DirectionalShorthandCssProperties<Parts>({
       top: this.#attributes.get("border-top")?.toString(),
       bottom: this.#attributes.get("border-bottom")?.toString(),
       left: this.#attributes.get("border-left")?.toString(),

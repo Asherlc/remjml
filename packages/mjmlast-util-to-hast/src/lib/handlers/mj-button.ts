@@ -11,7 +11,7 @@ import type { Parts } from "units-css";
 import units from "units-css";
 import { BoxWidth } from "../helpers/BoxWidth";
 import type { PaddingValue } from "../helpers/shorthandCss/types";
-import { ShorthandCssProperties } from "../helpers/shorthandCss/ShorthandCssProperties";
+import { DirectionalShorthandCssProperties } from "../helpers/shorthandCss/DirectionalShorthandCssProperties";
 import { one } from "../traverse";
 
 export const DEFAULT_ATTRIBUTES: Pick<
@@ -59,7 +59,7 @@ class AWidth {
   }
 
   get #innerPadding(): { left: number; right: number } {
-    const innerPadding = new ShorthandCssProperties<PaddingValue>({
+    const innerPadding = new DirectionalShorthandCssProperties<PaddingValue>({
       top: undefined,
       bottom: undefined,
       right: undefined,

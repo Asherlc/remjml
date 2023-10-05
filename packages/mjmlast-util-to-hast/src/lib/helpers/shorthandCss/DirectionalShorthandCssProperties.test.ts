@@ -1,7 +1,7 @@
-import { ShorthandCssProperties } from "./ShorthandCssProperties";
+import { DirectionalShorthandCssProperties } from "./DirectionalShorthandCssProperties";
 
 it("parses shorthand", () => {
-  const properties = new ShorthandCssProperties({
+  const properties = new DirectionalShorthandCssProperties({
     full: "0px 25px",
     bottom: undefined,
     left: undefined,
@@ -15,7 +15,7 @@ it("parses shorthand", () => {
 });
 
 it("prioritizes long properties over shorthand when in conflict", () => {
-  const properties = new ShorthandCssProperties({
+  const properties = new DirectionalShorthandCssProperties({
     full: "0px 25px",
     bottom: "0px",
     left: "0px",

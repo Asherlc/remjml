@@ -2,7 +2,7 @@
 /// <reference path="../../../../../types/units-css.d.ts" />
 import type { Parts } from "units-css";
 import type { BorderValue, PaddingValue } from "./shorthandCss/types";
-import { ShorthandCssProperties } from "./shorthandCss/ShorthandCssProperties";
+import { DirectionalShorthandCssProperties } from "./shorthandCss/DirectionalShorthandCssProperties";
 
 type BorderAttributes = {
   "border-top"?: string;
@@ -33,7 +33,7 @@ export class BoxWidth {
   }
 
   get paddings(): number {
-    const padding = new ShorthandCssProperties<PaddingValue>({
+    const padding = new DirectionalShorthandCssProperties<PaddingValue>({
       top: this.#attributes["padding-top"],
       bottom: this.#attributes["padding-bottom"],
       left: this.#attributes["padding-left"],
@@ -46,7 +46,7 @@ export class BoxWidth {
   }
 
   get borders(): number {
-    const border = new ShorthandCssProperties<BorderValue>({
+    const border = new DirectionalShorthandCssProperties<BorderValue>({
       top: this.#attributes["border-top"],
       bottom: this.#attributes["border-bottom"],
       left: this.#attributes["border-left"],

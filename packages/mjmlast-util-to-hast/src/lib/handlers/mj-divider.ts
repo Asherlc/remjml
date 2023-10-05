@@ -10,7 +10,7 @@ import type { Context } from "../types";
 import type { Element as HElement } from "hast";
 import { MSO_OR_IE } from "../helpers/conditional-comments/conditional-comment";
 import { Attributes } from "../helpers/attributes/Attributes";
-import { ShorthandCssProperties } from "../helpers/shorthandCss/ShorthandCssProperties";
+import { DirectionalShorthandCssProperties } from "../helpers/shorthandCss/DirectionalShorthandCssProperties";
 import { DownlevelHidden } from "../helpers/conditional-comments/DownlevelHidden";
 
 export const DEFAULT_ATTRIBUTES: Pick<
@@ -46,7 +46,7 @@ function getOutlookWidth(
   containerWidth: Parts,
   attributes: Attributes
 ): string {
-  const padding = new ShorthandCssProperties<Parts>({
+  const padding = new DirectionalShorthandCssProperties<Parts>({
     name: "padding",
     top: attributes.get("padding-top")?.toString(),
     bottom: attributes.get("padding-bottom")?.toString(),

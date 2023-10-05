@@ -6,7 +6,7 @@ import type {
 import { BorderShorthandProperty } from "./BorderShorthandProperty";
 import { PaddingShorthandProperty } from "./PaddingShorthandProperty";
 
-export class ShorthandCssProperties<ValueType extends Value>
+export class DirectionalShorthandCssProperties<ValueType extends Value>
   implements IDirectionalCssProperty<ValueType>
 {
   #left?: string;

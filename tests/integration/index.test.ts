@@ -154,37 +154,57 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     }
   });
 
-  it(
-    "renders the same visual as original mjml library",
-    async () => {
-      const theirHtml = originalMjml(mjml).html;
-      const ourBuffer = Buffer.from(html);
-      const theirBuffer = Buffer.from(theirHtml);
-
-      await page.goto(`data:text/html;base64,${ourBuffer.toString("base64")}`, {
-        waitUntil: "networkidle0",
-      });
-      const ourImageData = await page.screenshot({ fullPage: true });
-      await page.goto(
-        `data:text/html;base64,${theirBuffer.toString("base64")}`,
-        {
-          waitUntil: "networkidle0",
-        }
-      );
-      const theirImageData = await page.screenshot({ fullPage: true });
-
-      await expect(ourImageData).toMatchImage(theirImageData);
-    },
-    1000 * 20
-  );
-
-  it("renders the same as before", async () => {
-    const buffer = Buffer.from(html);
-    await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
-      waitUntil: ["load", "networkidle0"],
+  describe.each([
+    // small
+    [320, 569],
+    [360, 640],
+    [460, 854],
+    // tablet
+    [960, 540],
+    // desktop
+    [1024, 640],
+    [1366, 768],
+    [1920, 1080],
+  ])("rendered in a %sx%s viewport", (width: number, height: number) => {
+    beforeEach(async () => {
+      page.setViewport({ width, height });
     });
-    const image = await page.screenshot({ fullPage: true });
-    expect(image).toMatchImageSnapshot();
+
+    it(
+      "renders the same visual as original mjml library",
+      async () => {
+        const theirHtml = originalMjml(mjml).html;
+        const ourBuffer = Buffer.from(html);
+        const theirBuffer = Buffer.from(theirHtml);
+
+        await page.goto(
+          `data:text/html;base64,${ourBuffer.toString("base64")}`,
+          {
+            waitUntil: "networkidle0",
+          }
+        );
+        const ourImageData = await page.screenshot({ fullPage: true });
+        await page.goto(
+          `data:text/html;base64,${theirBuffer.toString("base64")}`,
+          {
+            waitUntil: "networkidle0",
+          }
+        );
+        const theirImageData = await page.screenshot({ fullPage: true });
+
+        await expect(ourImageData).toMatchImage(theirImageData);
+      },
+      1000 * 20
+    );
+
+    it("renders the same as before", async () => {
+      const buffer = Buffer.from(html);
+      await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
+        waitUntil: ["load", "networkidle0"],
+      });
+      const image = await page.screenshot({ fullPage: true });
+      expect(image).toMatchImageSnapshot();
+    });
   });
 
   it("renders the same html as before`", async () => {

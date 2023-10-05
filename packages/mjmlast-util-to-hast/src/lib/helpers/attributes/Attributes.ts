@@ -2,6 +2,7 @@ import { pick } from "lodash-es";
 import type { MjClassesAttributes } from "../../types";
 import type { BaseAttributes } from "mjmlast";
 import { AttributesHash } from "./AttributesHash";
+import { shorthandsFor } from "./shorthand-properties";
 
 export class Attributes {
   #mjClass: string | undefined;
@@ -30,8 +31,8 @@ export class Attributes {
     return this.#mjClass?.split(" ") || [];
   }
 
-  get #attributesFromMjClassesAttributes(): BaseAttributes {
-    return this.#mjClasses.reduce(
+  get #attributesFromMjClassesAttributes(): AttributesHash {
+    const rawAttributes: BaseAttributes = this.#mjClasses.reduce(
       (accumulator: BaseAttributes, mjClass: string): BaseAttributes => {
         const attributes: BaseAttributes | undefined =
           this.#globalMjClassesAttributes[mjClass];
@@ -43,15 +44,30 @@ export class Attributes {
       },
       {}
     );
+
+    return new AttributesHash(rawAttributes);
   }
 
   toHash(): BaseAttributes {
+    const excludeFromDefaultAttributes: string[] =
+      this.#attributesFromMjClassesAttributes.longhands.keys
+        .flatMap(shorthandsFor)
+        .concat(this.#attributesFromMjClassesAttributes.longhands.keys);
+
+    console.log(excludeFromDefaultAttributes);
+
+    const excludeFomDefaultAndMjClassesAttributes: string[] =
+      this.#attributes.longhands.keys
+        .flatMap(shorthandsFor)
+        .concat(this.#attributes.longhands.keys);
+
     return {
-      // The order is critical!
-      ...(this.#attributes.hasPadding
-        ? this.#defaultAttributes.withoutPadding.attributes
-        : this.#defaultAttributes.attributes),
-      ...this.#attributesFromMjClassesAttributes,
+      ...this.#defaultAttributes
+        .without(excludeFromDefaultAttributes)
+        .without(excludeFomDefaultAndMjClassesAttributes).attributes,
+      ...this.#attributesFromMjClassesAttributes.without(
+        this.#attributes.longhands
+      ).attributes,
       ...this.#attributes.attributes,
     };
   }

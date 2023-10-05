@@ -1,25 +1,33 @@
 import { AttributesHash } from "./AttributesHash";
 
-describe("hasPadding", () => {
-  describe("with padding", () => {
-    it("returns true", () => {
+describe("without", () => {
+  describe("with an attribute", () => {
+    it("excludes the attribute", () => {
       const attributesHash = new AttributesHash({
         padding: "1px",
       });
 
-      expect(attributesHash.hasPadding).toBeTruthy();
+      expect(attributesHash.without(["padding"])).toBeTruthy();
     });
   });
 });
 
-describe("withoutPadding", () => {
-  describe("with padding", () => {
-    it("returns a new hash with no padding", () => {
-      const attributesHash = new AttributesHash({
-        padding: "1px",
-      });
-
-      expect(attributesHash.withoutPadding.attributes).toEqual({});
+describe("longhands", () => {
+  fit("returns the longhand attributes", () => {
+    const attributesHash = new AttributesHash({
+      "padding-top": "1px",
     });
+
+    expect(attributesHash.longhands.attributes).toEqual({
+      "padding-top": "1px",
+    });
+  });
+
+  it("exclues the non-longhand attributes", () => {
+    const attributesHash = new AttributesHash({
+      padding: "10px",
+    });
+
+    expect(attributesHash.longhands.attributes).toEqual({});
   });
 });

@@ -93,8 +93,11 @@ function column(
     const childTdWrapperAttributes: Attributes = new Attributes({
       defaultAttributes: defaultChildAttributes,
       attributes: child.attributes || {},
-      mjClassesAttributes: {},
-      mjClass: undefined,
+      mjClassesAttributes: context.mjClasses,
+      mjClass:
+        "mj-class" in child.attributes
+          ? child.attributes["mj-class"]
+          : undefined,
     });
 
     const hChild = one(child, node, options, {

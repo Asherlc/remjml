@@ -18,7 +18,7 @@ type Attributes = {
   "padding-right": string;
   "padding-top": string;
   padding: string;
-  role: "enum(none,presentation)";
+  role: "none" | "presentation";
   "table-layout": "auto" | "fixed" | "initial" | "inherit)";
   "vertical-align": "top" | "middle" | "bottom";
   width: string;

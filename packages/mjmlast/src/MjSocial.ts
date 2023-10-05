@@ -17,13 +17,13 @@ type Attributes = {
   "icon-padding": string;
   "inner-padding": string;
   "line-height": string;
-  mode: "enum(horizontal,vertical)";
+  mode: "horizontal" | "vertical";
   "padding-bottom": string;
   "padding-left": string;
   "padding-right": string;
   "padding-top": string;
   padding: string;
-  "table-layout": "enum(auto,fixed)";
+  "table-layout": "auto" | "fixed";
   "text-padding": string;
   "text-decoration": string;
   "vertical-align": "top" | "middle" | "bottom";

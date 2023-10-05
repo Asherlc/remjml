@@ -14,7 +14,7 @@ type Attributes = {
   "padding-left": string;
   "padding-right": string;
   "right-icon": string;
-  thumbnails: "enum(visible,hidden)";
+  thumbnails: "visible" | "hidden";
   "tb-border": string;
   "tb-border-radius": string;
   "tb-hover-border-color": string;

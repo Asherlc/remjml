@@ -35,7 +35,8 @@ export function mjGroup(
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,
     mjClass: node.attributes["mj-class"],
-    mjClassesAttributes: context.mjClasses,
+    mjClassesAttributes: context.mjClassesAttributes,
+    mjAllAttributes: context.mjAllAttributes,
   });
   const width = attributes.get("width");
   const widthCssClass = new ColumnWidthCssClass(width?.toString(), parent);

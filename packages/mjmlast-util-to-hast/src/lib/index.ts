@@ -3,6 +3,8 @@ import { remove } from "unist-util-remove";
 import { one } from "./traverse";
 import { defaultHandlers } from "./handlers/defaultHandlers";
 import type {
+  BaseAttributes,
+  MjAll,
   MjAttributes,
   MjBody,
   MjClass,
@@ -62,6 +64,8 @@ export function toHast(
     ...(options?.handlers || {}),
   };
   const mjClasses = uSelectAll("mj-class", tree) as MjClass[];
+  console.log(JSON.stringify(tree));
+  const mjAlls = uSelectAll("mj-all", tree) as MjAll[];
   const inlineStyles = removeInlineStyles(tree);
   const globalStyles = removeGlobalStyles(tree);
   const mjHead = findOrBuildMjHead(tree);
@@ -80,7 +84,7 @@ export function toHast(
     mjHead,
     navbarBaseUrl: undefined,
     mediaQueries: {},
-    mjClasses: mjClasses.reduce(
+    mjClassesAttributes: mjClasses.reduce(
       (
         accumulator: MjClassesAttributes,
         mjClass: MjClass
@@ -88,13 +92,24 @@ export function toHast(
         const { name, ...attributes } = mjClass.attributes;
 
         return {
-          [name]: attributes,
           ...accumulator,
+          [name]: attributes,
+        };
+      },
+      {}
+    ),
+    mjAllAttributes: mjAlls.reduce(
+      (accumulator: BaseAttributes, mjAll: MjAll) => {
+        return {
+          ...accumulator,
+          ...mjAll.attributes,
         };
       },
       {}
     ),
   };
+
+  console.log(mjAlls, context.mjAllAttributes);
 
   const node = one(tree, null, { ...options, handlers }, context) as HElement[];
 

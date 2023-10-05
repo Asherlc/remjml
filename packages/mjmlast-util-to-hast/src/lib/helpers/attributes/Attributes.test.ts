@@ -11,6 +11,7 @@ describe("when both the default attributes and specified attributes have padding
       },
       mjClass: undefined,
       mjClassesAttributes: {},
+      mjAllAttributes: {},
     });
 
     expect(attributes.get("padding")).toBeUndefined();
@@ -30,6 +31,7 @@ describe("when both the default attributes and mj class attributes have padding"
           padding: "0px 20px",
         },
       },
+      mjAllAttributes: {},
     });
 
     expect(attributes.get("padding")).toEqual("0px 20px");

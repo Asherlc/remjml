@@ -48,7 +48,8 @@ function section(
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,
     mjClass: node.attributes["mj-class"],
-    mjClassesAttributes: context.mjClasses,
+    mjClassesAttributes: context.mjClassesAttributes,
+    mjAllAttributes: context.mjAllAttributes,
   });
   const { containerWidth } = context;
   const background = new Background({
@@ -138,7 +139,8 @@ function fullWidthWrapper(
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,
     mjClass: node.attributes["mj-class"],
-    mjClassesAttributes: context.mjClasses,
+    mjClassesAttributes: context.mjClassesAttributes,
+    mjAllAttributes: context.mjAllAttributes,
   });
   const fullWidth = isFullWidth(attributes.get("full-width")?.toString());
   const background = new Background({
@@ -183,7 +185,8 @@ export function mjSection(
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,
     mjClass: node.attributes["mj-class"],
-    mjClassesAttributes: context.mjClasses,
+    mjClassesAttributes: context.mjClassesAttributes,
+    mjAllAttributes: context.mjAllAttributes,
   });
   const fullWidth = isFullWidth(attributes.get("full-width")?.toString());
   const containerWidth: Parts | undefined = context.containerWidth

@@ -9,22 +9,26 @@ export class Attributes {
   #attributes: AttributesHash;
   #defaultAttributes: AttributesHash;
   #globalMjClassesAttributes: MjClassesAttributes;
+  #globalMjAllAttributes: BaseAttributes;
 
   constructor({
     attributes,
     defaultAttributes,
     mjClassesAttributes,
     mjClass,
+    mjAllAttributes,
   }: {
     attributes: BaseAttributes;
     defaultAttributes: BaseAttributes;
     mjClassesAttributes: MjClassesAttributes;
     mjClass: string | undefined;
+    mjAllAttributes: BaseAttributes;
   }) {
     this.#attributes = new AttributesHash(attributes);
     this.#defaultAttributes = new AttributesHash(defaultAttributes);
     this.#globalMjClassesAttributes = mjClassesAttributes;
     this.#mjClass = mjClass;
+    this.#globalMjAllAttributes = mjAllAttributes;
   }
 
   get #mjClasses(): string[] {
@@ -55,15 +59,11 @@ export class Attributes {
         .flatMap(shorthandsFor)
         .concat(this.#attributesFromMjClassesAttributes.longhands.keys);
 
-    const excludeFomDefaultAndMjClassesAttributes: string[] =
-      this.#attributes.longhands.keys
-        .flatMap(shorthandsFor)
-        .concat(this.#attributes.longhands.keys);
-
     // This order is crucial
     return {
       ...this.#defaultAttributes.without(excludeFromDefaultAttributes)
         .attributes,
+      ...this.#globalMjAllAttributes,
       ...this.#attributesFromMjClassesAttributes.attributes,
       ...this.#attributes.attributes,
     };

@@ -17,6 +17,7 @@ it("computes the correct width", () => {
     defaultAttributes: {},
     mjClass: undefined,
     mjClassesAttributes: {},
+    mjAllAttributes: {},
   });
 
   const width = new ColumnContainerWidth("600px", parent, attributes);

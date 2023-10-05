@@ -16,5 +16,6 @@ export type Context = {
   mediaQueries: MediaQueries;
   fullWidth?: boolean;
   navbarBaseUrl: string | undefined;
-  mjClasses: MjClassesAttributes;
+  mjClassesAttributes: MjClassesAttributes;
+  mjAllAttributes: BaseAttributes;
 };

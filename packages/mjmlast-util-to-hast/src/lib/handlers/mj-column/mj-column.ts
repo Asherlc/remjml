@@ -81,7 +81,8 @@ function column(
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,
     mjClass: node.attributes["mj-class"],
-    mjClassesAttributes: context.mjClasses,
+    mjClassesAttributes: context.mjClassesAttributes,
+    mjAllAttributes: context.mjAllAttributes,
   });
   const containerWidth = context.containerWidth
     ? new ColumnContainerWidth(context.containerWidth, parent, attributes)
@@ -93,11 +94,12 @@ function column(
     const childTdWrapperAttributes: Attributes = new Attributes({
       defaultAttributes: defaultChildAttributes,
       attributes: child.attributes || {},
-      mjClassesAttributes: context.mjClasses,
+      mjClassesAttributes: context.mjClassesAttributes,
       mjClass:
         "mj-class" in child.attributes
           ? child.attributes["mj-class"]
           : undefined,
+      mjAllAttributes: context.mjAllAttributes,
     });
 
     const hChild = one(child, node, options, {
@@ -204,7 +206,8 @@ export function mjColumn(
     attributes: node.attributes || {},
     defaultAttributes: DEFAULT_ATTRIBUTES,
     mjClass: node.attributes["mj-class"],
-    mjClassesAttributes: context.mjClasses,
+    mjClassesAttributes: context.mjClassesAttributes,
+    mjAllAttributes: context.mjAllAttributes,
   });
   const cssClass = attributes.get("css-class");
   const width = attributes.get("width");

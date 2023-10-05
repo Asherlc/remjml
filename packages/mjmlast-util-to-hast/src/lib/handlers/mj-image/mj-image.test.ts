@@ -26,7 +26,8 @@ it("computes the correct width based on a set width", () => {
       mediaQueries: {},
       containerWidth: "600px",
       navbarBaseUrl: undefined,
-      mjClasses: {},
+      mjClassesAttributes: {},
+      mjAllAttributes: {},
     }
   );
 

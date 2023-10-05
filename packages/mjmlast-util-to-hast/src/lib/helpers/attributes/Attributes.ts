@@ -54,8 +54,6 @@ export class Attributes {
         .flatMap(shorthandsFor)
         .concat(this.#attributesFromMjClassesAttributes.longhands.keys);
 
-    console.log(excludeFromDefaultAttributes);
-
     const excludeFomDefaultAndMjClassesAttributes: string[] =
       this.#attributes.longhands.keys
         .flatMap(shorthandsFor)

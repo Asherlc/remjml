@@ -19,7 +19,7 @@ type Attributes = {
   "padding-top": string;
   padding: string;
   role: "enum(none,presentation)";
-  "table-layout": "enum(auto,fixed,initial,inherit)";
+  "table-layout": "auto" | "fixed" | "initial" | "inherit)";
   "vertical-align": "top" | "middle" | "bottom";
   width: string;
 };

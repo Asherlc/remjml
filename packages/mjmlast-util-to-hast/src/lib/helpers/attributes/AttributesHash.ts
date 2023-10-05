@@ -9,7 +9,7 @@ export class AttributesHash {
   }
 
   get hasPadding(): boolean {
-    return Boolean(this.attributes.padding || this.attributes.padding);
+    return Boolean(this.attributes.padding);
   }
 
   get withoutPadding(): AttributesHash {

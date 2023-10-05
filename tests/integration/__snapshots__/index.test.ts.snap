@@ -55,7 +55,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:0px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;text-align:center">
                 <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%"
                 >
@@ -168,7 +168,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:0px;padding-bottom:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#FFFFFE">
                             Dear {firstname},
@@ -214,7 +214,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -244,7 +244,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             iSpark is a powerful mobile production tool allowing you to create
@@ -286,7 +286,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -316,7 +316,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             Check out the iSpark introduction movie shot during the Arturia
@@ -357,7 +357,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -387,7 +387,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:25px;padding-bottom:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;padding-bottom:25px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             Follow Mauricio Garcia, Arturia Product Specialist, presenting you
@@ -428,7 +428,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -458,7 +458,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:25px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;letter-spacing:none;line-height:120%;text-align:left;color:#000000">
                             iSpark includes a tremendous collection of factory kits and
@@ -471,7 +471,7 @@ p { display:block;margin:13px 0; }
                       <tr>
                         <td align="center"
                             vertical-align="middle"
-                            style="font-size:0px;padding-bottom:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-bottom:25px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -558,7 +558,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-left:0px;padding-right:0px;padding-top:0px;text-align:center">
                 <div class="mj-column-per-25 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -750,7 +750,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:0px;padding-top:0px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center">
                 <div class="mj-column-per-100 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -764,7 +764,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:none;line-height:1;text-align:center;color:#000000">
                             See this email in your browser
@@ -778,7 +778,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-right:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-right:0px;padding-left:0px;word-break:break-word"
                         >
                           <p style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:100%">
                           </p>
@@ -803,7 +803,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:0px;padding-top:0px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0px;text-align:center">
                 <div class="mj-column-per-100 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -817,7 +817,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:0px;padding-bottom:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:none;line-height:12px;text-align:left;color:#000000">
                             Your email address is on this list as a result of a subscription,
@@ -842,7 +842,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-bottom:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-bottom:0px;word-break:break-word"
                         >
                           <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:none;line-height:12px;text-align:left;color:#000000">
                             ARTURIA:
@@ -867,7 +867,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-right:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-right:0px;padding-left:0px;word-break:break-word"
                         >
                           <p style="border-top:solid 4px #000000;font-size:1px;margin:0px auto;width:100%">
                           </p>
@@ -2230,7 +2230,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:0px;padding-top:0;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0;text-align:center">
                 <div class="mj-column-per-100 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -2244,7 +2244,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:0;padding-right:0px;padding-bottom:0px;padding-left:0px;word-break:break-word"
                         >
                           <table border="0"
                                  cellpadding="0"
@@ -2286,7 +2286,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:0px;padding-top:0;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padding-top:0;text-align:center">
                 <div class="mj-column-per-100 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%"
                 >
@@ -2300,7 +2300,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:50px;padding-right:25px;padding-bottom:30px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:45px;font-weight:bold;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             Welcome aboard
@@ -2325,7 +2325,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:20px;padding-top:20px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:20px;text-align:center">
                 <div class="mj-column-per-100 mj-outlook-group-fix"
                      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%"
                 >
@@ -2339,7 +2339,7 @@ p { display:block;margin:13px 0; }
                     <tbody>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:22px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             <span style="color: #feeb35">
@@ -2353,7 +2353,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             We're really excited you've decided to give us a try. In
@@ -2393,7 +2393,7 @@ p { display:block;margin:13px 0; }
                       </tr>
                       <tr>
                         <td align="left"
-                            style="font-size:0px;padding-right:25px;padding-left:25px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-right:25px;padding-left:25px;word-break:break-word"
                         >
                           <div style="font-family:open Sans Helvetica, Arial, sans-serif;font-size:15px;letter-spacing:none;line-height:1;text-align:left;color:#ffffff">
                             Thanks,
@@ -2485,7 +2485,7 @@ p { display:block;margin:13px 0; }
         >
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding-bottom:20px;padding-top:20px;text-align:center">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:20px;text-align:center">
                 <div class="mj-outlook-group-fix mj-column-per-100"
                      style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr"
                 >
@@ -2794,7 +2794,7 @@ padding:0 35px;"
                     <tbody>
                       <tr>
                         <td align="center"
-                            style="font-size:0px;padding-top:180px;word-break:break-word"
+                            style="font-size:0px;padding:10px 25px;padding-top:180px;word-break:break-word"
                         >
                           <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:28px;letter-spacing:none;line-height:32px;text-align:center;color:#ffffff">
                             OR

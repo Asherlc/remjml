@@ -49,6 +49,7 @@ export class Attributes {
   }
 
   toHash(): BaseAttributes {
+    // Please don't blame me for this, just trying to replicate mjml based on observed behavior
     const excludeFromDefaultAttributes: string[] =
       this.#attributesFromMjClassesAttributes.longhands.keys
         .flatMap(shorthandsFor)
@@ -59,13 +60,11 @@ export class Attributes {
         .flatMap(shorthandsFor)
         .concat(this.#attributes.longhands.keys);
 
+    // This order is crucial
     return {
-      ...this.#defaultAttributes
-        .without(excludeFromDefaultAttributes)
-        .without(excludeFomDefaultAndMjClassesAttributes).attributes,
-      ...this.#attributesFromMjClassesAttributes.without(
-        this.#attributes.longhands
-      ).attributes,
+      ...this.#defaultAttributes.without(excludeFromDefaultAttributes)
+        .attributes,
+      ...this.#attributesFromMjClassesAttributes.attributes,
       ...this.#attributes.attributes,
     };
   }

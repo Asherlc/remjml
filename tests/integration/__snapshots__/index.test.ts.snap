@@ -2506,7 +2506,8 @@ p { display:block;margin:13px 0; }
                           >
                             <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:left;color:#000000">
                               <a href="https://mjml.io"
-                                 style="text-decoration:none;color:inherit;"
+                                 style="text-decoration:none;
+color:inherit;"
                               >
                                 [[HEADLINE]]
                               </a>
@@ -2533,7 +2534,8 @@ p { display:block;margin:13px 0; }
                           >
                             <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;letter-spacing:none;line-height:1;text-align:right;color:#000000">
                               <a href="https://mjml.io"
-                                 style="text-decoration:none;color:inherit;"
+                                 style="text-decoration:none;
+color:inherit;"
                               >
                                 [[PERMALINK_LABEL]]
                               </a>
@@ -2662,7 +2664,15 @@ p { display:block;margin:13px 0; }
                             <a class="mj-link"
                                href="https://mjml.io/https://mjml.io"
                                target="_blank"
-                               style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:22px;text-decoration:none;text-transform:uppercase;padding:0 35px;text-decoration:none;color:inherit;"
+                               style="display:inline-block;
+color:#000000;
+font-family:Ubuntu, Helvetica, Arial, sans-serif;
+font-size:12px;
+font-weight:bold;
+line-height:22px;
+text-decoration:none;
+text-transform:uppercase;
+padding:0 35px;"
                                value
                             >
                               home
@@ -2672,7 +2682,15 @@ p { display:block;margin:13px 0; }
                             <a class="mj-link"
                                href="https://mjml.io/https://mjml.io"
                                target="_blank"
-                               style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:22px;text-decoration:none;text-transform:uppercase;padding:0 35px;text-decoration:none;color:inherit;"
+                               style="display:inline-block;
+color:#000000;
+font-family:Ubuntu, Helvetica, Arial, sans-serif;
+font-size:12px;
+font-weight:bold;
+line-height:22px;
+text-decoration:none;
+text-transform:uppercase;
+padding:0 35px;"
                                value
                             >
                               Summer deals
@@ -2682,7 +2700,15 @@ p { display:block;margin:13px 0; }
                             <a class="mj-link"
                                href="https://mjml.io/https://mjml.io"
                                target="_blank"
-                               style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:22px;text-decoration:none;text-transform:uppercase;padding:0 35px;text-decoration:none;color:inherit;"
+                               style="display:inline-block;
+color:#000000;
+font-family:Ubuntu, Helvetica, Arial, sans-serif;
+font-size:12px;
+font-weight:bold;
+line-height:22px;
+text-decoration:none;
+text-transform:uppercase;
+padding:0 35px;"
                                value
                             >
                               Our blog
@@ -2692,7 +2718,15 @@ p { display:block;margin:13px 0; }
                             <a class="mj-link"
                                href="https://mjml.io/https://mjml.io"
                                target="_blank"
-                               style="display:inline-block;color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:22px;text-decoration:none;text-transform:uppercase;padding:0 35px;text-decoration:none;color:inherit;"
+                               style="display:inline-block;
+color:#000000;
+font-family:Ubuntu, Helvetica, Arial, sans-serif;
+font-size:12px;
+font-weight:bold;
+line-height:22px;
+text-decoration:none;
+text-transform:uppercase;
+padding:0 35px;"
                                value
                             >
                               Follow us
@@ -2858,7 +2892,19 @@ p { display:block;margin:13px 0; }
                                     valign="middle"
                                 >
                                   <a href="https://mjml.io"
-                                     style="display:inline-block;background:#bd8714;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     style="display:inline-block;
+background:#bd8714;
+color:#FFFFFF;
+font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
+font-size:13px;
+font-weight:normal;
+line-height:120%;
+margin:0;
+text-decoration:none;
+text-transform:none;
+padding:10px 25px;
+mso-padding-alt:0px;
+border-radius:3px;"
                                      target="_blank"
                                   >
                                     BOOK NOW
@@ -2915,7 +2961,19 @@ p { display:block;margin:13px 0; }
                                     valign="middle"
                                 >
                                   <a href="https://mjml.io"
-                                     style="display:inline-block;background:#bd8714;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     style="display:inline-block;
+background:#bd8714;
+color:#FFFFFF;
+font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
+font-size:13px;
+font-weight:normal;
+line-height:120%;
+margin:0;
+text-decoration:none;
+text-transform:none;
+padding:10px 25px;
+mso-padding-alt:0px;
+border-radius:3px;"
                                      target="_blank"
                                   >
                                     BOOK NOW
@@ -2997,7 +3055,19 @@ p { display:block;margin:13px 0; }
                                     valign="middle"
                                 >
                                   <a href="https://mjml.io"
-                                     style="display:inline-block;background:#48b6bf;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     style="display:inline-block;
+background:#48b6bf;
+color:#FFFFFF;
+font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
+font-size:13px;
+font-weight:normal;
+line-height:120%;
+margin:0;
+text-decoration:none;
+text-transform:none;
+padding:10px 25px;
+mso-padding-alt:0px;
+border-radius:3px;"
                                      target="_blank"
                                   >
                                     BOOK NOW
@@ -3054,7 +3124,19 @@ p { display:block;margin:13px 0; }
                                     valign="middle"
                                 >
                                   <a href="https://mjml.io"
-                                     style="display:inline-block;background:#48b6bf;color:#FFFFFF;font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;text-decoration:none;color:inherit;"
+                                     style="display:inline-block;
+background:#48b6bf;
+color:#FFFFFF;
+font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;
+font-size:13px;
+font-weight:normal;
+line-height:120%;
+margin:0;
+text-decoration:none;
+text-transform:none;
+padding:10px 25px;
+mso-padding-alt:0px;
+border-radius:3px;"
                                      target="_blank"
                                   >
                                     BOOK NOW
@@ -3110,7 +3192,8 @@ p { display:block;margin:13px 0; }
                                 <td style="width:250px">
                                   <a href="https://mjml.io"
                                      target="_blank"
-                                     style="text-decoration:none;color:inherit;"
+                                     style="text-decoration:none;
+color:inherit;"
                                   >
                                     <image alt="NEW : Donwload your city guide"
                                            height="auto"
@@ -3166,7 +3249,8 @@ p { display:block;margin:13px 0; }
                                 <td style="width:131px">
                                   <a href="https://mjml.io"
                                      target="_blank"
-                                     style="text-decoration:none;color:inherit;"
+                                     style="text-decoration:none;
+color:inherit;"
                                   >
                                     <image alt="Book rate"
                                            height="auto"
@@ -3436,7 +3520,8 @@ p { display:block;margin:13px 0; }
                                 <td style="width:117px">
                                   <a href="https://mjml.io"
                                      target="_blank"
-                                     style="text-decoration:none;color:inherit;"
+                                     style="text-decoration:none;
+color:inherit;"
                                   >
                                     <image alt="Meet us : find an agency"
                                            height="auto"
@@ -3481,7 +3566,8 @@ p { display:block;margin:13px 0; }
                                 <td style="width:110px">
                                   <a href="https://mjml.io"
                                      target="_blank"
-                                     style="text-decoration:none;color:inherit;"
+                                     style="text-decoration:none;
+color:inherit;"
                                   >
                                     <image alt="ASK US : find an expert"
                                            height="auto"

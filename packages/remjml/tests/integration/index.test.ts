@@ -1,7 +1,8 @@
 import "jest-puppeteer";
 import "expect-puppeteer";
-import path from "path";
-import fsPromise from "fs/promises";
+import { resolve, dirname, format } from "node:path";
+import { readFile, stat } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import originalMjml from "mjml";
@@ -21,17 +22,28 @@ const emailFixtureNames = [
   "worldly",
 ];
 
-const emailFixtureDirectoryPath = path.resolve(
+const __filename: string = fileURLToPath(import.meta.url);
+const __dirname: string = dirname(__filename);
+
+const emailFixtureDirectoryPath: string = resolve(
   __dirname,
-  "./tests/fixtures/mjml-emails/"
+  "../fixtures/mjml-emails/"
 );
+
+const emailFixtureDirectoryExists = (
+  await stat(emailFixtureDirectoryPath)
+).isDirectory();
+
+if (!emailFixtureDirectoryExists) {
+  throw new Error(`${emailFixtureDirectoryPath} is not a directory`);
+}
 
 describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
   let mjml: string;
 
   beforeAll(async () => {
-    const mjmlBuffer = await fsPromise.readFile(
-      path.format({
+    const mjmlBuffer = await readFile(
+      format({
         dir: emailFixtureDirectoryPath,
         name: emailFixtureName,
         ext: ".mjml",

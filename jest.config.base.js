@@ -1,5 +1,7 @@
+import { fileURLToPath } from 'node:url'
+
 const prettier2Url = await import.meta.resolve('prettier-2')
-const prettier2Path = new URL(prettier2Url).pathname;
+const prettier2Path = fileURLToPath(prettier2Url)
 
 
 /** @type {import('jest').Config} */

@@ -1,0 +1,18 @@
+{
+  "name": "jest-match-html",
+  "type": "module",
+  "exports": {
+    ".": "./src/jest-match-html-prettier.ts"
+  },
+  "main": "./src/jest-match-html-prettier.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jest": "29.7.0"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
+  }
+}

@@ -4,49 +4,7 @@ import remjmlRehype from "remjml-rehype";
 import rehypeStringify from "rehype-stringify";
 import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
-import prettier from "prettier";
-import { diff } from "jest-diff";
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace jest {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    interface Matchers<R, T> {
-      toMatchHTMLPrettier(expectedHtml: string): Promise<T>;
-    }
-    interface ExpectExtendMap {
-      toMatchHTMLPrettier?: CustomMatcher;
-    }
-  }
-}
-
-expect.extend({
-  async toMatchHTMLPrettier(
-    actualHtml: string,
-    expectedHtml: string
-  ): Promise<jest.CustomMatcherResult> {
-    const actualPrettifiedHtml: string = await prettier.format(actualHtml, {
-      parser: "html",
-      htmlWhitespaceSensitivity: "ignore",
-    });
-
-    const expectedPrettifiedHtml: string = await prettier.format(expectedHtml, {
-      parser: "html",
-    });
-
-    const pass = actualPrettifiedHtml === expectedPrettifiedHtml;
-
-    return {
-      pass,
-      message: () => `
-      Expected: ${expectedHtml}
-
-      Received: ${actualHtml}
-
-      ${diff(expectedPrettifiedHtml, actualPrettifiedHtml)}`,
-    };
-  },
-});
+import "jest-html-match-prettier";
 
 it("transforms mjml to html", async () => {
   const mjml = `<mjml>
@@ -216,9 +174,9 @@ describe("with no content", () => {
 
     const theirHtml: string = originalMjml(mjml).html;
 
-    await expect(ourHtml.toLowerCase()).toMatchHTMLPrettier(
-      theirHtml.toLowerCase()
-    );
+    await expect(ourHtml.toLowerCase()).toMatchHTML(theirHtml.toLowerCase(), {
+      prettier: true,
+    });
   });
 });
 
@@ -275,7 +233,7 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
 
   const theirHtml: string = originalMjml(mjml).html;
 
-  await expect(ourHtml).toMatchHTMLPrettier(theirHtml);
+  await expect(ourHtml).toMatchHTML(theirHtml, { prettier: true });
 });
 
 it("transforms mjml to html", async () => {

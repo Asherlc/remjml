@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-      "noEmit": true,
+    "noEmit": true
   },
   "extends": "./tsconfig.base.json",
   "references": [
@@ -30,6 +30,10 @@
     },
     {
       "path": "./packages/remjml-rehype"
-    }
-  ],
+    },
+    {
+      "path": "./packages/jest-match-html-prettier"
+    },
+    { "path": "./packages/jest-match-performance" }
+  ]
 }

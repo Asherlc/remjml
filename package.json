@@ -60,6 +60,8 @@
     "remjml-parse": "*",
     "remjml-rehype": "*",
     "unified": "11.0.3",
-    "mjmlast-util-from-mjml": "*"
+    "mjmlast-util-from-mjml": "*",
+    "jest-match-html-prettier": "*",
+    "jest-match-performance": "*"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "name": "jest-match-performance",
+  "type": "module",
+  "exports": {
+    ".": "./src/jest-match-performance.ts"
+  },
+  "main": "./src/jest-match-performance.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jest": "29.7.0"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
+  }
+}

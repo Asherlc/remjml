@@ -1,8 +1,9 @@
-import { performance, PerformanceObserver } from "node:perf_hooks";
-import { mean, times } from "lodash-es";
+import { performance } from "node:perf_hooks";
+import { mean } from "lodash-es";
 
 export interface Options {
-  cycles: number;
+  cycles?: number;
+  precision?: number;
 }
 
 interface Speeds {
@@ -10,7 +11,7 @@ interface Speeds {
   expected: number[];
 }
 
-const DEFAULT_OPTIONS: Options = { cycles: 1 };
+const DEFAULT_OPTIONS = { cycles: 1 } as const;
 
 type ProfilableFunction = () => unknown | Promise<unknown>;
 
@@ -20,56 +21,45 @@ expect.extend({
     expectedFunction: ProfilableFunction,
     options?: Options
   ): Promise<jest.CustomMatcherResult> {
-    const optionsWithDefaults: Options = { ...DEFAULT_OPTIONS, ...options };
-
     const speeds: Speeds = {
       actual: [],
       expected: [],
     };
 
-    const perfObserver = new PerformanceObserver((items) => {
-      items.getEntries().forEach((entry: PerformanceEntry) => {
-        console.log(entry);
-        speeds[entry.name as keyof Speeds].push(entry.duration);
-        console.log(speeds);
-      });
-      perfObserver.disconnect();
-    });
+    const cycles = options?.cycles || DEFAULT_OPTIONS.cycles;
 
-    perfObserver.observe({ entryTypes: ["measure"], buffered: true });
-
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    for await (const _i of times(optionsWithDefaults.cycles)) {
-      performance.mark("actual-start");
+    for (let i: number = 0; i <= cycles; i++) {
+      const actualFunctionStart: number = performance.now();
       await actualFunction();
-      performance.mark("actual-end");
-    }
+      const actualFunctionEnd: number = performance.now();
 
-    performance.measure("actual");
+      speeds.actual.push(actualFunctionEnd - actualFunctionStart);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    for await (const _i of times(optionsWithDefaults.cycles)) {
-      performance.mark("expected-started");
+      const expectedFunctionStart: number = performance.now();
       await expectedFunction();
-      performance.mark("expected-end");
+      const expectedFunctionEnd: number = performance.now();
+
+      speeds.expected.push(expectedFunctionEnd - expectedFunctionStart);
     }
+
+    // const measure = performance.measure("actual");
+    // console.log(measure);
 
     performance.measure("expected");
 
     const meanActualSpeedMs = mean(speeds.actual);
     const meanExpectedSpeedMs = mean(speeds.expected);
-    console.log({ speeds, meanActualSpeedMs, meanExpectedSpeedMs });
 
     const pass = meanActualSpeedMs < meanExpectedSpeedMs;
 
     return {
       pass,
       message: () => `
-        Expected ${actualFunction} (${mean(
-          speeds.actual
-        )}ms) to be faster than ${expectedFunction} (${mean(
-          speeds.expected
-        )}ms`,
+        Expected ${actualFunction} (${meanActualSpeedMs.toPrecision(
+          options?.precision
+        )}ms) to be faster than ${expectedFunction} (${meanExpectedSpeedMs.toPrecision(
+          options?.precision
+        )}ms)`,
     };
   },
 });

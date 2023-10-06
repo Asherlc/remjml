@@ -5,6 +5,7 @@ import { remjml } from ".";
 import { resolve, dirname, format } from "node:path";
 import { readFile, readdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import "jest-match-performance";
 
 it("transforms mjml to html", async () => {
   const mjml: string = `<mjml>
@@ -533,7 +534,7 @@ const __dirname: string = dirname(__filename);
 
 const emailFixtureDirectoryPath: string = resolve(
   __dirname,
-  "../fixtures/mjml-emails/"
+  "../tests/fixtures/mjml-emails/"
 );
 
 const emailFixtureNames = await readdir(emailFixtureDirectoryPath);
@@ -546,21 +547,20 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
       format({
         dir: emailFixtureDirectoryPath,
         name: emailFixtureName,
-        ext: ".mjml",
       })
     );
 
     mjml = mjmlBuffer.toString();
   });
 
-  fit("renders faster than the original mjml library", async () => {
+  it("renders faster than the original mjml library", async () => {
     const processMjml = async () => await remjml().process(mjml);
     const processOriginalMjml = () => originalMjml(mjml);
 
-    await expect(processMjml).toBeFasterThan(
-      processOriginalMjml
-      // { cycles: 100 }
-    );
+    await expect(processMjml).toBeFasterThan(processOriginalMjml, {
+      cycles: 100,
+      precision: 2,
+    });
   });
 
   it("renders the same html as before`", async () => {

@@ -7,9 +7,7 @@ import { fileURLToPath } from "node:url";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import originalMjml from "mjml";
 import { remjml } from "remjml";
-import "jest-match-performance";
 import "jest-match-image";
-import "jest-match-html";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -18,7 +16,7 @@ const __dirname: string = dirname(__filename);
 
 const emailFixtureDirectoryPath: string = resolve(
   __dirname,
-  "../fixtures/mjml-emails/"
+  "./fixtures/mjml-emails/"
 );
 
 const emailFixtureNames = await readdir(emailFixtureDirectoryPath);

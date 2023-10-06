@@ -1,5 +1,5 @@
 import { performance, PerformanceObserver } from "node:perf_hooks";
-import { mean } from "lodash-es";
+import { mean, times } from "lodash-es";
 
 export interface Options {
   cycles: number;
@@ -12,12 +12,14 @@ interface Speeds {
 
 const DEFAULT_OPTIONS: Options = { cycles: 1 };
 
+type ProfilableFunction = () => unknown | Promise<unknown>;
+
 expect.extend({
   async toBeFasterThan(
-    actualFunction: () => unknown | Promise<unknown>,
-    params
+    actualFunction: ProfilableFunction,
+    expectedFunction: ProfilableFunction,
+    options?: Options
   ): Promise<jest.CustomMatcherResult> {
-    console.log(params);
     const optionsWithDefaults: Options = { ...DEFAULT_OPTIONS, ...options };
 
     const speeds: Speeds = {
@@ -27,13 +29,17 @@ expect.extend({
 
     const perfObserver = new PerformanceObserver((items) => {
       items.getEntries().forEach((entry: PerformanceEntry) => {
-        speeds[entry.name].push(entry.duration);
+        console.log(entry);
+        speeds[entry.name as keyof Speeds].push(entry.duration);
+        console.log(speeds);
       });
+      perfObserver.disconnect();
     });
 
     perfObserver.observe({ entryTypes: ["measure"], buffered: true });
 
-    for (let i = 0; i <= optionsWithDefaults.cycles; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for await (const _i of times(optionsWithDefaults.cycles)) {
       performance.mark("actual-start");
       await actualFunction();
       performance.mark("actual-end");
@@ -41,7 +47,8 @@ expect.extend({
 
     performance.measure("actual");
 
-    for (let i = 0; i <= optionsWithDefaults.cycles; i++) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    for await (const _i of times(optionsWithDefaults.cycles)) {
       performance.mark("expected-started");
       await expectedFunction();
       performance.mark("expected-end");
@@ -49,7 +56,11 @@ expect.extend({
 
     performance.measure("expected");
 
-    const pass = mean(speeds.actual) < mean(speeds.expected);
+    const meanActualSpeedMs = mean(speeds.actual);
+    const meanExpectedSpeedMs = mean(speeds.expected);
+    console.log({ speeds, meanActualSpeedMs, meanExpectedSpeedMs });
+
+    const pass = meanActualSpeedMs < meanExpectedSpeedMs;
 
     return {
       pass,

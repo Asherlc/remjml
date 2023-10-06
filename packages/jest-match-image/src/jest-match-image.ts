@@ -8,7 +8,7 @@ async function toMatchImage(
   this: jest.MatcherContext,
   receivedImage: Buffer | Uint8Array | Uint8ClampedArray,
   expectedImage: Buffer | Uint8Array | Uint8ClampedArray,
-  limit = 0
+  limit: number = 0
 ) {
   const receivedSharp = sharp(receivedImage);
   const expectedSharp = sharp(expectedImage);
@@ -84,3 +84,18 @@ async function toMatchImage(
 }
 
 expect.extend({ toMatchImage });
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace jest {
+    interface Matchers<R> {
+      toMatchImage(
+        expectedImage: Buffer | Uint8Array | Uint8ClampedArray,
+        limit?: number
+      ): Promise<R>;
+    }
+    interface ExpectExtendMap {
+      toMatchImage?: CustomMatcher;
+    }
+  }
+}

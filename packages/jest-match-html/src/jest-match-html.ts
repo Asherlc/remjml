@@ -13,7 +13,8 @@ const DEFAULT_PRETTIER_OPTIONS: prettier.Options = {
 expect.extend({
   async toMatchHTML(
     actualHtml: string,
-    [expectedHtml, options]: [expectedHtml: string, options?: Options]
+    expectedHtml: string,
+    options?: Options
   ): Promise<jest.CustomMatcherResult> {
     let prettierOptions: prettier.Options | undefined;
 

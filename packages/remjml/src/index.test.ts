@@ -1,13 +1,13 @@
+import "jest-match-html";
 import "jest-xml-matcher";
-import { unified } from "unified";
-import remjmlRehype from "remjml-rehype";
-import rehypeStringify from "rehype-stringify";
-import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
-import "jest-html-match-prettier";
+import { remjml } from ".";
+import { resolve, dirname, format } from "node:path";
+import { readFile, readdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 
 it("transforms mjml to html", async () => {
-  const mjml = `<mjml>
+  const mjml: string = `<mjml>
   <mj-body>
     <mj-section>
       <mj-column>
@@ -19,15 +19,9 @@ it("transforms mjml to html", async () => {
   </mj-body>
 </mjml>`;
 
-  const html = await unified()
-    .use(remjmlParse)
-    .use(remjmlRehype as any)
-    .use(rehypeStringify, {
-      allowDangerousHtml: true,
-    })
-    .process(mjml);
+  const html: string = await remjml().process(mjml).toString();
 
-  expect(String(html)).toMatchInlineSnapshot(`
+  expect(html).toMatchInlineSnapshot(`
     <!doctype html>
     <html xmlns="http://www.w3.org/1999/xhtml"
           xmlns:v="urn:schemas-microsoft-com:vml"
@@ -134,20 +128,12 @@ it("transforms mjml to html", async () => {
 
 describe("with no content", () => {
   it("outputs the same html as the original mjml library (xml compare)", async () => {
-    const mjml = `<mjml>
+    const mjml: string = `<mjml>
   <mj-body>
   </mj-body>
 </mjml>`;
 
-    const ourHtml = (
-      await unified()
-        .use(remjmlParse)
-        .use(remjmlRehype as any)
-        .use(rehypeStringify, {
-          allowDangerousHtml: true,
-        })
-        .process(mjml)
-    ).value;
+    const ourHtml: string = (await remjml().process(mjml)).toString();
 
     const theirHtml = originalMjml(mjml).html;
 
@@ -160,17 +146,7 @@ describe("with no content", () => {
   </mj-body>
 </mjml>`;
 
-    const ourHtml = (
-      await unified()
-        .use(remjmlParse)
-        .use(remjmlRehype as any)
-        .use(rehypeStringify, {
-          allowDangerousHtml: true,
-          closeSelfClosing: true,
-          closeEmptyElements: true,
-        })
-        .process(mjml)
-    ).value.toString();
+    const ourHtml: string = (await remjml().process(mjml)).toString();
 
     const theirHtml: string = originalMjml(mjml).html;
 
@@ -181,7 +157,7 @@ describe("with no content", () => {
 });
 
 it("outputs the same html as the original mjml library (xml compare)", async () => {
-  const mjml = `<mjml>
+  const mjml: string = `<mjml>
   <mj-body>
     <mj-section>
       <mj-column>
@@ -193,23 +169,15 @@ it("outputs the same html as the original mjml library (xml compare)", async () 
   </mj-body>
 </mjml>`;
 
-  const ourHtml = (
-    await unified()
-      .use(remjmlParse)
-      .use(remjmlRehype as any)
-      .use(rehypeStringify, {
-        allowDangerousHtml: true,
-      })
-      .process(mjml)
-  ).value;
+  const ourHtml: string = (await remjml().process(mjml)).toString();
 
-  const theirHtml = originalMjml(mjml).html;
+  const theirHtml: string = originalMjml(mjml).html;
 
   expect(ourHtml).toEqualXML(theirHtml);
 });
 
 it("outputs the same html as the original mjml library (prettier compare)", async () => {
-  const mjml = `<mjml>
+  const mjml: string = `<mjml>
   <mj-body>
     <mj-section>
       <mj-column>
@@ -221,15 +189,7 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
   </mj-body>
 </mjml>`;
 
-  const ourHtml: string = (
-    await unified()
-      .use(remjmlParse)
-      .use(remjmlRehype as any)
-      .use(rehypeStringify, {
-        allowDangerousHtml: true,
-      })
-      .process(mjml)
-  ).value.toString();
+  const ourHtml: string = (await remjml().process(mjml)).toString();
 
   const theirHtml: string = originalMjml(mjml).html;
 
@@ -237,7 +197,7 @@ it("outputs the same html as the original mjml library (prettier compare)", asyn
 });
 
 it("transforms mjml to html", async () => {
-  const mjml = `<mjml>
+  const mjml: string = `<mjml>
   <mj-body background-color="#ffffff" font-size="13px">
     <mj-section background-color="#ffffff" padding-bottom="0px" padding-top="0">
       <mj-column vertical-align="top" width="100%">
@@ -329,15 +289,9 @@ it("transforms mjml to html", async () => {
 </mjml>
 `;
 
-  const html = await unified()
-    .use(remjmlParse)
-    .use(remjmlRehype as any)
-    .use(rehypeStringify, {
-      allowDangerousHtml: true,
-    })
-    .process(mjml);
+  const html: string = (await remjml().process(mjml)).toString();
 
-  expect(String(html)).toMatchInlineSnapshot(`
+  expect(html).toMatchInlineSnapshot(`
     <!doctype html>
     <html xmlns="http://www.w3.org/1999/xhtml"
           xmlns:v="urn:schemas-microsoft-com:vml"
@@ -572,4 +526,46 @@ it("transforms mjml to html", async () => {
       </body>
     </html>
   `);
+});
+
+const __filename: string = fileURLToPath(import.meta.url);
+const __dirname: string = dirname(__filename);
+
+const emailFixtureDirectoryPath: string = resolve(
+  __dirname,
+  "../fixtures/mjml-emails/"
+);
+
+const emailFixtureNames = await readdir(emailFixtureDirectoryPath);
+
+describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
+  let mjml: string;
+
+  beforeAll(async () => {
+    const mjmlBuffer = await readFile(
+      format({
+        dir: emailFixtureDirectoryPath,
+        name: emailFixtureName,
+        ext: ".mjml",
+      })
+    );
+
+    mjml = mjmlBuffer.toString();
+  });
+
+  fit("renders faster than the original mjml library", async () => {
+    const processMjml = async () => await remjml().process(mjml);
+    const processOriginalMjml = () => originalMjml(mjml);
+
+    await expect(processMjml).toBeFasterThan(
+      processOriginalMjml
+      // { cycles: 100 }
+    );
+  });
+
+  it("renders the same html as before`", async () => {
+    const html: string = (await remjml().process(mjml)).toString();
+
+    expect(html).toMatchSnapshot();
+  });
 });

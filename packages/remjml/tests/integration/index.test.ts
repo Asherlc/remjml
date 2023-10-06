@@ -1,26 +1,17 @@
 import "jest-puppeteer";
 import "expect-puppeteer";
 import { resolve, dirname, format } from "node:path";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 import { toMatchImageSnapshot } from "jest-image-snapshot";
 import originalMjml from "mjml";
 import { remjml } from "remjml";
 import "jest-match-performance";
+import "jest-match-image";
 import "jest-match-html";
 
 expect.extend({ toMatchImageSnapshot });
-
-const emailFixtureNames = [
-  "arturia",
-  "black-friday",
-  "happy-new-year",
-  "hello-world",
-  "proof",
-  "welcome-email",
-  "worldly",
-];
 
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = dirname(__filename);
@@ -30,13 +21,7 @@ const emailFixtureDirectoryPath: string = resolve(
   "../fixtures/mjml-emails/"
 );
 
-const emailFixtureDirectoryExists = (
-  await stat(emailFixtureDirectoryPath)
-).isDirectory();
-
-if (!emailFixtureDirectoryExists) {
-  throw new Error(`${emailFixtureDirectoryPath} is not a directory`);
-}
+const emailFixtureNames = await readdir(emailFixtureDirectoryPath);
 
 describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
   let mjml: string;
@@ -108,17 +93,5 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
       const image: Buffer = await page.screenshot({ fullPage: true });
       expect(image).toMatchImageSnapshot();
     });
-  });
-
-  it("renders the same html as before`", async () => {
-    const html: string = (await remjml().process(mjml)).toString();
-
-    expect(html).toMatchSnapshot();
-  });
-
-  fit("renders faster than the original mjml library", async () => {
-    await expect(async () => await remjml().process(mjml)).toBeFasterThan(() =>
-      originalMjml(mjml)
-    );
   });
 });

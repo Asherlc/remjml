@@ -1,7 +1,7 @@
 {
   "extends": ["../../tsconfig.base.json"],
   "files": [
-    "src/jest-match-html.ts",
+    "src/jest-match-image.ts",
   ],
   "include": ["src/**/*"],
   "exclude": ["dist/**/*"],

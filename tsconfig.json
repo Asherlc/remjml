@@ -32,7 +32,7 @@
       "path": "./packages/remjml-rehype"
     },
     {
-      "path": "./packages/jest-match-html-prettier"
+      "path": "./packages/jest-match-html"
     },
     { "path": "./packages/jest-match-performance" }
   ]

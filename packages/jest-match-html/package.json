@@ -2,9 +2,9 @@
   "name": "jest-match-html",
   "type": "module",
   "exports": {
-    ".": "./src/jest-match-html-prettier.ts"
+    ".": "./src/jest-match-html.ts"
   },
-  "main": "./src/jest-match-html-prettier.ts",
+  "main": "./src/jest-match-html.ts",
   "dependencies": {},
   "devDependencies": {
     "jest": "29.7.0",

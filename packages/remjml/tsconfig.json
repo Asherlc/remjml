@@ -5,7 +5,10 @@
     {
       "path": "../remjml-rehype"
     },
-    { "path": "../remjml-parse" }
+    { "path": "../remjml-parse" },
+    { "path": "../jest-match-html" },
+    { "path": "../jest-match-performance" },
+    { "path": "../jest-match-image" }
   ],
   "compilerOptions": {
     "outDir": "./dist"

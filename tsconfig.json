@@ -34,6 +34,7 @@
     {
       "path": "./packages/jest-match-html"
     },
-    { "path": "./packages/jest-match-performance" }
+    { "path": "./packages/jest-match-performance" },
+    { "path": "./packages/jest-match-image" }
   ]
 }

@@ -18,5 +18,5 @@ export default {
   preset: "jest-puppeteer",
   snapshotSerializers: ["jest-serializer-html"],
   projects: ["<rootDir>"],
-  roots: ["<rootDir>/tests/integration"]
+  roots: ["<rootDir>/packages/remjml/tests/integration"]
 };

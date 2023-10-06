@@ -15,11 +15,9 @@ const DEFAULT_OPTIONS: Options = { cycles: 1 };
 expect.extend({
   async toBeFasterThan(
     actualFunction: () => unknown | Promise<unknown>,
-    [expectedFunction, options]: [
-      expectedFunction: () => unknown | Promise<unknown>,
-      options?: Options,
-    ]
+    params
   ): Promise<jest.CustomMatcherResult> {
+    console.log(params);
     const optionsWithDefaults: Options = { ...DEFAULT_OPTIONS, ...options };
 
     const speeds: Speeds = {
@@ -28,8 +26,8 @@ expect.extend({
     };
 
     const perfObserver = new PerformanceObserver((items) => {
-      items.getEntries().forEach((entry) => {
-        console.log(entry);
+      items.getEntries().forEach((entry: PerformanceEntry) => {
+        speeds[entry.name].push(entry.duration);
       });
     });
 
@@ -69,13 +67,13 @@ declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace jest {
     interface Matchers<R> {
-      toMatchPerformance(
+      toBeFasterThan(
         expectedFunction: () => unknown,
         options?: Options
       ): Promise<R>;
     }
     interface ExpectExtendMap {
-      toMatchPerformance?: CustomMatcher;
+      toBeFasterThan?: CustomMatcher;
     }
   }
 }

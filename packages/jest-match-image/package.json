@@ -1,0 +1,24 @@
+{
+  "name": "jest-match-image",
+  "type": "module",
+  "exports": {
+    ".": "./src/jest-match-image.ts"
+  },
+  "main": "./src/jest-match-image.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "29.7.0",
+    "jest-diff": "29.7.0",
+    "sharp": "0.32.6",
+    "@types/pixelmatch": "5.2.4",
+    "@types/pngjs": "6.0.2",
+    "pixelmatch": "5.3.0",
+    "pngjs": "7.0.0",
+    "lodash-es": "4.17.21"
+  },
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --build",
+    "watch": "tsc --build --watch"
+  }
+}

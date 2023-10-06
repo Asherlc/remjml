@@ -8,7 +8,8 @@
   "dependencies": {
   },
   "devDependencies": {
-    "jest": "29.7.0"
+    "jest": "29.7.0",
+    "lodash-es": "4.17.21"
   },
   "scripts": {
     "clean": "tsc --build --clean",

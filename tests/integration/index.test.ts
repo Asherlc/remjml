@@ -7,11 +7,8 @@ import fsPromise from "fs/promises";
 import { PNG } from "pngjs";
 import pixelmatch from "pixelmatch";
 import { toMatchImageSnapshot } from "jest-image-snapshot";
-import { unified } from "unified";
-import remjmlRehype from "remjml-rehype";
-import rehypeStringify from "rehype-stringify";
-import remjmlParse from "remjml-parse";
 import originalMjml from "mjml";
+import { remjml } from "remjml";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -110,7 +107,6 @@ const emailFixtureDirectoryPath = path.resolve("./tests/fixtures/mjml-emails/");
 
 describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
   let mjml: string;
-  let html: string;
 
   beforeAll(async () => {
     const mjmlBuffer = await fsPromise.readFile(
@@ -122,36 +118,6 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     );
 
     mjml = mjmlBuffer.toString();
-
-    try {
-      html = (
-        await unified()
-          .use(remjmlParse)
-          .use(remjmlRehype as any)
-          .use(rehypeStringify, {
-            allowDangerousHtml: true,
-          })
-          .process(mjml)
-      ).value.toString();
-    } catch (error) {
-      console.error(error);
-      throw new Error(`test Error rendering mjml: ${error}`);
-    }
-
-    try {
-      html = (
-        await unified()
-          .use(remjmlParse)
-          .use(remjmlRehype)
-          .use(rehypeStringify, {
-            allowDangerousHtml: true,
-          })
-          .process(mjml)
-      ).value.toString();
-    } catch (error) {
-      console.error(error);
-      throw new Error(`Error rendering mjml: ${error}`);
-    }
   });
 
   describe.each([
@@ -173,9 +139,10 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     it(
       "renders the same visual as original mjml library",
       async () => {
-        const theirHtml = originalMjml(mjml).html;
-        const ourBuffer = Buffer.from(html);
-        const theirBuffer = Buffer.from(theirHtml);
+        const theirHtml: string = originalMjml(mjml).html;
+        const html: string = (await remjml().process(mjml)).toString();
+        const ourBuffer: Buffer = Buffer.from(html);
+        const theirBuffer: Buffer = Buffer.from(theirHtml);
 
         await page.goto(
           `data:text/html;base64,${ourBuffer.toString("base64")}`,
@@ -183,14 +150,16 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
             waitUntil: "networkidle0",
           }
         );
-        const ourImageData = await page.screenshot({ fullPage: true });
+        const ourImageData: Buffer = await page.screenshot({ fullPage: true });
         await page.goto(
           `data:text/html;base64,${theirBuffer.toString("base64")}`,
           {
             waitUntil: "networkidle0",
           }
         );
-        const theirImageData = await page.screenshot({ fullPage: true });
+        const theirImageData: Buffer = await page.screenshot({
+          fullPage: true,
+        });
 
         await expect(ourImageData).toMatchImage(theirImageData);
       },
@@ -198,16 +167,19 @@ describe.each(emailFixtureNames)("%s email fixture", (emailFixtureName) => {
     );
 
     it("renders the same as before", async () => {
-      const buffer = Buffer.from(html);
+      const html: string = (await remjml().process(mjml)).toString();
+      const buffer: Buffer = Buffer.from(html);
       await page.goto(`data:text/html;base64,${buffer.toString("base64")}`, {
         waitUntil: ["load", "networkidle0"],
       });
-      const image = await page.screenshot({ fullPage: true });
+      const image: Buffer = await page.screenshot({ fullPage: true });
       expect(image).toMatchImageSnapshot();
     });
   });
 
   it("renders the same html as before`", async () => {
+    const html: string = (await remjml().process(mjml)).toString();
+
     expect(html).toMatchSnapshot();
   });
 });
